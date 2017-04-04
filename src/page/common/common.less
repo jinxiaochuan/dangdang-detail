@@ -1,0 +1,89 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.common-fix{
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  width: @base*750rem;
+  margin-left: -@base*375rem;
+  padding: 0 @base*24rem;
+  height: @base*120rem;
+  line-height: @base*120rem;
+  background: rgba(255,255,255,.94);
+  .logo-icon{
+    float: left;
+    width: @base*66rem;
+    height: @base*120rem;
+    background: url("~assets/logo_icon.png") no-repeat center center;
+    background-size: @base*66rem  @base*66rem;
+  }
+  .logo-word-icon{
+    margin: 0 @base*24rem;
+    float: left;
+    width: @base*320rem;
+    height: @base*120rem;
+    background: url("~assets/logo_word_icon.png") no-repeat center center;
+    background-size: @base*320rem  @base*31rem;
+  }
+  .app-btn{
+    margin: @base*30rem 0;
+    float: right;
+    width: @base*170rem;
+    height: @base*60rem;
+    line-height: @base*60rem;
+    text-align: center;
+    background: #007AFF;
+    .border-radius(@base*30rem);
+    .font-dpr(14px);
+    color: #FFFFFF;
+  }
+}
+
+.ios-icon{
+  display: block;
+  width: @base*610rem;
+  height: @base*520rem;
+  background: url("~assets/ios.png") no-repeat center center;
+  background-size: @base*610rem @base*520rem;
+}
+
+.android-icon{
+  display: block;
+  width: @base*610rem;
+  height: @base*520rem;
+  background: url("~assets/android.png") no-repeat center center;
+  background-size: @base*610rem @base*520rem;
+}
+
+.common-footer{
+  .common-code{
+    margin: @base*45rem 0;
+    .code{
+      // float: left;
+      // width: @base*210rem;
+      // height: @base*210rem;
+      width: 100%;
+    }
+    .common-follow{
+      float: right;
+      padding: @base*57rem 0;
+      .follow-prompt{
+        .font-dpr(15px);
+        color: #333333;
+        line-height: @base*42rem;
+      }
+      .follow-keywords{
+        .font-dpr(13px);
+        color: #BCBCBC;
+        line-height: @base*38rem;
+      }
+    }
+  }
+  .source{
+    .font-dpr(13px);
+    color: #888888;
+    line-height: @base*38rem;
+  }
+}

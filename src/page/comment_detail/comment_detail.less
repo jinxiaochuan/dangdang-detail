@@ -1,0 +1,205 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.container{
+  margin: 0 auto;
+  width: @base*750rem;
+  padding: @base*44rem @base*24rem @base*100rem;
+
+  .comment-header{
+    .avatar{
+      float: left;
+      width: @base*84rem;
+      height: @base*84rem;
+      .border-radius();
+    }
+    .comment-detail-wrap{
+      float: left;
+      width: @base*588rem;
+      margin-left: @base*20rem;
+      .name{
+        margin-top: @base*4rem;
+        .font-dpr(15px);
+        color: #6A7BA1;
+        line-height: @base*30rem;
+      }
+      .content{
+        margin: @base*18rem 0;
+        .font-dpr(15px);
+        color: #000000;
+        line-height: @base*35rem;
+        &.content-outline{
+          .clamp(6);
+        }
+      }
+      .slide-down-btn,
+      .slide-up-btn{
+        .font-dpr(15px);
+        color: #6A7BA1;
+      }
+      .album-container{
+        margin-top: @base*20rem;
+        width: @base*240rem;
+        height: @base*240rem;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .share-link-container{
+        margin-top: @base*15rem;
+        width: @base*588rem;
+        padding: @base*10rem @base*14rem;
+        background: #F3F3F5;
+        .share-link-avatar{
+          float: left;
+          width: @base*80rem;
+          height: @base*80rem;
+        }
+        .share-link-content{
+          float: left;
+          width: @base*480rem;
+          padding: @base*4rem 0 @base*4rem  @base*20rem;
+          .font-dpr(15px);
+          color: #000000;
+          line-height: @base*36rem;
+          .clamp(2);
+        }
+      }
+
+      .comment-address{
+        margin-top: @base*15rem;
+        .font-dpr(12px);
+        color: #6A7BA1;
+        line-height: @base*24rem;
+      }
+
+      .comment-time{
+        margin-top: @base*15rem;
+        .font-dpr(12px);
+        color: #737373;
+        line-height: @base*28rem;
+        .spread-icon{
+          float: right;
+          width: @base*37rem;
+          height: @base*28rem;
+          background: url("~assets/spread_icon.png") no-repeat center center;
+          background-size: @base*37rem @base*28rem;
+        }
+      }
+    }
+  }
+
+}
+
+.common-detail{
+  margin-top: @base*30rem;
+  width: @base*696rem;
+  background: #F3F3F5;
+  position: relative;
+  &:after{
+    content: '';
+    position: absolute;
+    top:-@base*13rem;
+    left: @base*20rem;
+    width: @base*26rem;
+    height: @base*13rem;
+    background: url("~assets/arrow.png") no-repeat center center;
+  }
+  .share-detail-container{
+    .setLine('bottom');
+
+    .share-detail{
+      padding: @base*15rem @base*24rem;
+      .share-num{
+        padding-left: @base*32rem;
+        .font-dpr(10px);
+        color: #000000;
+        line-height: @base*25rem;
+        background: url("~assets/share_icon.png") no-repeat left center;
+        background-size: @base*25rem;
+      }
+      .share-icon-container{
+        padding: @base*14rem 0;
+        img{
+          float: left;
+          margin: 0 @base*9rem @base*9rem 0;
+          width: @base*70rem;
+          height: @base*70rem;
+        }
+      }
+    }
+  }
+
+  .praise-detail-container{
+    .setLine('bottom');
+
+    .praise-detail{
+      padding: @base*15rem @base*24rem;
+      .praise-num{
+        padding-left: @base*32rem;
+        .font-dpr(10px);
+        color: #000000;
+        line-height: @base*25rem;
+        background: url("~assets/praise_icon.png") no-repeat left center;
+        background-size: @base*25rem;
+      }
+      .praise-icon-container{
+        padding: @base*14rem 0;
+        img{
+          float: left;
+          margin: 0 @base*9rem @base*9rem 0;
+          width: @base*70rem;
+          height: @base*70rem;
+        }
+      }
+    }
+  }
+
+  .reply-detail-container{
+    .reply-detail{
+      padding: @base*15rem @base*14rem 0 @base*24rem;
+      .reply-num{
+        padding-left: @base*32rem;
+        .font-dpr(10px);
+        color: #000000;
+        line-height: @base*25rem;
+        background: url("~assets/reply_icon.png") no-repeat left center;
+        background-size: @base*25rem;
+      }
+      .reply-list-wrap{
+        .reply-list{
+          .reply-item{
+            .setLine('bottom');
+
+            padding: @base*10rem 0 @base*20rem;
+            img{
+              float: left;
+              width: @base*70rem;
+              height: @base*70rem;
+            }
+            .reply-info{
+              margin-left: @base*90rem;
+              .info-nick{
+                .font-dpr(15px);
+                color: #556994;
+                .info-time{
+                  float: right;
+                  .font-dpr(12px);
+                  color: #767676;
+                }
+              }
+              .info-content{
+                .font-dpr(12px);
+                color: #000000;
+                line-height: @base*36rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
