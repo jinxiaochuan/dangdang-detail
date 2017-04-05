@@ -157,7 +157,7 @@ var cooperationDetail = jsmod.util.klass({
   getAjaxCooperation:function(url){
     var self = this;
 
-    //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200119&coopId=12&viewUserId=200119';
+    url = 'http://test.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200119&coopId=12&viewUserId=200119';
 
     var data={};
 
