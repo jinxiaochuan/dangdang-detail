@@ -57,7 +57,7 @@
     <img src="{{ item.pictureUrl }}" alt=""/>
     {% endfor %}
     {% endif %}
-    <p class="address">{{ data.in24hInfo.provinceName }} {{ data.in24hInfo.cityName }}</p>
+    <p class="address">{{ data.in24hInfo.location }}</p>
     <p class="time">{{ data.in24hInfo.formatCreateTime }}
       {% if data.showAccess == 1 %}
       <a class="in24-show-access" href="javascript:void (0)"><i class="member"></i></a>

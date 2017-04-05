@@ -144,6 +144,7 @@ var discoveryIn24Detail = jsmod.util.klass({
       jsonp:'callback',
       success:function (json) {
         if(json.data){
+          console.log(json.data);
           self.data = json.data;
           self.discoveryIn24Render(json.data);
         }
