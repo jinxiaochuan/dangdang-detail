@@ -130,7 +130,7 @@ var discoveryIn24Detail = jsmod.util.klass({
   getAjaxDiscoveryIn24:function(url){
     var self =this;
 
-    //url='http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=1';
+    url='http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=1';
 
     var data={};
 
