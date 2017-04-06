@@ -42,22 +42,26 @@ var discoveryIn24Detail = jsmod.util.klass({
         self.showAccessInfo = {
             "userId": self.data.in24hInfo.webInfo.userId,
             "in24hId": self.data.in24hInfo.webInfo.in24hId,
+            "tagId": self.data.in24hInfo.webInfo.in24hId,
             "showAccess": self.data.in24hInfo.showAccess
         }
 
         self.intentionInfo = {
             "userId": self.data.in24hInfo.webInfo.userId,
-            "in24hId": self.data.in24hInfo.webInfo.in24hId
+            "in24hId": self.data.in24hInfo.webInfo.in24hId,
+            "tagId": self.data.in24hInfo.webInfo.in24hId
         }
 
         self.editInfo = {
             "userId": self.data.in24hInfo.webInfo.userId,
-            "in24hId": self.data.in24hInfo.webInfo.in24hId
+            "in24hId": self.data.in24hInfo.webInfo.in24hId,
+            "tagId": self.data.in24hInfo.webInfo.in24hId
         }
 
         self.sendInfo = {
             "userId": self.data.in24hInfo.webInfo.userId,
             "in24hId": self.data.in24hInfo.webInfo.in24hId,
+            "tagId": self.data.in24hInfo.webInfo.in24hId,
             "replyUserId": self.data.in24hInfo.webInfo.replyUserId
         }
 

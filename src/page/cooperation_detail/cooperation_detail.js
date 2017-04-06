@@ -37,19 +37,23 @@ var cooperationDetail = jsmod.util.klass({
     self.showAccessInfo = {
       "userId":self.data.webInfo.userId,
       "coopId":self.data.webInfo.coopId,
+      "tagId":self.data.webInfo.coopId,
       "showAccess":self.data.showAccess
     }
     self.intentionInfo = {
       "userId":self.data.webInfo.userId,
-      "coopId":self.data.webInfo.coopId
+      "coopId":self.data.webInfo.coopId,
+      "tagId":self.data.webInfo.coopId
     }
     self.editInfo = {
       "userId":self.data.webInfo.userId,
+      "tagId":self.data.webInfo.coopId,
       "coopId":self.data.webInfo.coopId
     }
     self.sendInfo = {
       "userId":self.data.webInfo.userId,
       "coopId":self.data.webInfo.coopId,
+      "tagId":self.data.webInfo.coopId,
       "replyUserId":self.data.webInfo.replyUserId
     }
 

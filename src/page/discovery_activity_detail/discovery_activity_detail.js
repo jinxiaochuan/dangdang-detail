@@ -40,22 +40,26 @@ var discoveryActivityDetail = jsmod.util.klass({
     self.showAccessInfo = {
       "userId":self.data.activityInfo.webInfo.userId,
       "activityId":self.data.activityInfo.webInfo.activityId,
+      "tagId":self.data.activityInfo.webInfo.activityId,
       "showAccess":self.data.activityInfo.showAccess
     }
 
     self.intentionInfo = {
       "userId":self.data.activityInfo.webInfo.userId,
-      "activityId":self.data.activityInfo.webInfo.activityId
+      "activityId":self.data.activityInfo.webInfo.activityId,
+      "tagId":self.data.activityInfo.webInfo.activityId
     }
 
     self.editInfo = {
       "userId":self.data.activityInfo.webInfo.userId,
-      "activityId":self.data.activityInfo.webInfo.activityId
+      "activityId":self.data.activityInfo.webInfo.activityId,
+      "tagId":self.data.activityInfo.webInfo.activityId
     }
 
     self.sendInfo = {
       "userId":self.data.activityInfo.webInfo.userId,
       "activityId":self.data.activityInfo.webInfo.activityId,
+      "tagId":self.data.activityInfo.webInfo.activityId,
       "replyUserId":self.data.activityInfo.webInfo.replyUserId
     }
 
