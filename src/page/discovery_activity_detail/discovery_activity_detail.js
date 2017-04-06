@@ -18,7 +18,7 @@ var discoveryActivityDetail = jsmod.util.klass({
     self.getAjaxDiscoveryActivity(page_url);
   },
 
-  initBrige:function(){
+  initBridge:function(){
     var self = this;
 
     self.avatarInfo = {
@@ -60,16 +60,34 @@ var discoveryActivityDetail = jsmod.util.klass({
     }
 
     /*这段代码是固定的，必须要放到js中*/
-      function setupWebViewJavascriptBridge(callback) {
-        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+    function setupWebViewJavascriptBridge(callback) {
+
+      if(window.isIOS){
+        if (window.WebViewJavascriptBridge) {
+          return callback(WebViewJavascriptBridge);
+        }
+        if (window.WVJBCallbacks) {
+          return window.WVJBCallbacks.push(callback);
+        }
         window.WVJBCallbacks = [callback];
         var WVJBIframe = document.createElement('iframe');
         WVJBIframe.style.display = 'none';
         WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
         document.documentElement.appendChild(WVJBIframe);
-        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+        setTimeout(function () {
+          document.documentElement.removeChild(WVJBIframe)
+        }, 0)
+      }else{
+        if(window.WebViewJavascriptBridge){
+          callback(WebViewJavascriptBridge);
+        }else{
+          document.addEventListener('WebViewJavascriptBridgeReady',function(){
+            callback(WebViewJavascriptBridge);
+          },false)
+        }
       }
+
+    }
 
       /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
       setupWebViewJavascriptBridge(function(bridge) {
@@ -160,7 +178,20 @@ var discoveryActivityDetail = jsmod.util.klass({
 
     self.$container.html(tpl);
 
-    self.initBrige();
+    self.deviceDetect();
+
+    self.initBridge();
+
+  },
+
+  deviceDetect: function () {
+    var self = this;
+
+    var u = window.navigator.userAgent;
+
+    window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+
+    window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
 
   }
 });
