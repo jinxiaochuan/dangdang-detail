@@ -165,7 +165,7 @@
 
 	            self.$container.delegate('.in24-inten', 'click', function () {
 
-	                bridge.callHandler('tapShowAccess', self.showAccessInfo, function () {});
+	                bridge.callHandler('tapAppliedUserList', self.intentionInfo, function () {});
 	            });
 
 	            self.$container.delegate('.discovery-in24-edit', 'click', function () {
