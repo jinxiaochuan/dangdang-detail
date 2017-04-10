@@ -59,15 +59,15 @@
     {% endif %}
     <p class="address">{{ data.in24hInfo.location }}</p>
     <p class="time">{{ data.in24hInfo.formatCreateTime }}
-      {% if data.showAccess == 1 %}
+      {% if data.in24hInfo.showAccess == 1 %}
       <a class="in24-show-access" href="javascript:void (0)"><i class="member"></i></a>
-      {% elseif data.showAccess == 2 %}
+      {% elseif data.in24hInfo.showAccess == 2 %}
       <a class="in24-show-access" href="javascript:void (0)"><i class="member-join"></i></a>
-      {%elseif data.showAccess == 3 %}
+      {%elseif data.in24hInfo.showAccess == 3 %}
       <a class="in24-show-access" href="javascript:void (0)"><i class="member-part"></i></a>
       {% else %}
       {% endif %}
-      {% if data.isOver == '1' %}
+      {% if data.in24hInfo.isOver == '1' %}
       <span class="timeout">已结束</span>
       {% endif %}
     </p>

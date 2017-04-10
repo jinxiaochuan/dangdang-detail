@@ -1,0 +1,283 @@
+/*! This file is created by xiaochuan throught plugin-BannerPlugin !!! */
+.common-fix {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  width: 10rem;
+  margin-left: -5rem;
+  padding: 0 0.32rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  background: rgba(255, 255, 255, 0.94);
+}
+.common-fix .logo-icon {
+  float: left;
+  width: 0.88rem;
+  height: 1.6rem;
+  background: url(/static/web_detail/assets_url/logo_icon.545df37.png) no-repeat center center;
+  background-size: 0.88rem 0.88rem;
+}
+.common-fix .logo-word-icon {
+  margin: 0 0.32rem;
+  float: left;
+  width: 4.26666667rem;
+  height: 1.6rem;
+  background: url(/static/web_detail/assets_url/logo_word_icon.f3d6727.png) no-repeat center center;
+  background-size: 4.26666667rem 0.41333333rem;
+}
+.common-fix .app-btn {
+  margin: 0.4rem 0;
+  float: right;
+  width: 2.26666667rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  text-align: center;
+  background: #007AFF;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  border-radius: 0.4rem;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+[data-dpr='2'] .common-fix .app-btn {
+  font-size: 28px;
+}
+[data-dpr='3'] .common-fix .app-btn {
+  font-size: 42px;
+}
+.ios-icon {
+  display: block;
+  width: 8.13333333rem;
+  height: 6.93333333rem;
+  background: url(/static/web_detail/assets_url/ios.a2a2c43.png) no-repeat center center;
+  background-size: 8.13333333rem 6.93333333rem;
+}
+.android-icon {
+  display: block;
+  width: 8.13333333rem;
+  height: 6.93333333rem;
+  background: url(/static/web_detail/assets_url/android.11a40bf.png) no-repeat center center;
+  background-size: 8.13333333rem 6.93333333rem;
+}
+.common-footer .common-code {
+  margin: 0.6rem 0;
+}
+.common-footer .common-code .code {
+  width: 100%;
+}
+.common-footer .common-code .common-follow {
+  float: right;
+  padding: 0.76rem 0;
+}
+.common-footer .common-code .common-follow .follow-prompt {
+  font-size: 15px;
+  color: #333333;
+  line-height: 0.56rem;
+}
+[data-dpr='2'] .common-footer .common-code .common-follow .follow-prompt {
+  font-size: 30px;
+}
+[data-dpr='3'] .common-footer .common-code .common-follow .follow-prompt {
+  font-size: 45px;
+}
+.common-footer .common-code .common-follow .follow-keywords {
+  font-size: 13px;
+  color: #BCBCBC;
+  line-height: 0.50666667rem;
+}
+[data-dpr='2'] .common-footer .common-code .common-follow .follow-keywords {
+  font-size: 26px;
+}
+[data-dpr='3'] .common-footer .common-code .common-follow .follow-keywords {
+  font-size: 39px;
+}
+.common-footer .source {
+  font-size: 13px;
+  color: #888888;
+  line-height: 0.50666667rem;
+}
+[data-dpr='2'] .common-footer .source {
+  font-size: 26px;
+}
+[data-dpr='3'] .common-footer .source {
+  font-size: 39px;
+}
+/**
+ * @fileOverview reset基础样式
+ */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  /*vertical-align: baseline; delete by jican*/
+}
+
+input,
+textarea {
+  outline:none;
+  font-size: 14px;
+  resize: none;
+}
+
+a {
+  color: #3f88bf;
+}
+
+input:focus
+textarea:focus{
+  outline: none;
+}
+
+html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+    -webkit-text-size-adjust: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+a{
+    text-decoration: none;
+}
+body {
+  font-family: "Helvetica Neue",helvetica,'lucida grande','lucida sans unicode',lucida,'Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+img,table{
+    border:0
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+select {
+    -webkit-appearance:button;
+    border: 0px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.clearfix:after {
+    content: ' ';
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+.container {
+  margin: 0 auto;
+  width: 10rem;
+}
+.container .circle-header {
+  padding-top: 0.53333333rem;
+  width: 100%;
+  height: 2.26666667rem;
+  text-align: center;
+  background: #F5F5F5;
+}
+.container .circle-header .circle-avatar {
+  width: 1.73333333rem;
+  height: 1.73333333rem;
+}
+.container .circle-detail-container {
+  margin-top: -0.4rem;
+  padding: 0.8rem 0.4rem;
+  background: #FFFFFF;
+}
+.container .circle-detail-container .circle-info {
+  text-align: center;
+  font-size: 14px;
+  height: 0.46666667rem;
+  line-height: 0.46666667rem;
+  color: #888888;
+}
+[data-dpr='2'] .container .circle-detail-container .circle-info {
+  font-size: 28px;
+}
+[data-dpr='3'] .container .circle-detail-container .circle-info {
+  font-size: 42px;
+}
+.container .circle-detail-container .circle-info .official-icon {
+  margin-right: 0.2rem;
+  display: inline-block;
+  vertical-align: -0.02666667rem;
+  width: 0.34666667rem;
+  height: 0.34666667rem;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAApBJREFUSA21lkFoU0EQhv9tS9XaojexBYWIFxEVW/EgahS8iIoH0ZM39SKIIEVtEgxoi6Ui4kmPpaCCNwWhl0L0Jr1UBNGDJy1oLdhSe2hpxm+TVH0vL3mPEBc2+2Z25v93Z3cn4+Rbxnr4HZHpMGO3VzWhTcupAE6/Bt1XVyGZhOSB2jWmvJtuAomUt24t6TxkV8Hr80RPIJnSkBtuCkEYZMCuQ7a7BX26tJOwQbNkH6XSkQyYJcbM2UEicFJmLrGPN4TD7yhZy9gVreg1q3uhnG7prm1I5li2iicati5WdA/zv2dYhGheH5W1M0nJ4onmdQOwPnayNgS6SUU9V84OhPSRYn2ivHXitYvu31d0KyobPRHU1ida1l52siPoUiUd1UNbU6UNKeoTOfkdpUI+QdF4HDMsKKbVJ5Li5svwK0rH8MQAOW2MAyjNO52Ne1v1V1zUiUREpj1cicfkt45a9rWJsnaHi3CulmOV3nSRJDpR62K0VTl4RdZO8UYyf+acfkA6QXL8RP+Mfo7ewnc7dim+dzJ/nHG/vuka4xA90KKJTJcrVgW1kgVa9Ya/j2LAMyyM2Hr91CjqY/Qqolqh62S1HzSoI7rtCuS4Xna5PYwdkH9pG/JW+vuAviJE70h6RChGOeCnZOs5iC5BvEi6SWsdoVtSF7oewrYFu16wDqHbh81LZiIzRTTRoBsjkX4H5CYg5cRp6gD8rRYC650BfIr+Sm26QHjfBWb/EaKJvMGQG+d3nCub0rLu8z3LWT2DfIFxFvkLwIuMiVptolX3vPO37PSq2OjoL8N0qZBoFCHOzxcpcPi3UChVK3EOjc6XK6GCD10/ZJMcvv5vueVXulpA+orItLnRxYf8AgXkb5nouoJBXOdUAAAAAElFTkSuQmCC) no-repeat center center;
+}
+[data-dpr='3'] .container .circle-detail-container .circle-info .official-icon {
+  background: url(/static/web_detail/assets_url/official_icon@1.5x.69278c1.png) no-repeat center center;
+}
+.container .circle-detail-container .circle-info .author-icon {
+  margin-right: 0.2rem;
+  display: inline-block;
+  vertical-align: -0.02666667rem;
+  width: 0.34666667rem;
+  height: 0.34666667rem;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAABGdBTUEAALGPC/xhBQAAAQJQTFRF870K87sK870M878M9b0K9bsK/7sQ+b0O870K9b0K870K9bsK870K87sK870K9b0K870M870K98EO87sK870M/9sk87sK87sK/8kS87sK978O/78U87sK87sM+b8M870M870K87sK870KAAAA870K87sK9b8K87sK870K/78g970S9b0K870K870K870K87sK870M870K9b8K870K870M87sK/9EW/9Uq970Q870K870K87sK/79A//+B870K870K870K870M87sK870K970O9b8K9b0K870K970M87sK878M87sK87sK/78Q870K870K870K870M870KAAAA870K87sKXJ3DbgAAAFR0Uk5Ti9+DUi5iDiKvWO8wj8tiRDyRINNQBvnlDsM4DJObJoX77XoAdulGvZ0IGoeVt37xPuku5WrnCgYev9n1BALz3eFW1+c2GHTfOqMotf0Q0ZntVNUAt4jFTQAAARBJREFUKM+VknlPwkAQxSkK4sEhGCtKuIpn0KhBbmi4r22hTd73/yrOVhZ6J84/beeXfds38yJKSEXC4UVl0c2ZXWn3KHqNnTQ21Z8XgqcNCVST1JmArwZ9d4w3S3bN4dYm9wCYTXGnTjBvg1Ww5eGHSgSHgwP7vt3rWHDJdYuCtXRMtCMcfBE8F5B0RnafK4LC8ZTh3TGEEcHnvY8xelkH1MpA5a9xBdRc4+vQ0TZ/+WTQ+y44J3jD7atg9+7B8yFF6bkF6t6tqMBGUZ4AOe6F19RWNBkwfPaZJt3Zyjruha0hLQbotX2TkODzxdw/JjHOjhadcMYANg0KWBIoBKbvA/JdILzESUhuM/8NdUj9ArcRgyX8bbHWAAAAAElFTkSuQmCC) no-repeat center center;
+}
+.container .circle-detail-container .circle-content-wrap {
+  margin-top: 0.86666667rem;
+}
+.container .circle-detail-container .circle-content-wrap .circle-content {
+  font-size: 15px;
+  color: #000000;
+  line-height: 0.56rem;
+}
+[data-dpr='2'] .container .circle-detail-container .circle-content-wrap .circle-content {
+  font-size: 30px;
+}
+[data-dpr='3'] .container .circle-detail-container .circle-content-wrap .circle-content {
+  font-size: 45px;
+}
+.container .circle-detail-container .circle-content-wrap img {
+  margin: 0.13333333rem 0;
+  width: 100%;
+}

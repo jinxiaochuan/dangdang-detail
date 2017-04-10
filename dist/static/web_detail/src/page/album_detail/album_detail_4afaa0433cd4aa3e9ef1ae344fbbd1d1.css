@@ -1,0 +1,274 @@
+/*! This file is created by xiaochuan throught plugin-BannerPlugin !!! */
+.common-fix {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  width: 10rem;
+  margin-left: -5rem;
+  padding: 0 0.32rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  background: rgba(255, 255, 255, 0.94);
+}
+.common-fix .logo-icon {
+  float: left;
+  width: 0.88rem;
+  height: 1.6rem;
+  background: url(/static/web_detail/assets_url/logo_icon.545df37.png) no-repeat center center;
+  background-size: 0.88rem 0.88rem;
+}
+.common-fix .logo-word-icon {
+  margin: 0 0.32rem;
+  float: left;
+  width: 4.26666667rem;
+  height: 1.6rem;
+  background: url(/static/web_detail/assets_url/logo_word_icon.f3d6727.png) no-repeat center center;
+  background-size: 4.26666667rem 0.41333333rem;
+}
+.common-fix .app-btn {
+  margin: 0.4rem 0;
+  float: right;
+  width: 2.26666667rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  text-align: center;
+  background: #007AFF;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  border-radius: 0.4rem;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+[data-dpr='2'] .common-fix .app-btn {
+  font-size: 28px;
+}
+[data-dpr='3'] .common-fix .app-btn {
+  font-size: 42px;
+}
+.ios-icon {
+  display: block;
+  width: 8.13333333rem;
+  height: 6.93333333rem;
+  background: url(/static/web_detail/assets_url/ios.a2a2c43.png) no-repeat center center;
+  background-size: 8.13333333rem 6.93333333rem;
+}
+.android-icon {
+  display: block;
+  width: 8.13333333rem;
+  height: 6.93333333rem;
+  background: url(/static/web_detail/assets_url/android.11a40bf.png) no-repeat center center;
+  background-size: 8.13333333rem 6.93333333rem;
+}
+.common-footer .common-code {
+  margin: 0.6rem 0;
+}
+.common-footer .common-code .code {
+  width: 100%;
+}
+.common-footer .common-code .common-follow {
+  float: right;
+  padding: 0.76rem 0;
+}
+.common-footer .common-code .common-follow .follow-prompt {
+  font-size: 15px;
+  color: #333333;
+  line-height: 0.56rem;
+}
+[data-dpr='2'] .common-footer .common-code .common-follow .follow-prompt {
+  font-size: 30px;
+}
+[data-dpr='3'] .common-footer .common-code .common-follow .follow-prompt {
+  font-size: 45px;
+}
+.common-footer .common-code .common-follow .follow-keywords {
+  font-size: 13px;
+  color: #BCBCBC;
+  line-height: 0.50666667rem;
+}
+[data-dpr='2'] .common-footer .common-code .common-follow .follow-keywords {
+  font-size: 26px;
+}
+[data-dpr='3'] .common-footer .common-code .common-follow .follow-keywords {
+  font-size: 39px;
+}
+.common-footer .source {
+  font-size: 13px;
+  color: #888888;
+  line-height: 0.50666667rem;
+}
+[data-dpr='2'] .common-footer .source {
+  font-size: 26px;
+}
+[data-dpr='3'] .common-footer .source {
+  font-size: 39px;
+}
+/**
+ * @fileOverview reset基础样式
+ */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  /*vertical-align: baseline; delete by jican*/
+}
+
+input,
+textarea {
+  outline:none;
+  font-size: 14px;
+  resize: none;
+}
+
+a {
+  color: #3f88bf;
+}
+
+input:focus
+textarea:focus{
+  outline: none;
+}
+
+html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+    -webkit-text-size-adjust: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+a{
+    text-decoration: none;
+}
+body {
+  font-family: "Helvetica Neue",helvetica,'lucida grande','lucida sans unicode',lucida,'Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+img,table{
+    border:0
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+select {
+    -webkit-appearance:button;
+    border: 0px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.clearfix:after {
+    content: ' ';
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+.container {
+  margin: 0 auto;
+  width: 10rem;
+}
+.container img {
+  width: 100%;
+  margin-bottom: 0.08rem;
+}
+.container img:last-child {
+  margin-bottom: 0;
+}
+.container .content-container {
+  padding: 0 0.4rem;
+  margin: 0.24rem 0;
+}
+.container .content-container .content {
+  font-size: 16px;
+  color: #000000;
+}
+[data-dpr='2'] .container .content-container .content {
+  font-size: 32px;
+}
+[data-dpr='3'] .container .content-container .content {
+  font-size: 48px;
+}
+.container .content-container .content.content-outline {
+  font-size: 16px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 6;
+  -moz-line-clamp: 6;
+  -ms-line-clamp: 6;
+  line-clamp: 6;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+}
+[data-dpr='2'] .container .content-container .content.content-outline {
+  font-size: 32px;
+}
+[data-dpr='3'] .container .content-container .content.content-outline {
+  font-size: 48px;
+}
+.container .content-container .slide-down-btn,
+.container .content-container .slide-up-btn {
+  font-size: 16px;
+  color: #6A7BA1;
+}
+[data-dpr='2'] .container .content-container .slide-down-btn,
+[data-dpr='2'] .container .content-container .slide-up-btn {
+  font-size: 32px;
+}
+[data-dpr='3'] .container .content-container .slide-down-btn,
+[data-dpr='3'] .container .content-container .slide-up-btn {
+  font-size: 48px;
+}

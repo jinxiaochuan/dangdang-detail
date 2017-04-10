@@ -150,7 +150,7 @@ var discoveryActivityDetail = jsmod.util.klass({
   getAjaxDiscoveryActivity:function(url){
     var self = this;
 
-    //url='http://test.im-dangdang.com/ddweb/v1/discovery/activity/detail?userId=200119&activityId=3';
+    url='http://test.im-dangdang.com/ddweb/v1/discovery/activity/detail?userId=200119&activityId=3';
 
     var data={};
 

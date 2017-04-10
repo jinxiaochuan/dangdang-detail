@@ -34,15 +34,15 @@
 
     <p class="address"><a class="activity-address" href="javascript:void (0)"></a>{{ data.activityInfo.location }}</p>
     <p class="time">{{ data.activityInfo.formatCreateTime }}
-      {% if data.showAccess == 1 %}
+      {% if data.activityInfo.showAccess == 1 %}
       <a class="activity-show-access" href="javascript:void (0)"><i class="member"></i></a>
-      {% elseif data.showAccess == 2 %}
+      {% elseif data.activityInfo.showAccess == 2 %}
       <a class="activity-show-access" href="javascript:void (0)"><i class="member-join"></i></a>
-      {%elseif data.showAccess == 3 %}
+      {%elseif data.activityInfo.showAccess == 3 %}
       <a class="activity-show-access" href="javascript:void (0)"><i class="member-part"></i></a>
       {% else %}
       {% endif %}
-       {% if data.isOver == '1' %}
+       {% if data.activityInfo.isOver == '1' %}
        <span class="timeout">已结束</span>
        {% endif %}
      </p>
