@@ -62,7 +62,8 @@ var discoveryIn24Detail = jsmod.util.klass({
             "userId": self.data.in24hInfo.webInfo.userId,
             "in24hId": self.data.in24hInfo.webInfo.in24hId,
             "tagId": self.data.in24hInfo.webInfo.in24hId,
-            "replyUserId": self.data.in24hInfo.webInfo.replyUserId
+            "replyUserId": self.data.in24hInfo.webInfo.replyUserId,
+            "needPhone":self.data.in24hInfo.needPhone
         }
 
 

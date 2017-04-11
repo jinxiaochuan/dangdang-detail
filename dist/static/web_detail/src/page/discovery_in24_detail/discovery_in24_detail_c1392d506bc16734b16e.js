@@ -48,189 +48,209 @@
 
 	/* WEBPACK VAR INJECTION */(function($, swig) {__webpack_require__(4);
 
-	__webpack_require__(57);
+	__webpack_require__(59);
 
 	var jsmod = __webpack_require__(13);
 
 	var page_url = window.location.href;
 
-	var TPL_DISCOVERY_ACTIVITY = __webpack_require__(58);
+	var TPL_DISCOVERY_IN24 = __webpack_require__(66);
 
-	var URL_DISCOVERY_ACTIVITY = 'http://test.im-dangdang.com/ddweb/v1/discovery/activity/detail';
+	var URL_DISCOVERY_IN24 = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
 
-	var discoveryActivityDetail = jsmod.util.klass({
-	  initialize: function (option) {
-	    var self = this;
-	    self.option = option;
-	    self.$container = $('.container');
-	    self.getAjaxDiscoveryActivity(page_url);
-	  },
+	var discoveryIn24Detail = jsmod.util.klass({
+	    initialize: function (option) {
+	        var self = this;
+	        self.option = option;
+	        self.$container = $('.container');
+	        jsmod.util.Dialog.setOpacity(1);
+	        self.getAjaxDiscoveryIn24(page_url);
+	    },
 
-	  initBridge: function () {
-	    var self = this;
+	    initBridge: function () {
+	        var self = this;
 
-	    self.avatarInfo = {
-	      "userId": self.data.activityInfo.webInfo.userId,
-	      "viewUserId": self.data.activityInfo.webInfo.viewedUserId
-	    };
+	        self.avatarInfo = {
+	            "userId": self.data.in24hInfo.webInfo.userId,
+	            "viewUserId": self.data.in24hInfo.webInfo.viewedUserId
+	        };
 
-	    self.nameInfo = {
-	      "userId": self.data.activityInfo.webInfo.userId,
-	      "viewUserId": self.data.activityInfo.webInfo.viewedUserId
-	    };
+	        self.nameInfo = {
+	            "userId": self.data.in24hInfo.webInfo.userId,
+	            "viewUserId": self.data.in24hInfo.webInfo.viewedUserId
+	        };
 
-	    self.addressInfo = {
-	      "activityLocation": self.data.activityInfo.location,
-	      "activityLongitude": self.data.activityInfo.longitude,
-	      "activityLatitude": self.data.activityInfo.latitude
-	    };
+	        self.addressInfo = {
+	            "activityLocation": self.data.in24hInfo.webInfo.location,
+	            "activityLongitude": self.data.in24hInfo.webInfo.longitude,
+	            "activityLatitude": self.data.in24hInfo.webInfo.latitude
+	        };
 
-	    self.showAccessInfo = {
-	      "userId": self.data.activityInfo.webInfo.userId,
-	      "activityId": self.data.activityInfo.webInfo.activityId,
-	      "tagId": self.data.activityInfo.webInfo.activityId,
-	      "showAccess": self.data.activityInfo.showAccess
-	    };
+	        self.showAccessInfo = {
+	            "userId": self.data.in24hInfo.webInfo.userId,
+	            "in24hId": self.data.in24hInfo.webInfo.in24hId,
+	            "tagId": self.data.in24hInfo.webInfo.in24hId,
+	            "showAccess": self.data.in24hInfo.showAccess
+	        };
 
-	    self.intentionInfo = {
-	      "userId": self.data.activityInfo.webInfo.userId,
-	      "activityId": self.data.activityInfo.webInfo.activityId,
-	      "tagId": self.data.activityInfo.webInfo.activityId
-	    };
+	        self.intentionInfo = {
+	            "userId": self.data.in24hInfo.webInfo.userId,
+	            "in24hId": self.data.in24hInfo.webInfo.in24hId,
+	            "tagId": self.data.in24hInfo.webInfo.in24hId
+	        };
 
-	    self.editInfo = {
-	      "userId": self.data.activityInfo.webInfo.userId,
-	      "activityId": self.data.activityInfo.webInfo.activityId,
-	      "tagId": self.data.activityInfo.webInfo.activityId
-	    };
+	        self.editInfo = {
+	            "userId": self.data.in24hInfo.webInfo.userId,
+	            "in24hId": self.data.in24hInfo.webInfo.in24hId,
+	            "tagId": self.data.in24hInfo.webInfo.in24hId
+	        };
 
-	    self.sendInfo = {
-	      "userId": self.data.activityInfo.webInfo.userId,
-	      "activityId": self.data.activityInfo.webInfo.activityId,
-	      "tagId": self.data.activityInfo.webInfo.activityId,
-	      "replyUserId": self.data.activityInfo.webInfo.replyUserId
-	    };
+	        self.sendInfo = {
+	            "userId": self.data.in24hInfo.webInfo.userId,
+	            "in24hId": self.data.in24hInfo.webInfo.in24hId,
+	            "tagId": self.data.in24hInfo.webInfo.in24hId,
+	            "replyUserId": self.data.in24hInfo.webInfo.replyUserId,
+	            "needPhone": self.data.in24hInfo.needPhone
+	        };
 
-	    /*这段代码是固定的，必须要放到js中*/
-	    function setupWebViewJavascriptBridge(callback) {
+	        /*这段代码是固定的，必须要放到js中*/
+	        function setupWebViewJavascriptBridge(callback) {
 
-	      if (window.isIOS) {
-	        if (window.WebViewJavascriptBridge) {
-	          return callback(WebViewJavascriptBridge);
+	            if (window.isIOS) {
+	                if (window.WebViewJavascriptBridge) {
+	                    return callback(WebViewJavascriptBridge);
+	                }
+	                if (window.WVJBCallbacks) {
+	                    return window.WVJBCallbacks.push(callback);
+	                }
+	                window.WVJBCallbacks = [callback];
+	                var WVJBIframe = document.createElement('iframe');
+	                WVJBIframe.style.display = 'none';
+	                WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+	                document.documentElement.appendChild(WVJBIframe);
+	                setTimeout(function () {
+	                    document.documentElement.removeChild(WVJBIframe);
+	                }, 0);
+	            } else {
+	                if (window.WebViewJavascriptBridge) {
+	                    callback(WebViewJavascriptBridge);
+	                } else {
+	                    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+	                        callback(WebViewJavascriptBridge);
+	                    }, false);
+	                }
+	            }
 	        }
-	        if (window.WVJBCallbacks) {
-	          return window.WVJBCallbacks.push(callback);
-	        }
-	        window.WVJBCallbacks = [callback];
-	        var WVJBIframe = document.createElement('iframe');
-	        WVJBIframe.style.display = 'none';
-	        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-	        document.documentElement.appendChild(WVJBIframe);
-	        setTimeout(function () {
-	          document.documentElement.removeChild(WVJBIframe);
-	        }, 0);
-	      } else {
-	        if (window.WebViewJavascriptBridge) {
-	          callback(WebViewJavascriptBridge);
-	        } else {
-	          document.addEventListener('WebViewJavascriptBridgeReady', function () {
-	            callback(WebViewJavascriptBridge);
-	          }, false);
-	        }
-	      }
+
+	        /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
+	        setupWebViewJavascriptBridge(function (bridge) {
+	            self.$container.delegate('.in24-avatar', 'click', function () {
+
+	                bridge.callHandler('tapUserImage', self.avatarInfo, function () {});
+	            });
+
+	            self.$container.delegate('.in24-name', 'click', function () {
+
+	                bridge.callHandler('tapUserName', self.nameInfo, function () {});
+	            });
+
+	            self.$container.delegate('.in24-address', 'click', function () {
+
+	                bridge.callHandler('tapActivityPlace', self.addressInfo, function () {});
+	            });
+
+	            self.$container.delegate('.in24-show-access', 'click', function () {
+
+	                bridge.callHandler('tapShowAccess', self.showAccessInfo, function () {});
+	            });
+
+	            self.$container.delegate('.in24-inten', 'click', function () {
+
+	                bridge.callHandler('tapAppliedUserList', self.intentionInfo, function () {});
+	            });
+
+	            self.$container.delegate('.discovery-in24-edit', 'click', function () {
+
+	                bridge.callHandler('edit', self.editInfo, function () {});
+	            });
+
+	            self.$container.delegate('.discovery-in24-send', 'click', function () {
+
+	                bridge.callHandler('apply', self.sendInfo, function () {});
+	            });
+	        });
+	    },
+
+	    getAjaxDiscoveryIn24: function (url) {
+	        var self = this;
+
+	        //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=1';
+
+	        var data = {};
+
+	        data.userId = jsmod.util.url.getParam(url, 'userId');
+	        data.in24hId = jsmod.util.url.getParam(url, 'in24hId');
+
+	        $.ajax({
+	            url: URL_DISCOVERY_IN24,
+	            dataType: 'jsonp',
+	            data: data,
+	            jsonp: 'callback',
+	            success: function (json) {
+	                if (json.data) {
+	                    self.data = json.data;
+	                    self.discoveryIn24Render(json.data);
+	                }
+	            }
+	        });
+	    },
+
+	    discoveryIn24Render: function (data) {
+	        var self = this;
+
+	        var tpl = swig.render(TPL_DISCOVERY_IN24, {
+	            locals: {
+	                data: data
+	            }
+	        });
+
+	        self.$container.html(tpl);
+
+	        self.bindHandler();
+
+	        self.deviceDetect();
+
+	        self.initBridge();
+	    },
+
+	    deviceDetect: function () {
+	        var self = this;
+
+	        var u = window.navigator.userAgent;
+
+	        window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+
+	        window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+	    },
+
+	    bindHandler: function () {
+	        var self = this;
+
+	        self.$container.delegate('.avatar.scale', 'click', function () {
+
+	            var src = $(this).data('src');
+
+	            var dialog = new jsmod.util.Dialog({
+	                html: '<img src="' + src + '"/>'
+	            });
+
+	            dialog.show();
+	        });
 	    }
 
-	    /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
-	    setupWebViewJavascriptBridge(function (bridge) {
-	      self.$container.delegate('.activity-avatar', 'click', function () {
-
-	        bridge.callHandler('tapUserImage', self.avatarInfo, function () {});
-	      });
-
-	      self.$container.delegate('.activity-name', 'click', function () {
-
-	        bridge.callHandler('tapUserName', self.nameInfo, function () {});
-	      });
-
-	      self.$container.delegate('.activity-address', 'click', function () {
-
-	        bridge.callHandler('tapActivityPlace', self.addressInfo, function () {});
-	      });
-
-	      self.$container.delegate('.activity-show-access', 'click', function () {
-
-	        bridge.callHandler('tapShowAccess', self.showAccessInfo, function () {});
-	      });
-
-	      self.$container.delegate('.activity-inten', 'click', function () {
-
-	        bridge.callHandler('tapAppliedUserList', self.intentionInfo, function () {});
-	      });
-
-	      self.$container.delegate('.discovery-activity-edit', 'click', function () {
-
-	        bridge.callHandler('edit', self.editInfo, function () {});
-	      });
-
-	      self.$container.delegate('.discovery-activity-send', 'click', function () {
-
-	        bridge.callHandler('apply', self.sendInfo, function () {});
-	      });
-	    });
-	  },
-
-	  getAjaxDiscoveryActivity: function (url) {
-	    var self = this;
-
-	    //url='http://test.im-dangdang.com/ddweb/v1/discovery/activity/detail?userId=200119&activityId=3';
-
-	    var data = {};
-
-	    data.userId = jsmod.util.url.getParam(url, 'userId');
-	    data.activityId = jsmod.util.url.getParam(url, 'activityId');
-
-	    $.ajax({
-	      url: URL_DISCOVERY_ACTIVITY,
-	      dataType: 'jsonp',
-	      data: data,
-	      jsonp: 'callback',
-	      success: function (json) {
-	        if (json.data) {
-	          self.data = json.data;
-	          self.discoveryActivityRender(json.data);
-	        }
-	      }
-	    });
-	  },
-
-	  discoveryActivityRender: function (data) {
-	    var self = this;
-
-	    var tpl = swig.render(TPL_DISCOVERY_ACTIVITY, {
-	      locals: {
-	        data: data
-	      }
-	    });
-
-	    self.$container.html(tpl);
-
-	    self.deviceDetect();
-
-	    self.initBridge();
-	  },
-
-	  deviceDetect: function () {
-	    var self = this;
-
-	    var u = window.navigator.userAgent;
-
-	    window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-
-	    window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-	  }
 	});
 
-	new discoveryActivityDetail();
+	new discoveryIn24Detail();
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2)))
 
 /***/ },
@@ -12210,17 +12230,17 @@
 
 /***/ },
 
-/***/ 57:
+/***/ 59:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 58:
+/***/ 66:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"discovery-activity-header\">\r\n    <a class=\"activity-avatar\" href=\"javascript:void (0)\"><img class=\"avatar\" src=\"{{ data.activityInfo.userInfo.userImage }}\" alt=\"\"/></a>\r\n    <div class=\"discovery-activity-detail-wrap\">\r\n        <p class=\"name\"><a class=\"activity-name\" href=\"javascript:void (0)\">{{ data.activityInfo.userInfo.showName }}</a></p>\r\n        <p class=\"content\"><span class=\"time\">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class=\"address\">{{ data.activityInfo.provinceName }} {{ data.activityInfo.cityName }}</span></p>\r\n    </div>\r\n</div>\r\n<p class=\"discovery-activity-title\">{{ data.activityInfo.notice }}</p>\r\n<div class=\"notice-container\">\r\n    {% if data.noticeList.length %}\r\n    <div class=\"notice-list-wrap\">\r\n        <p class=\"notice-title\">公告：</p>\r\n        <ul class=\"notice-list\">\r\n            {% for item in data.noticeList %}\r\n            <li class=\"notice-item\">\r\n                <p class=\"notice-time\">{{ item.formatCreateTime }}</p>\r\n                <p class=\"notice-content\">{{ item.notice }}</p>\r\n            </li>\r\n            {% endfor %}\r\n        </ul>\r\n    </div>\r\n    {% else %}\r\n    <!-- <div class=\"notice-normal\">公告：<span class=\"notice-word\">正常</span></div> -->\r\n    {% endif %}\r\n\r\n</div>\r\n<div class=\"discovery-activity-content\">\r\n    <p>{{ data.activityInfo.detailContent }}</p>\r\n    {% if data.activityInfo.detailImages %}\r\n    {% for item in data.activityInfo.detailImages %}\r\n    <img src=\"{{ item.pictureUrl }}\" alt=\"\"/>\r\n    {% endfor %}\r\n    {% endif %}\r\n\r\n    <p class=\"address\"><a class=\"activity-address\" href=\"javascript:void (0)\"></a>{{ data.activityInfo.location }}</p>\r\n    <p class=\"time\">{{ data.activityInfo.formatCreateTime }}\r\n      {% if data.activityInfo.showAccess == 1 %}\r\n      <a class=\"activity-show-access\" href=\"javascript:void (0)\"><i class=\"member\"></i></a>\r\n      {% elseif data.activityInfo.showAccess == 2 %}\r\n      <a class=\"activity-show-access\" href=\"javascript:void (0)\"><i class=\"member-join\"></i></a>\r\n      {%elseif data.activityInfo.showAccess == 3 %}\r\n      <a class=\"activity-show-access\" href=\"javascript:void (0)\"><i class=\"member-part\"></i></a>\r\n      {% else %}\r\n      {% endif %}\r\n       {% if data.activityInfo.isOver == '1' %}\r\n       <span class=\"timeout\">已结束</span>\r\n       {% endif %}\r\n     </p>\r\n</div>\r\n\r\n<div class=\"discovery-activity-end clearfix\">\r\n    <span class=\"deadline\">报名截止：{{ data.activityInfo.formatDeadline }}</span>\r\n    <span class=\"limit\">限{{ data.activityInfo.activityNum }}人</span>\r\n</div>\r\n\r\n{% if data.activityInfo.review %}\r\n<div class=\"discovery-activity-review\">\r\n    <p class=\"review-title\">回顾</p>\r\n    <div class=\"review-content\">\r\n        <p>{{ data.activityInfo.review }}</p>\r\n        {% if data.activityInfo.reviewImages %}\r\n        {% for item in data.activityInfo.reviewImages %}\r\n        <img src=\"{{ item.pictureUrl }}\" alt=\"\"/>\r\n        {% endfor %}\r\n        {% endif %}\r\n    </div>\r\n</div>\r\n{% endif %}\r\n{% if data.activityInfo.isOwner == '1' %}\r\n<div class=\"discovery-activity-handle\">\r\n    <a class=\"activity-inten\" href=\"javascript:void (0)\"><div class=\"discovery-activity-intention\">已报名的人({{ data.activityInfo.signPeopleCount }}) <i class=\"icon-arrow\"></i></div></a>\r\n    <a class=\"discovery-activity-edit\" href=\"javascript:void (0)\">编辑</a>\r\n</div>\r\n{% else %}\r\n{% if data.activityInfo.isOver == '0' %}\r\n<div class=\"discovery-activity-handle fix\">\r\n    <a class=\"discovery-activity-send\" href=\"javascript:void (0)\"><p>报名</p></a>\r\n</div>\r\n{% endif %}\r\n{% endif %}\r\n"
+	module.exports = "<div class=\"discovery-in24-header\">\r\n    {% if data.in24hInfo.isCanSeePersonFile == '1'%}\r\n    <a class=\"in24-avatar\" href=\"javascript:void (0)\"><img class=\"avatar\" src=\"{{ data.in24hInfo.userInfo.userImage }}\" alt=\"\"/></a>\r\n    {% else %}\r\n    <img class=\"avatar scale\"  data-src=\"{{ data.in24hInfo.userInfo.userImage }}\" src=\"{{ data.in24hInfo.userInfo.userImage }}\" alt=\"\"/>\r\n    {% endif %}\r\n    <div class=\"discovery-in24-detail-wrap\">\r\n        <p class=\"name\">\r\n          <a class=\"in24-name\" href=\"javascript:void (0)\">{{ data.in24hInfo.userInfo.showName }}</a>\r\n        </p>\r\n        <p class=\"content\"><span class=\"time\">{{ data.in24hInfo.formatStartTime }}</span>\r\n          {% if data.in24hInfo.activityType == 0 %}\r\n          <span class=\"type other\">其他</span>\r\n          {% elseif data.in24hInfo.activityType == 1 %}\r\n          <span class=\"type food\">吃饭</span>\r\n          {% elseif data.in24hInfo.activityType == 2 %}\r\n          <span class=\"type movie\">电影</span>\r\n          {% elseif data.in24hInfo.activityType == 3 %}\r\n          <span class=\"type sing\">唱歌</span>\r\n          {% elseif data.in24hInfo.activityType == 4 %}\r\n          <span class=\"type sports\">运动</span>\r\n          {% elseif data.in24hInfo.activityType == 5 %}\r\n          <span class=\"type coffee\">咖啡</span>\r\n          {% else %}\r\n          {% endif %}\r\n        </p>\r\n        <p class=\"location clearfix\"><a class=\"in24-address\" href=\"javascript:void (0)\"><span class=\"address\">{{ data.in24hInfo.webInfo.activityLocation }}</span></a><span class=\"distance\">{{ data.in24hInfo.distance }}km</span></p>\r\n    </div>\r\n    <!-- <div class=\"comment\">\r\n        <span class=\"comment-num\">55</span>\r\n        <i class=\"comment-icon\"></i>\r\n    </div> -->\r\n</div>\r\n<p class=\"discovery-in24-title\">{{ data.in24hInfo.title }}</p>\r\n<div class=\"notice-container\">\r\n    {% if data.noticeList.length %}\r\n      <div class=\"notice-list-wrap\">\r\n          <p class=\"notice-title\">公告：</p>\r\n          <ul class=\"notice-list\">\r\n              {% for item in data.noticeList %}\r\n              <li class=\"notice-item\">\r\n                  <p class=\"notice-time\">{{ item.formatCreateTime }}</p>\r\n                  <p class=\"notice-content\">{{ item.notice }}</p>\r\n              </li>\r\n              {% endfor %}\r\n          </ul>\r\n      </div>\r\n    {% else %}\r\n    <!-- <div class=\"notice-normal\">公告：<span class=\"notice-word\">正常</span></div> -->\r\n    {% endif %}\r\n\r\n</div>\r\n<div class=\"discovery-in24-content\">\r\n    <p>{{ data.in24hInfo.detailContent }}</p>\r\n    {% if data.in24hInfo.detailImages %}\r\n    {% for item in data.in24hInfo.detailImages %}\r\n    <img src=\"{{ item.pictureUrl }}\" alt=\"\"/>\r\n    {% endfor %}\r\n    {% endif %}\r\n    <p class=\"address\">{{ data.in24hInfo.location }}</p>\r\n    <p class=\"time\">{{ data.in24hInfo.formatCreateTime }}\r\n      {% if data.in24hInfo.showAccess == 1 %}\r\n      <a class=\"in24-show-access\" href=\"javascript:void (0)\"><i class=\"member\"></i></a>\r\n      {% elseif data.in24hInfo.showAccess == 2 %}\r\n      <a class=\"in24-show-access\" href=\"javascript:void (0)\"><i class=\"member-join\"></i></a>\r\n      {%elseif data.in24hInfo.showAccess == 3 %}\r\n      <a class=\"in24-show-access\" href=\"javascript:void (0)\"><i class=\"member-part\"></i></a>\r\n      {% else %}\r\n      {% endif %}\r\n      {% if data.in24hInfo.isOver == '1' %}\r\n      <span class=\"timeout\">已结束</span>\r\n      {% endif %}\r\n    </p>\r\n    <p class=\"limit\">限{{ data.in24hInfo.activityNum }}人</p>\r\n</div>\r\n{% if data.in24hInfo.review %}\r\n<div class=\"discovery-in24-review\">\r\n    <p class=\"review-title\">回顾</p>\r\n    <div class=\"review-content\">\r\n        <p>{{ data.in24hInfo.review }}</p>\r\n        {% if data.in24hInfo.reviewImages %}\r\n        {% for item in data.in24hInfo.reviewImages %}\r\n        <img src=\"{{ item.pictureUrl }}\" alt=\"\"/>\r\n        {% endfor %}\r\n        {% endif %}\r\n    </div>\r\n</div>\r\n{% endif %}\r\n{% if data.in24hInfo.isOwner == '1' %}\r\n<div class=\"discovery-in24-handle\">\r\n   <a class=\"in24-inten\" href=\"javascript:void (0)\"><div class=\"discovery-in24-intention\">已报名的人({{ data.in24hInfo.signPeopleCount }}) <i class=\"icon-arrow\"></i></div></a>\r\n   <a class=\"discovery-in24-edit\" href=\"javascript:void (0)\">编辑</a>\r\n</div>\r\n{% else %}\r\n{% if data.in24hInfo.isOver == '0' %}\r\n<div class=\"discovery-in24-handle fix\">\r\n    <a class=\"discovery-in24-send\" href=\"javascript:void (0)\"><p>报名</p></a>\r\n</div>\r\n{% endif %}\r\n{% endif %}\r\n"
 
 /***/ }
 

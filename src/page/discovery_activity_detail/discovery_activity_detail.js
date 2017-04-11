@@ -60,7 +60,8 @@ var discoveryActivityDetail = jsmod.util.klass({
       "userId":self.data.activityInfo.webInfo.userId,
       "activityId":self.data.activityInfo.webInfo.activityId,
       "tagId":self.data.activityInfo.webInfo.activityId,
-      "replyUserId":self.data.activityInfo.webInfo.replyUserId
+      "replyUserId":self.data.activityInfo.webInfo.replyUserId,
+      "needPhone":self.data.activityInfo.needPhone
     }
 
     /*这段代码是固定的，必须要放到js中*/
