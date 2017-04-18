@@ -29,7 +29,7 @@
   padding: @base*50rem @base*36rem @base*200rem;
 
   .info-header{
-      .avatar{
+      .info-avatar{
           float: left;
           width: @base*84rem;
           height: @base*84rem;
@@ -37,13 +37,13 @@
       .info-detail-wrap{
           margin-left: @base*100rem;
 
-          .info-name{
-              line-height: @base*42rem;
+          .info-name-wrap{
+              line-height: @base*50rem;
               .font-dpr(15px);
               color: #6A7BA1;
           }
           .info-detail{
-              line-height: @base*42rem;
+              line-height: @base*34rem;
               .time{
                   .font-dpr(12px);
                   color: #737373;
@@ -102,6 +102,7 @@
                   .font-dpr(18px);
                   color: #000000;
                   line-height: @base*50rem;
+                  .clamp(2);
               }
               .news-issuer{
                   margin-top: @base*20rem;

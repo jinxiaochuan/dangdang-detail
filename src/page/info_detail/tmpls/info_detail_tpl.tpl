@@ -1,7 +1,7 @@
 <div class="info-header">
-    <img class="avatar" src="{{ data.newsDetail.mediaLogoUrl }}" alt="">
+    <img class="info-avatar" src="{{ data.newsDetail.mediaLogoUrl }}" alt="">
     <div class="info-detail-wrap">
-        <p class="info-name">{{ data.newsDetail.mediaName }}</p>
+        <p class="info-name-wrap"><span class="info-name">{{ data.newsDetail.mediaName }}</span></p>
         <p class="info-detail clearfix">
             <span class="time">{{ data.newsDetail.formatNewsTime }}</span>
             <span class="read">{{ data.newsDetail.readAmount }}</span>
@@ -22,7 +22,7 @@
     <div class="news-item">
         <div class="news-detail">
             <p class="news-title">{{ item.title }}</p>
-            <p class="news-issuer"><span>{{ item.mediaName }}</span><span class="news-comment">{{ data.commentAmount }}评</span></p>
+            <p class="news-issuer"><span>{{ item.mediaName }}</span>{% if item.commentAmount != '0' %}<span class="news-comment">{{ item.commentAmount }}评</span>{% endif %}</p>
         </div>
         <img class="news-cover" src="{{ item.coverImageUrl[0] }}" alt="">
     </div>

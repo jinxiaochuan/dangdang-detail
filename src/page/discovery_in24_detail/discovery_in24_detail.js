@@ -101,6 +101,7 @@ var discoveryIn24Detail = jsmod.util.klass({
         setupWebViewJavascriptBridge(function (bridge) {
 
             bridge.registerHandler('getDistance', function(data, responseCallback) {
+                
                 self.$container.find('.distance').html(data+'km');
             })
 
