@@ -73,7 +73,7 @@
     </p>
     <p class="limit">限{{ data.in24hInfo.activityNum }}人</p>
 </div>
-{% if data.in24hInfo.review %}
+{% if data.in24hInfo.review || data.in24hInfo.reviewImages %}
 <div class="discovery-in24-review">
     <p class="review-title">回顾</p>
     <div class="review-content">

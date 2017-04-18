@@ -99,6 +99,12 @@ var discoveryIn24Detail = jsmod.util.klass({
 
         /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
         setupWebViewJavascriptBridge(function (bridge) {
+
+            bridge.registerHandler('getDistance', function(data, responseCallback) {
+                self.$container.find('.distance').html(data+'km');
+            })
+
+
             self.$container.delegate('.in24-avatar', 'click', function () {
 
                 bridge.callHandler('tapUserImage', self.avatarInfo, function () {
@@ -156,7 +162,7 @@ var discoveryIn24Detail = jsmod.util.klass({
     getAjaxDiscoveryIn24: function (url) {
         var self = this;
 
-        //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=1';
+        //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=115';
 
         var data = {};
 

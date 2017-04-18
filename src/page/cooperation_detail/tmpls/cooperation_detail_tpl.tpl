@@ -46,7 +46,7 @@
       <span class="timeout">已结束</span>
       {% endif %}</p>
 </div>
-{% if data.review %}
+{% if data.review || data.reviewImageList %}
 <div class="cooperation-review">
     <p class="review-title">回顾</p>
     <div class="review-content">

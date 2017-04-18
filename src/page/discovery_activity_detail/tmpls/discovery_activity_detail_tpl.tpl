@@ -53,7 +53,7 @@
     <span class="limit">限{{ data.activityInfo.activityNum }}人</span>
 </div>
 
-{% if data.activityInfo.review %}
+{% if data.activityInfo.review || data.activityInfo.reviewImages %}
 <div class="discovery-activity-review">
     <p class="review-title">回顾</p>
     <div class="review-content">
