@@ -20,7 +20,7 @@
         </ul>
     </div>
     {% else %}
-    <div class="notice-normal">公告：<span class="notice-word">正常</span></div>
+    <!-- <div class="notice-normal">公告：<span class="notice-word">正常</span></div> -->
     {% endif %}
 
 </div>

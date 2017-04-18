@@ -1,7 +1,7 @@
 <div class="discovery-activity-header">
     <a class="activity-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.activityInfo.userInfo.userImage }}" alt=""/></a>
     <div class="discovery-activity-detail-wrap">
-        <p class="name"><a class="activity-name" href="javascript:void (0)">{{ data.activityInfo.userInfo.showName }}</a></p>
+        <p class="name"><a class="activity-name" href="javascript:void (0)">{{ data.activityInfo.userInfo.showName }}</a>{{ data.date_now }}</p>
         <p class="content"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">{{ data.activityInfo.provinceName }} {{ data.activityInfo.cityName }}</span></p>
     </div>
 </div>
@@ -72,7 +72,7 @@
     <a class="discovery-activity-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}
-{% if data.activityInfo.isOver == '0' %}
+{% if data.activityInfo.isOver == '0' && data.activityInfo.endTime > data.date_now %}
 <div class="discovery-activity-handle fix">
     <a class="discovery-activity-send" href="javascript:void (0)"><p>报名</p></a>
 </div>
