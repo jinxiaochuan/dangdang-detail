@@ -34,9 +34,9 @@ var discoveryIn24Detail = jsmod.util.klass({
         }
 
         self.addressInfo = {
-            "activityLocation": self.data.in24hInfo.webInfo.location,
-            "activityLongitude": self.data.in24hInfo.webInfo.longitude,
-            "activityLatitude": self.data.in24hInfo.webInfo.latitude
+            "activityLocation": self.data.in24hInfo.webInfo.activityLocation,
+            "activityLongitude": self.data.in24hInfo.webInfo.activityLongitude,
+            "activityLatitude": self.data.in24hInfo.webInfo.activityLatitude
         }
 
         self.showAccessInfo = {
@@ -101,7 +101,7 @@ var discoveryIn24Detail = jsmod.util.klass({
         setupWebViewJavascriptBridge(function (bridge) {
 
             bridge.registerHandler('getDistance', function(data, responseCallback) {
-                
+
                 self.$container.find('.distance').html(data+'km');
             })
 

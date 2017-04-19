@@ -77,7 +77,11 @@ var infoDetail = jsmod.util.klass({
         var self = this;
 
         self.avatarInfo = {
+            mediaId:self.data.newsDetail.mediaId
+        }
 
+        self.nameInfo = {
+            mediaId:self.data.newsDetail.mediaId
         }
 
         function setupWebViewJavascriptBridge(callback){
@@ -114,11 +118,21 @@ var infoDetail = jsmod.util.klass({
         setupWebViewJavascriptBridge(function(bridge){
 
             self.$container.delegate('.info-avatar','click',function(){
+                bridge.callHandler('tapMediaName', self.avatarInfo, function () {
 
+                })
             })
 
-            self.$container.delegate('.info-avatar','click',function(){
+            self.$container.delegate('.info-name','click',function(){
+                bridge.callHandler('tapMediaName', self.nameInfo, function () {
 
+                })
+            })
+
+            self.$container.delegate('.comment-wrap','click',function(){
+                bridge.callHandler('tapComment', null, function () {
+
+                })
             })
 
         })
