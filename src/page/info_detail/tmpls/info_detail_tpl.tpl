@@ -15,13 +15,13 @@
 <div class="info-content-wrap">
     <p class="info-title">{{ data.newsDetail.title }}</p>
     <div class="info-content">
-        {{ data.newsDetail.content }}
+        {{ data.newsDetail.content|safe }}
     </div>
 </div>
 
 <div class="news-list-wrap">
     {% for item in data.recommendNews %}
-    <a href="http://test.im-dangdang.com/comment/v1/news/detail?userId={{ data.newsDetail.userId }}&newsId={{ item.newsId }}">
+    <a href="http://test.im-dangdang.com/ddweb/v1/newsComment/detail?userId={{ data.newsDetail.userId }}&newsId={{ item.newsId }}">
         <div class="news-item">
             <div class="news-detail">
                 <p class="news-title">{{ item.title }}</p>
