@@ -22,7 +22,7 @@ var infoDetail = jsmod.util.klass({
     getAjaxInfo:function(url){
         var self = this;
 
-        url = 'http://test.im-dangdang.com/ddweb/v1/newsComment/detail?userId=200119&newsId=3';
+        //url = 'http://test.im-dangdang.com/ddweb/v1/newsComment/detail?userId=200119&newsId=3';
 
         var data = {};
 
