@@ -25,12 +25,14 @@ var discoveryIn24Detail = jsmod.util.klass({
 
         self.avatarInfo = {
             "userId": self.data.in24hInfo.webInfo.userId,
-            "viewUserId": self.data.in24hInfo.webInfo.viewedUserId
+            "viewUserId": self.data.in24hInfo.webInfo.viewedUserId,
+            "imgUrl": self.data.in24hInfo.userInfo.userImage
         }
 
         self.nameInfo = {
             "userId": self.data.in24hInfo.webInfo.userId,
-            "viewUserId": self.data.in24hInfo.webInfo.viewedUserId
+            "viewUserId": self.data.in24hInfo.webInfo.viewedUserId,
+            "imgUrl": self.data.in24hInfo.userInfo.userImage
         }
 
         self.addressInfo = {
@@ -197,7 +199,7 @@ var discoveryIn24Detail = jsmod.util.klass({
 
         self.$container.html(tpl);
 
-        self.bindHandler();
+        //self.bindHandler();
 
         self.deviceDetect();
 

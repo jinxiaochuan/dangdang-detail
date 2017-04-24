@@ -23,11 +23,13 @@ var cooperationDetail = jsmod.util.klass({
 
     self.avatarInfo = {
       "userId":self.data.webInfo.userId,
-      "viewUserId":self.data.webInfo.viewUserId
+      "viewUserId":self.data.webInfo.viewUserId,
+      "imgUrl": self.data.userImage
     }
     self.nameInfo = {
       "userId":self.data.webInfo.userId,
-      "viewUserId":self.data.webInfo.viewUserId
+      "viewUserId":self.data.webInfo.viewUserId,
+      "imgUrl": self.data.userImage
     }
     self.addressInfo = {
       "activityLocation":self.data.location,

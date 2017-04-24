@@ -23,12 +23,14 @@ var discoveryActivityDetail = jsmod.util.klass({
 
     self.avatarInfo = {
       "userId":self.data.activityInfo.webInfo.userId,
-      "viewUserId":self.data.activityInfo.webInfo.viewedUserId
+      "viewUserId":self.data.activityInfo.webInfo.viewedUserId,
+      "imgUrl": self.data.activityInfo.userInfo.userImage
     }
 
     self.nameInfo = {
       "userId":self.data.activityInfo.webInfo.userId,
-      "viewUserId":self.data.activityInfo.webInfo.viewedUserId
+      "viewUserId":self.data.activityInfo.webInfo.viewedUserId,
+      "imgUrl": self.data.activityInfo.userInfo.userImage
     }
 
     self.addressInfo = {

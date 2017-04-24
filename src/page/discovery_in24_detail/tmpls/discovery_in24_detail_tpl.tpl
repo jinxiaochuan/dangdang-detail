@@ -1,9 +1,5 @@
 <div class="discovery-in24-header">
-    {% if data.in24hInfo.isCanSeePersonFile == '1'%}
     <a class="in24-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.in24hInfo.userInfo.userImage }}" alt=""/></a>
-    {% else %}
-    <img class="avatar scale"  data-src="{{ data.in24hInfo.userInfo.userImage }}" src="{{ data.in24hInfo.userInfo.userImage }}" alt=""/>
-    {% endif %}
     <div class="discovery-in24-detail-wrap">
         <p class="name">
           <a class="in24-name" href="javascript:void (0)">{{ data.in24hInfo.userInfo.showName }}</a>
