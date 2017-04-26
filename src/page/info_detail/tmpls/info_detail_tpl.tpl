@@ -21,7 +21,7 @@
 
 <div class="news-list-wrap">
     {% for item in data.recommendNews %}
-    <a href="http://test.im-dangdang.com/ddweb/v1/newsComment/detail?userId={{ data.newsDetail.userId }}&newsId={{ item.newsId }}">
+    <a href="http://test.im-dangdang.com/ddweb/news/detail?newsId={{ item.newsId }}&userId={{  data.userId }}">
         <div class="news-item">
             <div class="news-detail">
                 <p class="news-title">{{ item.title }}</p>
