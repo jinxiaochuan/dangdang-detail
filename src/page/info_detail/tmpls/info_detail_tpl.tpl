@@ -5,8 +5,12 @@
         <p class="info-detail clearfix">
             <span class="time">{{ data.newsDetail.formatNewsTime }}</span>
             <span class="comment-wrap">
+                {% if data.newsDetail.likeAmount != '0' %}
                 <span class="like">{{ data.newsDetail.likeAmount }}</span>
+                {% endif %}
+                {% if data.newsDetail.readAmount != '0' %}
                 <span class="read">{{ data.newsDetail.readAmount }}</span>
+                {% endif %}
             </span>
         </p>
     </div>
@@ -25,7 +29,16 @@
         <div class="news-item">
             <div class="news-detail">
                 <p class="news-title">{{ item.title }}</p>
-                <p class="news-issuer"><span>{{ item.mediaName }}</span>{% if item.commentAmount != '0' %}<span class="news-comment">{{ item.commentAmount }}评</span>{% endif %}</p>
+                <p class="news-issuer">
+                    <span class="media-name">{{ item.mediaName }}</span>
+                    <span class="comment-wrap">
+                        {% if item.commentAmount != '0' %}
+                        <span class="like">{{ item.commentAmount }}</span>
+                        {% endif %}
+                        {% if item.likeAmount != '0' %}
+                        <span class="read">{{ item.likeAmount }}</span>
+                        {% endif %}
+                    </span>
             </div>
             <img class="news-cover" src="{{ item.coverImageUrl[0] }}" alt="">
         </div>
