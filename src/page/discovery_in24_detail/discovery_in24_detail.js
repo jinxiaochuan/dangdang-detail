@@ -165,7 +165,7 @@ var discoveryIn24Detail = jsmod.util.klass({
     getAjaxDiscoveryIn24: function (url) {
         var self = this;
 
-        //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=115';
+        //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=159';
 
         var data = {};
 
@@ -179,6 +179,7 @@ var discoveryIn24Detail = jsmod.util.klass({
             jsonp: 'callback',
             success: function (json) {
                 if (json.data) {
+                    console.log(json.data);
                     self.data = json.data;
                     self.discoveryIn24Render(json.data);
                 }

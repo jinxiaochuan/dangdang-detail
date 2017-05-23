@@ -1,12 +1,12 @@
 require('page/common/common.js');
 
-require('./cooperation_detail.less');
+require('./discovery_cooperate_detail.less');
 
 var jsmod=require('lib/self/jsmod/jsmod_extend.js');
 
 var page_url=window.location.href;
 
-var TPL_COOPERATION=require('./tmpls/cooperation_detail_tpl.tpl');
+var TPL_COOPERATION=require('./tmpls/discovery_cooperate_detail_tpl.tpl');
 
 var URL_COOPERATION='http://test.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
 
