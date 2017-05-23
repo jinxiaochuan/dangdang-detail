@@ -1,18 +1,18 @@
 require('page/common/common.js');
 
-require('./circle_article_detail.less');
+require('./circle_article_preview.less');
 
 var jsmod=require('lib/self/jsmod/jsmod_extend.js');
 
-var page_url=window.location.href;
+var page_url = window.location.href;
 
-var TPL_COOPERATE=require('./tmpls/cooperate_detail_tpl.tpl');
+var TPL_COOPERATE=require('./tmpls/cooperate_preview_detail.tpl');
 
-var TPL_ACTIVITY=require('./tmpls/activity_detail_tpl.tpl');
+var TPL_ACTIVITY=require('./tmpls/activity_preview_detail.tpl');
 
-var TPL_NEWS=require('./tmpls/news_detail.tpl');
+var TPL_NEWS=require('./tmpls/news_preview_detail.tpl');
 
-var URL_ACTIVITY = 'http://test.im-dangdang.com/ddweb/v1/article/detail';
+var URL_PREVIEW = 'http://test.im-dangdang.com/ddweb/v1/article/preview';
 
 var TPL_MAP = {
     '1':TPL_NEWS,
@@ -20,25 +20,25 @@ var TPL_MAP = {
     "3":TPL_COOPERATE
 }
 
-var CircleArticleDetail = jsmod.util.klass({
+var CircleArticlePreview = jsmod.util.klass({
     initialize:function(option){
         var self = this;
         self.option = option;
-        self.$container = $('.container')
+        self.$container = $('.container');
         self.getAjax(page_url);
     },
 
     getAjax:function(url){
         var self = this;
 
-        //url='http://test.im-dangdang.com/ddweb/v1/article/detail?userId=200119&articleId=916';
+        //url='http://test.im-dangdang.com/ddweb/v1/article/preview?userId=200119&previewId=76';
         var data={};
 
         data.userId=jsmod.util.url.getParam(url,'userId');
-        data.articleId=jsmod.util.url.getParam(url,'articleId');
+        data.previewId=jsmod.util.url.getParam(url,'previewId');
 
         $.ajax({
-            url:URL_ACTIVITY,
+            url:URL_PREVIEW,
             dataType:'jsonp',
             data:data,
             jsonp:'callback',
@@ -52,4 +52,4 @@ var CircleArticleDetail = jsmod.util.klass({
     }
 })
 
-new CircleArticleDetail();
+new CircleArticlePreview();

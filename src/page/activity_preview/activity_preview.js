@@ -1,10 +1,12 @@
 require('page/common/common.js');
 
-require('./activity_preview.less');
+require('./circle_article_preview.less');
 
 var jsmod=require('lib/self/jsmod/jsmod_extend.js');
 
 var page_url=window.location.href;
+
+var TPL_COOPERATE=require('./tmpls/cooperate_preview_detail.tpl');
 
 var TPL_ACTIVITY=require('./tmpls/activity_preview_detail.tpl');
 
@@ -12,42 +14,42 @@ var TPL_NEWS=require('./tmpls/news_preview_detail.tpl');
 
 var URL_PREVIEW = 'http://test.im-dangdang.com/ddweb/v1/article/preview';
 
-function activityRender(data){
-    var tpl = swig.render(TPL_ACTIVITY,{locals:{data:data}});
-    $('.container').html(tpl);
+var TPL_MAP = {
+    '1':TPL_NEWS,
+    '2':TPL_ACTIVITY,
+    "3":TPL_COOPERATE
 }
 
-function newsRender(data){
-    var tpl = swig.render(TPL_NEWS,{locals:{data:data}});
-    $('.container').html(tpl);
-}
+var CircleArticlePreview = jsmod.util.klass({
+    initialize:function(option){
+        var self = this;
+        self.option = option;
+        self.$container = $('.container');
+        self.getAjax();
+    },
 
-function getAjaxActivity(url){
+    getAjax:function(page_url){
+        var self = this;
 
-    //url='http://test.im-dangdang.com/ddweb/v1/article/preview?userId=200119&previewId=1';
-    var data={};
+        //url='http://test.im-dangdang.com/ddweb/v1/article/preview?userId=200119&previewId=76';
+        var data={};
 
-    data.userId=jsmod.util.url.getParam(url,'userId');
-    data.previewId=jsmod.util.url.getParam(url,'previewId');
+        data.userId=jsmod.util.url.getParam(url,'userId');
+        data.previewId=jsmod.util.url.getParam(url,'previewId');
 
-    $.ajax({
-        url:URL_PREVIEW,
-        dataType:'jsonp',
-        data:data,
-        jsonp:'callback',
-        success:function(json){
-            if(json.data){
-                if(json.data.articleInfo.articleType == 2){
-                    activityRender(json.data);
-                }else if(json.data.articleInfo.articleType == 1){
-                    newsRender(json.data);
-                }else{
-
+        $.ajax({
+            url:URL_PREVIEW,
+            dataType:'jsonp',
+            data:data,
+            jsonp:'callback',
+            success:function(json){
+                if(json.data){
+                    var tpl = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:json.data}});
+                    self.$container.html(tpl);
                 }
-
             }
-        }
-    })
+        })
+    }
+})
 
-}
-getAjaxActivity(page_url);
+new CircleArticlePreview();
