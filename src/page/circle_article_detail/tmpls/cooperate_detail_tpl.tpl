@@ -1,7 +1,7 @@
 <div class="cooperation-header">
-    <a class="cooperation-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt=""/></a>
+    <a class="cooperation-avatar avatar-wrap" href="javascript:void (0)"><img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt=""/></a>
     <div class="cooperation-detail-wrap">
-        <p class="name"><a class="cooperation-name" href="javascript:void (0)">{{ data.circleInfo.circleName }}</a></p>
+        <p class="name"><a class="cooperation-name name-wrap" href="javascript:void (0)">{{ data.circleInfo.circleName }}</a></p>
         <p class="content"><span class="time">{{ data.articleInfo.coopInfo.tradeName }}</span><span class="address">{{ data.articleInfo.coopInfo.provinceName }} {{ data.articleInfo.coopInfo.cityName }}</span></p>
     </div>
 </div>
@@ -35,11 +35,11 @@
     <!-- <p class="address"><a class="cooperation-address" href="javascript:void (0)">{{ data.location }}</a></p> -->
     <p class="time">{{ data.articleInfo.formatCreateTime }}
       {% if data.articleInfo.showAccess == 1 %}
-      <a class="cooperation-show-access" href="javascript:void (0)"><i class="member"></i></a>
+      <a class="cooperation-show-access show-access-wrap" href="javascript:void (0)"><i class="member"></i></a>
       {% elseif data.articleInfo.showAccess == 2 %}
-      <a class="cooperation-show-access" href="javascript:void (0)"><i class="member-join"></i></a>
+      <a class="cooperation-show-access show-access-wrap" href="javascript:void (0)"><i class="member-join"></i></a>
       {%elseif data.articleInfo.showAccess == 3 %}
-      <a class="cooperation-show-access" href="javascript:void (0)"><i class="member-part"></i></a>
+      <a class="cooperation-show-access show-access-wrap" href="javascript:void (0)"><i class="member-part"></i></a>
       {% else %}
       {% endif %}
       {% if data.articleInfo.coopInfo.isFinished == '1' %}
@@ -61,13 +61,13 @@
 {% endif %}
 {% if data.articleInfo.coopInfo.isOwner == '1' %}
 <div class="cooperation-handle">
-    <a class="cooperation-inten" href="javascript:void (0)"><div class="cooperation-intention">有意向的人（{{ data.webShowInfo.enterCount }}）<i class="icon-arrow"></i></div></a>
+    <a class="cooperation-inten apply-list-wrap" href="javascript:void (0)"><div class="cooperation-intention">有意向的人（{{ data.webShowInfo.enterCount }}）<i class="icon-arrow"></i></div></a>
     <a class="cooperation-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}
 {% if data.articleInfo.coopInfo.isFinished == '0' %}
 <div class="cooperation-handle fix">
-    <a class="cooperation-send" href="javascript:void (0)"><p>发意向</p></a>
+    <a class="cooperation-send apply-wrap" href="javascript:void (0)"><p>发意向</p></a>
 </div>
 {% endif %}
 {% endif %}

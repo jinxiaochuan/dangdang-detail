@@ -66,6 +66,11 @@ var discoveryActivityDetail = jsmod.util.klass({
       "needPhone":self.data.activityInfo.needPhone
     }
 
+    self.communicateInfo = {
+        "userId":self.data.activityInfo.webInfo.userId,
+        "activityId":self.data.activityInfo.webInfo.activityId
+    }
+
     /*这段代码是固定的，必须要放到js中*/
     function setupWebViewJavascriptBridge(callback) {
 
@@ -147,6 +152,13 @@ var discoveryActivityDetail = jsmod.util.klass({
           })
         })
 
+        self.$container.delegate('.discovery-activity-communicate','click',function(){
+
+          bridge.callHandler('communicate',self.communicateInfo,function(){
+
+          })
+        })
+
      })
   },
 
@@ -167,6 +179,7 @@ var discoveryActivityDetail = jsmod.util.klass({
         jsonp:'callback',
         success:function(json){
             if(json.data){
+                console.log(json.data);
                 self.data=json.data;
                 self.data['date_now'] = Date.parse(new Date())/1000;
                 self.discoveryActivityRender(self.data);

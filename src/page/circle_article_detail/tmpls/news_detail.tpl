@@ -1,7 +1,7 @@
 <div class="common-header clearfix">
-    <a href="userId:{{ data.userId }},circleId:{{ data.circleInfo.circleId }},memberType:{{ data.circleInfo.memberType }}"><img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt=""/></a>
+    <a class="news-avatar avatar-wrap" href="javascript:void(0)"><img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt=""/></a>
     <div class="common-detail">
-        <a href="userId:{{ data.userId }},circleId:{{ data.circleInfo.circleId }},memberType:{{ data.circleInfo.memberType }}"><p class="name">{{ data.circleInfo.circleName }}</p></a>
+        <a class="news-name name-wrap" href="javascript:void(0)"><span class="name">{{ data.circleInfo.circleName }}</span></a>
         <p class="time">{{ data.articleInfo.formatCreateTime }}</p>
     </div>
     {% if data.webShowInfo.commentCount %}

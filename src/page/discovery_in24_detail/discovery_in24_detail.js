@@ -68,6 +68,11 @@ var discoveryIn24Detail = jsmod.util.klass({
             "needPhone":self.data.in24hInfo.needPhone
         }
 
+        self.communicateInfo = {
+            "userId": self.data.in24hInfo.webInfo.userId,
+            "in24hId": self.data.in24hInfo.webInfo.in24hId
+        }
+
 
         /*这段代码是固定的，必须要放到js中*/
         function setupWebViewJavascriptBridge(callback) {
@@ -153,6 +158,13 @@ var discoveryIn24Detail = jsmod.util.klass({
             self.$container.delegate('.discovery-in24-send', 'click', function () {
 
                 bridge.callHandler('apply', self.sendInfo, function () {
+
+                })
+            })
+
+            self.$container.delegate('.discovery-in24-communicate', 'click', function () {
+
+                bridge.callHandler('communicate', self.communicateInfo, function () {
 
                 })
             })

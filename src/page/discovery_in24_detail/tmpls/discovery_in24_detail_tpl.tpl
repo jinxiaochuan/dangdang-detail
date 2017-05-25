@@ -90,7 +90,11 @@
 {% else %}
 {% if data.in24hInfo.isOver == '0' %}
 <div class="discovery-in24-handle fix">
+    {% if !data.in24hInfo.applyStatus || data.in24hInfo.applyStatus == '2' %}
     <a class="discovery-in24-send" href="javascript:void (0)"><p>报名</p></a>
+    {% else %}
+    <a class="discovery-in24-communicate" href="javascript:void (0)"><p>沟通</p></a>
+    {% endif %}
 </div>
 {% endif %}
 {% endif %}

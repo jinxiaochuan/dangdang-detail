@@ -74,7 +74,11 @@
 {% else %}
 {% if data.activityInfo.isOver == '0' && data.activityInfo.endTime > data.date_now %}
 <div class="discovery-activity-handle fix">
+    {% if !data.activityInfo.applyStatus || data.activityInfo.applyStatus == '2' %}
     <a class="discovery-activity-send" href="javascript:void (0)"><p>报名</p></a>
+    {% else %}
+    <a class="discovery-activity-communicate" href="javascript:void (0)"><p>沟通</p></a>
+    {% endif %}
 </div>
 {% endif %}
 {% endif %}

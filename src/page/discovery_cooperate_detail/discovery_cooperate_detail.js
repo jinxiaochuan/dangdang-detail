@@ -59,6 +59,11 @@ var cooperationDetail = jsmod.util.klass({
       "replyUserId":self.data.webInfo.replyUserId
     }
 
+    self.communicateInfo = {
+        "userId":self.data.webInfo.userId,
+        "coopId":self.data.webInfo.coopId
+    }
+
     /*这段代码是固定的，必须要放到js中*/
     function setupWebViewJavascriptBridge(callback) {
 
@@ -141,6 +146,13 @@ var cooperationDetail = jsmod.util.klass({
          })
        })
 
+       self.$container.delegate('.cooperation-communicate','click',function(){
+
+         bridge.callHandler('communicate',self.communicateInfo,function(){
+
+         })
+       })
+
      })
   },
 
@@ -158,7 +170,7 @@ var cooperationDetail = jsmod.util.klass({
   getAjaxCooperation:function(url){
     var self = this;
 
-    //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200119&coopId=12&viewUserId=200119';
+    //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200114&coopId=12&viewUserId=200119';
 
     var data={};
 
@@ -173,6 +185,7 @@ var cooperationDetail = jsmod.util.klass({
         jsonp:'callback',
         success:function(json){
             if(json.data){
+                console.log(json.data);
               self.data = json.data;
               self.cooperationRender(json.data);
             }

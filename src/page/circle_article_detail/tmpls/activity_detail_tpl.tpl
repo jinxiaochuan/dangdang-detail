@@ -1,7 +1,7 @@
 <div class="activity-header">
-    <a href="userId:{{ data.webShowInfo.userId }},circleId:{{ data.circleInfo.circleId }},memberType:{{ data.circleInfo.memberType }}"><img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt=""/></a>
+    <a class="activity-avatar avatar-wrap" href="javascript:void(0)"><img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt=""/></a>
     <div class="activity-detail-wrap">
-        <a href="userId:{{ data.webShowInfo.userId }},circleId:{{ data.circleInfo.circleId }},memberType:{{ data.circleInfo.memberType }}"><p class="name">{{ data.circleInfo.circleName }}</p></a>
+        <a class="activity-name name-wrap" href="javascript:void(0)"><span class="name">{{ data.circleInfo.circleName }}</span></a>
         <p class="content"><span class="time">{{ data.articleInfo.activityInfo.formatStartTime }} - {{ data.articleInfo.activityInfo.formatEndTime }}</span><span class="address">{{ data.articleInfo.activityInfo.procvinceName }} {{ data.articleInfo.activityInfo.cityName }}</span></p>
     </div>
     {% if data.webShowInfo.commentCount %}
@@ -11,7 +11,17 @@
     </div>
     {% endif %}
 </div>
-<p class="activity-title">{{ data.articleInfo.articleTitle }} {% if data.articleInfo.showAccess == 1 %}<a href="userId:{{ data.webShowInfo.userId }},circleId:{{ data.circleInfo.circleId }},articleId:{{ data.articleInfo.articleId }}"><i class="member"></i></a>{% elseif data.articleInfo.showAccess == 2 %}<a href="userId:{{ data.webShowInfo.userId }},circleId:{{ data.circleInfo.circleId }},articleId:{{ data.articleInfo.articleId }}"><i class="member-join"></i></a>{% elseif data.articleInfo.showAccess == 3 %}<a href="userId:{{ data.webShowInfo.userId }},circleId:{{ data.circleInfo.circleId }},articleId:{{ data.articleInfo.articleId }}"><i class="member-part"></i></a>{% else %}{% endif %}</p>
+<p class="activity-title">
+    {{ data.articleInfo.articleTitle }}
+     {% if data.articleInfo.showAccess == 1 %}
+     <a class="activity-show-access show-access-wrap" href="javascript:void(0)"><i class="member"></i></a>
+     {% elseif data.articleInfo.showAccess == 2 %}
+     <a class="activity-show-access show-access-wrap" href="javascript:void(0)"><i class="member-join"></i></a>
+     {% elseif data.articleInfo.showAccess == 3 %}
+     <a class="activity-show-access show-access-wrap" href="javascript:void(0)"><i class="member-part"></i></a>
+     {% else %}
+     {% endif %}
+ </p>
 <div class="notice-container">
     {% if data.articleInfo.activityInfo.noticeList.length %}
     <div class="notice-list-wrap">
@@ -62,20 +72,20 @@
     </div>
 </div>
 {% endif %}
-<div class="activity-sign">报名截止：{{ data.articleInfo.activityInfo.formatDeadLine }}<span class="limit-num">限{{ data.articleInfo.activityInfo.activityNum }}人</span></div>
+<div class="activity-deadline">报名截止：{{ data.articleInfo.activityInfo.formatDeadLine }}<span class="limit-num">限{{ data.articleInfo.activityInfo.activityNum }}人</span></div>
 
 {% if data.webShowInfo.showWhichButton %}
-<p class="activity-num">已报名的人（{{ data.webShowInfo.enterCount }}）<i class="arrow"></i></p>
+<p class="activity-num apply-list-wrap">已报名的人（{{ data.webShowInfo.enterCount }}）<i class="arrow"></i></p>
 {% endif %}
 
 {% if data.webShowInfo.showWhichButton %}
 <div class="sign-btn-wrap">
     {% if data.webShowInfo.showWhichButton == 1 %}
-    <a href="userId:{{ data.webShowInfo.userId }},activityId:{{ data.articleInfo.articleId }}">编辑详情</a>
+    <a class="activity-edit" href="javascript:void(0)">编辑详情</a>
     {% elseif data.webShowInfo.showWhichButton == 2 %}
-    <a href="userId:{{ data.webShowInfo.userId }},activityId:{{ data.articleInfo.articleId }}">报名</a>
+    <a class="activity-sign apply-wrap" href="javascript:void(0)">报名</a>
     {% elseif data.webShowInfo.showWhichButton == 3 %}
-    <a href="userId:{{ data.webShowInfo.userId }},activityId:{{ data.articleInfo.articleId }}">取消报名</a>
+    <a class="activity-cancel" href="javascript:void(0)">取消报名</a>
     {% else %}
     {% endif %}
 </div>

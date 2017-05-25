@@ -67,7 +67,11 @@
 {% else %}
 {% if data.isFinished == '0' %}
 <div class="cooperation-handle fix">
+    {% if !data.applyStatus %}
     <a class="cooperation-send" href="javascript:void (0)"><p>发意向</p></a>
+    {% else %}
+    <a class="cooperation-communicate" href="javascript:void (0)"><p>沟通</p></a>
+    {% endif %}
 </div>
 {% endif %}
 {% endif %}
