@@ -1,7 +1,7 @@
 <div class="discovery-activity-header">
     <a class="activity-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.activityInfo.userInfo.userImage }}" alt=""/></a>
     <div class="discovery-activity-detail-wrap">
-        <p class="name"><a class="activity-name" href="javascript:void (0)">{{ data.activityInfo.userInfo.showName }}</a>{{ data.date_now }}</p>
+        <p class="name"><a class="activity-name" href="javascript:void (0)">{{ data.activityInfo.userInfo.showName }}</a></p>
         <p class="content"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">{{ data.activityInfo.provinceName }} {{ data.activityInfo.cityName }}</span></p>
     </div>
 </div>
@@ -35,11 +35,9 @@
     <p class="address"><a class="activity-address" href="javascript:void (0)"></a>{{ data.activityInfo.location }}</p>
     <p class="time">{{ data.activityInfo.formatCreateTime }}
       {% if data.activityInfo.showAccess == 1 %}
-      <a class="activity-show-access" href="javascript:void (0)"><i class="member"></i></a>
-      {% elseif data.activityInfo.showAccess == 2 %}
-      <a class="activity-show-access" href="javascript:void (0)"><i class="member-join"></i></a>
-      {%elseif data.activityInfo.showAccess == 3 %}
-      <a class="activity-show-access" href="javascript:void (0)"><i class="member-part"></i></a>
+      <a class="activity-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
+      {% elseif data.activityInfo.showAccess == 2 || data.activityInfo.showAccess == 3 %}
+      <a class="activity-show-access" href="javascript:void (0)"><i class="part"></i></a>
       {% else %}
       {% endif %}
        {% if data.activityInfo.isOver == '1' %}
@@ -72,13 +70,5 @@
     <a class="discovery-activity-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}
-{% if data.activityInfo.isOver == '0' && data.activityInfo.endTime > data.date_now %}
-<div class="discovery-activity-handle fix">
-    {% if !data.activityInfo.applyStatus || data.activityInfo.applyStatus == '2' %}
-    <a class="discovery-activity-send" href="javascript:void (0)"><p>报名</p></a>
-    {% else %}
-    <a class="discovery-activity-communicate" href="javascript:void (0)"><p>沟通</p></a>
-    {% endif %}
-</div>
-{% endif %}
+
 {% endif %}

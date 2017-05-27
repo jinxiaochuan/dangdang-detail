@@ -34,14 +34,13 @@
 
     <p class="address"><a class="cooperation-address" href="javascript:void (0)">{{ data.location }}</a></p>
     <p class="time">{{ data.formatCreateTime }}
-      {% if data.showAccess == 1 %}
-      <a class="cooperation-show-access" href="javascript:void (0)"><i class="member"></i></a>
-      {% elseif data.showAccess == 2 %}
-      <a class="cooperation-show-access" href="javascript:void (0)"><i class="member-join"></i></a>
-      {%elseif data.showAccess == 3 %}
-      <a class="cooperation-show-access" href="javascript:void (0)"><i class="member-part"></i></a>
-      {% else %}
-      {% endif %}
+        {% if data.showAccess == 1 %}
+        <a class="activity-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
+        {% elseif data.showAccess == 2 || data.showAccess == 3 %}
+        <a class="activity-show-access" href="javascript:void (0)"><i class="part"></i></a>
+        {% else %}
+        {% endif %}
+
       {% if data.isFinished == '1' %}
       <span class="timeout">已结束</span>
       {% endif %}</p>
@@ -65,13 +64,5 @@
     <a class="cooperation-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}
-{% if data.isFinished == '0' %}
-<div class="cooperation-handle fix">
-    {% if !data.applyStatus %}
-    <a class="cooperation-send" href="javascript:void (0)"><p>发意向</p></a>
-    {% else %}
-    <a class="cooperation-communicate" href="javascript:void (0)"><p>沟通</p></a>
-    {% endif %}
-</div>
-{% endif %}
+
 {% endif %}

@@ -21,46 +21,13 @@ var cooperationDetail = jsmod.util.klass({
   initBridge:function(){
     var self = this;
 
-    self.avatarInfo = {
-      "userId":self.data.webInfo.userId,
-      "viewUserId":self.data.webInfo.viewUserId,
-      "imgUrl": self.data.userImage
-    }
-    self.nameInfo = {
-      "userId":self.data.webInfo.userId,
-      "viewUserId":self.data.webInfo.viewUserId,
-      "imgUrl": self.data.userImage
-    }
-    self.addressInfo = {
-      "activityLocation":self.data.location,
-      "activityLongitude":self.data.longitude,
-      "activityLatitude":self.data.latitude
-    }
-    self.showAccessInfo = {
-      "userId":self.data.webInfo.userId,
-      "coopId":self.data.webInfo.coopId,
-      "tagId":self.data.webInfo.coopId,
-      "showAccess":self.data.showAccess
-    }
-    self.intentionInfo = {
-      "userId":self.data.webInfo.userId,
-      "coopId":self.data.webInfo.coopId,
-      "tagId":self.data.webInfo.coopId
-    }
-    self.editInfo = {
-      "userId":self.data.webInfo.userId,
-      "tagId":self.data.webInfo.coopId,
-      "coopId":self.data.webInfo.coopId
-    }
-    self.sendInfo = {
-      "userId":self.data.webInfo.userId,
-      "coopId":self.data.webInfo.coopId,
-      "tagId":self.data.webInfo.coopId,
-      "replyUserId":self.data.webInfo.replyUserId
-    }
-
-    self.communicateInfo = {
-        "userId":self.data.webInfo.userId,
+    self.baseInfo = {
+        "applyStatus":self.data.applyStatus,
+        "showAccess":self.data.showAccess,
+        "userShowName":self.data.userShowName,
+        "userId":self.data.userId,
+        "headImage":self.data.headImage,
+        "isFinished":self.data.isFinished,
         "coopId":self.data.webInfo.coopId
     }
 
@@ -97,61 +64,32 @@ var cooperationDetail = jsmod.util.klass({
       /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
       setupWebViewJavascriptBridge(function(bridge) {
 
-      self.$container.delegate('.cooperation-avatar','click',function(){
+          bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
-        bridge.callHandler('tapUserImage',self.avatarInfo,function(){
+          self.$container.delegate('.cooperation-avatar','click',function(){
 
-        })
-      })
+            bridge.callHandler('tapUserImage')
+          })
 
-      self.$container.delegate('.cooperation-name','click',function(){
+          self.$container.delegate('.cooperation-name','click',function(){
 
-        bridge.callHandler('tapUserName',self.nameInfo,function(){
+            bridge.callHandler('tapUserName')
+          })
 
-        })
-      })
+          self.$container.delegate('.cooperation-show-access','click',function(){
 
-      self.$container.delegate('.cooperation-address','click',function(){
+            bridge.callHandler('tapShowAccess')
+          })
 
-        bridge.callHandler('tapActivityPlace',self.addressInfo,function(){
+          self.$container.delegate('.cooperation-inten','click',function(){
 
-        })
-      })
+            bridge.callHandler('tapAppliedUserList')
+          })
 
-      self.$container.delegate('.cooperation-show-access','click',function(){
+           self.$container.delegate('.cooperation-edit','click',function(){
 
-        bridge.callHandler('tapShowAccess',self.showAccessInfo,function(){
-
-        })
-      })
-
-      self.$container.delegate('.cooperation-inten','click',function(){
-
-        bridge.callHandler('tapAppliedUserList',self.intentionInfo,function(){
-
-        })
-      })
-
-       self.$container.delegate('.cooperation-edit','click',function(){
-
-         bridge.callHandler('edit',self.editInfo,function(){
-
-         })
-       })
-
-       self.$container.delegate('.cooperation-send','click',function(){
-
-         bridge.callHandler('apply',self.sendInfo,function(){
-
-         })
-       })
-
-       self.$container.delegate('.cooperation-communicate','click',function(){
-
-         bridge.callHandler('communicate',self.communicateInfo,function(){
-
-         })
-       })
+             bridge.callHandler('edit')
+           })
 
      })
   },
@@ -170,7 +108,7 @@ var cooperationDetail = jsmod.util.klass({
   getAjaxCooperation:function(url){
     var self = this;
 
-    //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200114&coopId=12&viewUserId=200119';
+    //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200161&coopId=2&viewUserId=200161';
 
     var data={};
 

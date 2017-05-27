@@ -17,62 +17,23 @@ var discoveryIn24Detail = jsmod.util.klass({
         self.$container = $('.container');
         jsmod.util.Dialog.setOpacity(1);
         self.getAjaxDiscoveryIn24(page_url);
-
     },
 
     initBridge: function () {
         var self = this;
 
-        self.avatarInfo = {
-            "userId": self.data.in24hInfo.webInfo.userId,
-            "viewUserId": self.data.in24hInfo.webInfo.viewedUserId,
-            "imgUrl": self.data.in24hInfo.userInfo.userImage
-        }
-
-        self.nameInfo = {
-            "userId": self.data.in24hInfo.webInfo.userId,
-            "viewUserId": self.data.in24hInfo.webInfo.viewedUserId,
-            "imgUrl": self.data.in24hInfo.userInfo.userImage
-        }
-
-        self.addressInfo = {
-            "activityLocation": self.data.in24hInfo.webInfo.activityLocation,
+        self.baseInfo = {
+            "viewedUserId": self.data.in24hInfo.webInfo.viewedUserId,
             "activityLongitude": self.data.in24hInfo.webInfo.activityLongitude,
-            "activityLatitude": self.data.in24hInfo.webInfo.activityLatitude
-        }
-
-        self.showAccessInfo = {
-            "userId": self.data.in24hInfo.webInfo.userId,
+            "activityLatitude": self.data.in24hInfo.webInfo.activityLatitude,
             "in24hId": self.data.in24hInfo.webInfo.in24hId,
-            "tagId": self.data.in24hInfo.webInfo.in24hId,
-            "showAccess": self.data.in24hInfo.showAccess
+            "showAccess": self.data.in24hInfo.showAccess,
+            "applyStatus": self.data.in24hInfo.applyStatus,
+            "headImage":self.data.in24hInfo.userInfo.headImage,
+            "showName":self.data.in24hInfo.userInfo.showName,
+            "isCanSeePersonFile":self.data.in24hInfo.isCanSeePersonFile,
+            "isFollow":self.data.in24hInfo.isFollow
         }
-
-        self.intentionInfo = {
-            "userId": self.data.in24hInfo.webInfo.userId,
-            "in24hId": self.data.in24hInfo.webInfo.in24hId,
-            "tagId": self.data.in24hInfo.webInfo.in24hId
-        }
-
-        self.editInfo = {
-            "userId": self.data.in24hInfo.webInfo.userId,
-            "in24hId": self.data.in24hInfo.webInfo.in24hId,
-            "tagId": self.data.in24hInfo.webInfo.in24hId
-        }
-
-        self.sendInfo = {
-            "userId": self.data.in24hInfo.webInfo.userId,
-            "in24hId": self.data.in24hInfo.webInfo.in24hId,
-            "tagId": self.data.in24hInfo.webInfo.in24hId,
-            "replyUserId": self.data.in24hInfo.webInfo.replyUserId,
-            "needPhone":self.data.in24hInfo.needPhone
-        }
-
-        self.communicateInfo = {
-            "userId": self.data.in24hInfo.webInfo.userId,
-            "in24hId": self.data.in24hInfo.webInfo.in24hId
-        }
-
 
         /*这段代码是固定的，必须要放到js中*/
         function setupWebViewJavascriptBridge(callback) {
@@ -107,66 +68,34 @@ var discoveryIn24Detail = jsmod.util.klass({
         /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
         setupWebViewJavascriptBridge(function (bridge) {
 
-            bridge.registerHandler('getDistance', function(data, responseCallback) {
+            bridge.callHandler('tapUserImage',self.baseInfo,function(){})
 
+            bridge.registerHandler('getDistance', function(data, responseCallback) {
                 self.$container.find('.distance').html(data+'km');
             })
 
-
             self.$container.delegate('.in24-avatar', 'click', function () {
-
-                bridge.callHandler('tapUserImage', self.avatarInfo, function () {
-
-                })
+                bridge.callHandler('tapUserImage')
             })
 
             self.$container.delegate('.in24-name', 'click', function () {
-
-                bridge.callHandler('tapUserName', self.nameInfo, function () {
-
-                })
+                bridge.callHandler('tapUserName')
             })
 
             self.$container.delegate('.in24-address', 'click', function () {
-
-                bridge.callHandler('tapActivityPlace', self.addressInfo, function () {
-
-                })
+                bridge.callHandler('tapActivityPlace')
             })
 
             self.$container.delegate('.in24-show-access', 'click', function () {
-
-                bridge.callHandler('tapShowAccess', self.showAccessInfo, function () {
-
-                })
+                bridge.callHandler('tapShowAccess')
             })
 
             self.$container.delegate('.in24-inten', 'click', function () {
-
-                bridge.callHandler('tapAppliedUserList', self.intentionInfo, function () {
-
-                })
+                bridge.callHandler('tapAppliedUserList')
             })
 
             self.$container.delegate('.discovery-in24-edit', 'click', function () {
-
-                bridge.callHandler('edit', self.editInfo, function () {
-
-                })
-            })
-
-            self.$container.delegate('.discovery-in24-send', 'click', function () {
-
-                bridge.callHandler('apply', self.sendInfo, function () {
-
-                })
-            })
-
-            self.$container.delegate('.discovery-in24-communicate', 'click', function () {
-
-                bridge.callHandler('communicate', self.communicateInfo, function () {
-
-                })
+                bridge.callHandler('edit')
             })
 
         })

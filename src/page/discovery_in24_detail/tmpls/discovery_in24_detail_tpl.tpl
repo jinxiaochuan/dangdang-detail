@@ -55,14 +55,13 @@
     {% endif %}
     <p class="address">{{ data.in24hInfo.location }}</p>
     <p class="time">{{ data.in24hInfo.formatCreateTime }}
-      {% if data.in24hInfo.showAccess == 1 %}
-      <a class="in24-show-access" href="javascript:void (0)"><i class="member"></i></a>
-      {% elseif data.in24hInfo.showAccess == 2 %}
-      <a class="in24-show-access" href="javascript:void (0)"><i class="member-join"></i></a>
-      {%elseif data.in24hInfo.showAccess == 3 %}
-      <a class="in24-show-access" href="javascript:void (0)"><i class="member-part"></i></a>
-      {% else %}
-      {% endif %}
+
+        {% if data.in24hInfo.showAccess == 1 %}
+        <a class="activity-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
+        {% elseif data.in24hInfo.showAccess == 2 || data.in24hInfo.showAccess == 3 %}
+        <a class="activity-show-access" href="javascript:void (0)"><i class="part"></i></a>
+        {% else %}
+        {% endif %}
       {% if data.in24hInfo.isOver == '1' %}
       <span class="timeout">已结束</span>
       {% endif %}
@@ -88,13 +87,5 @@
    <a class="discovery-in24-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}
-{% if data.in24hInfo.isOver == '0' %}
-<div class="discovery-in24-handle fix">
-    {% if !data.in24hInfo.applyStatus || data.in24hInfo.applyStatus == '2' %}
-    <a class="discovery-in24-send" href="javascript:void (0)"><p>报名</p></a>
-    {% else %}
-    <a class="discovery-in24-communicate" href="javascript:void (0)"><p>沟通</p></a>
-    {% endif %}
-</div>
-{% endif %}
+
 {% endif %}

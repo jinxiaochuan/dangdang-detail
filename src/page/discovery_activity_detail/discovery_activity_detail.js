@@ -21,54 +21,22 @@ var discoveryActivityDetail = jsmod.util.klass({
   initBridge:function(){
     var self = this;
 
-    self.avatarInfo = {
-      "userId":self.data.activityInfo.webInfo.userId,
-      "viewUserId":self.data.activityInfo.webInfo.viewedUserId,
-      "imgUrl": self.data.activityInfo.userInfo.userImage
+    self.baseInfo = {
+        "endTime": self.data.activityInfo.endTime,
+        "applyStatus": self.data.activityInfo.applyStatus,
+        "showAccess":self.data.activityInfo.showAccess,
+        "showName":self.data.activityInfo.userInfo.showName,
+        "viewUserId":self.data.activityInfo.webInfo.viewedUserId,
+        "headImage":self.data.activityInfo.userInfo.headImage,
+        "isOver":self.data.activityInfo.isOver,
+        "activityId":self.data.activityInfo.webInfo.activityId
     }
 
-    self.nameInfo = {
-      "userId":self.data.activityInfo.webInfo.userId,
-      "viewUserId":self.data.activityInfo.webInfo.viewedUserId,
-      "imgUrl": self.data.activityInfo.userInfo.userImage
-    }
 
     self.addressInfo = {
       "activityLocation":self.data.activityInfo.location,
       "activityLongitude":self.data.activityInfo.longitude,
       "activityLatitude":self.data.activityInfo.latitude
-    }
-
-    self.showAccessInfo = {
-      "userId":self.data.activityInfo.webInfo.userId,
-      "activityId":self.data.activityInfo.webInfo.activityId,
-      "tagId":self.data.activityInfo.webInfo.activityId,
-      "showAccess":self.data.activityInfo.showAccess
-    }
-
-    self.intentionInfo = {
-      "userId":self.data.activityInfo.webInfo.userId,
-      "activityId":self.data.activityInfo.webInfo.activityId,
-      "tagId":self.data.activityInfo.webInfo.activityId
-    }
-
-    self.editInfo = {
-      "userId":self.data.activityInfo.webInfo.userId,
-      "activityId":self.data.activityInfo.webInfo.activityId,
-      "tagId":self.data.activityInfo.webInfo.activityId
-    }
-
-    self.sendInfo = {
-      "userId":self.data.activityInfo.webInfo.userId,
-      "activityId":self.data.activityInfo.webInfo.activityId,
-      "tagId":self.data.activityInfo.webInfo.activityId,
-      "replyUserId":self.data.activityInfo.webInfo.replyUserId,
-      "needPhone":self.data.activityInfo.needPhone
-    }
-
-    self.communicateInfo = {
-        "userId":self.data.activityInfo.webInfo.userId,
-        "activityId":self.data.activityInfo.webInfo.activityId
     }
 
     /*这段代码是固定的，必须要放到js中*/
@@ -103,60 +71,31 @@ var discoveryActivityDetail = jsmod.util.klass({
 
       /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
       setupWebViewJavascriptBridge(function(bridge) {
+
+        bridge.callHandler('baseInfo',self.baseInfo,function(){})
+
         self.$container.delegate('.activity-avatar','click',function(){
-
-          bridge.callHandler('tapUserImage',self.avatarInfo,function(){
-
-          })
+            bridge.callHandler('tapUserImage')
         })
 
         self.$container.delegate('.activity-name','click',function(){
-
-          bridge.callHandler('tapUserName',self.nameInfo,function(){
-
-          })
+            bridge.callHandler('tapUserName')
         })
 
         self.$container.delegate('.activity-address','click',function(){
-
-          bridge.callHandler('tapActivityPlace',self.addressInfo,function(){
-
-          })
+            bridge.callHandler('tapActivityPlace',self.addressInfo,function(){})
         })
 
         self.$container.delegate('.activity-show-access','click',function(){
-
-          bridge.callHandler('tapShowAccess',self.showAccessInfo,function(){
-
-          })
+            bridge.callHandler('tapShowAccess')
         })
 
         self.$container.delegate('.activity-inten','click',function(){
-
-          bridge.callHandler('tapAppliedUserList',self.intentionInfo,function(){
-
-          })
+            bridge.callHandler('tapAppliedUserList')
         })
 
         self.$container.delegate('.discovery-activity-edit','click',function(){
-
-          bridge.callHandler('edit',self.editInfo,function(){
-
-          })
-        })
-
-        self.$container.delegate('.discovery-activity-send','click',function(){
-
-          bridge.callHandler('apply',self.sendInfo,function(){
-
-          })
-        })
-
-        self.$container.delegate('.discovery-activity-communicate','click',function(){
-
-          bridge.callHandler('communicate',self.communicateInfo,function(){
-
-          })
+            bridge.callHandler('edit')
         })
 
      })
