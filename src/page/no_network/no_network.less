@@ -1,0 +1,62 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.container{
+  margin: 0 auto;
+  padding: @base*50rem @base*44rem @base*200rem;
+  .font-dpr(12px);
+  color: #9B9B9B;
+  .no-network-title{
+      padding: @base*25rem 0;
+      position: relative;
+      &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+        border-bottom: 1px solid #E5E5E5;
+        -webkit-transform: scaleY(.5);
+        transform: scaleY(.5);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+      }
+      p{
+          .font-dpr(19px);
+          color: #3E3E3E;
+          font-weight: 600;
+      }
+      span{
+
+          line-height: @base*50rem;
+      }
+  }
+
+  .no-network-detail{
+      .network-connect{
+          p{
+              margin: @base*25rem 0;
+          }
+          ul{
+              padding: 0 @base*32rem;
+              li{
+                  position: relative;
+                  padding: 0 @base*22rem;
+                  &:after{
+                      content: '';
+                      position: absolute;
+                      left: 0;
+                      top:@base*14rem;
+                      width: @base*8rem;
+                      height: @base*8rem;
+                      background: #323232;
+                      .border-radius(50%);
+                  }
+              }
+          }
+      }
+  }
+
+}

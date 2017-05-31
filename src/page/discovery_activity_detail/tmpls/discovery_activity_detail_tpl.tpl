@@ -48,7 +48,7 @@
 
 <div class="discovery-activity-end clearfix">
     <span class="deadline">报名截止：{{ data.activityInfo.formatDeadline }}</span>
-    <span class="limit">限{{ data.activityInfo.activityNum }}人</span>
+    <span class="limit">{% if data.activityInfo.activityNum == '0' %}不限{% else %}限{{ data.activityInfo.activityNum }}人{% endif %}</span>
 </div>
 
 {% if data.activityInfo.review || data.activityInfo.reviewImages %}

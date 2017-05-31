@@ -20,7 +20,7 @@
           {% else %}
           {% endif %}
         </p>
-        <p class="location clearfix"><a class="in24-address" href="javascript:void (0)"><span class="address">{{ data.in24hInfo.webInfo.activityLocation }}</span></a><span class="distance">{{ data.in24hInfo.distance }}km</span></p>
+        <p class="location clearfix"><a class="in24-address" href="javascript:void (0)">{{ data.in24hInfo.webInfo.activityLocation }}</a><span class="distance">{{ data.in24hInfo.distance }}km</span></p>
     </div>
     <!-- <div class="comment">
         <span class="comment-num">55</span>
@@ -66,7 +66,7 @@
       <span class="timeout">已结束</span>
       {% endif %}
     </p>
-    <p class="limit">限{{ data.in24hInfo.activityNum }}人</p>
+    <p class="limit">{% if data.in24hInfo.activityNum == '0' %}不限{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</p>
 </div>
 {% if data.in24hInfo.review || data.in24hInfo.reviewImages %}
 <div class="discovery-in24-review">
@@ -82,7 +82,7 @@
 </div>
 {% endif %}
 {% if data.in24hInfo.isOwner == '1' %}
-<div class="discovery-in24-handle">
+<div class="discovery-in24-handle"> 
    <a class="in24-inten" href="javascript:void (0)"><div class="discovery-in24-intention">已报名的人({{ data.in24hInfo.signPeopleCount }}) <i class="icon-arrow"></i></div></a>
    <a class="discovery-in24-edit" href="javascript:void (0)">编辑</a>
 </div>

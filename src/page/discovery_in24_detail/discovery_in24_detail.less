@@ -29,11 +29,16 @@
   padding: @base*50rem @base*30rem @base*200rem;
   width: 10rem;
   .discovery-in24-header{
-    .avatar{
-      float: left;
-      width: @base*84rem;
-      height: @base*84rem;
+    .in24-avatar{
+        float: left;
+        width: @base*84rem;
+        height: @base*84rem;
+        overflow: hidden;
+        .avatar{
+
+        }
     }
+
     .discovery-in24-detail-wrap{
       margin-left: @base*104rem;
       .name{
@@ -79,7 +84,7 @@
         line-height: @base*34rem;
         .font-dpr(12px);
         color: #007AFF;
-        .address{
+        .in24-address{
           float: left;
           max-width: @base*482rem;
         }
@@ -308,7 +313,7 @@
   }
   .discovery-in24-handle{
     margin: 0 auto;
-    width: 10rem;
+    width: 100%;
     padding-top: @base*40rem;
     &.fix{
       padding-top: 0;
@@ -334,7 +339,7 @@
       }
     }
     .discovery-in24-edit{
-      margin: 0 @base*4rem;
+      margin: 0 @base*10rem;
       .border-radius(@base*10rem);
       .btn-border(@base*670rem,@base*94rem,18px,#FFF,#007AFF,1px solid #037AFC);
       .font-dpr(18px);

@@ -147,6 +147,8 @@ var cooperationDetail = jsmod.util.klass({
 
     self.initBridge();
 
+    jsmod.util.stretchImg($('.avatar')[0],80,80,true,false);
+
   }
 })
 new cooperationDetail();

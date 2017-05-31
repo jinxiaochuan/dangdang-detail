@@ -142,6 +142,8 @@ var discoveryActivityDetail = jsmod.util.klass({
 
     self.initBridge();
 
+    jsmod.util.stretchImg($('.avatar')[0],80,80,true,false);
+
   },
 
   deviceDetect: function () {

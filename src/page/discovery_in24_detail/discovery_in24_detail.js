@@ -106,7 +106,7 @@ var discoveryIn24Detail = jsmod.util.klass({
     getAjaxDiscoveryIn24: function (url) {
         var self = this;
 
-        //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=159';
+        //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200180&in24hId=195';
 
         var data = {};
 
@@ -146,6 +146,8 @@ var discoveryIn24Detail = jsmod.util.klass({
         self.deviceDetect();
 
         self.initBridge();
+
+        jsmod.util.stretchImg($('.avatar')[0],80,80,true,false);
     },
 
     deviceDetect: function () {

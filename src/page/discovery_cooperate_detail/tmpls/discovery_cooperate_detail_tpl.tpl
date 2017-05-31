@@ -3,7 +3,7 @@
     <div class="cooperation-detail-wrap">
         <p class="name"><a class="cooperation-name" href="javascript:void (0)">{{ data.userShowName }}</a></p>
         <p class="content"><span class="time">{{ data.tradeName }}</span><span class="address">{{ data.provinceName }}</span></p>
-</div>
+    </div>
 </div>
 <p class="cooperation-title">{{ data.notice }}</p>
 <div class="notice-container">
