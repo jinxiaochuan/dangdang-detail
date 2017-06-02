@@ -339,23 +339,33 @@
       }
     }
     .discovery-in24-edit{
-      margin: 0 @base*10rem;
-      .border-radius(@base*10rem);
-      .btn-border(@base*670rem,@base*94rem,18px,#FFF,#007AFF,1px solid #037AFC);
+      margin: 0 auto;
+      .border-radius(50%);
+      .btn-border(@base*120rem,@base*120rem,18px,#FFF,#007AFF,1px solid #007AFF);
       .font-dpr(18px);
+      display: block;
     }
-    p{
-      text-align: center;
-    }
+
     .discovery-in24-send{
-      line-height: @base*100rem;
-      .font-dpr(18px);
-      color: #007AFF;
+        opacity: 0.95;
+        margin: 0 auto;
+        .border-radius(50%);
+        .btn-border(@base*120rem,@base*120rem,18px,#007AFF,#FFF,1px solid #007AFF);
+        .font-dpr(18px);
+        display: block;
+        &.disabled{
+            background: #E5E5E5;
+            color: #888888;
+            border: 1px solid #E5E5E5;
+        }
     }
     .discovery-in24-communicate{
-      line-height: @base*100rem;
-      .font-dpr(18px);
-      color: #007AFF;
+        opacity: 0.95;
+        margin: 0 auto;
+        .border-radius(50%);
+        .btn-border(@base*120rem,@base*120rem,18px,#007AFF,#FFF,1px solid #007AFF);
+        .font-dpr(18px);
+        display: block;
     }
   }
   .preview-prompt{

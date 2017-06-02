@@ -74,6 +74,10 @@ var discoveryActivityDetail = jsmod.util.klass({
 
         bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
+        bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
+            self.$container.find('.discovery-activity-send').removeClass('discovery-activity-send').addClass('discovery-activity-communicate').text('沟通');
+        })
+
         self.$container.delegate('.activity-avatar','click',function(){
             bridge.callHandler('tapUserImage')
         })
@@ -98,19 +102,26 @@ var discoveryActivityDetail = jsmod.util.klass({
             bridge.callHandler('edit')
         })
 
+        self.$container.delegate('.discovery-activity-send:not(".disabled")','click',function(){
+            bridge.callHandler('doApply')
+        })
+
+        self.$container.delegate('.discovery-activity-communicate','click',function(){
+            bridge.callHandler('doChat')
+        })
+
      })
   },
 
   getAjaxDiscoveryActivity:function(url){
     var self = this;
 
-    //url='http://test.im-dangdang.com/ddweb/v1/discovery/activity/detail?userId=200119&activityId=171';
+    //url='http://test.im-dangdang.com/ddweb/v1/discovery/activity/detail?userId=200119&activityId=270';
 
     var data={};
 
     data.userId=jsmod.util.url.getParam(url,'userId');
     data.activityId=jsmod.util.url.getParam(url,'activityId');
-
     $.ajax({
         url:URL_DISCOVERY_ACTIVITY,
         dataType:'jsonp',

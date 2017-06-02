@@ -37,14 +37,10 @@
 
         }
     }
-    .avatar{
-      float: left;
-      width: @base*84rem;
-      height: @base*84rem;
-    }
+
     .discovery-activity-detail-wrap{
       margin-left: @base*104rem;
-      .name{
+      .activity-name{
         .font-dpr(15px);
         color: #6A7BA1;
       }
@@ -54,7 +50,7 @@
         color: #737373;
         line-height: @base*34rem;
         .address{
-          padding-left: @base*25rem;
+          padding-left: @base*140rem;
         }
       }
     }
@@ -174,7 +170,7 @@
     }
     .time{
       .font-dpr(12px);
-      color: #343434;
+      color: #828282;
       line-height: @base*40rem;
       .timeout{
         padding-left: @base*40rem;
@@ -272,7 +268,6 @@
   }
   .discovery-activity-handle{
     margin: 0 auto;
-    width: 10rem;
     padding-top: @base*40rem;
     &.fix{
       padding-top: 0;
@@ -298,23 +293,33 @@
       }
     }
     .discovery-activity-edit{
-      margin: 0 @base*4rem;
-      .border-radius(@base*10rem);
-      .btn-border(@base*670rem,@base*94rem,18px,#FFF,#007AFF,1px solid #037AFC);
+      margin: 0 auto;
+      .border-radius(50%);
+      .btn-border(@base*120rem,@base*120rem,18px,#FFF,#007AFF,1px solid #007AFF);
       .font-dpr(18px);
+      display: block;
     }
-    p{
-      text-align: center;
-    }
+
     .discovery-activity-send{
-      line-height: @base*100rem;
-      .font-dpr(18px);
-      color: #007AFF;
+        opacity: 0.95;
+        margin: 0 auto;
+        .border-radius(50%);
+        .btn-border(@base*120rem,@base*120rem,18px,#007AFF,#FFF,1px solid #007AFF);
+        .font-dpr(18px);
+        display: block;
+        &.disabled{
+            background: #E5E5E5;
+            color: #888888;
+            border: 1px solid #E5E5E5;
+        }
     }
     .discovery-activity-communicate{
-      line-height: @base*100rem;
-      .font-dpr(18px);
-      color: #007AFF;
+        opacity: 0.95;
+        margin: 0 auto;
+        .border-radius(50%);
+        .btn-border(@base*120rem,@base*120rem,18px,#007AFF,#FFF,1px solid #007AFF);
+        .font-dpr(18px);
+        display: block;
     }
 
   }

@@ -82,10 +82,16 @@
 </div>
 {% endif %}
 {% if data.in24hInfo.isOwner == '1' %}
-<div class="discovery-in24-handle"> 
-   <a class="in24-inten" href="javascript:void (0)"><div class="discovery-in24-intention">已报名的人({{ data.in24hInfo.signPeopleCount }}) <i class="icon-arrow"></i></div></a>
+<div class="discovery-in24-handle">
+   <a class="in24-inten" href="javascript:void (0)"><div class="discovery-in24-intention">已报名的人（{{ data.in24hInfo.signPeopleCount }}） <i class="icon-arrow"></i></div></a>
    <a class="discovery-in24-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}
-
+<div class="discovery-in24-handle">
+    {% if !data.in24hInfo.applyStatus || data.in24hInfo.applyStatus == '2' || data.in24hInfo.applyStatus == '3' %}
+    <a class="discovery-in24-send {% if data.in24hInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void (0)">报名</a>
+    {% else %}
+    <a class="discovery-in24-communicate" href="javascript:void (0)">沟通</a>
+    {% endif %}
+</div>
 {% endif %}

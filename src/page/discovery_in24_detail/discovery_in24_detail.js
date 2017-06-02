@@ -74,6 +74,10 @@ var discoveryIn24Detail = jsmod.util.klass({
                 self.$container.find('.distance').html(data+'km');
             })
 
+            bridge.registerHandler('doChangeStatus',function(data, responseCallback){
+                self.$container.find('.discovery-in24-send').removeClass('discovery-in24-send').addClass('discovery-in24-communicate').text('沟通');
+            })
+
             self.$container.delegate('.in24-avatar', 'click', function () {
                 bridge.callHandler('tapUserImage')
             })
@@ -96,6 +100,14 @@ var discoveryIn24Detail = jsmod.util.klass({
 
             self.$container.delegate('.discovery-in24-edit', 'click', function () {
                 bridge.callHandler('edit')
+            })
+
+            self.$container.delegate('.discovery-in24-send:not(".disabled")','click',function(){
+                bridge.callHandler('doApply')
+            })
+
+            self.$container.delegate('.discovery-in24-communicate','click',function(){
+                bridge.callHandler('doChat')
             })
 
         })

@@ -2,7 +2,7 @@
     <a class="activity-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.activityInfo.userInfo.userImage }}" alt=""/></a>
     <div class="discovery-activity-detail-wrap">
         <p class="name"><a class="activity-name" href="javascript:void (0)">{{ data.activityInfo.userInfo.showName }}</a></p>
-        <p class="content"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">{{ data.activityInfo.provinceName }} {{ data.activityInfo.cityName }}</span></p>
+        <p class="content"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">{{ data.activityInfo.provinceName }}{{ data.activityInfo.cityName }}{{ data.activityInfo.detailAddress }}</span></p>
     </div>
 </div>
 <p class="discovery-activity-title">{{ data.activityInfo.notice }}</p>
@@ -32,7 +32,7 @@
     {% endfor %}
     {% endif %}
 
-    <p class="address"><a class="activity-address" href="javascript:void (0)"></a>{{ data.activityInfo.location }}</p>
+    <p class="address"><a class="activity-address" href="javascript:void (0)">{{ data.activityInfo.location }}</a></p>
     <p class="time">{{ data.activityInfo.formatCreateTime }}
       {% if data.activityInfo.showAccess == 1 %}
       <a class="activity-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
@@ -66,9 +66,15 @@
 {% endif %}
 {% if data.activityInfo.isOwner == '1' %}
 <div class="discovery-activity-handle">
-    <a class="activity-inten" href="javascript:void (0)"><div class="discovery-activity-intention">已报名的人({{ data.activityInfo.signPeopleCount }}) <i class="icon-arrow"></i></div></a>
+    <a class="activity-inten" href="javascript:void (0)"><div class="discovery-activity-intention">已报名的人（{{ data.activityInfo.signPeopleCount }}） <i class="icon-arrow"></i></div></a>
     <a class="discovery-activity-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}
-
+<div class="discovery-activity-handle">
+  {% if !data.activityInfo.applyStatus || data.activityInfo.applyStatus == '2' || data.activityInfo.applyStatus == '3' %}
+  <a class="discovery-activity-send {% if data.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void (0)">报名</a>
+  {% else %}
+  <a class="discovery-activity-communicate" href="javascript:void (0)">沟通</a>
+  {% endif %}
+</div>
 {% endif %}
