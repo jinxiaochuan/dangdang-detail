@@ -43,15 +43,18 @@
       margin-left: @base*104rem;
       .name{
         .font-dpr(15px);
-        color: #6A7BA1;
+        a{
+            color: #6A7BA1;
+        }
       }
       .content{
         margin-top: @base*10rem;
         .font-dpr(12px);
-        color: #737373;
         line-height: @base*34rem;
+        .flex();
+        .justify-content(space-between);
         .time{
-          padding-right: @base*30rem;
+          color: #737373;
         }
         .type{
           line-height: @base*34rem;
@@ -80,16 +83,15 @@
         }
       }
       .location{
-        margin-top: @base*15rem;
-        line-height: @base*34rem;
         .font-dpr(12px);
-        color: #007AFF;
         .in24-address{
           float: left;
           max-width: @base*482rem;
+          color: #007AFF;
         }
         .distance{
-          float: right;
+          margin-left: @base*30rem;
+          color: #007AFF;
         }
       }
     }
@@ -119,8 +121,8 @@
     margin: @base*30rem 0 @base*50rem;
     .font-dpr(24px);
     color: #282828;
-    line-height: @base*48rem;
-
+    line-height: @base*54rem;
+    word-break: break-all;
   }
   .notice-container{
     .notice-normal{
@@ -209,43 +211,50 @@
     }
     .time{
       .font-dpr(12px);
-      color: #343434;
+      color: #737373;
       line-height: @base*40rem;
+      .flex();
+      .align-items(center);
       .timeout{
         padding-left: @base*40rem;
         color: #828282;
       }
-      i{
-        vertical-align: middle;
-        margin-left: @base*30rem;
-        display: inline-block;
-        width: @base*30rem;
-        height: @base*30rem;
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
-        &.member{
-          background-image: url("~assets/member_icon.png");
-        }
-        &.member-join{
-          background-image: url("~assets/member_join_icon.png");
-        }
-        &.member-part{
-          background-image: url("~assets/member_part_icon.png");
-        }
-        &.only-friend{
-            background-image: url("~assets/default_accessType_onlyFriendsCanSee_normal@3x.png");
-        }
-        &.part{
-            background-image: url("~assets/default_accessType_someoneCanSee_normal@3x.png");
-        }
+      .in24-show-access{
+          margin-left: @base*30rem;
+
+          i{
+            display: block;
+            width: @base*30rem;
+            height: @base*30rem;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            &.member{
+              background-image: url("~assets/member_icon.png");
+            }
+            &.member-join{
+              background-image: url("~assets/member_join_icon.png");
+            }
+            &.member-part{
+              background-image: url("~assets/member_part_icon.png");
+            }
+            &.only-friend{
+                background-image: url("~assets/default_accessType_onlyFriendsCanSee_normal@3x.png");
+            }
+            &.part{
+                background-image: url("~assets/default_accessType_someoneCanSee_normal@3x.png");
+            }
+          }
       }
+
     }
     .limit{
       margin-top: @base*45rem;
       .font-dpr(12px);
       color: #828282;
       line-height: @base*40rem;
+      .flex();
+      .justify-content(space-between);
     }
   }
   .discovery-in24-end{
@@ -342,7 +351,7 @@
       margin: 0 auto;
       .border-radius(50%);
       .btn-border(@base*120rem,@base*120rem,18px,#FFF,#007AFF,1px solid #007AFF);
-      .font-dpr(18px);
+      .font-dpr(16px);
       display: block;
     }
 
@@ -351,7 +360,7 @@
         margin: 0 auto;
         .border-radius(50%);
         .btn-border(@base*120rem,@base*120rem,18px,#007AFF,#FFF,1px solid #007AFF);
-        .font-dpr(18px);
+        .font-dpr(16px);
         display: block;
         &.disabled{
             background: #E5E5E5;
@@ -364,7 +373,7 @@
         margin: 0 auto;
         .border-radius(50%);
         .btn-border(@base*120rem,@base*120rem,18px,#007AFF,#FFF,1px solid #007AFF);
-        .font-dpr(18px);
+        .font-dpr(16px);
         display: block;
     }
   }

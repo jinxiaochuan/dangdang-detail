@@ -4,18 +4,22 @@ require('./discovery_activity_detail.less');
 
 var jsmod=require('lib/self/jsmod/jsmod_extend.js');
 
-var page_url=window.location.href;
+var HREF_ORIGIN = window.location.href;
 
-var TPL_DISCOVERY_ACTIVITY=require('./tmpls/discovery_activity_detail_tpl.tpl');
+var PATH_ORIGIN = window.location.origin;
 
-var URL_DISCOVERY_ACTIVITY='http://test.im-dangdang.com/ddweb/v1/discovery/activity/detail';
+var PATH_NAME = '/ddweb/v1/discovery/activity/detail';
+
+var TPL_DISCOVERY_ACTIVITY = require('./tmpls/discovery_activity_detail_tpl.tpl');
+
+var URL_DISCOVERY_ACTIVITY = PATH_ORIGIN + PATH_NAME;
 
 var discoveryActivityDetail = jsmod.util.klass({
   initialize:function(option){
     var self = this;
     self.option = option;
     self.$container = $('.container');
-    self.getAjaxDiscoveryActivity(page_url);
+    self.getAjaxDiscoveryActivity();
   },
 
   initBridge:function(){
@@ -113,15 +117,15 @@ var discoveryActivityDetail = jsmod.util.klass({
      })
   },
 
-  getAjaxDiscoveryActivity:function(url){
+  getAjaxDiscoveryActivity:function(){
     var self = this;
 
-    //url='http://test.im-dangdang.com/ddweb/v1/discovery/activity/detail?userId=200119&activityId=270';
+    //HREF_ORIGIN='http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200119&activityId=422';
 
     var data={};
 
-    data.userId=jsmod.util.url.getParam(url,'userId');
-    data.activityId=jsmod.util.url.getParam(url,'activityId');
+    data.userId=jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+    data.activityId=jsmod.util.url.getParam(HREF_ORIGIN,'activityId');
     $.ajax({
         url:URL_DISCOVERY_ACTIVITY,
         dataType:'jsonp',

@@ -4,18 +4,22 @@ require('./discovery_cooperate_detail.less');
 
 var jsmod=require('lib/self/jsmod/jsmod_extend.js');
 
-var page_url=window.location.href;
+var HREF_ORIGIN = window.location.href;
 
-var TPL_COOPERATION=require('./tmpls/discovery_cooperate_detail_tpl.tpl');
+var PATH_ORIGIN = window.location.origin;
 
-var URL_COOPERATION='http://test.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
+var PATH_NAME = '/ddweb/v1/discovery/cooperation/detail';
+
+var TPL_COOPERATION = require('./tmpls/discovery_cooperate_detail_tpl.tpl');
+
+var URL_COOPERATION = PATH_ORIGIN + PATH_NAME;
 
 var cooperationDetail = jsmod.util.klass({
   initialize:function(option){
     var self = this;
     self.option = option;
     self.$container = $('.container');
-    self.getAjaxCooperation(page_url);
+    self.getAjaxCooperation();
   },
 
   initBridge:function(){
@@ -66,29 +70,36 @@ var cooperationDetail = jsmod.util.klass({
 
           bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
-          self.$container.delegate('.cooperation-avatar','click',function(){
+          bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
+              self.$container.find('.cooperation-send').removeClass('cooperation-send').addClass('cooperation-communicate').text('沟通');
+          })
 
-            bridge.callHandler('tapUserImage')
+          self.$container.delegate('.cooperation-avatar','click',function(){
+              bridge.callHandler('tapUserImage')
           })
 
           self.$container.delegate('.cooperation-name','click',function(){
-
-            bridge.callHandler('tapUserName')
+              bridge.callHandler('tapUserName')
           })
 
           self.$container.delegate('.cooperation-show-access','click',function(){
-
-            bridge.callHandler('tapShowAccess')
+              bridge.callHandler('tapShowAccess')
           })
 
           self.$container.delegate('.cooperation-inten','click',function(){
-
-            bridge.callHandler('tapAppliedUserList')
+              bridge.callHandler('tapAppliedUserList')
           })
 
            self.$container.delegate('.cooperation-edit','click',function(){
+               bridge.callHandler('edit')
+           })
 
-             bridge.callHandler('edit')
+           self.$container.delegate('.cooperation-send:not(".disabled")','click',function(){
+               bridge.callHandler('doApply')
+           })
+
+           self.$container.delegate('.cooperation-communicate','click',function(){
+               bridge.callHandler('doChat')
            })
 
      })
@@ -105,16 +116,16 @@ var cooperationDetail = jsmod.util.klass({
 
   },
 
-  getAjaxCooperation:function(url){
+  getAjaxCooperation:function(){
     var self = this;
 
-    //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200161&coopId=2&viewUserId=200161';
+    //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200161&coopId=2&viewUserId=200161';
 
     var data={};
 
-    data.userId=jsmod.util.url.getParam(url,'userId');
-    data.coopId=jsmod.util.url.getParam(url,'coopId');
-    data.viewUserId=jsmod.util.url.getParam(url,'viewUserId');
+    data.userId=jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+    data.coopId=jsmod.util.url.getParam(HREF_ORIGIN,'coopId');
+    data.viewUserId=jsmod.util.url.getParam(HREF_ORIGIN,'viewUserId');
 
     $.ajax({
         url:URL_COOPERATION,

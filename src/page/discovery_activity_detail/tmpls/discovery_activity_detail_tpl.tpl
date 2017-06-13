@@ -5,7 +5,7 @@
         <p class="content"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">{{ data.activityInfo.provinceName }}{{ data.activityInfo.cityName }}{{ data.activityInfo.detailAddress }}</span></p>
     </div>
 </div>
-<p class="discovery-activity-title">{{ data.activityInfo.notice }}</p>
+<p class="discovery-activity-title">{{ data.activityInfo.title }}</p>
 <div class="notice-container">
     {% if data.noticeList.length %}
     <div class="notice-list-wrap">

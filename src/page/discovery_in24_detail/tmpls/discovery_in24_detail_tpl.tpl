@@ -4,8 +4,9 @@
         <p class="name">
           <a class="in24-name" href="javascript:void (0)">{{ data.in24hInfo.userInfo.showName }}</a>
         </p>
-        <p class="content"><span class="time">{{ data.in24hInfo.formatStartTime }}</span>
-          {% if data.in24hInfo.activityType == 0 %}
+        <p class="content">
+          <span class="time">{{ data.in24hInfo.formatStartTime }}</span>
+          <!-- {% if data.in24hInfo.activityType == 0 %}
           <span class="type other">其他</span>
           {% elseif data.in24hInfo.activityType == 1 %}
           <span class="type food">吃饭</span>
@@ -18,9 +19,11 @@
           {% elseif data.in24hInfo.activityType == 5 %}
           <span class="type coffee">咖啡</span>
           {% else %}
-          {% endif %}
+          {% endif %} -->
+          <span class="location">
+              <a class="in24-address" href="javascript:void (0)">{{ data.in24hInfo.webInfo.activityLocation }}</a><span class="distance"></span>
+          </span>
         </p>
-        <p class="location clearfix"><a class="in24-address" href="javascript:void (0)">{{ data.in24hInfo.webInfo.activityLocation }}</a><span class="distance">{{ data.in24hInfo.distance }}km</span></p>
     </div>
     <!-- <div class="comment">
         <span class="comment-num">55</span>
@@ -54,19 +57,19 @@
     {% endfor %}
     {% endif %}
     <p class="address">{{ data.in24hInfo.location }}</p>
-    <p class="time">{{ data.in24hInfo.formatCreateTime }}
-
+    <p class="time">
+        <span>{{ data.in24hInfo.formatCreateTime }}</span>
         {% if data.in24hInfo.showAccess == 1 %}
-        <a class="activity-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
+        <a class="in24-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
         {% elseif data.in24hInfo.showAccess == 2 || data.in24hInfo.showAccess == 3 %}
-        <a class="activity-show-access" href="javascript:void (0)"><i class="part"></i></a>
+        <a class="in24-show-access" href="javascript:void (0)"><i class="part"></i></a>
         {% else %}
         {% endif %}
       {% if data.in24hInfo.isOver == '1' %}
       <span class="timeout">已结束</span>
       {% endif %}
     </p>
-    <p class="limit">{% if data.in24hInfo.activityNum == '0' %}不限{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</p>
+    <p class="limit"><span class="limit-time">报名截止：{{ data.in24hInfo.formatDeadline }}</span><span class="limit-num">{% if data.in24hInfo.activityNum == '0' %}不限{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</span></p>
 </div>
 {% if data.in24hInfo.review || data.in24hInfo.reviewImages %}
 <div class="discovery-in24-review">

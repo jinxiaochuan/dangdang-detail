@@ -2,10 +2,10 @@
     <a class="cooperation-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.userImage }}" alt=""/></a>
     <div class="cooperation-detail-wrap">
         <p class="name"><a class="cooperation-name" href="javascript:void (0)">{{ data.userShowName }}</a></p>
-        <p class="content"><span class="time">{{ data.tradeName }}</span><span class="address">{{ data.provinceName }}</span></p>
+        <p class="content"><span class="time">{{ data.tradeName }}</span><span class="address">{{ data.provinceName }} {{ data.cityName }}</span></p>
     </div>
 </div>
-<p class="cooperation-title">{{ data.notice }}</p>
+<p class="cooperation-title">{{ data.title }}</p>
 <div class="notice-container">
     {% if data.noticeList.length %}
     <div class="notice-list-wrap">
@@ -35,9 +35,9 @@
     <p class="address"><a class="cooperation-address" href="javascript:void (0)">{{ data.location }}</a></p>
     <p class="time">{{ data.formatCreateTime }}
         {% if data.showAccess == 1 %}
-        <a class="activity-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
+        <a class="cooperation-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
         {% elseif data.showAccess == 2 || data.showAccess == 3 %}
-        <a class="activity-show-access" href="javascript:void (0)"><i class="part"></i></a>
+        <a class="cooperation-show-access" href="javascript:void (0)"><i class="part"></i></a>
         {% else %}
         {% endif %}
 
@@ -60,9 +60,15 @@
 {% endif %}
 {% if data.isOwner == '1' %}
 <div class="cooperation-handle">
-    <a class="cooperation-inten" href="javascript:void (0)"><div class="cooperation-intention">有意向的人({{ data.coopMemberCount }}) <i class="icon-arrow"></i></div></a>
+    <a class="cooperation-inten" href="javascript:void (0)"><div class="cooperation-intention">有意向的人（{{ data.coopMemberCount }}）<i class="icon-arrow"></i></div></a>
     <a class="cooperation-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}
-
+<div class="cooperation-handle">
+    {% if !data.applyStatus %}
+    <a class="cooperation-send {% if data.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void (0)">发意向</a>
+    {% else %}
+    <a class="cooperation-communicate" href="javascript:void (0)">沟通</a>
+    {% endif %}
+</div>
 {% endif %}

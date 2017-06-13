@@ -4,11 +4,15 @@ require('./discovery_in24_detail.less');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
-var page_url = window.location.href;
+var HREF_ORIGIN = window.location.href;
+
+var PATH_ORIGIN = window.location.origin;
+
+var PATH_NAME = '/ddweb/v1/discovery/in24h/detail';
 
 var TPL_DISCOVERY_IN24 = require('./tmpls/discovery_in24_detail_tpl.tpl');
 
-var URL_DISCOVERY_IN24 = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
+var URL_DISCOVERY_IN24 = PATH_ORIGIN + PATH_NAME;
 
 var discoveryIn24Detail = jsmod.util.klass({
     initialize: function (option) {
@@ -16,7 +20,7 @@ var discoveryIn24Detail = jsmod.util.klass({
         self.option = option;
         self.$container = $('.container');
         jsmod.util.Dialog.setOpacity(1);
-        self.getAjaxDiscoveryIn24(page_url);
+        self.getAjaxDiscoveryIn24();
     },
 
     initBridge: function () {
@@ -71,7 +75,7 @@ var discoveryIn24Detail = jsmod.util.klass({
             bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
             bridge.registerHandler('getDistance', function(data, responseCallback) {
-                self.$container.find('.distance').html(data+'km');
+                self.$container.find('.distance').html(data);
             })
 
             bridge.registerHandler('doChangeStatus',function(data, responseCallback){
@@ -115,15 +119,15 @@ var discoveryIn24Detail = jsmod.util.klass({
 
     },
 
-    getAjaxDiscoveryIn24: function (url) {
+    getAjaxDiscoveryIn24: function () {
         var self = this;
 
-        //url = 'http://test.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200180&in24hId=195';
+        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200180&in24hId=196';
 
         var data = {};
 
-        data.userId = jsmod.util.url.getParam(url, 'userId');
-        data.in24hId = jsmod.util.url.getParam(url, 'in24hId');
+        data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
+        data.in24hId = jsmod.util.url.getParam(HREF_ORIGIN, 'in24hId');
 
         $.ajax({
             url: URL_DISCOVERY_IN24,

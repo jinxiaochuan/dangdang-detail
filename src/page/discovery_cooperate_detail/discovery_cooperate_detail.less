@@ -42,7 +42,9 @@
       margin-left: @base*104rem;
       .name{
         .font-dpr(15px);
-        color: #6A7BA1;
+        a{
+            color: #6A7BA1;
+        }
       }
       .content{
         margin-top: @base*10rem;
@@ -80,8 +82,7 @@
     margin: @base*30rem 0 @base*50rem;
     .font-dpr(24px);
     color: #282828;
-    line-height: @base*48rem;
-
+    line-height: @base*54rem;
   }
   .notice-container{
     .notice-normal{
@@ -170,36 +171,41 @@
     }
     .time{
       .font-dpr(12px);
-      color: #343434;
+      color: #737373;
       line-height: @base*40rem;
+      .flex();
+      .align-items(center);
       .timeout{
         padding-left: @base*40rem;
         color: #828282;
       }
-      i{
-        vertical-align: middle;
-        margin-left: @base*30rem;
-        display: inline-block;
-        width: @base*30rem;
-        height: @base*30rem;
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
-        &.member{
-          background-image: url("~assets/member_icon.png");
-        }
-        &.member-join{
-          background-image: url("~assets/member_join_icon.png");
-        }
-        &.member-part{
-          background-image: url("~assets/member_part_icon.png");
-        }
-        &.only-friend{
-            background-image: url("~assets/default_accessType_onlyFriendsCanSee_normal@3x.png");
-        }
-        &.part{
-            background-image: url("~assets/default_accessType_someoneCanSee_normal@3x.png");
-        }
+      .cooperation-show-access{
+          margin-left: @base*30rem;
+
+          i{
+              display: block;
+              width: @base*30rem;
+              height: @base*30rem;
+              background-size: contain;
+              background-position: center center;
+              background-repeat: no-repeat;
+              &.member{
+                background-image: url("~assets/member_icon.png");
+              }
+              &.member-join{
+                background-image: url("~assets/member_join_icon.png");
+              }
+              &.member-part{
+                background-image: url("~assets/member_part_icon.png");
+              }
+              &.only-friend{
+                  background-image: url("~assets/default_accessType_onlyFriendsCanSee_normal@3x.png");
+              }
+              &.part{
+                  background-image: url("~assets/default_accessType_someoneCanSee_normal@3x.png");
+              }
+          }
+
       }
     }
   }
@@ -256,7 +262,6 @@
   }
   .cooperation-handle{
     margin: 0 auto;
-    width: 10rem;
     padding-top: @base*40rem;
     &.fix{
       padding-top: 0;
@@ -282,23 +287,32 @@
       }
     }
     .cooperation-edit{
-      margin: 0 @base*4rem;
-      .border-radius(@base*10rem);
-      .btn-border(@base*670rem,@base*94rem,18px,#FFF,#007AFF,1px solid #037AFC);
-      .font-dpr(18px);
-    }
-    p{
-      text-align: center;
+        margin: 0 auto;
+        .border-radius(50%);
+        .btn-border(@base*120rem,@base*120rem,18px,#FFF,#007AFF,1px solid #007AFF);
+        .font-dpr(16px);
+        display: block;
     }
     .cooperation-send{
-      line-height: @base*100rem;
-      .font-dpr(18px);
-      color: #007AFF;
+        opacity: 0.95;
+        margin: 0 auto;
+        .border-radius(50%);
+        .btn-border(@base*120rem,@base*120rem,18px,#007AFF,#FFF,1px solid #007AFF);
+        .font-dpr(16px);
+        display: block;
+        &.disabled{
+            background: #E5E5E5;
+            color: #888888;
+            border: 1px solid #E5E5E5;
+        }
     }
     .cooperation-communicate{
-      line-height: @base*100rem;
-      .font-dpr(18px);
-      color: #007AFF;
+        opacity: 0.95;
+        margin: 0 auto;
+        .border-radius(50%);
+        .btn-border(@base*120rem,@base*120rem,18px,#007AFF,#FFF,1px solid #007AFF);
+        .font-dpr(16px);
+        display: block;
     }
   }
   .preview-prompt{
