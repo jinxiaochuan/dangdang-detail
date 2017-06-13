@@ -20,7 +20,21 @@ var discoveryIn24Detail = jsmod.util.klass({
         self.option = option;
         self.$container = $('.container');
         jsmod.util.Dialog.setOpacity(1);
+        //self.initMap();
         self.getAjaxDiscoveryIn24();
+    },
+
+    initMap: function () {
+        var geolocation = new BMap.Geolocation();
+	geolocation.getCurrentPosition(function(r){
+		if(this.getStatus() == BMAP_STATUS_SUCCESS){
+			var mk = new BMap.Marker(r.point);
+            console.log('您的位置：'+r.point.lng+','+r.point.lat);
+		}
+		else {
+            console.log('failed'+this.getStatus());
+		}
+	},{enableHighAccuracy: true})
     },
 
     initBridge: function () {
@@ -74,10 +88,6 @@ var discoveryIn24Detail = jsmod.util.klass({
 
             bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
-            bridge.registerHandler('getDistance', function(data, responseCallback) {
-                self.$container.find('.distance').html(data);
-            })
-
             bridge.registerHandler('doChangeStatus',function(data, responseCallback){
                 self.$container.find('.discovery-in24-send').removeClass('discovery-in24-send').addClass('discovery-in24-communicate').text('沟通');
             })
@@ -122,13 +132,14 @@ var discoveryIn24Detail = jsmod.util.klass({
     getAjaxDiscoveryIn24: function () {
         var self = this;
 
-        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200180&in24hId=196';
-
+        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200180&in24hId=196&longitude=116.488580&latitude=39.915222';
+        //URL_DISCOVERY_IN24 = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
         var data = {};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
         data.in24hId = jsmod.util.url.getParam(HREF_ORIGIN, 'in24hId');
-
+        data.longitude = jsmod.util.url.getParam(HREF_ORIGIN, 'longitude');
+        data.latitude = jsmod.util.url.getParam(HREF_ORIGIN, 'latitude');
         $.ajax({
             url: URL_DISCOVERY_IN24,
             dataType: 'jsonp',
@@ -163,7 +174,20 @@ var discoveryIn24Detail = jsmod.util.klass({
 
         self.initBridge();
 
-        jsmod.util.stretchImg($('.avatar')[0],80,80,true,false);
+        self.initFlex();
+
+        var width_avatar = this.$container.find('.in24-avatar').width();
+        jsmod.util.stretchImg($('.avatar')[0],width_avatar,width_avatar,true,false);
+    },
+
+    initFlex: function () {
+        var $location = this.$container.find('.location');
+        var $content = this.$container.find('.content');
+        var width_content = $content.width();
+
+        if($location.width()>370){
+            $content.removeClass('flex-space');
+        }
     },
 
     deviceDetect: function () {

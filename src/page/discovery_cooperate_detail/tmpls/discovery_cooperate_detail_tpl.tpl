@@ -2,7 +2,7 @@
     <a class="cooperation-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.userImage }}" alt=""/></a>
     <div class="cooperation-detail-wrap">
         <p class="name"><a class="cooperation-name" href="javascript:void (0)">{{ data.userShowName }}</a></p>
-        <p class="content"><span class="time">{{ data.tradeName }}</span><span class="address">{{ data.provinceName }} {{ data.cityName }}</span></p>
+        <p class="content flex-space"><span class="time">{{ data.tradeName }}</span><span class="address">{{ data.provinceName }} {{ data.cityName }} {{ data.detailAddress }}</span></p>
     </div>
 </div>
 <p class="cooperation-title">{{ data.title }}</p>
@@ -60,7 +60,7 @@
 {% endif %}
 {% if data.isOwner == '1' %}
 <div class="cooperation-handle">
-    <a class="cooperation-inten" href="javascript:void (0)"><div class="cooperation-intention">有意向的人（{{ data.coopMemberCount }}）<i class="icon-arrow"></i></div></a>
+    <div class="cooperation-intention"><a class="cooperation-inten" href="javascript:void (0)">有意向的人（{{ data.coopMemberCount }}）<i class="icon-arrow"></i></a></div>
     <a class="cooperation-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}

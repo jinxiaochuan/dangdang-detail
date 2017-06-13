@@ -51,8 +51,12 @@
         .font-dpr(12px);
         color: #737373;
         line-height: @base*34rem;
+        &.flex-space{
+            .flex();
+            .justify-content(space-between);
+        }
         .address{
-          padding-left: @base*25rem;
+          margin-left: @base*25rem;
         }
       }
     }
@@ -275,11 +279,15 @@
       .setLine('top',#E5E5E5);
       padding: @base*50rem 0 @base*60rem;
       .font-dpr(15px);
-      color: #333333;
-      line-height: @base*30rem;
+
+      a{
+          color: #333333;
+          line-height: @base*40rem;
+          .flex();
+          .justify-content(space-between);
+          .align-items(center);
+      }
       .icon-arrow{
-        float: right;
-        margin: @base*2rem;
         width: @base*16rem;
         height: @base*25rem;
         background: url("~assets/arrow_right.png") center center no-repeat;

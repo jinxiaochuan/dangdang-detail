@@ -51,8 +51,10 @@
         margin-top: @base*10rem;
         .font-dpr(12px);
         line-height: @base*34rem;
-        .flex();
-        .justify-content(space-between);
+        &.flex-space{
+            .flex();
+            .justify-content(space-between);
+        }
         .time{
           color: #737373;
         }
@@ -85,12 +87,11 @@
       .location{
         .font-dpr(12px);
         .in24-address{
-          float: left;
-          max-width: @base*482rem;
+          margin-left: @base*30rem;
           color: #007AFF;
         }
         .distance{
-          margin-left: @base*30rem;
+          margin-left: @base*25rem;
           color: #007AFF;
         }
       }
@@ -336,11 +337,14 @@
       .setLine('top',#E5E5E5);
       padding: @base*50rem 0 @base*60rem;
       .font-dpr(15px);
-      color: #333333;
-      line-height: @base*30rem;
+      a{
+          color: #333333;
+          line-height: @base*40rem;
+          .flex();
+          .justify-content(space-between);
+          .align-items(center);
+      }
       .icon-arrow{
-        float: right;
-        margin: @base*2rem;
         width: @base*16rem;
         height: @base*25rem;
         background: url("~assets/arrow_right.png") center center no-repeat;

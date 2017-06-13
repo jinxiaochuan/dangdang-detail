@@ -120,7 +120,7 @@ var cooperationDetail = jsmod.util.klass({
     var self = this;
 
     //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200161&coopId=2&viewUserId=200161';
-
+    //URL_COOPERATION = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
     var data={};
 
     data.userId=jsmod.util.url.getParam(HREF_ORIGIN,'userId');
@@ -158,8 +158,23 @@ var cooperationDetail = jsmod.util.klass({
 
     self.initBridge();
 
-    jsmod.util.stretchImg($('.avatar')[0],80,80,true,false);
+    self.initFlex();
 
-  }
+    var width_avatar = this.$container.find('.cooperation-avatar').width();
+    jsmod.util.stretchImg($('.avatar')[0],width_avatar,width_avatar,true,false);
+
+    },
+
+    initFlex: function () {
+        var $content = this.$container.find('.content');
+        var $address = this.$container.find('.content .address');
+        var $time = this.$container.find('.content .time');
+        var width_content = $content.width();
+        var width_address = $address.width();
+        var width_time = $time.width();
+        if($address.width()>400){
+            $content.removeClass('flex-space');
+        }
+    }
 })
 new cooperationDetail();

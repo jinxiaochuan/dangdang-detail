@@ -4,7 +4,7 @@
         <p class="name">
           <a class="in24-name" href="javascript:void (0)">{{ data.in24hInfo.userInfo.showName }}</a>
         </p>
-        <p class="content">
+        <p class="content flex-space">
           <span class="time">{{ data.in24hInfo.formatStartTime }}</span>
           <!-- {% if data.in24hInfo.activityType == 0 %}
           <span class="type other">其他</span>
@@ -21,7 +21,7 @@
           {% else %}
           {% endif %} -->
           <span class="location">
-              <a class="in24-address" href="javascript:void (0)">{{ data.in24hInfo.webInfo.activityLocation }}</a><span class="distance"></span>
+              <a class="in24-address" href="javascript:void (0)">{{ data.in24hInfo.webInfo.activityLocation }}</a><span class="distance">{{ data.in24hInfo.formatDistance }}</span>
           </span>
         </p>
     </div>
@@ -86,7 +86,7 @@
 {% endif %}
 {% if data.in24hInfo.isOwner == '1' %}
 <div class="discovery-in24-handle">
-   <a class="in24-inten" href="javascript:void (0)"><div class="discovery-in24-intention">已报名的人（{{ data.in24hInfo.signPeopleCount }}） <i class="icon-arrow"></i></div></a>
+   <div class="discovery-in24-intention"><a class="in24-inten" href="javascript:void (0)"><span>已报名的人（{{ data.in24hInfo.signPeopleCount }}）</span><i class="icon-arrow"></i></a></div>
    <a class="discovery-in24-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}

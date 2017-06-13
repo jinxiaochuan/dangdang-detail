@@ -2,7 +2,7 @@
     <a class="activity-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.activityInfo.userInfo.userImage }}" alt=""/></a>
     <div class="discovery-activity-detail-wrap">
         <p class="name"><a class="activity-name" href="javascript:void (0)">{{ data.activityInfo.userInfo.showName }}</a></p>
-        <p class="content"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">{{ data.activityInfo.provinceName }}{{ data.activityInfo.cityName }}{{ data.activityInfo.detailAddress }}</span></p>
+        <p class="content flex-space"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">南宁市打算拿到 {{ data.activityInfo.provinceName }} {{ data.activityInfo.cityName }}{{ data.activityInfo.detailAddress }}</span></p>
     </div>
 </div>
 <p class="discovery-activity-title">{{ data.activityInfo.title }}</p>
@@ -66,7 +66,7 @@
 {% endif %}
 {% if data.activityInfo.isOwner == '1' %}
 <div class="discovery-activity-handle">
-    <a class="activity-inten" href="javascript:void (0)"><div class="discovery-activity-intention">已报名的人（{{ data.activityInfo.signPeopleCount }}） <i class="icon-arrow"></i></div></a>
+    <div class="discovery-activity-intention"><a class="activity-inten" href="javascript:void (0)">已报名的人（{{ data.activityInfo.signPeopleCount }}）<i class="icon-arrow"></i></a></div>
     <a class="discovery-activity-edit" href="javascript:void (0)">编辑</a>
 </div>
 {% else %}
