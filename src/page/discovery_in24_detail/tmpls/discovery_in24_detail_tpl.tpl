@@ -35,6 +35,7 @@
     {% if data.noticeList.length %}
       <div class="notice-list-wrap">
           <p class="notice-title">公告：</p>
+          {% if data.noticeList.length %}
           <ul class="notice-list">
               {% for item in data.noticeList %}
               <li class="notice-item">
@@ -43,6 +44,17 @@
               </li>
               {% endfor %}
           </ul>
+          {% else %}
+          <ul class="notice-list">
+              {% for item in data.noticeList %}
+              <li class="notice-item notice-item-multi">
+                  <p class="notice-time">{{ item.formatCreateTime }}</p>
+                  <p class="notice-content">{{ item.notice }}</p>
+              </li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+
       </div>
     {% else %}
     <!-- <div class="notice-normal">公告：<span class="notice-word">正常</span></div> -->
@@ -69,21 +81,13 @@
       <span class="timeout">已结束</span>
       {% endif %}
     </p>
-    <p class="limit"><span class="limit-time">报名截止：{{ data.in24hInfo.formatDeadline }}</span><span class="limit-num">{% if data.in24hInfo.activityNum == '0' %}不限{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</span></p>
 </div>
-{% if data.in24hInfo.review || data.in24hInfo.reviewImages %}
-<div class="discovery-in24-review">
-    <p class="review-title">回顾</p>
-    <div class="review-content">
-        <p>{{ data.in24hInfo.review }}</p>
-        {% if data.in24hInfo.reviewImages %}
-        {% for item in data.in24hInfo.reviewImages %}
-        <img src="{{ item.pictureUrl }}" alt=""/>
-        {% endfor %}
-        {% endif %}
-    </div>
+<div class="discovery-in24-end clearfix">
+    <span class="deadline">报名截止：{{ data.in24hInfo.formatDeadline }}</span>
+    <span class="limit">{% if data.in24hInfo.activityNum == '0' %}不限{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</span>
 </div>
-{% endif %}
+
+
 {% if data.in24hInfo.isOwner == '1' %}
 <div class="discovery-in24-handle">
    <div class="discovery-in24-intention"><a class="in24-inten" href="javascript:void (0)"><span>已报名的人（{{ data.in24hInfo.signPeopleCount }}）</span><i class="icon-arrow"></i></a></div>
@@ -96,5 +100,19 @@
     {% else %}
     <a class="discovery-in24-communicate" href="javascript:void (0)">沟通</a>
     {% endif %}
+</div>
+{% endif %}
+
+{% if data.in24hInfo.review || data.in24hInfo.reviewImages %}
+<div class="discovery-in24-review">
+    <p class="review-title">回顾</p>
+    <div class="review-content">
+        <p>{{ data.in24hInfo.review }}</p>
+        {% if data.in24hInfo.reviewImages %}
+        {% for item in data.in24hInfo.reviewImages %}
+        <img src="{{ item.pictureUrl }}" alt=""/>
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
 {% endif %}

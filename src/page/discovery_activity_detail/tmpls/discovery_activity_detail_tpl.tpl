@@ -2,7 +2,7 @@
     <a class="activity-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.activityInfo.userInfo.userImage }}" alt=""/></a>
     <div class="discovery-activity-detail-wrap">
         <p class="name"><a class="activity-name" href="javascript:void (0)">{{ data.activityInfo.userInfo.showName }}</a></p>
-        <p class="content flex-space"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">南宁市打算拿到 {{ data.activityInfo.provinceName }} {{ data.activityInfo.cityName }}{{ data.activityInfo.detailAddress }}</span></p>
+        <p class="content flex-space"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">{{ data.activityInfo.provinceName }}{% if data.activityInfo.cityId != 0 %} {{ data.activityInfo.cityName }}{% endif %} {{ data.activityInfo.detailAddress }}</span></p>
     </div>
 </div>
 <p class="discovery-activity-title">{{ data.activityInfo.title }}</p>
@@ -10,6 +10,8 @@
     {% if data.noticeList.length %}
     <div class="notice-list-wrap">
         <p class="notice-title">公告：</p>
+
+        {% if data.noticeList.length == 1 %}
         <ul class="notice-list">
             {% for item in data.noticeList %}
             <li class="notice-item">
@@ -18,6 +20,17 @@
             </li>
             {% endfor %}
         </ul>
+        {% else %}
+        <ul class="notice-list">
+            {% for item in data.noticeList %}
+            <li class="notice-item notice-item-multi">
+                <p class="notice-time">{{ item.formatCreateTime }}</p>
+                <p class="notice-content">{{ item.notice }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
     </div>
     {% else %}
     <!-- <div class="notice-normal">公告：<span class="notice-word">正常</span></div> -->
@@ -51,19 +64,7 @@
     <span class="limit">{% if data.activityInfo.activityNum == '0' %}不限{% else %}限{{ data.activityInfo.activityNum }}人{% endif %}</span>
 </div>
 
-{% if data.activityInfo.review || data.activityInfo.reviewImages %}
-<div class="discovery-activity-review">
-    <p class="review-title">回顾</p>
-    <div class="review-content">
-        <p>{{ data.activityInfo.review }}</p>
-        {% if data.activityInfo.reviewImages %}
-        {% for item in data.activityInfo.reviewImages %}
-        <img src="{{ item.pictureUrl }}" alt=""/>
-        {% endfor %}
-        {% endif %}
-    </div>
-</div>
-{% endif %}
+
 {% if data.activityInfo.isOwner == '1' %}
 <div class="discovery-activity-handle">
     <div class="discovery-activity-intention"><a class="activity-inten" href="javascript:void (0)">已报名的人（{{ data.activityInfo.signPeopleCount }}）<i class="icon-arrow"></i></a></div>
@@ -76,5 +77,19 @@
   {% else %}
   <a class="discovery-activity-communicate" href="javascript:void (0)">沟通</a>
   {% endif %}
+</div>
+{% endif %}
+
+{% if data.activityInfo.review || data.activityInfo.reviewImages %}
+<div class="discovery-activity-review">
+    <p class="review-title">回顾</p>
+    <div class="review-content">
+        <p>{{ data.activityInfo.review }}</p>
+        {% if data.activityInfo.reviewImages %}
+        {% for item in data.activityInfo.reviewImages %}
+        <img src="{{ item.pictureUrl }}" alt=""/>
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
 {% endif %}

@@ -33,7 +33,8 @@ var discoveryActivityDetail = jsmod.util.klass({
         "viewUserId":self.data.activityInfo.webInfo.viewedUserId,
         "headImage":self.data.activityInfo.userInfo.headImage,
         "isOver":self.data.activityInfo.isOver,
-        "activityId":self.data.activityInfo.webInfo.activityId
+        "activityId":self.data.activityInfo.webInfo.activityId,
+        "isCanSignUp":self.data.activityInfo.isCanSignUp
     }
 
 
@@ -106,7 +107,7 @@ var discoveryActivityDetail = jsmod.util.klass({
             bridge.callHandler('edit')
         })
 
-        self.$container.delegate('.discovery-activity-send:not(".disabled")','click',function(){
+        self.$container.delegate('.discovery-activity-send','click',function(){
             bridge.callHandler('doApply')
         })
 
@@ -120,7 +121,7 @@ var discoveryActivityDetail = jsmod.util.klass({
   getAjaxDiscoveryActivity:function(){
     var self = this;
 
-    //HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200119&activityId=422';
+    //HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=190867&activityId=473';
     //URL_DISCOVERY_ACTIVITY = 'http://dev.im-dangdang.com/discovery/v1/activity/detail';
     var data={};
 

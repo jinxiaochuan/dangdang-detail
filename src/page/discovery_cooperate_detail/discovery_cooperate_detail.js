@@ -32,7 +32,8 @@ var cooperationDetail = jsmod.util.klass({
         "userId":self.data.userId,
         "headImage":self.data.headImage,
         "isFinished":self.data.isFinished,
-        "coopId":self.data.webInfo.coopId
+        "coopId":self.data.webInfo.coopId,
+        "isCanSignUp":self.data.isCanSignUp
     }
 
     /*这段代码是固定的，必须要放到js中*/
@@ -94,7 +95,7 @@ var cooperationDetail = jsmod.util.klass({
                bridge.callHandler('edit')
            })
 
-           self.$container.delegate('.cooperation-send:not(".disabled")','click',function(){
+           self.$container.delegate('.cooperation-send','click',function(){
                bridge.callHandler('doApply')
            })
 
@@ -119,7 +120,7 @@ var cooperationDetail = jsmod.util.klass({
   getAjaxCooperation:function(){
     var self = this;
 
-    //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200161&coopId=2&viewUserId=200161';
+    //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200148&coopId=281&viewUserId=200161';
     //URL_COOPERATION = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
     var data={};
 

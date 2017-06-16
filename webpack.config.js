@@ -24,8 +24,8 @@ var NAMESPACE='web_detail';
 conf.setConf({
     ext: 'html',
     //env: option.env,
-    templateRoot: 'template/' + NAMESPACE,
-    staticRoot: 'static/' + NAMESPACE,
+    templateRoot: 'ddweb/template/' + NAMESPACE,
+    staticRoot: 'ddweb/static/' + NAMESPACE,
     serverLayoutName: 'common'
 });
 

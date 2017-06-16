@@ -2,7 +2,7 @@
     <a class="cooperation-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.userImage }}" alt=""/></a>
     <div class="cooperation-detail-wrap">
         <p class="name"><a class="cooperation-name" href="javascript:void (0)">{{ data.userShowName }}</a></p>
-        <p class="content flex-space"><span class="time">{{ data.tradeName }}</span><span class="address">{{ data.provinceName }} {{ data.cityName }} {{ data.detailAddress }}</span></p>
+        <p class="content flex-space"><span class="time">{{ data.tradeName }}</span><span class="address">{{ data.provinceName }}{% if data.cityId != 0 %} {{ data.cityName }}{% endif %} {{ data.detailAddress }}</span></p>
     </div>
 </div>
 <p class="cooperation-title">{{ data.title }}</p>
@@ -10,6 +10,7 @@
     {% if data.noticeList.length %}
     <div class="notice-list-wrap">
         <p class="notice-title">公告：</p>
+        {% if data.noticeList.length == 1 %}
         <ul class="notice-list">
             {% for item in data.noticeList %}
             <li class="notice-item">
@@ -18,6 +19,17 @@
             </li>
             {% endfor %}
         </ul>
+        {% else %}
+        <ul class="notice-list">
+            {% for item in data.noticeList %}
+            <li class="notice-item notice-item-multi">
+                <p class="notice-time">{{ item.formatCreateTime }}</p>
+                <p class="notice-content">{{ item.notice }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
     </div>
     {% else %}
     <!-- <div class="notice-normal">公告：<span class="notice-word">正常</span></div> -->
@@ -45,19 +57,10 @@
       <span class="timeout">已结束</span>
       {% endif %}</p>
 </div>
-{% if data.review || data.reviewImageList %}
-<div class="cooperation-review">
-    <p class="review-title">回顾</p>
-    <div class="review-content">
-        <p>{{ data.review }}</p>
-        {% if data.reviewImageList %}
-        {% for item in data.reviewImageList %}
-        <img src="{{ item.pictureUrl }}" alt=""/>
-        {% endfor %}
-        {% endif %}
-    </div>
+<div class="cooperation-end clearfix">
+    <span class="deadline">发意向截止：{{ data.formatDeadline }}</span>
 </div>
-{% endif %}
+
 {% if data.isOwner == '1' %}
 <div class="cooperation-handle">
     <div class="cooperation-intention"><a class="cooperation-inten" href="javascript:void (0)">有意向的人（{{ data.coopMemberCount }}）<i class="icon-arrow"></i></a></div>
@@ -70,5 +73,19 @@
     {% else %}
     <a class="cooperation-communicate" href="javascript:void (0)">沟通</a>
     {% endif %}
+</div>
+{% endif %}
+
+{% if data.review || data.reviewImageList %}
+<div class="cooperation-review">
+    <p class="review-title">回顾</p>
+    <div class="review-content">
+        <p>{{ data.review }}</p>
+        {% if data.reviewImageList %}
+        {% for item in data.reviewImageList %}
+        <img src="{{ item.pictureUrl }}" alt=""/>
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
 {% endif %}

@@ -50,7 +50,8 @@ var discoveryIn24Detail = jsmod.util.klass({
             "headImage":self.data.in24hInfo.userInfo.headImage,
             "showName":self.data.in24hInfo.userInfo.showName,
             "isCanSeePersonFile":self.data.in24hInfo.isCanSeePersonFile,
-            "isFollow":self.data.in24hInfo.isFollow
+            "isFollow":self.data.in24hInfo.isFollow,
+            "isCanSignUp":self.data.in24hInfo.isCanSignUp
         }
 
         /*这段代码是固定的，必须要放到js中*/
@@ -116,7 +117,7 @@ var discoveryIn24Detail = jsmod.util.klass({
                 bridge.callHandler('edit')
             })
 
-            self.$container.delegate('.discovery-in24-send:not(".disabled")','click',function(){
+            self.$container.delegate('.discovery-in24-send','click',function(){
                 bridge.callHandler('doApply')
             })
 
@@ -132,7 +133,7 @@ var discoveryIn24Detail = jsmod.util.klass({
     getAjaxDiscoveryIn24: function () {
         var self = this;
 
-        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200180&in24hId=196&longitude=116.488580&latitude=39.915222';
+        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=918&in24hId=311&longitude=116.488580&latitude=39.915222';
         //URL_DISCOVERY_IN24 = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
         var data = {};
 
@@ -140,6 +141,7 @@ var discoveryIn24Detail = jsmod.util.klass({
         data.in24hId = jsmod.util.url.getParam(HREF_ORIGIN, 'in24hId');
         data.longitude = jsmod.util.url.getParam(HREF_ORIGIN, 'longitude');
         data.latitude = jsmod.util.url.getParam(HREF_ORIGIN, 'latitude');
+
         $.ajax({
             url: URL_DISCOVERY_IN24,
             dataType: 'jsonp',

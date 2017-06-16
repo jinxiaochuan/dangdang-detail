@@ -1,7 +1,5 @@
 require('page/common/common.js');
 
-require('./comment_detail.less');
-
 var jsmod=require('lib/self/jsmod/jsmod_extend.js');
 
 var comment_header_tpl=require('./tmpls/comment_header.tpl');
