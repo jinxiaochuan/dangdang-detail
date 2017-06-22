@@ -4,6 +4,8 @@ require('lib/third/reset.css');
 
 require('lib/third/flexible.js');
 
+require('lib/self/filter.js');
+
 var jsmod=require('lib/self/jsmod/jsmod_extend.js');
 
 var url=window.location.href;
@@ -72,4 +74,3 @@ $app.on('click',function(){
 $('.mod-dialog-frame').on('click',function(){
     dialog.hide({fade:true});
 });
-

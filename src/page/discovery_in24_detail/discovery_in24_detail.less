@@ -88,7 +88,7 @@
       .location{
         .font-dpr(12px);
         .in24-address{
-          margin-left: @base*30rem;
+          margin-left: 15px;
           color: #007AFF;
         }
         .distance{
@@ -96,6 +96,18 @@
           color: #007AFF;
         }
       }
+    }
+    .location-tem{
+        display: none;
+        .font-dpr(12px);
+        .in24-address{
+          margin-left: 15px;
+          color: #007AFF;
+        }
+        .distance{
+          margin-left: @base*25rem;
+          color: #007AFF;
+        }
     }
     .comment{
       position: relative;
@@ -248,7 +260,7 @@
               background-image: url("~assets/member_part_icon.png");
             }
             &.only-friend{
-                background-image: url("~assets/default_accessType_onlyFriendsCanSee_normal@3x.png");
+                background-image: url("~assets/default_accessType_someoneCanSee_normal@3x.png");
             }
             &.part{
                 background-image: url("~assets/default_accessType_someoneCanSee_normal@3x.png");

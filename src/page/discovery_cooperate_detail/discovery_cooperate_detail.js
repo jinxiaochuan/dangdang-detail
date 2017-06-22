@@ -120,7 +120,7 @@ var cooperationDetail = jsmod.util.klass({
   getAjaxCooperation:function(){
     var self = this;
 
-    //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200148&coopId=281&viewUserId=200161';
+    //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200148&coopId=317&viewUserId=200148';
     //URL_COOPERATION = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
     var data={};
 
@@ -170,12 +170,12 @@ var cooperationDetail = jsmod.util.klass({
         var $content = this.$container.find('.content');
         var $address = this.$container.find('.content .address');
         var $time = this.$container.find('.content .time');
-        var width_content = $content.width();
-        var width_address = $address.width();
-        var width_time = $time.width();
-        if($address.width()>400){
-            $content.removeClass('flex-space');
+        var limit = $content.width() - $time.width();
+        var tem_width = $('.address-tem').width();
+        if((tem_width+12) < limit){
+            $content.addClass('flex-space');
         }
+         $address.show();
     }
 })
 new cooperationDetail();

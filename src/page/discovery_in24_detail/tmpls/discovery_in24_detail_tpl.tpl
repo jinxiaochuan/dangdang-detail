@@ -4,7 +4,7 @@
         <p class="name">
           <a class="in24-name" href="javascript:void (0)">{{ data.in24hInfo.userInfo.showName }}</a>
         </p>
-        <p class="content flex-space">
+        <p class="content">
           <span class="time">{{ data.in24hInfo.formatStartTime }}</span>
           <!-- {% if data.in24hInfo.activityType == 0 %}
           <span class="type other">其他</span>
@@ -21,10 +21,13 @@
           {% else %}
           {% endif %} -->
           <span class="location">
-              <a class="in24-address" href="javascript:void (0)">{{ data.in24hInfo.webInfo.activityLocation }}</a><span class="distance">{{ data.in24hInfo.formatDistance }}</span>
+              <a class="in24-address" href="javascript:void (0)">{{ (data.in24hInfo.webInfo.activityLocation|json_parse).name }}</a><span class="distance">{{ data.in24hInfo.formatDistance }}</span>
           </span>
         </p>
     </div>
+    <span class="location-tem">
+        <a class="in24-address" href="javascript:void (0)">{{ (data.in24hInfo.webInfo.activityLocation|json_parse).name }}</a><span class="distance">{{ data.in24hInfo.formatDistance }}</span>
+    </span>
     <!-- <div class="comment">
         <span class="comment-num">55</span>
         <i class="comment-icon"></i>
@@ -68,7 +71,7 @@
     <img src="{{ item.pictureUrl }}" alt=""/>
     {% endfor %}
     {% endif %}
-    <p class="address">{{ data.in24hInfo.location }}</p>
+    <p class="address">{{ (data.in24hInfo.location|json_parse).name }}</p>
     <p class="time">
         <span>{{ data.in24hInfo.formatCreateTime }}</span>
         {% if data.in24hInfo.showAccess == 1 %}

@@ -121,7 +121,7 @@ var discoveryActivityDetail = jsmod.util.klass({
   getAjaxDiscoveryActivity:function(){
     var self = this;
 
-    //HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=190867&activityId=473';
+    //HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200180&activityId=498';
     //URL_DISCOVERY_ACTIVITY = 'http://dev.im-dangdang.com/discovery/v1/activity/detail';
     var data={};
 
@@ -167,10 +167,14 @@ var discoveryActivityDetail = jsmod.util.klass({
 
   initFlex: function () {
       var $content = this.$container.find('.content');
+      var $time = this.$container.find('.content .time');
       var $address = this.$container.find('.content .address');
-      if($address.width()>210){
-          $content.removeClass('flex-space');
+      var limit = $content.width() - $time.width();
+      var tem_width = $('.address-tem').width();
+      if((tem_width+12) < limit){
+          $content.addClass('flex-space');
       }
+       $address.show();
   },
 
   deviceDetect: function () {

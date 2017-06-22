@@ -44,6 +44,7 @@ var discoveryIn24Detail = jsmod.util.klass({
             "viewedUserId": self.data.in24hInfo.webInfo.viewedUserId,
             "activityLongitude": self.data.in24hInfo.webInfo.activityLongitude,
             "activityLatitude": self.data.in24hInfo.webInfo.activityLatitude,
+            "activityLocation": self.data.in24hInfo.webInfo.activityLocation,
             "in24hId": self.data.in24hInfo.webInfo.in24hId,
             "showAccess": self.data.in24hInfo.showAccess,
             "applyStatus": self.data.in24hInfo.applyStatus,
@@ -51,7 +52,7 @@ var discoveryIn24Detail = jsmod.util.klass({
             "showName":self.data.in24hInfo.userInfo.showName,
             "isCanSeePersonFile":self.data.in24hInfo.isCanSeePersonFile,
             "isFollow":self.data.in24hInfo.isFollow,
-            "isCanSignUp":self.data.in24hInfo.isCanSignUp
+            "isCanSignUp":self.data.in24hInfo.isCanSignUp,
         }
 
         /*这段代码是固定的，必须要放到js中*/
@@ -133,7 +134,7 @@ var discoveryIn24Detail = jsmod.util.klass({
     getAjaxDiscoveryIn24: function () {
         var self = this;
 
-        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=918&in24hId=311&longitude=116.488580&latitude=39.915222';
+        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200148&in24hId=350&longitude=116.488580&latitude=39.915222';
         //URL_DISCOVERY_IN24 = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
         var data = {};
 
@@ -141,7 +142,6 @@ var discoveryIn24Detail = jsmod.util.klass({
         data.in24hId = jsmod.util.url.getParam(HREF_ORIGIN, 'in24hId');
         data.longitude = jsmod.util.url.getParam(HREF_ORIGIN, 'longitude');
         data.latitude = jsmod.util.url.getParam(HREF_ORIGIN, 'latitude');
-
         $.ajax({
             url: URL_DISCOVERY_IN24,
             dataType: 'jsonp',
@@ -183,13 +183,15 @@ var discoveryIn24Detail = jsmod.util.klass({
     },
 
     initFlex: function () {
-        var $location = this.$container.find('.location');
         var $content = this.$container.find('.content');
-        var width_content = $content.width();
-
-        if($location.width()>370){
-            $content.removeClass('flex-space');
+        var $time = this.$container.find('.content .time');
+        var $location = this.$container.find('.content .location');
+        var limit = $content.width() - $time.width();
+        var tem_width = $('.location-tem').width();
+        if((tem_width+15) < limit){
+            $content.addClass('flex-space');
         }
+         $location.show();
     },
 
     deviceDetect: function () {

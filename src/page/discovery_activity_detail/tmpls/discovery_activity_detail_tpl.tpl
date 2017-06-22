@@ -2,8 +2,9 @@
     <a class="activity-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.activityInfo.userInfo.userImage }}" alt=""/></a>
     <div class="discovery-activity-detail-wrap">
         <p class="name"><a class="activity-name" href="javascript:void (0)">{{ data.activityInfo.userInfo.showName }}</a></p>
-        <p class="content flex-space"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">{{ data.activityInfo.provinceName }}{% if data.activityInfo.cityId != 0 %} {{ data.activityInfo.cityName }}{% endif %} {{ data.activityInfo.detailAddress }}</span></p>
+        <p class="content"><span class="time">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span><span class="address">{{ data.activityInfo.provinceName }}{% if data.activityInfo.cityId != 0 %} {{ data.activityInfo.cityName }}{% endif %} {{ data.activityInfo.detailAddress }}</span></p>
     </div>
+    <span class="address-tem">{{ data.activityInfo.provinceName }}{% if data.activityInfo.cityId != 0 %} {{ data.activityInfo.cityName }}{% endif %} {{ data.activityInfo.detailAddress }}</span>
 </div>
 <p class="discovery-activity-title">{{ data.activityInfo.title }}</p>
 <div class="notice-container">
@@ -45,7 +46,7 @@
     {% endfor %}
     {% endif %}
 
-    <p class="address"><a class="activity-address" href="javascript:void (0)">{{ data.activityInfo.location }}</a></p>
+    <p class="address"><a class="activity-address" href="javascript:void (0)">{{ (data.activityInfo.location|json_parse).name }}</a></p>
     <p class="time">{{ data.activityInfo.formatCreateTime }}
       {% if data.activityInfo.showAccess == 1 %}
       <a class="activity-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>

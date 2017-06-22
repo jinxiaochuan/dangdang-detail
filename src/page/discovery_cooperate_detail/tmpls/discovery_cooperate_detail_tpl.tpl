@@ -2,8 +2,9 @@
     <a class="cooperation-avatar" href="javascript:void (0)"><img class="avatar" src="{{ data.userImage }}" alt=""/></a>
     <div class="cooperation-detail-wrap">
         <p class="name"><a class="cooperation-name" href="javascript:void (0)">{{ data.userShowName }}</a></p>
-        <p class="content flex-space"><span class="time">{{ data.tradeName }}</span><span class="address">{{ data.provinceName }}{% if data.cityId != 0 %} {{ data.cityName }}{% endif %} {{ data.detailAddress }}</span></p>
+        <p class="content"><span class="time">{{ data.tradeName }}</span><span class="address">{{ data.provinceName }}{% if data.cityId != 0 %} {{ data.cityName }}{% endif %} {{ data.detailAddress }}</span></p>
     </div>
+    <span class="address-tem">{{ data.provinceName }}{% if data.cityId != 0 %} {{ data.cityName }}{% endif %} {{ data.detailAddress }}</span>
 </div>
 <p class="cooperation-title">{{ data.title }}</p>
 <div class="notice-container">
@@ -44,7 +45,7 @@
     {% endfor %}
     {% endif %}
 
-    <p class="address"><a class="cooperation-address" href="javascript:void (0)">{{ data.location }}</a></p>
+    <p class="address"><a class="cooperation-address" href="javascript:void (0)">{{ (data.location|json_parse).name }}</a></p>
     <p class="time">{{ data.formatCreateTime }}
         {% if data.showAccess == 1 %}
         <a class="cooperation-show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
