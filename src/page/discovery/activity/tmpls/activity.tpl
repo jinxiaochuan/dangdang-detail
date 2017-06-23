@@ -65,7 +65,7 @@
 </div>
 {% if data.activityInfo.isOwner == '1' %}
 <div class="common-sign-list-wrap">
-    <a class="tap-sign" href="javascritp:void(0)">
+    <a class="tap-sign" href="javascript:void(0)">
         <div class="sign-wrap">
             <span class="num">已报名的人（{{ data.activityInfo.signPeopleCount }}）</span>
             <span class="arrow"></span>

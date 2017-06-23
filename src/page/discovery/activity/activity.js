@@ -21,9 +21,11 @@ var Activity = jsmod.util.klass({
 
     getAjax: function(){
         var self = this;
-        HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200072&activityId=521';
-        URL_DISCOVERY_ACTIVITY = 'http://dev.im-dangdang.com/discovery/v1/activity/detail';
+
+        //HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200072&activityId=521';
+        //URL_DISCOVERY_ACTIVITY = 'http://dev.im-dangdang.com/discovery/v1/activity/detail';
         var data={};
+
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.activityId = jsmod.util.url.getParam(HREF_ORIGIN,'activityId');
 

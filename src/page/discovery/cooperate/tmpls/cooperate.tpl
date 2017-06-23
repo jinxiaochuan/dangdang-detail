@@ -16,7 +16,7 @@
         <span class="label-detail">{{ data.provinceName }}{% if data.cityId != 0 %} {{ data.cityName }}{% endif %}</span>
     </div>
     <div class="info-item">
-        <span class="label-name label-name-address-detail">详细活动：</span>
+        <span class="label-name label-name-address-detail">详细地址：</span>
         <span class="label-detail">{{ data.detailAddress }}</span>
     </div>
 </div>
@@ -67,9 +67,9 @@
 
 {% if data.isOwner == '1' %}
 <div class="common-sign-list-wrap">
-    <a class="tap-sign" href="javascritp:void(0)">
+    <a class="tap-sign" href="javascript:void(0)">
         <div class="sign-wrap">
-            <span class="num">已报名的人（{{ data.coopMemberCount }}）</span>
+            <span class="num">有意向的人（{{ data.coopMemberCount }}）</span>
             <span class="arrow"></span>
         </div>
     </a>
