@@ -71,7 +71,7 @@ webpackLoaders = webpackLoaders.concat(AppLoaders);
 //        name:conf.CONFIG_BUILD.staticRoot+'/common',
 //        minChunks:5
 //    })
-//);
+// );
 
 webpackPlugins.push(
     new webpack.ProvidePlugin({

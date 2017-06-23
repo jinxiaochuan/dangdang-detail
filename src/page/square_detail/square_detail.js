@@ -152,4 +152,3 @@ $squareContainer.delegate('.slide-down-btn','click',function(){
 $squareContainer.delegate('.slide-up-btn','click',function(){
     $(this).removeClass('slide-up-btn').addClass('slide-down-btn').text('全文').prev().addClass('content-outline');
 });
-
