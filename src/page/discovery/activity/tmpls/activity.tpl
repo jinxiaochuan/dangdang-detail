@@ -28,7 +28,7 @@
 {% if data.noticeList.length %}
 <div class="common-notice-wrap">
     <div class="notice-list-wrap">
-        <p class="notice-title">公告：</p>
+        <p class="notice-title">公告</p>
         <ul class="notice-list">
             {% for item in data.noticeList %}
             <li class="notice-item">
@@ -41,7 +41,7 @@
 </div>
 {% endif %}
 <div class="common-detail-wrap">
-    <p class="detail-title">详情：</p>
+    <p class="detail-title">详情</p>
     <pre class="detail-content">{{ data.activityInfo.detailContent }}</pre>
     {% for item in data.activityInfo.detailImages %}
     <img src="{{ item.pictureUrl }}" alt="">
@@ -61,7 +61,7 @@
 </div>
 <div class="common-deadline-wrap">
     <span class="deadline {% if data.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.activityInfo.formatDeadline }}</span>
-    <span class="limit">{% if data.activityInfo.activityNum == '0' %}{% else %}限{{ data.activityInfo.activityNum }}人{% endif %}</span>
+    <span class="limit">{% if data.activityInfo.activityNum == '0' %}不限{% else %}限{{ data.activityInfo.activityNum }}人{% endif %}</span>
 </div>
 {% if data.activityInfo.isOwner == '1' %}
 <div class="common-sign-list-wrap">
@@ -76,7 +76,7 @@
 
 {% if data.activityInfo.isOwner == '0' %}
 <div class="common-sign-wrap">
-    {% if !data.activityInfo.applyStatus || data.activityInfo.applyStatus == '2' || data.activityInfo.applyStatus == '3' %}
+    {% if data.activityInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">报名</a>
     {% else %}
     <a class="communicate-btn" href="javascript:void (0)">沟通</a>
@@ -86,7 +86,7 @@
 
 {% if data.activityInfo.review || data.activityInfo.reviewImages %}
 <div class="common-review-wrap">
-    <p class="review-title">回顾：</p>
+    <p class="review-title">回顾</p>
     <pre class="review-content">{{ data.activityInfo.review }}</pre>
     {% if data.activityInfo.reviewImages %}
     {% for item in data.activityInfo.reviewImages %}

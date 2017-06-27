@@ -22,7 +22,7 @@
 {% if data.noticeList.length %}
 <div class="common-notice-wrap">
     <div class="notice-list-wrap">
-        <p class="notice-title">公告：</p>
+        <p class="notice-title">公告</p>
         <ul class="notice-list">
             {% for item in data.noticeList %}
             <li class="notice-item">
@@ -35,7 +35,7 @@
 </div>
 {% endif %}
 <div class="common-detail-wrap">
-    <p class="detail-title">详情：</p>
+    <p class="detail-title">详情</p>
     <pre class="detail-content">{{ data.in24hInfo.detailContent }}</pre>
     {% if data.in24hInfo.detailImages %}
     {% for item in data.in24hInfo.detailImages %}
@@ -57,7 +57,7 @@
 </div>
 <div class="common-deadline-wrap">
     <span class="deadline {% if data.in24hInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.in24hInfo.formatDeadline }}</span>
-    <span class="limit">{% if data.in24hInfo.activityNum == '0' %}{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</span>
+    <span class="limit">{% if data.in24hInfo.activityNum == '0' %}不限{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</span>
 </div>
 
 {% if data.in24hInfo.isOwner == '1' %}
@@ -73,7 +73,7 @@
 
 {% if data.in24hInfo.isOwner == '0' %}
 <div class="common-sign-wrap">
-    {% if !data.in24hInfo.applyStatus || data.in24hInfo.applyStatus == '2' || data.in24hInfo.applyStatus == '3' %}
+    {% if data.in24hInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.in24hInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">报名</a>
     {% else %}
     <a class="communicate-btn" href="javascript:void (0)">沟通</a>
@@ -83,7 +83,7 @@
 
 {% if data.in24hInfo.review || data.in24hInfo.reviewImages %}
 <div class="common-review-wrap">
-    <p class="review-title">回顾：</p>
+    <p class="review-title">回顾</p>
     <pre class="review-content">{{ data.in24hInfo.review }}</pre>
     {% if data.in24hInfo.reviewImages %}
     {% for item in data.in24hInfo.reviewImages %}
