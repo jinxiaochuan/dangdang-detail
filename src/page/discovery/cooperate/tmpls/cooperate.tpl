@@ -56,11 +56,13 @@
 </div>
 <div class="common-publish-wrap">
     <span class="publish-time">{{ data.formatCreateTime }}</span>
+    {% if data.isOwner == '1' %}
     {% if data.showAccess == 1 %}
     <a class="show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
     {% elseif data.showAccess == 2 || data.showAccess == 3 %}
     <a class="show-access" href="javascript:void (0)"><i class="part"></i></a>
     {% else %}
+    {% endif %}
     {% endif %}
 </div>
 <div class="common-deadline-wrap">
