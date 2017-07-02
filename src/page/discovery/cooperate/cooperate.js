@@ -22,8 +22,8 @@ var Cooperate = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200110&coopId=6&viewUserId=200148';
-        URL_COOPERATION = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
+        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200110&coopId=6&viewUserId=200148';
+        //URL_COOPERATION = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
         var data={};
 
         data.userId=jsmod.util.url.getParam(HREF_ORIGIN,'userId');

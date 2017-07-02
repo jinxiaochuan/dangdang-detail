@@ -64,7 +64,7 @@
 
 {% if data.in24hInfo.isOwner == '1' %}
 <div class="common-sign-list-wrap">
-    <a class="tap-sign" href="javascritp:void(0)">
+    <a class="tap-sign" href="javascript:void(0)">
         <div class="sign-wrap">
             <span class="num">已报名的人（{{ data.in24hInfo.signPeopleCount }}）</span>
             <span class="arrow"></span>
