@@ -22,7 +22,7 @@ var Activity = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        //HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200119&activityId=500';
+        //HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200210&activityId=500';
         //URL_DISCOVERY_ACTIVITY = 'http://dev.im-dangdang.com/discovery/v1/activity/detail';
         var data={};
 

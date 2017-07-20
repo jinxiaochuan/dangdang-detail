@@ -8,11 +8,11 @@
 </div>
 <div class="common-info-wrap">
     <div class="info-item">
-        <span class="label-name label-name-time">活动时间：</span>
+        <span class="label-name label-name-time">时间：</span>
         <span class="label-detail">{{ data.in24hInfo.formatStartTime }}</span>
     </div>
     <div class="info-item">
-        <span class="label-name label-name-address">活动地点：</span>
+        <span class="label-name label-name-address">地点：</span>
         <span class="label-detail label-detail-in24h"><a class="in24-address" href="javascript:void (0)">{{ (data.in24hInfo.webInfo.activityLocation|json_parse).name }}</a> <span class="distance">{{ data.in24hInfo.formatDistance }}</span></span>
     </div>
 </div>
@@ -59,14 +59,14 @@
 </div>
 <div class="common-deadline-wrap">
     <span class="deadline {% if data.in24hInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.in24hInfo.formatDeadline }}</span>
-    <span class="limit">{% if data.in24hInfo.activityNum == '0' %}不限{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</span>
+    <span class="limit">{% if data.in24hInfo.activityNum == '0' %}不限人数{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</span>
 </div>
 
 {% if data.in24hInfo.isOwner == '1' %}
 <div class="common-sign-list-wrap">
     <a class="tap-sign" href="javascript:void(0)">
         <div class="sign-wrap">
-            <span class="num">已报名的人（{{ data.in24hInfo.signPeopleCount }}）</span>
+            <span class="num">已报名的人{% if data.in24hInfo.signPeopleCount != 0 %}（{{ data.in24hInfo.signPeopleCount }}）{% endif %}</span>
             <span class="arrow"></span>
         </div>
     </a>

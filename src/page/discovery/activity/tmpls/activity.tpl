@@ -8,16 +8,16 @@
 </div>
 <div class="common-info-wrap">
     <div class="info-item">
-        <span class="label-name label-name-time">活动时间：</span>
+        <span class="label-name label-name-time">时间：</span>
         <span class="label-detail">{{ data.activityInfo.formatStartTime }} - {{ data.activityInfo.formatEndTime }}</span>
     </div>
     <div class="info-item">
-        <span class="label-name label-name-address">活动地区：</span>
+        <span class="label-name label-name-address">地区：</span>
         <span class="label-detail">{{ data.activityInfo.provinceName }} {% if data.activityInfo.cityId != 0 %}{{ data.activityInfo.cityName }}{% endif %}</span>
     </div>
     {% if data.activityInfo.detailAddress %}
     <div class="info-item">
-        <span class="label-name label-name-address-detail">详细地址：</span>
+        <span class="label-name label-name-address-detail">地址：</span>
         <span class="label-detail">{{ data.activityInfo.detailAddress }}</span>
     </div>
     {% endif %}
@@ -63,13 +63,13 @@
 </div>
 <div class="common-deadline-wrap">
     <span class="deadline {% if data.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.activityInfo.formatDeadline }}</span>
-    <span class="limit">{% if data.activityInfo.activityNum == '0' %}不限{% else %}限{{ data.activityInfo.activityNum }}人{% endif %}</span>
+    <span class="limit">{% if data.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.activityInfo.activityNum }}人{% endif %}</span>
 </div>
 {% if data.activityInfo.isOwner == '1' %}
 <div class="common-sign-list-wrap">
     <a class="tap-sign" href="javascript:void(0)">
         <div class="sign-wrap">
-            <span class="num">已报名的人（{{ data.activityInfo.signPeopleCount }}）</span>
+            <span class="num">已报名的人{% if data.activityInfo.signPeopleCount != 0 %}（{{ data.activityInfo.signPeopleCount }}）{% endif %}</span>
             <span class="arrow"></span>
         </div>
     </a>

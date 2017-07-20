@@ -154,7 +154,7 @@
         .flex();
         padding: @base*15rem 0;
         .label-name{
-            min-width: @base*190rem;
+            min-width: @base*130rem;
             padding-left: @base*44rem;
             background-position: left @base*4rem;
             background-repeat: no-repeat;
@@ -171,7 +171,6 @@
                 .back-url-map(url('~assets/icon_detail_address.png'),url('~assets/icon_detail_address@1.5x.png'))
             }
             &.label-name-industry{
-                min-width: @base*120rem;
                 .back-url-map(url('~assets/icon_industry.png'),url('~assets/icon_industry@1.5x.png'))
             }
         }
@@ -256,7 +255,7 @@
     }
     .detail-content{
         margin-top: @base*25rem;
-        padding-left: @base*50rem;
+        // padding-left: @base*50rem;
         .font-dpr(17px);
         color: #000000;
         line-height: @base*54rem;
@@ -319,6 +318,10 @@
     .font-dpr(14px);
     color: #828282;
     .deadline{
+        [data-dpr='1'] & {
+          height: @base*36rem;
+          background-position: left top;
+        }
         padding-left: @base*46rem;
         background-position: left center;
         background-repeat: no-repeat;
@@ -329,13 +332,13 @@
         }
     }
     .limit{
-
+        line-height: @base*36rem;
     }
 }
 
 .common-sign-list-wrap{
     padding: @base*50rem 0;
-    border-top: 1px solid #E5E5E5;
+    .setLine('top',#E5E5E5);
     .sign-wrap{
         .flex();
         .justify-content(space-between);
@@ -350,6 +353,7 @@
             width: @base*16rem;
             height: @base*30rem;
             background: url("~assets/arrow_right.png") no-repeat center center;
+            background-size: contain;
         }
 
     }
@@ -368,7 +372,7 @@
     }
     .review-content{
         margin-top: @base*25rem;
-        padding-left: @base*50rem;
+        // padding-left: @base*50rem;
         .font-dpr(17px);
         color: #000000;
         line-height: @base*54rem;
@@ -384,7 +388,7 @@
     margin-top: @base*65rem;
     text-align: center;
     .edit-btn{
-        .border-radius(10px);
+        .border-radius-dpr(5px);
         .btn-border(@base*670rem,@base*94rem,17px,#FFFFFF,#007AFF,#007AFF);
         .font-dpr(17px);
     }
@@ -396,7 +400,7 @@
     .sign-btn{
         .border-radius(50%);
         .btn(@base*120rem,@base*120rem,18px,#007AFF,#FFFFFF);
-        .font-dpr(18px);
+        .font-dpr(17px);
         &.disabled{
             background: #E7E7E7;
             color: #888888;

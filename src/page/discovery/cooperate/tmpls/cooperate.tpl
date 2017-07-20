@@ -12,12 +12,12 @@
         <span class="label-detail">{{ data.tradeName }}</span>
     </div>
     <div class="info-item">
-        <span class="label-name label-name-address">合作地区：</span>
+        <span class="label-name label-name-address">地区：</span>
         <span class="label-detail">{{ data.provinceName }}{% if data.cityId != 0 %} {{ data.cityName }}{% endif %}</span>
     </div>
     {% if data.detailAddress %}
     <div class="info-item">
-        <span class="label-name label-name-address-detail">详细地址：</span>
+        <span class="label-name label-name-address-detail">地址：</span>
         <span class="label-detail">{{ data.detailAddress }}</span>
     </div>
     {% endif %}
@@ -73,7 +73,7 @@
 <div class="common-sign-list-wrap">
     <a class="tap-sign" href="javascript:void(0)">
         <div class="sign-wrap">
-            <span class="num">有意向的人（{{ data.coopMemberCount }}）</span>
+            <span class="num">有意向的人{% if data.coopMemberCount != 0 %}（{{ data.coopMemberCount }}）{% endif %}</span>
             <span class="arrow"></span>
         </div>
     </a>

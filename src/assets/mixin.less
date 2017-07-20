@@ -244,6 +244,16 @@
   }
 }
 
+.border-radius-dpr(@radius){
+    .border-radius(@radius);
+    [data-dpr='2'] & {
+      .border-radius(@radius*2);
+    }
+    [data-dpr='3'] & {
+      .border-radius(@radius*3);
+    }
+}
+
 .back-map(@pre,@nex,@size){
     background-repeat: no-repeat;
     background-position: left center;
