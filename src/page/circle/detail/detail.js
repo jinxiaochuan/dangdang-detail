@@ -86,7 +86,7 @@ var CircleDetail = jsmod.util.klass({
             })
 
 
-            self.$container.delegate('.sign-btn','click',function(){
+            self.$container.delegate('.sign-btn:not(".disabled")','click',function(){
 
                 bridge.callHandler('apply')
 
