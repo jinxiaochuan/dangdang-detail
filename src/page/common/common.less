@@ -416,7 +416,7 @@
 
 .common-circle-header{
     .flex();
-    height: @base*172rem;
+    height: @base*120rem;
     background: #F5F5F5;
     width: @base*750rem;
     margin: -@base*50rem -@base*30rem @base*130rem;
@@ -426,16 +426,21 @@
         position: absolute;
         left: 50%;
         margin-left: -@base*61rem;
-        top: @base*70rem;
+        bottom: -@base*26rem;
         width: @base*122rem;
         height: @base*122rem;
+        border: @base*4rem solid #FFFFFF;
         .border-radius(50%);
         overflow: hidden;
-        background: #E5E5E5;
+        background: #FFFFFF;
         .tap-avatar{
             display: block;
             width: 100%;
             height: 100%;
+            .border-radius(50%);
+            img{
+                .border-radius(50%);
+            }
         }
     }
 }
