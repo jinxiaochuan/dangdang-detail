@@ -135,7 +135,7 @@ var CircleArticleDetail = jsmod.util.klass({
     getAjax:function(url){
         var self = this;
 
-        //url='http://test.im-dangdang.com/ddweb/v1/article/detail?userId=200119&articleId=916';
+        //url='http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200119&articleId=388';
         var data={};
 
         data.userId=jsmod.util.url.getParam(url,'userId');
