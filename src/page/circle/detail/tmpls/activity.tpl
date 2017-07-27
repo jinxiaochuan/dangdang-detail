@@ -66,7 +66,7 @@
     <span class="deadline {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.articleInfo.activityInfo.formatDeadLine }}</span>
     <span class="limit">{% if data.webShowInfo.enterCount == '0' %}不限人数{% else %}限{{ data.webShowInfo.enterCount }}人{% endif %}</span>
 </div>
-{% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
+{% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity ==  '1' %}
 <div class="common-sign-list-wrap">
     <a class="tap-sign" href="javascript:void(0)">
         <div class="sign-wrap">
@@ -76,8 +76,7 @@
     </a>
 </div>
 {% endif %}
-
-{% if (data.articleInfo.activityInfo.isOwner == '0') || (data.articleInfo.activityInfo.isOwner == '1' && !data.isAdminIdentity) %}
+{% if data.articleInfo.activityInfo.isOwner == '0' || data.articleInfo.activityInfo.isOwner == '1' && !data.isAdminIdentity %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.activityInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">报名</a>

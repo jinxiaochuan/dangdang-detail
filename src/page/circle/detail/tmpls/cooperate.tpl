@@ -81,7 +81,7 @@
 </div>
 {% endif %}
 
-{% if data.articleInfo.coopInfo.isOwner == '0' || (data.articleInfo.coopInfo.isOwner == '1' && !data.isAdminIdentity)%}
+{% if data.articleInfo.coopInfo.isOwner == '0' || data.articleInfo.coopInfo.isOwner == '1' && !data.isAdminIdentity %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.coopInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">发意向</a>
