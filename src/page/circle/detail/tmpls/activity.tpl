@@ -47,10 +47,10 @@
     {% endfor %}
 </div>
 <div class="common-address">
-    <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.activityInfo.location|json_parse).name }}</a>
+    <a class="tap-location" href="javascript:void(0)">{{ data.articleInfo.location }}</a>
 </div>
 <div class="common-publish-wrap">
-    <span class="publish-time">{{ data.activityInfo.formatCreateTime }}</span>
+    <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
     {% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
     {% if data.articleInfo.showAccess == 1 %}
     <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
@@ -76,7 +76,7 @@
     </a>
 </div>
 {% endif %}
-{% if data.articleInfo.activityInfo.isOwner == '0' || data.articleInfo.activityInfo.isOwner == '1' && !data.isAdminIdentity %}
+{% if data.articleInfo.activityInfo.isOwner == '0' || data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == '0' %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.activityInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">报名</a>
@@ -98,7 +98,7 @@
 </div>
 {% endif %}
 
-{% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
+{% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == '1' %}
 <div class="common-edit-wrap">
     <a class="edit-btn" href="javascript:void(0)">编辑活动</a>
 </div>

@@ -154,11 +154,8 @@ var CircleDetail = jsmod.util.klass({
                     console.log(json.data);
 
                     self.data = json.data;
-                    if(isAdminIdentity){
-                        var html = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:$.extend(json.data,{'isAdminIdentity':isAdminIdentity})}});
-                    }else {
-                        var html = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:json.data}});
-                    }
+
+                    var html = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:$.extend(json.data,{'isAdminIdentity':isAdminIdentity})}});
 
                     self.$container.html(html);
 

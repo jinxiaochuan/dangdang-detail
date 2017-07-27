@@ -51,11 +51,11 @@
     {% endif %}
 </div>
 <div class="common-address">
-    <a class="tap-location" href="javascript:void(0)">{{ (data.location|json_parse).name }}</a>
+    <a class="tap-location" href="javascript:void(0)">{{ data.articleInfo.location }}</a>
 </div>
 <div class="common-publish-wrap">
     <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
-    {% if data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
+    {% if data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == '1' %}
     {% if data.articleInfo.showAccess == 1 %}
     <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
     {% elseif data.articleInfo.showAccess == 2 %}
@@ -81,7 +81,7 @@
 </div>
 {% endif %}
 
-{% if data.articleInfo.coopInfo.isOwner == '0' || data.articleInfo.coopInfo.isOwner == '1' && !data.isAdminIdentity %}
+{% if data.articleInfo.coopInfo.isOwner == '0' || data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == '0' %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.coopInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">发意向</a>
@@ -103,7 +103,7 @@
 </div>
 {% endif %}
 
-{% if data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
+{% if data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == '1' %}
 <div class="common-edit-wrap">
     <a class="edit-btn" href="javascript:void(0)">编辑合作</a>
 </div>

@@ -33,7 +33,7 @@
     <div class="common-comment-wrap">
         <span>
             <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
-            {% if data.articleInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
+            {% if data.articleInfo.isOwner == '1' && data.isAdminIdentity == '1' %}
             {% if data.articleInfo.showAccess == 1 %}
             <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
             {% elseif data.articleInfo.showAccess == 2 %}
