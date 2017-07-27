@@ -137,12 +137,13 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200119&articleId=814';
-        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
-        var data = {};
+        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200119&articleId=700&isAdminIdentity=1';
+        URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
+        var data = {},isAdminIdentity;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.articleId = jsmod.util.url.getParam(HREF_ORIGIN,'articleId');
+        isAdminIdentity  = jsmod.util.url.getParam(HREF_ORIGIN,'isAdminIdentity');
         $.ajax({
             url: URL_CIRCLE,
             dataType: 'jsonp',
@@ -153,7 +154,11 @@ var CircleDetail = jsmod.util.klass({
                     console.log(json.data);
 
                     self.data = json.data;
-                    var html = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:json.data}});
+                    if(isAdminIdentity){
+                        var html = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:$.extend(json.data,{'isAdminIdentity':isAdminIdentity})}});
+                    }else {
+                        var html = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:json.data}});
+                    }
 
                     self.$container.html(html);
 

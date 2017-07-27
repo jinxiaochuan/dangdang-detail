@@ -51,11 +51,13 @@
 </div>
 <div class="common-publish-wrap">
     <span class="publish-time">{{ data.activityInfo.formatCreateTime }}</span>
-    {% if data.activityInfo.isOwner == '1' %}
-    {% if data.activityInfo.showAccess == 1 %}
-    <a class="show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
-    {% elseif data.activityInfo.showAccess == 2 || data.activityInfo.showAccess == 3 %}
-    <a class="show-access" href="javascript:void (0)"><i class="part"></i></a>
+    {% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
+    {% if data.articleInfo.showAccess == 1 %}
+    <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
+    {% elseif data.articleInfo.showAccess == 2 %}
+    <a class="show-access" href="javascript:void (0)"><i class="member-join"></i></a>
+    {% elseif data.articleInfo.showAccess == 3 %}
+    <a class="show-access" href="javascript:void (0)"><i class="member-part"></i></a>
     {% else %}
     {% endif %}
     {% endif %}
@@ -64,7 +66,7 @@
     <span class="deadline {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.articleInfo.activityInfo.formatDeadLine }}</span>
     <span class="limit">{% if data.webShowInfo.enterCount == '0' %}不限人数{% else %}限{{ data.webShowInfo.enterCount }}人{% endif %}</span>
 </div>
-{% if data.articleInfo.activityInfo.isOwner == '1' %}
+{% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
 <div class="common-sign-list-wrap">
     <a class="tap-sign" href="javascript:void(0)">
         <div class="sign-wrap">
@@ -75,7 +77,7 @@
 </div>
 {% endif %}
 
-{% if data.articleInfo.activityInfo.isOwner == '0' %}
+{% if (data.articleInfo.activityInfo.isOwner == '0') || (data.articleInfo.activityInfo.isOwner == '1' && !data.isAdminIdentity) %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.activityInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">报名</a>
@@ -97,7 +99,7 @@
 </div>
 {% endif %}
 
-{% if data.articleInfo.activityInfo.isOwner == '1' %}
+{% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
 <div class="common-edit-wrap">
     <a class="edit-btn" href="javascript:void(0)">编辑活动</a>
 </div>

@@ -275,9 +275,67 @@
     }
 }
 
+.common-comment-wrap{
+    .flex();
+    .align-items(center);
+    .justify-content(space-between);
+    line-height: @base*38rem;
+    .publish-time{
+        .font-dpr(12px);
+        color: #828282;
+    }
+    .show-access{
+        margin-left: @base*30rem;
+        i{
+          display: block;
+          width: @base*30rem;
+          height: @base*30rem;
+          background-size: contain;
+          background-position: left center;
+          background-repeat: no-repeat;
+          &.member{
+            background-image: url("~assets/member_icon.png");
+          }
+          &.member-join{
+            background-image: url("~assets/member_join_icon.png");
+          }
+          &.member-part{
+            background-image: url("~assets/member_part_icon.png");
+          }
+          &.only-friend{
+              background-image: url("~assets/default_accessType_someoneCanSee_normal@3x.png");
+          }
+          &.part{
+              background-image: url("~assets/default_accessType_someoneCanSee_normal@3x.png");
+          }
+        }
+    }
+
+    .comment-wrap{
+        .flex();
+        .align-items(center);
+        i{
+          display: block;
+          width: @base*30rem;
+          height: @base*30rem;
+          background-size: contain;
+          background-position: left center;
+          background-repeat: no-repeat;
+          &.comment{
+              background-image: url("~assets/comment_icon.png");
+          }
+      }
+      .comment-num{
+          padding-left: @base*9rem;
+          .font-dpr(10px);
+          color: #737373;
+      }
+    }
+}
 .common-publish-wrap{
     .flex();
     .align-items(center);
+
     line-height: @base*38rem;
     .publish-time{
         .font-dpr(12px);

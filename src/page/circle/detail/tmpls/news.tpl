@@ -30,7 +30,22 @@
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ data.articleInfo.location }}</a>
     </div>
-    <div class="common-publish-wrap">
-        <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
+    <div class="common-comment-wrap">
+        <span>
+            <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
+            {% if data.articleInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
+            {% if data.articleInfo.showAccess == 1 %}
+            <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
+            {% elseif data.articleInfo.showAccess == 2 %}
+            <a class="show-access" href="javascript:void (0)"><i class="member-join"></i></a>
+            {% elseif data.articleInfo.showAccess == 3 %}
+            <a class="show-access" href="javascript:void (0)"><i class="member-part"></i></a>
+            {% else %}
+            {% endif %}
+            {% endif %}
+        </span>
+
+        <a class="comment-wrap" href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{{ data.webShowInfo.commentCount }}</span></a>
+
     </div>
 </div>
