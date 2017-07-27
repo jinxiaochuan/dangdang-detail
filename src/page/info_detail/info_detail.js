@@ -8,7 +8,7 @@ var page_url = window.location.href;
 
 var TPL_INFO = require('./tmpls/info_detail_tpl.tpl');
 
-var URL_INFO = 'http://test.im-dangdang.com/ddweb/v1/newsComment/detail';
+var URL_INFO = 'http://test.im-dangdang.com/ddweb/v1/news/detail';
 
 var infoDetail = jsmod.util.klass({
     initialize:function(option){
@@ -22,7 +22,7 @@ var infoDetail = jsmod.util.klass({
     getAjaxInfo:function(url){
         var self = this;
 
-        url = 'http://test.im-dangdang.com/ddweb/v1/newsComment/detail?userId=200119&newsId=3';
+        url = 'http://test.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=3';
 
         var data = {};
 
