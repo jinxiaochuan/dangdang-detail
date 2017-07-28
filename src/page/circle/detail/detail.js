@@ -109,6 +109,12 @@ var CircleDetail = jsmod.util.klass({
 
             })
 
+            self.$container.delegate('.comment-wrap','click',function(){
+
+                bridge.callHandler('doComment')
+
+            })
+
         })
 
 
@@ -120,6 +126,7 @@ var CircleDetail = jsmod.util.klass({
         self.baseInfo = {
             "userId":self.data.webShowInfo.userId,
             "targetId":self.data.articleInfo.articleId,
+            "articleId":self.data.articleInfo.articleId,
             "type":self.data.articleInfo.articleType,
             "circleId":self.data.circleInfo.circleId,
             "circleName":self.data.circleInfo.circleName,
