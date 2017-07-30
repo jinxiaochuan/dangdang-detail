@@ -16,10 +16,16 @@
                 .flex();
                 .align-items(center);
                 margin: @base*32rem 0;
-                .source-logo{
+                .tap-source{
                     width: @base*50rem;
                     height: @base*50rem;
+                    overflow: hidden;
+                    .border-radius(50%);
+                    .source-logo{
+
+                    }
                 }
+
                 .source-name{
                     margin-left: @base*20rem;
                     .font-dpr(13px);
@@ -57,11 +63,13 @@
                 line-height: @base*24rem;
             }
             .like{
+                color: #737373;
                 .font-dpr(10px);
                 padding-left: @base*40rem;
                .back-map(url('~assets/info_praise_icon.png'),url('~assets/info_praise_icon@1.5x.png'),@base*30rem @base*30rem);
             }
-            .read{
+            .comment{
+                color: #737373;
                 .font-dpr(10px);
                 margin-left: @base*20rem;
                 padding-left: @base*35rem;

@@ -4,7 +4,9 @@
             {{ data.newsDetail.title }}
         </p>
         <div class="source">
-            <img class="source-logo" src="{{ data.newsDetail.mediaLogoUrl }}" alt="">
+            <a class="tap-source" href="javascript:void(0)">
+                <img class="source-logo" src="{{ data.newsDetail.mediaLogoUrl }}" alt="">
+            </a>
             <span class="source-name">{{ data.newsDetail.mediaName }}</span>
             <span class="source-time">{{ data.newsDetail.formatNewsTime }}</span>
         </div>
@@ -16,7 +18,7 @@
     </div>
     <div class="comment-wrap">
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
-        <span class="read">{{ data.newsDetail.readAmount }}</span>
+        <a href="javascript:void(0)" class="comment">{{ data.newsDetail.commentAmount }}</a>
     </div>
     {% if data.recommendNews.length %}
     <div class="news-list-wrap">

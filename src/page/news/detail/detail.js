@@ -42,11 +42,17 @@ var News = jsmod.util.klass({
                     console.log(json.data);
                     self.data = json.data;
                     self.render(self.data);
+
                 }
             }
         })
 
 
+    },
+
+    initAvatar: function(){
+        var width_avatar = this.$container.find('.tap-source').width();
+        jsmod.util.stretchImg($('.source-logo')[0],width_avatar,width_avatar,true,false);
     },
 
     render: function(data){
@@ -59,6 +65,8 @@ var News = jsmod.util.klass({
         this.$container.html(html);
 
         this.deviceDetect();
+
+        this.initAvatar();
 
         this.initBridge();
 
@@ -125,7 +133,7 @@ var News = jsmod.util.klass({
 
           bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
-          self.$container.delegate('.source-logo','click',function(){
+          self.$container.delegate('.tap-source','click',function(){
               bridge.callHandler('tapMediaName', self.avatarInfo, function () {
 
               })
@@ -137,7 +145,7 @@ var News = jsmod.util.klass({
               })
           })
 
-          self.$container.delegate('.comment-wrap .read','click',function(){
+          self.$container.delegate('.comment-wrap .comment','click',function(){
               bridge.callHandler('tapComment')
           })
 
