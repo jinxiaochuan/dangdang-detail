@@ -160,8 +160,9 @@ var News = jsmod.util.klass({
           self.$container.delegate('.news-list-wrap .news-link','click',function(){
               var userId = $(this).data('user');
               var newsId = $(this).data('news');
+              var mediaId = $(this).data('media');
               if(self.isOpenFromInternalApp){
-                  bridge.callHandler('tapOpenOtherArticle',{"userId":userId.toString(),"newsId":newsId.toString()},function(){})
+                  bridge.callHandler('tapOpenOtherArticle',{"userId":userId.toString(),"newsId":newsId.toString(),"mediaId":mediaId.toString()},function(){})
                   return;
               }
               window.location.href = '/ddweb/news/detail?userId='+ userId +'&newsId=' + newsId;
