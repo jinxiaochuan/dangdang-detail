@@ -161,7 +161,7 @@ var News = jsmod.util.klass({
               var userId = $(this).data('user');
               var newsId = $(this).data('news');
               if(self.isOpenFromInternalApp){
-                  bridge.callHandler('tapOpenOtherArticle',{"userId":userId,"newsId":newsId},function(){})
+                  bridge.callHandler('tapOpenOtherArticle',{"userId":userId.toString(),"newsId":newsId.toString()},function(){})
                   return;
               }
               window.location.href = '/ddweb/news/detail?userId='+ userId +'&newsId=' + newsId;
