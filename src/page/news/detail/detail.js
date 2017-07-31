@@ -17,6 +17,7 @@ var URL_NEWS = PATH_ORIGIN + PATH_NAME;
 var News = jsmod.util.klass({
     initialize: function(option){
         this.option = option;
+        this.isOpenFromInternalApp = true;
         this.$container = $('.container');
         this.getAjax();
     },
@@ -133,6 +134,13 @@ var News = jsmod.util.klass({
 
           bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
+          bridge.callHandler('isOpenFromInternalApp',null,function(data){
+              if(!data){
+                  //非app内部页面
+                  self.isOpenFromInternalApp = false;
+              }
+          })
+
           self.$container.delegate('.tap-source','click',function(){
               bridge.callHandler('tapMediaName', self.avatarInfo, function () {
 
@@ -147,6 +155,16 @@ var News = jsmod.util.klass({
 
           self.$container.delegate('.comment-wrap .comment','click',function(){
               bridge.callHandler('tapComment')
+          })
+
+          self.$container.delegate('.news-list-wrap .news-link','click',function(){
+              var userId = $(this).data('user');
+              var newsId = $(this).data('news');
+              if(self.isOpenFromInternalApp){
+                  bridge.callHandler('tapOpenOtherArticle',{"userId":userId,"newsId":newsId},function(){})
+                  return;
+              }
+              window.location.href = '/ddweb/news/detail?userId='+ userId +'&newsId=' + newsId;
           })
 
       })
