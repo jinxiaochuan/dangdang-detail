@@ -12,7 +12,7 @@
     </div>
     <div class="info-item">
         <span class="label-name label-name-address">地区：</span>
-        <span class="label-detail">{{ data.articleInfo.activityInfo.procvinceName }} {% if data.articleInfo.activityInfo.cityId != 0 %}{{ data.articleInfo.activityInfo.cityName }}{% endif %}</span>
+        <span class="label-detail">{{ data.articleInfo.activityInfo.provinceName }} {% if data.articleInfo.activityInfo.cityId != 0 %}{{ data.articleInfo.activityInfo.cityName }}{% endif %}</span>
     </div>
     {% if data.articleInfo.activityInfo.detailAddress %}
     <div class="info-item">
@@ -64,7 +64,7 @@
 </div>
 <div class="common-deadline-wrap">
     <span class="deadline {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.articleInfo.activityInfo.formatDeadLine }}</span>
-    <span class="limit">{% if data.webShowInfo.enterCount == '0' %}不限人数{% else %}限{{ data.webShowInfo.enterCount }}人{% endif %}</span>
+    <span class="limit">{% if data.articleInfo.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.articleInfo.activityInfo.activityNum }}人{% endif %}</span>
 </div>
 {% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity ==  '1' %}
 <div class="common-sign-list-wrap">
