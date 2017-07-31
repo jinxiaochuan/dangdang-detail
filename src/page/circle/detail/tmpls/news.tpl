@@ -44,8 +44,10 @@
             {% endif %}
             {% endif %}
         </span>
-
-        <a class="comment-wrap" href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{{ data.webShowInfo.commentCount }}</span></a>
+        
+        {% if data.circleInfo.memberType == 1 || data.circleInfo.memberType == 2 || data.circleInfo.memberType == 3 %}
+        <a class="comment-wrap " href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{{ data.webShowInfo.commentCount }}</span></a>
+        {% endif %}
 
     </div>
 </div>
