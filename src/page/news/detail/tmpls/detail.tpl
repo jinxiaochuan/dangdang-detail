@@ -23,7 +23,7 @@
     {% if data.recommendNews.length %}
     <div class="news-list-wrap">
         {% for item in data.recommendNews %}
-        <a class="news-link" data-user="{{ userId }}" data-news="{{ newsId }}" href="javascript:void(0)">
+        <a class="news-link" data-user="{{ data.userId }}" data-news="{{ item.newsId }}" href="javascript:void(0)">
             <div class="news-item">
                 <div class="news-detail">
                     <p class="news-title">{{ item.title }}</p>
