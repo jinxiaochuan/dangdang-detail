@@ -13,8 +13,8 @@
     </div>
     {% endif %}
     <div class="circle-news-detail">
-        <pre class="detail-content">{{ data.articleInfo.detail }}</pre>
-        {% if data.articleInfo.detailImages.length %}
+        <pre class="detail-content">{{ data.articleInfo.detail|safe }}</pre>
+        {% if data.articleInfo.detailImages %}
         {% for item in data.articleInfo.detailImages %}
         {% if loop.first %}
         <img class="first" src="{{ item.pictureUrl }}" alt="">

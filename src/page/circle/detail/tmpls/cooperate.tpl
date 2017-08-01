@@ -43,7 +43,7 @@
 
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
-    <pre class="detail-content">{{ data.articleInfo.detail }}</pre>
+    <pre class="detail-content">{{ data.articleInfo.detail|safe }}</pre>
     {% if data.articleInfo.detailImages %}
     {% for item in data.articleInfo.detailImages %}
     <img src="{{ item.pictureUrl }}" alt=""/>

@@ -2,6 +2,12 @@
 
 @base:1/75;
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:    border-box;
+  box-sizing:         border-box;
+}
+
 .common-fix{
   position: fixed;
   left: 50%;
@@ -118,6 +124,7 @@
     margin: 0 auto;
     width: 10rem;
     padding: @base*50rem @base*30rem @base*200rem;
+
     a{
         -webkit-tap-highlight-color: transparent;
         -webkit-touch-callout: none;
