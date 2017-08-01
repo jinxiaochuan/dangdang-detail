@@ -57,7 +57,7 @@
             }
         }
 
-        .comment-wrap{
+        .comment-outer-wrap{
             .flex();
             .justify-content(space-between);
             color: #737373;
@@ -71,12 +71,25 @@
                 padding-left: @base*40rem;
                .back-map(url('~assets/info_praise_icon.png'),url('~assets/info_praise_icon@1.5x.png'),@base*30rem @base*30rem);
             }
-            .comment{
-                color: #737373;
-                .font-dpr(10px);
-                margin-left: @base*20rem;
-                padding-left: @base*35rem;
-               .back-map(url('~assets/comment_icon@1x.png'),url('~assets/comment_icon@1.5x.png'),@base*30rem @base*30rem);
+            .comment-wrap{
+                .flex();
+                .align-items(center);
+                i{
+                  display: block;
+                  width: @base*30rem;
+                  height: @base*30rem;
+                  background-size: contain;
+                  background-position: left center;
+                  background-repeat: no-repeat;
+                  &.comment{
+                      background-image: url("~assets/comment_icon.png");
+                  }
+              }
+              .comment-num{
+                  padding-left: @base*9rem;
+                  .font-dpr(10px);
+                  color: #737373;
+              }
             }
         }
 

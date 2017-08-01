@@ -16,23 +16,12 @@
             {{ data.newsDetail.content|safe }}
         </div>
     </div>
-    <div class="comment-wrap">
+    <div class="comment-outer-wrap">
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
-        <a href="javascript:void(0)" class="comment">{% if data.newsDetail.commentAmount != 0 %}{{ data.newsDetail.commentAmount }}{% endif %}</a>
+        <a class="comment-wrap " href="javascript:void (0)"><i class="comment"></i>{% if data.newsDetail.commentAmount != 0 %}<span class="comment-num">{{ data.newsDetail.commentAmount }}</span>{% endif %}</a>
     </div>
     {% if data.recommendNews.length %}
     <div class="news-list-wrap">
-        {% for item in data.recommendNews %}
-        <a class="news-link" data-user="{{ data.userId }}" data-news="{{ item.newsId }}" data-media="{{ item.mediaId }}" href="javascript:void(0)">
-            <div class="news-item">
-                <div class="news-detail">
-                    <p class="news-title">{{ item.title }}</p>
-                    <p class="news-issuer"><span>{{ item.formatCreateTime }}</span></p>
-                </div>
-                <img class="news-cover" src="{{ item.coverImageUrl[0] }}" alt="">
-            </div>
-        </a>
-        {% endfor %}
         {% for item in data.recommendNews %}
         <a class="news-link" data-user="{{ data.userId }}" data-news="{{ item.newsId }}" data-media="{{ item.mediaId }}" href="javascript:void(0)">
             <div class="news-item">
