@@ -14,7 +14,7 @@
     {% endif %}
     <div class="circle-news-detail">
         <pre class="detail-content">{{ data.articleInfo.detail|safe }}</pre>
-        {% if data.articleInfo.detailImages %}
+        {% if data.articleInfo.detailImages.length %}
         {% for item in data.articleInfo.detailImages %}
         {% if loop.first %}
         <img class="first" src="{{ item.pictureUrl }}" alt="">
@@ -32,7 +32,7 @@
         <span class="word">长按识别图中二维码</span>
     </div>
     <div class="common-address">
-        <a class="tap-location" href="javascript:void(0)">{{ data.articleInfo.location }}</a>
+        <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
     </div>
     <div class="common-comment-wrap">
         <span>
