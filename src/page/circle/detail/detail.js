@@ -132,7 +132,8 @@ var CircleDetail = jsmod.util.klass({
             "circleName":self.data.circleInfo.circleName,
             "memberType":self.data.circleInfo.memberType,
             "showAccess":self.data.articleInfo.showAccess,
-            "isCanComment":self.data.articleInfo.isCanComment
+            "isCanComment":self.data.articleInfo.isCanComment,
+            "twoDimensionCode":data.circleInfo.twoDimensionCode.pictureUrl
         }
 
         self.logoInfo = {
