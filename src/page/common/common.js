@@ -16,7 +16,7 @@ if(source != 1){
     $('.common-fix').remove();
 }
 
-//针对打开APP进行操作
+//针对打开进行操作
 
 var mobileDevice = function(){
     var u = window.navigator.userAgent;

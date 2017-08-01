@@ -18,7 +18,7 @@
     </div>
     <div class="comment-wrap">
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
-        <a href="javascript:void(0)" class="comment">{{ data.newsDetail.commentAmount }}</a>
+        <a href="javascript:void(0)" class="comment">{% if data.newsDetail.commentAmount != 0 %}{{ data.newsDetail.commentAmount }}{% endif %}</a>
     </div>
     {% if data.recommendNews.length %}
     <div class="news-list-wrap">

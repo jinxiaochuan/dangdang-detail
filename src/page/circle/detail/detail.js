@@ -132,6 +132,7 @@ var CircleDetail = jsmod.util.klass({
             "circleName":self.data.circleInfo.circleName,
             "memberType":self.data.circleInfo.memberType,
             "showAccess":self.data.articleInfo.showAccess,
+            "isCanComment":self.data.articleInfo.isCanComment
         }
 
         self.logoInfo = {
@@ -144,8 +145,10 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200119&articleId=1012&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200119&articleId=800&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200182&articleId=988&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200119&articleId=983&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200119&articleId=983&isAdminIdentity=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
         var data = {},isAdminIdentity;
 

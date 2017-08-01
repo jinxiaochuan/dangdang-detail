@@ -8,36 +8,39 @@
   bottom: 0;
   width: @base*750rem;
   margin-left: -@base*375rem;
-  padding: 0 @base*24rem;
-  height: @base*120rem;
-  line-height: @base*120rem;
-  background: rgba(255,255,255,.94);
+  padding: 0 @base*32rem;
+  height: @base*112rem;
+  line-height: @base*112rem;
+  background: #FAFAFA;
   .logo-icon{
     float: left;
-    width: @base*66rem;
-    height: @base*120rem;
+    width: @base*72rem;
+    height: @base*112rem;
     background: url("~assets/logo_icon.png") no-repeat center center;
-    background-size: @base*66rem  @base*66rem;
+    background-size: @base*72rem  @base*72rem;
   }
   .logo-word-icon{
-    margin: 0 @base*24rem;
-    float: left;
-    width: @base*320rem;
-    height: @base*120rem;
-    background: url("~assets/logo_word_icon.png") no-repeat center center;
-    background-size: @base*320rem  @base*31rem;
+    margin: 0 @base*30rem;
+    .font-dpr(14px);
+    color: #3C3C3C;
+    line-height: @base*112rem;
+    vertical-align: middle;
+    // width: @base*320rem;
+    // height: @base*120rem;
+    // background: url("~assets/logo_word_icon.png") no-repeat center center;
+    // background-size: @base*320rem  @base*31rem;
   }
   .app-btn{
-    margin: @base*30rem 0;
+    margin: @base*26rem 0;
     float: right;
     width: @base*170rem;
     height: @base*60rem;
     line-height: @base*60rem;
     text-align: center;
-    background: #007AFF;
-    .border-radius(@base*30rem);
+    border: 1px solid #007AFF;
+    .border-radius(@base*100rem);
     .font-dpr(14px);
-    color: #FFFFFF;
+    color: #007AFF;
   }
 }
 
@@ -523,11 +526,15 @@
             .font-dpr(19px);
             color: #000000;
             line-height: @base*64rem;
+            margin-bottom: 10px;
         }
         img{
             display: block;
             margin-top: @base*20rem;
             width: 100%;
+            &.first{
+                margin-top: @base*30rem;
+            }
         }
     }
     .circle-news-code{

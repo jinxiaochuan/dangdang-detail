@@ -16,7 +16,11 @@
         <pre class="detail-content">{{ data.articleInfo.detail }}</pre>
         {% if data.articleInfo.detailImages.length %}
         {% for item in data.articleInfo.detailImages %}
+        {% if loop.first %}
+        <img class="first" src="{{ item.pictureUrl }}" alt="">
+        {% else %}
         <img src="{{ item.pictureUrl }}" alt="">
+        {% endif %}
         {% endfor %}
         {% endif %}
     </div>
@@ -44,9 +48,9 @@
             {% endif %}
             {% endif %}
         </span>
-        
-        {% if data.circleInfo.memberType == 1 || data.circleInfo.memberType == 2 || data.circleInfo.memberType == 3 %}
-        <a class="comment-wrap " href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{{ data.webShowInfo.commentCount }}</span></a>
+
+        {% if data.articleInfo.isCanComment == 1 %}
+        <a class="comment-wrap " href="javascript:void (0)"><i class="comment"></i>{% if data.webShowInfo.commentCount != 0 %}<span class="comment-num">{{ data.webShowInfo.commentCount }}</span>{% endif %}</a>
         {% endif %}
 
     </div>

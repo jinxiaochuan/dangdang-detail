@@ -51,7 +51,7 @@
     {% endif %}
 </div>
 <div class="common-address">
-    <a class="tap-location" href="javascript:void(0)">{{ data.articleInfo.location }}</a>
+    <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
 </div>
 <div class="common-publish-wrap">
     <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
