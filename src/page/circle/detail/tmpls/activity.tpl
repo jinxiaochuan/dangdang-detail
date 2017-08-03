@@ -79,6 +79,7 @@
 </div>
 {% endif %}
 {% if data.articleInfo.activityInfo.isOwner == '0' || data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == '0' %}
+{% if data.circleInfo.memberType == 1 || data.circleInfo.memberType == 3 %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.activityInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">报名</a>
@@ -86,6 +87,7 @@
     <a class="communicate-btn" href="javascript:void (0)">沟通</a>
     {% endif %}
 </div>
+{% endif %}
 {% endif %}
 
 {% if data.articleInfo.activityInfo.review || data.articleInfo.activityInfo.reviewImages %}
