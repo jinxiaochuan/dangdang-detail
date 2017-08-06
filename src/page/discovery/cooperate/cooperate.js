@@ -22,8 +22,8 @@ var Cooperate = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200110&coopId=6&viewUserId=200148';
-        //URL_COOPERATION = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200110&coopId=6&viewUserId=200148';
+        // URL_COOPERATION = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
         var data={};
 
         data.userId=jsmod.util.url.getParam(HREF_ORIGIN,'userId');
@@ -89,7 +89,10 @@ var Cooperate = jsmod.util.klass({
             "headImage":self.data.headImage,
             "isFinished":self.data.isFinished,
             "coopId":self.data.webInfo.coopId,
-            "isCanSignUp":self.data.isCanSignUp
+            "isCanSignUp":self.data.isCanSignUp,
+            "location":self.data.location,
+            "longitude":self.data.longitude,
+            "latitude":self.data.latitude
         }
 
         /*这段代码是固定的，必须要放到js中*/
@@ -157,6 +160,10 @@ var Cooperate = jsmod.util.klass({
 
              self.$container.delegate('.communicate-btn','click',function(){
                  bridge.callHandler('doChat')
+             })
+
+             self.$container.delegate('.tap-location','click',function(){
+                 bridge.callHandler('tapPlace')
              })
        })
     }

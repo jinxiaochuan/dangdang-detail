@@ -22,8 +22,8 @@ var Activity = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        //HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200210&activityId=500';
-        //URL_DISCOVERY_ACTIVITY = 'http://dev.im-dangdang.com/discovery/v1/activity/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200210&activityId=500';
+        // URL_DISCOVERY_ACTIVITY = 'http://dev.im-dangdang.com/discovery/v1/activity/detail';
         var data={};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
@@ -89,13 +89,10 @@ var Activity = jsmod.util.klass({
           "headImage":self.data.activityInfo.userInfo.headImage,
           "isOver":self.data.activityInfo.isOver,
           "activityId":self.data.activityInfo.webInfo.activityId,
-          "isCanSignUp":self.data.activityInfo.isCanSignUp
-      }
-
-      self.addressInfo = {
-        "activityLocation":self.data.activityInfo.location,
-        "activityLongitude":self.data.activityInfo.longitude,
-        "activityLatitude":self.data.activityInfo.latitude
+          "isCanSignUp":self.data.activityInfo.isCanSignUp,
+          "location":self.data.activityInfo.location,
+          "longitude":self.data.activityInfo.longitude,
+          "latitude":self.data.activityInfo.latitude
       }
 
       /*这段代码是固定的，必须要放到js中*/
@@ -145,7 +142,7 @@ var Activity = jsmod.util.klass({
           })
 
           self.$container.delegate('.tap-location','click',function(){
-              bridge.callHandler('tapActivityPlace',self.addressInfo,function(){})
+              bridge.callHandler('tapPlace')
           })
 
           self.$container.delegate('.show-access','click',function(){

@@ -22,8 +22,8 @@ var IN24H = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        //HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=7&longitude=116.488580&latitude=39.915222';
-        //URL_DISCOVERY_IN24 = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=7&longitude=116.488580&latitude=39.915222';
+        // URL_DISCOVERY_IN24 = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
         var data = {};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
@@ -82,9 +82,12 @@ var IN24H = jsmod.util.klass({
 
         self.baseInfo = {
             "viewedUserId": self.data.in24hInfo.webInfo.viewedUserId,
-            "activityLongitude": self.data.in24hInfo.webInfo.activityLongitude,
-            "activityLatitude": self.data.in24hInfo.webInfo.activityLatitude,
-            "activityLocation": self.data.in24hInfo.webInfo.activityLocation,
+            "activityLongitude": self.data.in24hInfo.activityLongitude,
+            "activityLatitude": self.data.in24hInfo.activityLatitude,
+            "activityLocation": self.data.in24hInfo.activityLocation,
+            "longitude": self.data.in24hInfo.longitude,
+            "latitude": self.data.in24hInfo.latitude,
+            "location": self.data.in24hInfo.location,
             "in24hId": self.data.in24hInfo.webInfo.in24hId,
             "showAccess": self.data.in24hInfo.showAccess,
             "applyStatus": self.data.in24hInfo.applyStatus,
@@ -92,7 +95,7 @@ var IN24H = jsmod.util.klass({
             "showName":self.data.in24hInfo.userInfo.showName,
             "isCanSeePersonFile":self.data.in24hInfo.isCanSeePersonFile,
             "isFollow":self.data.in24hInfo.isFollow,
-            "isCanSignUp":self.data.in24hInfo.isCanSignUp,
+            "isCanSignUp":self.data.in24hInfo.isCanSignUp
         }
 
         /*这段代码是固定的，必须要放到js中*/
@@ -164,6 +167,14 @@ var IN24H = jsmod.util.klass({
 
             self.$container.delegate('.communicate-btn','click',function(){
                 bridge.callHandler('doChat')
+            })
+
+            self.$container.delegate('.in24-address','click',function(){
+                bridge.callHandler('tapAddress')
+            })
+
+            self.$container.delegate('.tap-location','click',function(){
+                bridge.callHandler('tapPlace')
             })
 
         })
