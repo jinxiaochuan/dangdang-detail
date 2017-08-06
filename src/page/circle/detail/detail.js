@@ -86,7 +86,7 @@ var CircleDetail = jsmod.util.klass({
             })
 
 
-            self.$container.delegate('.sign-btn:not(".disabled")','click',function(){
+            self.$container.delegate('.sign-btn','click',function(){
 
                 bridge.callHandler('apply')
 
@@ -115,6 +115,11 @@ var CircleDetail = jsmod.util.klass({
 
             })
 
+
+            self.$container.delegate('.tap-location','click',function(){
+                bridge.callHandler('tapPlace')
+            })
+
         })
 
 
@@ -133,7 +138,12 @@ var CircleDetail = jsmod.util.klass({
             "memberType":self.data.circleInfo.memberType,
             "showAccess":self.data.articleInfo.showAccess,
             "isCanComment":self.data.articleInfo.isCanComment,
-            "twoDimensionCode":self.data.circleInfo.twoDimensionCode.pictureUrl
+            "twoDimensionCode":self.data.circleInfo.twoDimensionCode.pictureUrl,
+            "activityIsCanSignUp":self.data.articleInfo.activityInfo?self.data.articleInfo.activityInfo.isCanSignUp:null,
+            "coopIsCanSignUp":self.data.articleInfo.coopInfo?self.data.articleInfo.coopInfo.isCanSignUp:null,
+            "location":self.data.articleInfo.location,
+            "latitude":self.data.articleInfo.latitude,
+            "longitude":self.data.articleInfo.longitude
         }
 
         self.logoInfo = {
@@ -146,10 +156,9 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=983&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200182&articleId=988&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=983&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=991&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1130&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1118&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=970&isAdminIdentity=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
         var data = {},isAdminIdentity;
 
