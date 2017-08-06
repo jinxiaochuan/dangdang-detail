@@ -29,7 +29,9 @@
                     <p class="news-title">{{ item.title }}</p>
                     <p class="news-issuer"><span>{{ item.formatCreateTime }}</span></p>
                 </div>
-                <img class="news-cover" src="{{ item.coverImageUrl[0] }}" alt="">
+                <div class="news-cover-wrap">
+                    <img class="news-cover" src="{{ item.coverImageUrl[0] }}" alt="">
+                </div>
             </div>
         </a>
         {% endfor %}

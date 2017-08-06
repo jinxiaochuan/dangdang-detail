@@ -51,6 +51,7 @@
                     line-height: @base*64rem!important;
                 }
                 img{
+                    display: block;
                     width: 100%!important;
                 }
 
@@ -123,10 +124,15 @@
                         color: #737373;
                     }
                 }
-                .news-cover{
+                .news-cover-wrap{
                     width: @base*230rem;
                     height: @base*160rem;
+                    overflow: hidden;
+                    .news-cover{
+
+                    }
                 }
+
             }
         }
     }

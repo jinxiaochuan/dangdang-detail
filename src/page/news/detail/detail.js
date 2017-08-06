@@ -25,8 +25,8 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=1';
-        // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
+        // HREF_ORIGIN = 'http://test.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=11';
+        // URL_NEWS = 'http://test.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
 
@@ -54,6 +54,14 @@ var News = jsmod.util.klass({
     initAvatar: function(){
         var width_avatar = this.$container.find('.tap-source').width();
         jsmod.util.stretchImg($('.source-logo')[0],width_avatar,width_avatar,true,false);
+
+        var width_cover = this.$container.find('.news-cover-wrap').width();
+        var height_cover = this.$container.find('.news-cover-wrap').height();
+
+        this.$container.find('.news-cover').each(function(index,item){
+            jsmod.util.stretchImg($(item)[0],width_cover,height_cover,true,false);
+
+        })
     },
 
     render: function(data){
