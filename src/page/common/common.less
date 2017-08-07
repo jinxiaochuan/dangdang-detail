@@ -123,13 +123,19 @@
 .container{
     margin: 0 auto;
     width: 10rem;
-    padding: @base*50rem @base*30rem @base*200rem;
+    padding: @base*50rem @base*30rem @base*50rem;
 
     a{
         -webkit-tap-highlight-color: transparent;
         -webkit-touch-callout: none;
         -webkit-user-select: none;
     }
+}
+
+.split-mark{
+    margin: 0 -@base*30rem;
+    height: @base*12rem;
+    background: #F1F1F1;
 }
 
 .common-header{
@@ -189,9 +195,14 @@
             color: @noticeColor;
             .font-dpr(15px);
             &.label-detail-in24h{
-                color: #007AFF;
+                color: #737373;
                 a{
                     color: #007AFF;
+                    margin-right: @base*45rem;
+                }
+                .distance{
+                    display: inline-block;
+
                 }
             }
         }
