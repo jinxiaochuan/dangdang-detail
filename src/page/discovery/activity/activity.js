@@ -92,7 +92,9 @@ var Activity = jsmod.util.klass({
           "isCanSignUp":self.data.activityInfo.isCanSignUp,
           "location":self.data.activityInfo.location,
           "longitude":self.data.activityInfo.longitude,
-          "latitude":self.data.activityInfo.latitude
+          "latitude":self.data.activityInfo.latitude,
+          "userImage":self.data.activityInfo.userInfo.userImage,
+          "title": self.data.activityInfo.title
       }
 
       /*这段代码是固定的，必须要放到js中*/

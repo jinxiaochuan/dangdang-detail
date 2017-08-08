@@ -143,7 +143,9 @@ var CircleDetail = jsmod.util.klass({
             "coopIsCanSignUp":self.data.articleInfo.coopInfo?self.data.articleInfo.coopInfo.isCanSignUp:null,
             "location":self.data.articleInfo.location,
             "latitude":self.data.articleInfo.latitude,
-            "longitude":self.data.articleInfo.longitude
+            "longitude":self.data.articleInfo.longitude,
+            "pictureUrl":self.data.circleInfo.circleLogo.pictureUrl,
+            "articleTitle":self.data.articleInfo.articleTitle
         }
 
         self.logoInfo = {

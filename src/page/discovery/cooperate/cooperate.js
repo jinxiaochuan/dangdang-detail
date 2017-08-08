@@ -92,7 +92,9 @@ var Cooperate = jsmod.util.klass({
             "isCanSignUp":self.data.isCanSignUp,
             "location":self.data.location,
             "longitude":self.data.longitude,
-            "latitude":self.data.latitude
+            "latitude":self.data.latitude,
+            "userImage":self.data.userImage,
+            "title":self.data.title
         }
 
         /*这段代码是固定的，必须要放到js中*/

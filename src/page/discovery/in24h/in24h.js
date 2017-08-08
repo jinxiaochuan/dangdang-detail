@@ -95,7 +95,9 @@ var IN24H = jsmod.util.klass({
             "showName":self.data.in24hInfo.userInfo.showName,
             "isCanSeePersonFile":self.data.in24hInfo.isCanSeePersonFile,
             "isFollow":self.data.in24hInfo.isFollow,
-            "isCanSignUp":self.data.in24hInfo.isCanSignUp
+            "isCanSignUp":self.data.in24hInfo.isCanSignUp,
+            "userImage":self.data.in24hInfo.userInfo.userImage,
+            "title":self.data.in24hInfo.title
         }
 
         /*这段代码是固定的，必须要放到js中*/

@@ -96,7 +96,9 @@ var News = jsmod.util.klass({
       var self = this;
 
       self.baseInfo = {
-          mediaId: self.data.newsDetail.mediaId
+          mediaId: self.data.newsDetail.mediaId,
+          title: self.data.newsDetail.title,
+          mediaLogoUrl: self.data.newsDetail.mediaLogoUrl
       }
 
       self.avatarInfo = {
