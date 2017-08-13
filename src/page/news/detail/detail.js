@@ -25,7 +25,7 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=136';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=137';
         // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
@@ -42,6 +42,7 @@ var News = jsmod.util.klass({
                 if(json.data){
                     console.log(json.data);
                     self.data = json.data;
+                    self.commentAmount = self.data.newsDetail.commentAmount;
                     self.render(self.data);
 
                 }
@@ -149,6 +150,10 @@ var News = jsmod.util.klass({
                   //非app内部页面
                   self.isOpenFromInternalApp = false;
               }
+          })
+
+          bridge.registerHandler('increaseCommment', function(data, responseCallback) {
+              self.$container.find('.comment-num').text(++self.commentAmount);
           })
 
           self.$container.delegate('.tap-source','click',function(){
