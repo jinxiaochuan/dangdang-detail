@@ -14,6 +14,8 @@ var TPL_NESWS = require('./tmpls/detail.tpl');
 
 var URL_NEWS = PATH_ORIGIN + PATH_NAME;
 
+var Empty = require('page/components/empty/empty.js');
+
 var News = jsmod.util.klass({
     initialize: function(option){
         this.option = option;
@@ -25,7 +27,7 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=137';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=10';
         // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
@@ -39,13 +41,17 @@ var News = jsmod.util.klass({
             data:data,
             jsonp:'callback',
             success: function(json){
-                if(json.data){
-                    console.log(json.data);
+                if(json.status == 1){
                     self.data = json.data;
                     self.commentAmount = self.data.newsDetail.commentAmount;
                     self.render(self.data);
-
+                    return;
                 }
+                var html = new Empty({
+                    word: json.msg
+                }).render();
+
+                self.$container.html(html);
             }
         })
 

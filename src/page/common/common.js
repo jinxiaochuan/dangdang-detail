@@ -74,3 +74,5 @@ $app.on('click',function(){
 $('.mod-dialog-frame').on('click',function(){
     dialog.hide({fade:true});
 });
+
+document.body.addEventListener('touchstart', function () {});  

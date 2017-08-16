@@ -12,6 +12,8 @@ var TPL_DISCOVERY_ACTIVITY = require('./tmpls/activity.tpl');
 
 var URL_DISCOVERY_ACTIVITY = PATH_ORIGIN + PATH_NAME;
 
+var Empty = require('page/components/empty/empty.js');
+
 var Activity = jsmod.util.klass({
     initialize: function(option){
         this.option = option;
@@ -22,7 +24,7 @@ var Activity = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200210&activityId=500';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200110&activityId=500';
         // URL_DISCOVERY_ACTIVITY = 'http://dev.im-dangdang.com/discovery/v1/activity/detail';
         var data={};
 
@@ -35,11 +37,17 @@ var Activity = jsmod.util.klass({
             data:data,
             jsonp:'callback',
             success:function(json){
-                if(json.data){
-                    console.log(json.data);
+                if(json.status == 1){
                     self.data = json.data;
                     self.render(self.data);
+                    return;
                 }
+
+                var html = new Empty({
+                    word: json.msg
+                }).render();
+
+                self.$container.html(html);
             }
         })
     },

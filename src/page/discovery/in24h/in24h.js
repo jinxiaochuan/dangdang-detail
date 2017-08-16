@@ -12,6 +12,8 @@ var TPL_DISCOVERY_IN24 = require('./tmpls/in24h.tpl');
 
 var URL_DISCOVERY_IN24 = PATH_ORIGIN + PATH_NAME;
 
+var Empty = require('page/components/empty/empty.js');
+
 var IN24H = jsmod.util.klass({
     initialize: function(option){
         this.option = option;
@@ -36,11 +38,16 @@ var IN24H = jsmod.util.klass({
             data: data,
             jsonp: 'callback',
             success: function (json) {
-                if (json.data) {
-                    console.log(json.data);
+                if (json.status == 1) {
                     self.data = json.data;
                     self.render(json.data);
+                    return;
                 }
+                var html = new Empty({
+                    word: json.msg
+                }).render();
+
+                self.$container.html(html);
             }
         })
     },

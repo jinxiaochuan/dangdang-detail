@@ -16,6 +16,8 @@ var TPL_ACTIVITY = require('./tmpls/activity.tpl');
 
 var TPL_COOPERATE = require('./tmpls/cooperate.tpl');
 
+var Empty = require('page/components/empty/empty.js');
+
 var TPL_MAP = {
     '1':TPL_NEWS,
     '2':TPL_ACTIVITY,
@@ -173,22 +175,22 @@ var CircleDetail = jsmod.util.klass({
             data: data,
             jsonp: 'callback',
             success: function(json){
-                if(json.data){
-                    console.log(json.data);
-
+                if(json.status == 1){
                     self.data = json.data;
-
                     var html = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:$.extend(json.data,{'isAdminIdentity':isAdminIdentity})}});
-
                     self.$container.html(html);
-
                     self.initAvatar();
-
                     self.deviceDetect();
-
                     self.initBridge();
-
+                    return;
                 }
+
+                var html = new Empty({
+                    word: json.msg
+                }).render();
+
+                self.$container.html(html);
+
             }
 
         })

@@ -21,7 +21,7 @@
         <a class="comment-wrap " href="javascript:void (0)"><i class="comment"></i>{% if data.newsDetail.commentAmount != 0 %}<span class="comment-num">{{ data.newsDetail.commentAmount }}</span>{% endif %}</a>
     </div>
     <div class="split-mark">
-        
+
     </div>
     {% if data.recommendNews.length %}
     <div class="news-list-wrap">

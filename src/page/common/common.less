@@ -199,6 +199,9 @@
                 a{
                     color: #007AFF;
                     margin-right: @base*45rem;
+                    &:active{
+                        color: #0061CC;
+                    }
                 }
                 .distance{
                     display: inline-block;
@@ -293,6 +296,9 @@
     line-height: @base*38rem;
     a{
         color: #6A7BA1;
+        &:active{
+            color: #556483;
+        }
     }
 }
 
@@ -416,12 +422,19 @@
 }
 
 .common-sign-list-wrap{
-    padding: @base*50rem 0;
+    width: 10rem;
+    margin: 0 -@base*30rem;
+    padding: @base*25rem 0;
     .setLine('top',#E5E5E5);
     .sign-wrap{
+        padding: 0 @base*30rem;
+
+        &:active{
+            background: #ECEFF0;
+        }
         .flex();
         .justify-content(space-between);
-        line-height: @base*30rem;
+        line-height: @base*80rem;
 
         .num{
             .font-dpr(15px);
@@ -430,7 +443,7 @@
         .arrow{
             display: block;
             width: @base*16rem;
-            height: @base*30rem;
+            height: @base*80rem;
             background: url("~assets/arrow_right.png") no-repeat center center;
             background-size: contain;
         }
@@ -467,6 +480,10 @@
     margin-top: @base*65rem;
     text-align: center;
     .edit-btn{
+        &:active{
+            border-color: #0D69CF;
+            color: #0D69CF;
+        }
         .border-radius-dpr(5px);
         .btn-border(@base*670rem,@base*94rem,17px,#FFFFFF,#007AFF,#007AFF);
         .font-dpr(17px);
@@ -477,15 +494,28 @@
     padding: @base*15rem 0 @base*50rem;
     text-align: center;
     .sign-btn{
+        &:active{
+            background-color: #0061CC;
+            color: #99BFEA;
+        }
         .border-radius(50%);
         .btn(@base*120rem,@base*120rem,18px,#007AFF,#FFFFFF);
         .font-dpr(17px);
         &.disabled{
             background: #E7E7E7;
             color: #888888;
+
+            &:active{
+                background-color: #DEDEDE;
+                color: #B0B0B0;
+            }
         }
     }
     .communicate-btn{
+        &:active{
+            background-color: #0061CC;
+            color: #99BFEA;
+        }
         .border-radius(50%);
         .btn(@base*120rem,@base*120rem,18px,#007AFF,#FFFFFF);
         .font-dpr(18px);

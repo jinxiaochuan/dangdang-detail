@@ -1,0 +1,25 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+
+.empty-wrap{
+    margin-top: @base*158rem;
+    .flex();
+    .flex-flow(column);
+    .align-items(center);
+    .justify-content(center);
+
+    .empty-icon{
+        width: @base*64rem;
+        height: @base*64rem;
+        background-size: @base*64rem;
+        .back-url-map(url('~assets/empty.png'),url('~assets/empty@1.5x.png'))
+    }
+
+    .empty-word{
+        margin-top: @base*34rem;
+        .font-dpr(19px);
+        color: #8D8D8D;
+    }
+}

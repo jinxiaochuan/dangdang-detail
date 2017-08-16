@@ -12,6 +12,8 @@ var TPL_COOPERATION = require('./tmpls/cooperate.tpl');
 
 var URL_COOPERATION = PATH_ORIGIN + PATH_NAME;
 
+var Empty = require('page/components/empty/empty.js');
+
 var Cooperate = jsmod.util.klass({
     initialize: function(option){
         this.option = option;
@@ -22,7 +24,7 @@ var Cooperate = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200110&coopId=6&viewUserId=200148';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200113&coopId=27&viewUserId=200110';
         // URL_COOPERATION = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
         var data={};
 
@@ -36,11 +38,16 @@ var Cooperate = jsmod.util.klass({
             data:data,
             jsonp:'callback',
             success:function(json){
-                if(json.data){
-                    console.log(json.data);
-                  self.data = json.data;
-                  self.render(json.data);
+                if(json.status == 1){
+                    self.data = json.data;
+                    self.render(json.data);
+                    return;
                 }
+                var html = new Empty({
+                    word: json.msg
+                }).render();
+
+                self.$container.html(html);
             }
         })
 
