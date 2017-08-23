@@ -41,7 +41,7 @@
 {% endif %}
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
-    <pre class="detail-content">{{ data.articleInfo.detail|safe }}</pre>
+    <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
     {% if data.articleInfo.detailImages.length %}
     {% for item in data.articleInfo.detailImages %}
     <img src="{{ item.pictureUrl }}" alt="">

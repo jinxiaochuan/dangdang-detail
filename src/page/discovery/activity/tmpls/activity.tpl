@@ -42,7 +42,7 @@
 {% endif %}
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
-    <pre class="detail-content">{{ data.activityInfo.detailContent }}</pre>
+    <div class="detail-content">{{ data.activityInfo.detailContent }}</div>
     {% for item in data.activityInfo.detailImages %}
     <img src="{{ item.pictureUrl }}" alt="">
     {% endfor %}

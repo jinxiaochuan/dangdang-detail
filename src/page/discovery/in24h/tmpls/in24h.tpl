@@ -36,7 +36,7 @@
 {% endif %}
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
-    <pre class="detail-content">{{ data.in24hInfo.detailContent }}</pre>
+    <div class="detail-content">{{ data.in24hInfo.detailContent }}</div>
     {% if data.in24hInfo.detailImages %}
     {% for item in data.in24hInfo.detailImages %}
     <img src="{{ item.pictureUrl }}" alt=""/>
