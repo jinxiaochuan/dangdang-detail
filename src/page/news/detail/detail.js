@@ -27,7 +27,7 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=10';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=2';
         // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
@@ -149,6 +149,16 @@ var News = jsmod.util.klass({
       /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
       setupWebViewJavascriptBridge(function(bridge){
 
+          if(!window.isIOS){
+              bridge.init(function(message, responseCallback) {
+
+              });
+          }
+
+          bridge.registerHandler('increaseCommment', function(data, responseCallback) {
+              self.$container.find('.comment-num').text(++self.commentAmount);
+          })
+
           bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
           bridge.callHandler('isOpenFromInternalApp',null,function(data){
@@ -156,10 +166,6 @@ var News = jsmod.util.klass({
                   //非app内部页面
                   self.isOpenFromInternalApp = false;
               }
-          })
-
-          bridge.registerHandler('increaseCommment', function(data, responseCallback) {
-              self.$container.find('.comment-num').text(++self.commentAmount);
           })
 
           self.$container.delegate('.tap-source','click',function(){
@@ -174,7 +180,7 @@ var News = jsmod.util.klass({
               })
           })
 
-          self.$container.delegate('.comment-wrap .comment','click',function(){
+          self.$container.delegate('.comment-wrap','click',function(){
               bridge.callHandler('tapComment')
           })
 

@@ -1,7 +1,7 @@
 <div class="common-circle-header">
     <div class="avatar-wrap">
         <a class="tap-avatar" href="javascript:void(0)">
-            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
+            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
         </a>
     </div>
 </div>
@@ -24,13 +24,13 @@
         {% endfor %}
         {% endif %}
     </div>
-    <div class="circle-news-code">
+    <!-- <div class="circle-news-code">
         <span class="name">{{ data.circleInfo.circleName }}</span>
         <div class="code-wrap">
             <img src="{{ data.circleInfo.twoDimensionCode.pictureUrl }}" alt="">
         </div>
         <span class="word">长按识别图中二维码</span>
-    </div>
+    </div> -->
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
     </div>
@@ -50,7 +50,7 @@
         </span>
 
         {% if data.articleInfo.isCanComment == 1 %}
-        <a class="comment-wrap " href="javascript:void (0)"><i class="comment"></i>{% if data.webShowInfo.commentCount != 0 %}<span class="comment-num">{{ data.webShowInfo.commentCount }}</span>{% endif %}</a>
+        <a class="comment-wrap" href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{% if data.webShowInfo.commentCount != 0 %}{{ data.webShowInfo.commentCount }}{% endif %}</span></a>
         {% endif %}
 
     </div>

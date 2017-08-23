@@ -1,7 +1,7 @@
 <div class="common-circle-header">
     <div class="avatar-wrap">
         <a class="tap-avatar" href="javascript:void(0)">
-            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
+            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
         </a>
     </div>
 </div>

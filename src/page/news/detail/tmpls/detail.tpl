@@ -18,7 +18,7 @@
     </div>
     <div class="comment-outer-wrap">
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
-        <a class="comment-wrap " href="javascript:void (0)"><i class="comment"></i>{% if data.newsDetail.commentAmount != 0 %}<span class="comment-num">{{ data.newsDetail.commentAmount }}</span>{% endif %}</a>
+        <a class="comment-wrap" href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{% if data.newsDetail.commentAmount != 0 %}{{ data.newsDetail.commentAmount }}{% endif %}</span></a>
     </div>
     <div class="split-mark">
 

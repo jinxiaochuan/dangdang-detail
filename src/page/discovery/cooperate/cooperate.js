@@ -62,7 +62,7 @@ var Cooperate = jsmod.util.klass({
 
         this.$container.html(html);
 
-        this.initAvatar();
+        // this.initAvatar();
 
         this.deviceDetect();
 

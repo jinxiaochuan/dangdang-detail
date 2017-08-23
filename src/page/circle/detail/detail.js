@@ -71,6 +71,16 @@ var CircleDetail = jsmod.util.klass({
 
             bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
+            if(!window.isIOS){
+                bridge.init(function(message, responseCallback) {
+
+                });
+            }
+
+            bridge.registerHandler('increaseCommment', function(data, responseCallback) {
+                self.$container.find('.comment-num').text(++self.commentCount);
+            })
+
             bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
                 self.$container.find('.sign-btn').removeClass('sign-btn').addClass('communicate-btn').text('沟通');
             })
@@ -140,7 +150,6 @@ var CircleDetail = jsmod.util.klass({
             "memberType":self.data.circleInfo.memberType,
             "showAccess":self.data.articleInfo.showAccess,
             "isCanComment":self.data.articleInfo.isCanComment,
-            "twoDimensionCode":self.data.circleInfo.twoDimensionCode.pictureUrl,
             "activityIsCanSignUp":self.data.articleInfo.activityInfo?self.data.articleInfo.activityInfo.isCanSignUp:null,
             "coopIsCanSignUp":self.data.articleInfo.coopInfo?self.data.articleInfo.coopInfo.isCanSignUp:null,
             "location":self.data.articleInfo.location,
@@ -161,8 +170,8 @@ var CircleDetail = jsmod.util.klass({
         var self = this;
 
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1130&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1118&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=970&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1178&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1265&isAdminIdentity=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
         var data = {},isAdminIdentity;
 
@@ -177,9 +186,10 @@ var CircleDetail = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    self.commentCount = json.data.webShowInfo.commentCount;
                     var html = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:$.extend(json.data,{'isAdminIdentity':isAdminIdentity})}});
                     self.$container.html(html);
-                    self.initAvatar();
+                    // self.initAvatar();
                     self.deviceDetect();
                     self.initBridge();
                     return;

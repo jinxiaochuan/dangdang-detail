@@ -1,7 +1,7 @@
 <div class="common-header">
     <div class="avatar-wrap">
         <a class="tap-avatar" href="javascript:void(0)">
-            <img class="avatar" src="{{ data.in24hInfo.userInfo.userImage }}" alt="">
+            <img class="avatar" src="{{ data.in24hInfo.userInfo.userImage }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
         </a>
     </div>
     <span class="name"><a class="tap-name" href="javascript:void(0)">{{ data.in24hInfo.userInfo.showName }}</a></span>
