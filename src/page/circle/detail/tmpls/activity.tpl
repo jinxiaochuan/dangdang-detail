@@ -1,5 +1,10 @@
-<div class="common-circle-header">
+<div class="common-circle-header my-gallery">
     <div class="avatar-wrap">
+        <!-- <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+            <a class="tap-avatar" href="{{ data.circleInfo.circleLogo.pictureUrl }}" itemprop="contentUrl" data-size="964x1024">
+                <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
+            </a>
+        </figure> -->
         <a class="tap-avatar" href="javascript:void(0)">
             <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
         </a>
