@@ -12,7 +12,7 @@ var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
 
-var PATH_NAME = '/circle/v1/circle/base';
+var PATH_NAME = '/ddweb/v1/circle/base';
 
 var TPL_CIRCLE_INDEX = require('./tmpls/index.tpl');
 
@@ -30,8 +30,8 @@ var CircleIndex = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/circle/v1/circle/base?circleId=14865973&userId=200072';
-        // URL_INDEX = 'http://dev.im-dangdang.com/circle/v1/circle/base';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com//ddweb/v1/circle/base?circleId=14865973&userId=200072';
+        // URL_INDEX = 'http://dev.im-dangdang.com//ddweb/v1/circle/base';
 
         var data = {};
 
