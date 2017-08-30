@@ -44,7 +44,7 @@
 
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
-    <div class="detail-content">{{ data.detailContent }}</div>
+    <pre class="detail-content">{{ data.detailContent }}</pre>
     {% if data.detailImageList %}
     {% for item in data.detailImageList %}
     <img src="{{ item.pictureUrl }}" alt=""/>
