@@ -101,7 +101,9 @@ var Cooperate = jsmod.util.klass({
             "longitude":self.data.longitude,
             "latitude":self.data.latitude,
             "userImage":self.data.userImage,
-            "title":self.data.title
+            "title":self.data.title,
+            "detailImageList":self.data.detailImageList,
+            "detailContent":self.data.detailContent
         }
 
         /*这段代码是固定的，必须要放到js中*/

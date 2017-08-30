@@ -1,7 +1,7 @@
-require('lib/third/photoswipe/dist/photoswipe.css');
-require('lib/third/photoswipe/dist/default-skin/default-skin.css');
-var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
-var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
+// require('lib/third/photoswipe/dist/photoswipe.css');
+// require('lib/third/photoswipe/dist/default-skin/default-skin.css');
+// var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
+// var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
 require('page/common/common.js');
 
 require('./index.less');
@@ -27,10 +27,100 @@ var CircleIndex = jsmod.util.klass({
         this.getAjax();
     },
 
+    initBridge: function(){
+        var self = this;
+
+        self.initInfo();
+
+        /*这段代码是固定的，必须要放到js中*/
+        function setupWebViewJavascriptBridge(callback) {
+
+          if(window.isIOS){
+            if (window.WebViewJavascriptBridge) {
+              return callback(WebViewJavascriptBridge);
+            }
+            if (window.WVJBCallbacks) {
+              return window.WVJBCallbacks.push(callback);
+            }
+            window.WVJBCallbacks = [callback];
+            var WVJBIframe = document.createElement('iframe');
+            WVJBIframe.style.display = 'none';
+            WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+            document.documentElement.appendChild(WVJBIframe);
+            setTimeout(function () {
+              document.documentElement.removeChild(WVJBIframe)
+            }, 0)
+          }else{
+            if(window.WebViewJavascriptBridge){
+              callback(WebViewJavascriptBridge);
+            }else{
+              document.addEventListener('WebViewJavascriptBridgeReady',function(){
+                callback(WebViewJavascriptBridge);
+              },false)
+            }
+          }
+
+        }
+
+        /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
+        setupWebViewJavascriptBridge(function(bridge){
+
+            bridge.callHandler('baseInfo',self.baseInfo,function(){})
+
+            self.$container.delegate('.tap-avatar','click',function(){
+
+                bridge.callHandler('clickCircleLogo')
+
+            })
+
+            self.$container.delegate('.circle-handle-account','click',function(){
+
+                bridge.callHandler('clickCircleAccount')
+
+            })
+
+            self.$container.delegate('.circle-handle-location','click',function(){
+
+                bridge.callHandler('clickLocation')
+
+            })
+
+            self.$container.delegate('.circle-handle-look','click',function(){
+
+                bridge.callHandler('clickPublicContent')
+
+            })
+
+            self.$container.delegate('.circle-home','click',function(){
+
+                bridge.callHandler('enterCircle')
+
+            })
+
+
+        })
+
+
+    },
+
+    initInfo: function(){
+        var self = this;
+
+        self.baseInfo = {
+            "circleId": self.data.baseInfo.circleId,
+            "circleName": self.data.baseInfo.circleName,
+            "circleLogo": self.data.baseInfo.circleLogo,
+            "memberType": self.data.baseInfo.memberType,
+            "latitude": self.data.baseInfo.latitude,
+            "longitude": self.data.baseInfo.longitude,
+            "location": self.data.baseInfo.location
+        }
+    },
+
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com//ddweb/v1/circle/base?circleId=14865973&userId=200072';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com//ddweb/v1/circle/base?circleId=1623375068&userId=200072';
         // URL_INDEX = 'http://dev.im-dangdang.com//ddweb/v1/circle/base';
 
         var data = {};
@@ -47,6 +137,8 @@ var CircleIndex = jsmod.util.klass({
                 if(json.status == 1){
                     self.data = json.data;
                     self.render(self.data);
+                    self.deviceDetect();
+                    self.initBridge();
                     return;
                 }
 
@@ -55,8 +147,6 @@ var CircleIndex = jsmod.util.klass({
                 }).render();
 
                 self.$container.html(html);
-
-
 
             }
         })
@@ -76,7 +166,18 @@ var CircleIndex = jsmod.util.klass({
 
         this.$container.html(html);
 
-        this.initPhotoSwipe();
+        // this.initPhotoSwipe();
+    },
+
+    deviceDetect: function () {
+        var self = this;
+
+        var u = window.navigator.userAgent;
+
+        window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+
+        window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
     },
 
     initPhotoSwipe: function(){

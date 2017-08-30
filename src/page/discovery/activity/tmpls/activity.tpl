@@ -43,9 +43,11 @@
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
     <div class="detail-content">{{ data.activityInfo.detailContent }}</div>
+    {% if data.activityInfo.detailImages %}
     {% for item in data.activityInfo.detailImages %}
     <img src="{{ item.pictureUrl }}" alt="">
     {% endfor %}
+    {% endif %}
 </div>
 <div class="common-address">
     <a class="tap-location" href="javascript:void(0)">{{ (data.activityInfo.location|json_parse).name }}</a>

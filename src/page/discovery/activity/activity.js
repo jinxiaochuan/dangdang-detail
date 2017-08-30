@@ -102,7 +102,9 @@ var Activity = jsmod.util.klass({
           "longitude":self.data.activityInfo.longitude,
           "latitude":self.data.activityInfo.latitude,
           "userImage":self.data.activityInfo.userInfo.userImage,
-          "title": self.data.activityInfo.title
+          "title": self.data.activityInfo.title,
+          "detailImages": self.data.activityInfo.detailImages,
+          "detailContent": self.data.activityInfo.detailContent
       }
 
       /*这段代码是固定的，必须要放到js中*/

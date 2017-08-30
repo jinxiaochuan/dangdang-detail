@@ -1,7 +1,7 @@
-require('lib/third/photoswipe/dist/photoswipe.css');
-require('lib/third/photoswipe/dist/default-skin/default-skin.css');
-var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
-var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
+// require('lib/third/photoswipe/dist/photoswipe.css');
+// require('lib/third/photoswipe/dist/default-skin/default-skin.css');
+// var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
+// var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
 require('page/common/common.js');
 
 require('./intro.less');
@@ -27,6 +27,75 @@ var MediaIntro = jsmod.util.klass({
         this.getAjax();
     },
 
+    initBridge: function(){
+        var self = this;
+
+        self.initInfo();
+
+        /*这段代码是固定的，必须要放到js中*/
+        function setupWebViewJavascriptBridge(callback) {
+
+          if(window.isIOS){
+            if (window.WebViewJavascriptBridge) {
+              return callback(WebViewJavascriptBridge);
+            }
+            if (window.WVJBCallbacks) {
+              return window.WVJBCallbacks.push(callback);
+            }
+            window.WVJBCallbacks = [callback];
+            var WVJBIframe = document.createElement('iframe');
+            WVJBIframe.style.display = 'none';
+            WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+            document.documentElement.appendChild(WVJBIframe);
+            setTimeout(function () {
+              document.documentElement.removeChild(WVJBIframe)
+            }, 0)
+          }else{
+            if(window.WebViewJavascriptBridge){
+              callback(WebViewJavascriptBridge);
+            }else{
+              document.addEventListener('WebViewJavascriptBridgeReady',function(){
+                callback(WebViewJavascriptBridge);
+              },false)
+            }
+          }
+
+        }
+
+        /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
+        setupWebViewJavascriptBridge(function(bridge){
+
+            bridge.callHandler('baseInfo',self.baseInfo,function(){})
+
+            self.$container.delegate('.tap-avatar','click',function(){
+
+                bridge.callHandler('clickMediaLogo')
+
+            })
+
+            self.$container.delegate('.media-home','click',function(){
+
+                bridge.callHandler('mediaMainPage')
+
+            })
+
+
+        })
+
+
+    },
+
+    initInfo: function(){
+        var self = this;
+
+        self.baseInfo = {
+            "mediaName": self.data.mediaInfo.mediaName,
+            "mediaId": self.data.mediaInfo.mediaId,
+            "mediaSlogan": self.data.mediaInfo.mediaSlogan,
+            "mediaLogo": self.data.mediaInfo.mediaLogo
+        }
+    },
+
     getAjax: function(){
         var self = this;
 
@@ -47,6 +116,9 @@ var MediaIntro = jsmod.util.klass({
                 if(json.status == 1){
                     self.data = json.data;
                     self.render(self.data);
+                    self.deviceDetect();
+                    self.initBridge();
+                    // self.initPhotoSwipe();
                     return;
                 }
 
@@ -55,8 +127,6 @@ var MediaIntro = jsmod.util.klass({
                 }).render();
 
                 self.$container.html(html);
-
-
 
             }
         })
@@ -73,7 +143,6 @@ var MediaIntro = jsmod.util.klass({
 
         this.$container.html(html);
 
-        this.initPhotoSwipe();
     },
 
     initPhotoSwipe: function(){
@@ -287,6 +356,17 @@ var MediaIntro = jsmod.util.klass({
 
         // execute above function
         initPhotoSwipeFromDOM('.my-gallery');
+
+    },
+
+    deviceDetect: function () {
+        var self = this;
+
+        var u = window.navigator.userAgent;
+
+        window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+
+        window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
 
     },
 })
