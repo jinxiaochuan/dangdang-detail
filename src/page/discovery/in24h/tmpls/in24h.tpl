@@ -36,7 +36,7 @@
 {% endif %}
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
-    <pre class="detail-content">{{ data.in24hInfo.detailContent }}</pre>
+    <div class="detail-content">{{ data.in24hInfo.detailContent|safe }}</div>
     {% if data.in24hInfo.detailImages %}
     {% for item in data.in24hInfo.detailImages %}
     <img src="{{ item.pictureUrl }}" alt=""/>
@@ -86,7 +86,7 @@
 {% if data.in24hInfo.review || data.in24hInfo.reviewImages %}
 <div class="common-review-wrap">
     <p class="review-title">回顾</p>
-    <pre class="review-content">{{ data.in24hInfo.review }}</pre>
+    <pre class="review-content">{{ data.in24hInfo.review|safe }}</pre>
     {% if data.in24hInfo.reviewImages %}
     {% for item in data.in24hInfo.reviewImages %}
     <img src="{{ item.pictureUrl }}" alt=""/>

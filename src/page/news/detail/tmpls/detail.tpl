@@ -20,9 +20,11 @@
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
         <a class="comment-wrap" href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{% if data.newsDetail.commentAmount != 0 %}{{ data.newsDetail.commentAmount }}{% endif %}</span></a>
     </div>
+    {% if data.recommendNews.length %}
     <div class="split-mark">
 
     </div>
+    {% endif %}
     {% if data.recommendNews.length %}
     <div class="news-list-wrap">
         <div class="news-list-title">

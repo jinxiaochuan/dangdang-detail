@@ -44,7 +44,7 @@
 
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
-    <pre class="detail-content">{{ data.detailContent }}</pre>
+    <div class="detail-content">{{ data.detailContent|safe }}</div>
     {% if data.detailImageList %}
     {% for item in data.detailImageList %}
     <img src="{{ item.pictureUrl }}" alt=""/>
@@ -93,7 +93,7 @@
 {% if data.review || data.reviewImageList %}
 <div class="common-review-wrap">
     <p class="review-title">回顾</p>
-    <pre class="review-content">{{ data.review }}</pre>
+    <pre class="review-content">{{ data.review|safe }}</pre>
     {% if data.reviewImageList %}
     {% for item in data.reviewImageList %}
     <img src="{{ item.pictureUrl }}" alt=""/>
