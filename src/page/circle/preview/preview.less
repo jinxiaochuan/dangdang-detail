@@ -1,0 +1,22 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.preview-fix{
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    width: @base*750rem;
+    margin-left: -@base*375rem;
+    padding: 0 @base*30rem;
+    height: @base*92rem;
+    line-height: @base*92rem;
+    color: #8C8C8C;
+    background: #C6E0F8;
+    span{
+        .font-dpr(12px);
+    }
+    .close-icon{
+        float: right;
+    }
+}
