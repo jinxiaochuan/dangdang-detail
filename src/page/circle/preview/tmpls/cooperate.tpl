@@ -27,12 +27,16 @@
 
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
-    <pre class="detail-content">{{ data.articleInfo.detail|safe }}</pre>
+    <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
     {% if data.articleInfo.detailImages.length %}
     {% for item in data.articleInfo.detailImages %}
     <img src="{{ item.pictureUrl }}" alt=""/>
     {% endfor %}
     {% endif %}
+</div>
+
+<div class="common-publish-wrap">
+    <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
 </div>
 
 <div class="common-deadline-wrap">

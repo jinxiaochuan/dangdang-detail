@@ -98,7 +98,7 @@
 {% if data.articleInfo.activityInfo.review || data.articleInfo.activityInfo.reviewImages %}
 <div class="common-review-wrap">
     <p class="review-title">回顾</p>
-    <pre class="review-content">{{ data.articleInfo.activityInfo.review|safe }}</pre>
+    <div class="review-content">{{ data.articleInfo.activityInfo.review|safe }}</div>
     {% if data.articleInfo.activityInfo.reviewImages %}
     {% for item in data.articleInfo.activityInfo.reviewImages %}
     <img src="{{ item.pictureUrl }}" alt=""/>

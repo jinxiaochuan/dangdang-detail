@@ -13,7 +13,7 @@
     </div>
     {% endif %}
     <div class="circle-news-detail">
-        <pre class="detail-content">{{ data.articleInfo.detail|safe }}</pre>
+        <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
         {% if data.articleInfo.detailImages.length %}
         {% for item in data.articleInfo.detailImages %}
         {% if loop.first %}
@@ -23,6 +23,16 @@
         {% endif %}
         {% endfor %}
         {% endif %}
+    </div>
+    <div class="common-comment-wrap">
+        <span>
+            <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
+        </span>
+
+        {% if data.articleInfo.isCanComment == 1 %}
+        <a class="comment-wrap" href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{% if data.webShowInfo.commentCount != 0 %}{{ data.webShowInfo.commentCount }}{% endif %}</span></a>
+        {% endif %}
+
     </div>
 </div>
 
