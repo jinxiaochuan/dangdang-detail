@@ -146,10 +146,6 @@
   text-align: center;
   background: @bgColor;
   color: @fontColor;
-
-  &:hover {
-    opacity: 0.9;
-  }
 }
 
 
@@ -163,10 +159,6 @@
   background: @bgColor;
   color: @fontColor;
   border: 1px solid @borderColor;
-
-  &:hover {
-    opacity: 0.9;
-  }
 }
 
 .clamp(@line){
@@ -293,7 +285,7 @@
 }
 
 .setLine('top',@color:#D8D8D8){
-  &:before{
+  &:after{
     content: '';
     position: absolute;
     left: 0;

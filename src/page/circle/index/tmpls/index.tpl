@@ -6,7 +6,7 @@
             </a>
         </figure> -->
         <a class="tap-avatar" href="javascript:void(0)">
-            <img class="avatar" src="{{ data.baseInfo.circleLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_200,limit_0" alt="">
+            <img class="avatar" src="{{ data.baseInfo.circleLogo.pictureUrl }}" alt="">
         </a>
     </div>
     {% if data.baseInfo.accountNum %}

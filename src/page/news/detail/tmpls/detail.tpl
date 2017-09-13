@@ -1,4 +1,4 @@
-<div class="news-detail">
+<div class="news-detail-wrap">
     <div class="news-detail-header">
         <p class="title">
             {{ data.newsDetail.title }}

@@ -53,6 +53,7 @@ body{
     word-break: break-all;
     .font-dpr(15px)!important;
     line-height: @base*42rem!important;
+    .setLine('bottom',#DEE0E7);
     *{
         .font-dpr(15px)!important;
         line-height: @base*42rem!important;
@@ -69,5 +70,9 @@ body{
         .border-radius(10px);
         .btn(@base*670rem,@base*94rem,34px,#007AFF,#FFFFFF);
         .font-dpr(17px);
+        &:active{
+            background: #0070EB;
+            color: #99C5F7;
+        }
     }
 }

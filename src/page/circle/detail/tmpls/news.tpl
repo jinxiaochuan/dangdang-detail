@@ -1,7 +1,7 @@
 <div class="common-circle-header">
     <div class="avatar-wrap">
         <a class="tap-avatar" href="javascript:void(0)">
-            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
+            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
         </a>
     </div>
 </div>
@@ -14,15 +14,6 @@
     {% endif %}
     <div class="circle-news-detail">
         <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
-        {% if data.articleInfo.detailImages.length %}
-        {% for item in data.articleInfo.detailImages %}
-        {% if loop.first %}
-        <img class="first" src="{{ item.pictureUrl }}" alt="">
-        {% else %}
-        <img src="{{ item.pictureUrl }}" alt="">
-        {% endif %}
-        {% endfor %}
-        {% endif %}
     </div>
     <!-- <div class="circle-news-code">
         <span class="name">{{ data.circleInfo.circleName }}</span>

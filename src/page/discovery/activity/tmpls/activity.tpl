@@ -43,11 +43,6 @@
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
     <div class="detail-content">{{ data.activityInfo.detailContent|safe }}</div>
-    {% if data.activityInfo.detailImages %}
-    {% for item in data.activityInfo.detailImages %}
-    <img src="{{ item.pictureUrl }}" alt="">
-    {% endfor %}
-    {% endif %}
 </div>
 <div class="common-address">
     <a class="tap-location" href="javascript:void(0)">{{ (data.activityInfo.location|json_parse).name }}</a>
@@ -92,11 +87,6 @@
 <div class="common-review-wrap">
     <p class="review-title">回顾</p>
     <pre class="review-content">{{ data.activityInfo.review|safe }}</pre>
-    {% if data.activityInfo.reviewImages %}
-    {% for item in data.activityInfo.reviewImages %}
-    <img src="{{ item.pictureUrl }}" alt=""/>
-    {% endfor %}
-    {% endif %}
 </div>
 {% endif %}
 
