@@ -8,6 +8,8 @@ require('./index.less');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+
 var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
@@ -29,38 +31,6 @@ var CircleIndex = jsmod.util.klass({
 
     initBridge: function(){
         var self = this;
-
-        self.initInfo();
-
-        /*这段代码是固定的，必须要放到js中*/
-        function setupWebViewJavascriptBridge(callback) {
-
-          if(window.isIOS){
-            if (window.WebViewJavascriptBridge) {
-              return callback(WebViewJavascriptBridge);
-            }
-            if (window.WVJBCallbacks) {
-              return window.WVJBCallbacks.push(callback);
-            }
-            window.WVJBCallbacks = [callback];
-            var WVJBIframe = document.createElement('iframe');
-            WVJBIframe.style.display = 'none';
-            WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-            document.documentElement.appendChild(WVJBIframe);
-            setTimeout(function () {
-              document.documentElement.removeChild(WVJBIframe)
-            }, 0)
-          }else{
-            if(window.WebViewJavascriptBridge){
-              callback(WebViewJavascriptBridge);
-            }else{
-              document.addEventListener('WebViewJavascriptBridgeReady',function(){
-                callback(WebViewJavascriptBridge);
-              },false)
-            }
-          }
-
-        }
 
         /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
         setupWebViewJavascriptBridge(function(bridge){
@@ -103,17 +73,17 @@ var CircleIndex = jsmod.util.klass({
 
     },
 
-    initInfo: function(){
-        var self = this;
-
-        self.baseInfo = {
-            "circleId": self.data.baseInfo.circleId,
-            "circleName": self.data.baseInfo.circleName,
-            "circleLogo": self.data.baseInfo.circleLogo,
-            "memberType": self.data.baseInfo.memberType,
-            "latitude": self.data.baseInfo.latitude,
-            "longitude": self.data.baseInfo.longitude,
-            "location": self.data.baseInfo.location
+    initBase: function(data){
+        this.baseInfo = {
+            "circleId": data.baseInfo.circleId,
+            "circleName": data.baseInfo.circleName,
+            "circleLogo": data.baseInfo.circleLogo,
+            "memberType": data.baseInfo.memberType,
+            "latitude": data.baseInfo.latitude,
+            "longitude": data.baseInfo.longitude,
+            "location": data.baseInfo.location,
+            "publicSchool": data.baseInfo.publicSchool,
+            "publicWork": data.baseInfo.publicWork
         }
     },
 
@@ -136,8 +106,8 @@ var CircleIndex = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    self.initBase(json.data);
                     self.render(self.data);
-                    self.deviceDetect();
                     self.initBridge();
                     return;
                 }
@@ -166,17 +136,9 @@ var CircleIndex = jsmod.util.klass({
 
         this.$container.html(html);
 
-        // this.initPhotoSwipe();
-    },
-
-    deviceDetect: function () {
-        var self = this;
-
-        var u = window.navigator.userAgent;
-
-        window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-
-        window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        this.$container.find('.circle-intro').delegate('a','click',function(e){
+            e.preventDefault();
+        })
 
     },
 

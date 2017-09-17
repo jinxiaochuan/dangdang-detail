@@ -66,7 +66,7 @@ var AppLoaders=[{
 
 webpackLoaders = webpackLoaders.concat(AppLoaders);
 
-//    webpackPlugins.push(
+// webpackPlugins.push(
 //    new CommonsChunkPlugin({
 //        name:conf.CONFIG_BUILD.staticRoot+'/common',
 //        minChunks:5

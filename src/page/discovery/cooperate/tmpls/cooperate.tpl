@@ -88,7 +88,7 @@
 {% if data.review || data.reviewImageList %}
 <div class="common-review-wrap">
     <p class="review-title">回顾</p>
-    <pre class="review-content">{{ data.review|safe }}</pre>
+    <div class="review-content">{{ data.review|safe }}</div>
 </div>
 {% endif %}
 

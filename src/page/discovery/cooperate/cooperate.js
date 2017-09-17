@@ -2,6 +2,10 @@ require('page/common/common.js');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var trans = require('lib/self/trans.js');
+
+var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+
 var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
@@ -24,8 +28,8 @@ var Cooperate = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200110&coopId=152&viewUserId=200110';
-        // URL_COOPERATION = 'http://dev.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200110&coopId=1376357&viewUserId=200110';
+        // URL_COOPERATION = 'http://app.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
         var data={};
 
         data.userId=jsmod.util.url.getParam(HREF_ORIGIN,'userId');
@@ -40,6 +44,7 @@ var Cooperate = jsmod.util.klass({
             success:function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    self.initBase(json.data);
                     self.render(json.data);
                     return;
                 }
@@ -54,6 +59,10 @@ var Cooperate = jsmod.util.klass({
     },
 
     render: function(data){
+        data.detailContent = trans(data.detailContent);
+        if(data.review || data.reviewImageList){
+            data.review = trans(data.review);
+        }
         var html = swig.render(TPL_COOPERATION,{
             locals:{
                 data:data
@@ -62,79 +71,31 @@ var Cooperate = jsmod.util.klass({
 
         this.$container.html(html);
 
-        // this.initAvatar();
-
-        this.deviceDetect();
-
         this.initBridge();
     },
 
-    initAvatar: function(){
-        var width_avatar = this.$container.find('.tap-avatar').width();
-        jsmod.util.stretchImg($('.avatar')[0],width_avatar,width_avatar,true,false);
-    },
-
-    deviceDetect: function () {
-        var self = this;
-
-        var u = window.navigator.userAgent;
-
-        window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-
-        window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
+    initBase: function(data){
+        this.baseInfo = {
+            "applyStatus":data.applyStatus,
+            "showAccess":data.showAccess,
+            "userShowName":data.userShowName,
+            "userId":data.userId,
+            "headImage":data.headImage,
+            "isFinished":data.isFinished,
+            "coopId":data.webInfo.coopId,
+            "isCanSignUp":data.isCanSignUp,
+            "location":data.location,
+            "longitude":data.longitude,
+            "latitude":data.latitude,
+            "userImage":data.userImage,
+            "title":data.title,
+            "detailImageList":data.detailImageList,
+            "detailContent":data.detailContent
+        }
     },
 
     initBridge: function(){
         var self = this;
-
-        self.baseInfo = {
-            "applyStatus":self.data.applyStatus,
-            "showAccess":self.data.showAccess,
-            "userShowName":self.data.userShowName,
-            "userId":self.data.userId,
-            "headImage":self.data.headImage,
-            "isFinished":self.data.isFinished,
-            "coopId":self.data.webInfo.coopId,
-            "isCanSignUp":self.data.isCanSignUp,
-            "location":self.data.location,
-            "longitude":self.data.longitude,
-            "latitude":self.data.latitude,
-            "userImage":self.data.userImage,
-            "title":self.data.title,
-            "detailImageList":self.data.detailImageList,
-            "detailContent":self.data.detailContent
-        }
-
-        /*这段代码是固定的，必须要放到js中*/
-        function setupWebViewJavascriptBridge(callback) {
-
-            if(window.isIOS){
-                if (window.WebViewJavascriptBridge) {
-                    return callback(WebViewJavascriptBridge);
-                }
-                if (window.WVJBCallbacks) {
-                    return window.WVJBCallbacks.push(callback);
-                }
-                window.WVJBCallbacks = [callback];
-                var WVJBIframe = document.createElement('iframe');
-                WVJBIframe.style.display = 'none';
-                WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-                document.documentElement.appendChild(WVJBIframe);
-                setTimeout(function () {
-                    document.documentElement.removeChild(WVJBIframe)
-                }, 0)
-            }else{
-                if(window.WebViewJavascriptBridge){
-                    callback(WebViewJavascriptBridge);
-                }else{
-                    document.addEventListener('WebViewJavascriptBridgeReady',function(){
-                        callback(WebViewJavascriptBridge);
-                    },false)
-                }
-            }
-
-        }
 
         /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
         setupWebViewJavascriptBridge(function(bridge) {

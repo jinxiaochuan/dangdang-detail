@@ -4,6 +4,8 @@ require('./detail.less');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+
 var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
@@ -52,6 +54,10 @@ var News = jsmod.util.klass({
                 }).render();
 
                 self.$container.html(html);
+
+                self.$container.find('.news-detail-main').delegate('a','click',function(e){
+                    e.preventDefault();
+                })
             }
         })
 
@@ -80,24 +86,11 @@ var News = jsmod.util.klass({
 
         this.$container.html(html);
 
-        this.deviceDetect();
-
         this.initAvatar();
 
         this.initBridge();
 
     },
-
-    deviceDetect: function () {
-      var self = this;
-
-      var u = window.navigator.userAgent;
-
-      window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-
-      window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
-  },
 
   initBridge: function(){
       var self = this;
@@ -114,36 +107,6 @@ var News = jsmod.util.klass({
 
       self.nameInfo = {
           mediaId:self.data.newsDetail.mediaId
-      }
-
-      function setupWebViewJavascriptBridge(callback){
-
-          if(window.isIOS){
-              if(window.WebViewJavascriptBridge){
-                  return callback(WebViewJavascriptBridge);
-              }
-              if(window.WVJBCallbacks){
-                  return window.WVJBCallbacks.push(callback);
-              }
-              window.WVJBCallbacks = [callback];
-              var WVJBIframe = document.createElement('iframe');
-              WVJBIframe.style.display = 'none';
-              WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-              document.documentElement.appendChild(WVJBIframe);
-              setTimeout(function () {
-                  document.documentElement.removeChild(WVJBIframe)
-              }, 0)
-
-          }else {
-              if(window.WebViewJavascriptBridge){
-                  callback(WebViewJavascriptBridge)
-              }else {
-                  document.addEventListener('WebViewJavascriptBridgeReady',function(){
-                      callback(WebViewJavascriptBridge)
-                  },false)
-              }
-          }
-
       }
 
       /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/

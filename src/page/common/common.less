@@ -5,6 +5,8 @@
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing:    border-box;
+  -o-box-sizing:      border-box;
+  -ms-box-sizing:     border-box;
   box-sizing:         border-box;
 }
 
@@ -121,8 +123,9 @@
 }
 
 .container{
+    .box-sizing();
     margin: 0 auto;
-    width: 10rem;
+    width: 100%;
     padding: @base*50rem @base*30rem @base*220rem;
 
     a{
@@ -288,16 +291,15 @@
     }
     .detail-content{
         margin-top: @base*25rem;
-        // padding-left: @base*50rem;
         .font-dpr(17px);
-        color: #000000;
-        line-height: @base*54rem;
         word-break: break-all;
         ul{
             list-style: disc inside;
+            padding-left: 1em;
         }
         ol{
             list-style: decimal inside;
+            padding-left: 1em;
         }
     }
     img{
@@ -323,6 +325,11 @@
     .align-items(center);
     .justify-content(space-between);
     line-height: @base*38rem;
+
+    .access{
+        .flex();
+        .align-items(center);
+    }
     .publish-time{
         .font-dpr(12px);
         color: #828282;
@@ -355,6 +362,17 @@
     }
 
     .comment-wrap{
+        &:active{
+            i{
+                &.comment{
+                    background-image: url("~assets/comment_icon_active.png");
+                }
+            }
+
+            .comment-num{
+                color: #ABABAB;
+            }
+        }
         .flex();
         .align-items(center);
         i{
@@ -480,14 +498,20 @@
     }
     .review-content{
         margin-top: @base*25rem;
-        // padding-left: @base*50rem;
         .font-dpr(17px);
-        color: #000000;
-        line-height: @base*54rem;
+        word-break: break-all;
+        ul{
+            list-style: disc inside;
+            padding-left: 1em;
+        }
+        ol{
+            list-style: decimal inside;
+            padding-left: 1em;
+        }
     }
     img{
         display: block;
-        margin-top: @base*20rem;
+        // margin-top: @base*20rem;
         width: 100%;
     }
 }
@@ -556,7 +580,6 @@
         height: @base*130rem;
         border: @base*4rem solid #FFFFFF;
         .border-radius(50%);
-        overflow: hidden;
         background: #FFFFFF;
         figure{
             display: block;
@@ -567,9 +590,11 @@
             display: block;
             width: 100%;
             height: 100%;
+            .border-radius(50%);
             .avatar{
                 width: 100%;
                 height: 100%;
+                .border-radius(50%);
             }
         }
     }
@@ -593,11 +618,17 @@
     .circle-news-detail{
         margin-top: @base*66rem;
         .detail-content{
-            .font-dpr(19px);
-            color: #000000;
-            line-height: @base*64rem;
+            .font-dpr(17px);
             margin-bottom: 10px;
             word-break: break-all;
+            ul{
+                list-style: disc inside;
+                padding-left: 1em;
+            }
+            ol{
+                list-style: decimal inside;
+                padding-left: 1em;
+            }
         }
         img{
             display: block;

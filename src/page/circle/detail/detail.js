@@ -6,6 +6,10 @@ require('page/common/common.js');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var trans = require('lib/self/trans.js');
+
+var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+
 var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
@@ -38,39 +42,6 @@ var CircleDetail = jsmod.util.klass({
     initBridge: function(){
         var self = this;
 
-        self.initInfo();
-
-        /*这段代码是固定的，必须要放到js中*/
-        function setupWebViewJavascriptBridge(callback) {
-
-          if(window.isIOS){
-            if (window.WebViewJavascriptBridge) {
-              return callback(WebViewJavascriptBridge);
-            }
-            if (window.WVJBCallbacks) {
-              return window.WVJBCallbacks.push(callback);
-            }
-            window.WVJBCallbacks = [callback];
-            var WVJBIframe = document.createElement('iframe');
-            WVJBIframe.style.display = 'none';
-            WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-            document.documentElement.appendChild(WVJBIframe);
-            setTimeout(function () {
-              document.documentElement.removeChild(WVJBIframe)
-            }, 0)
-          }else{
-            if(window.WebViewJavascriptBridge){
-              callback(WebViewJavascriptBridge);
-            }else{
-              document.addEventListener('WebViewJavascriptBridgeReady',function(){
-                callback(WebViewJavascriptBridge);
-              },false)
-            }
-          }
-
-        }
-
-        /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
         setupWebViewJavascriptBridge(function(bridge){
 
             bridge.callHandler('baseInfo',self.baseInfo,function(){})
@@ -141,32 +112,29 @@ var CircleDetail = jsmod.util.klass({
 
     },
 
-    initInfo: function(){
-        var self = this;
-
-        self.baseInfo = {
-            "userId":self.data.webShowInfo.userId,
-            "targetId":self.data.articleInfo.articleId,
-            "articleId":self.data.articleInfo.articleId,
-            "type":self.data.articleInfo.articleType,
-            "circleId":self.data.circleInfo.circleId,
-            "circleName":self.data.circleInfo.circleName,
-            "memberType":self.data.circleInfo.memberType,
-            "showAccess":self.data.articleInfo.showAccess,
-            "isCanComment":self.data.articleInfo.isCanComment,
-            "activityIsCanSignUp":self.data.articleInfo.activityInfo?self.data.articleInfo.activityInfo.isCanSignUp:null,
-            "coopIsCanSignUp":self.data.articleInfo.coopInfo?self.data.articleInfo.coopInfo.isCanSignUp:null,
-            "location":self.data.articleInfo.location,
-            "latitude":self.data.articleInfo.latitude,
-            "longitude":self.data.articleInfo.longitude,
-            "pictureUrl":self.data.circleInfo.circleLogo.pictureUrl,
-            "articleTitle":self.data.articleInfo.articleTitle
+    initBase: function(data){
+        this.baseInfo = {
+            "userId": data.webShowInfo.userId,
+            "targetId": data.articleInfo.articleId,
+            "articleId": data.articleInfo.articleId,
+            "type": data.articleInfo.articleType,
+            "circleId": data.circleInfo.circleId,
+            "circleName": data.circleInfo.circleName,
+            "memberType": data.circleInfo.memberType,
+            "showAccess": data.articleInfo.showAccess,
+            "isCanComment": data.articleInfo.isCanComment,
+            "activityIsCanSignUp": data.articleInfo.activityInfo ? data.articleInfo.activityInfo.isCanSignUp : null,
+            "coopIsCanSignUp": data.articleInfo.coopInfo ? data.articleInfo.coopInfo.isCanSignUp : null,
+            "location": data.articleInfo.location,
+            "latitude": data.articleInfo.latitude,
+            "longitude": data.articleInfo.longitude,
+            "pictureUrl": data.circleInfo.circleLogo.pictureUrl,
+            "articleTitle": data.articleInfo.articleTitle
         }
 
-        self.logoInfo = {
-            "imgUrl":self.data.circleInfo.circleLogo
+        this.logoInfo = {
+            "imgUrl": data.circleInfo.circleLogo
         }
-
 
     },
 
@@ -176,8 +144,10 @@ var CircleDetail = jsmod.util.klass({
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1130&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1178&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1265&isAdminIdentity=1';
-        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
-        var data = {},isAdminIdentity;
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1376728&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376771&isAdminIdentity=1';
+        // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
+        var data = {}, isAdminIdentity;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.articleId = jsmod.util.url.getParam(HREF_ORIGIN,'articleId');
@@ -190,12 +160,17 @@ var CircleDetail = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    self.initBase(json.data);
                     self.commentCount = json.data.webShowInfo.commentCount;
-                    var html = swig.render(TPL_MAP[json.data.articleInfo.articleType],{locals:{data:$.extend(json.data,{'isAdminIdentity':isAdminIdentity})}});
+                    self.data.articleInfo.detail = trans(self.data.articleInfo.detail);
+                    if((self.data.articleInfo.articleType == '2') && (self.data.articleInfo.activityInfo.review)){
+                        self.data.articleInfo.activityInfo.review = trans(self.data.articleInfo.activityInfo.review);
+                    }
+                    if((self.data.articleInfo.articleType == '3') && (self.data.articleInfo.coopInfo.review)){
+                        self.data.articleInfo.coopInfo.review = trans(self.data.articleInfo.coopInfo.review);
+                    }
+                    var html = swig.render(TPL_MAP[self.data.articleInfo.articleType],{locals:{data:$.extend(self.data,{'isAdminIdentity':isAdminIdentity})}});
                     self.$container.html(html);
-                    // self.initAvatar();
-                    // self.initPhotoSwipe();
-                    self.deviceDetect();
                     self.initBridge();
                     return;
                 }
@@ -425,24 +400,7 @@ var CircleDetail = jsmod.util.klass({
         // execute above function
         initPhotoSwipeFromDOM('.my-gallery');
 
-    },
-
-    initAvatar: function(){
-        var width_avatar = this.$container.find('.tap-avatar').width();
-        jsmod.util.stretchImg($('.avatar')[0],width_avatar,width_avatar,true,false);
-    },
-
-    deviceDetect: function () {
-        var self = this;
-
-        var u = window.navigator.userAgent;
-
-        window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-
-        window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
-    },
-
+    }
 
 })
 

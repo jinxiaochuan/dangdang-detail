@@ -1,7 +1,7 @@
 <div class="common-circle-header my-gallery">
     <div class="avatar-wrap">
         <a class="tap-avatar" href="javascript:void(0)">
-            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
+            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
         </a>
     </div>
 </div>
@@ -27,11 +27,6 @@
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
     <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
-    {% if data.articleInfo.detailImages.length %}
-    {% for item in data.articleInfo.detailImages %}
-    <img src="{{ item.pictureUrl }}" alt="">
-    {% endfor %}
-    {% endif %}
 </div>
 <div class="common-publish-wrap">
     <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>

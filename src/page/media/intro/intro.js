@@ -8,6 +8,8 @@ require('./intro.less');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+
 var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
@@ -29,38 +31,6 @@ var MediaIntro = jsmod.util.klass({
 
     initBridge: function(){
         var self = this;
-
-        self.initInfo();
-
-        /*这段代码是固定的，必须要放到js中*/
-        function setupWebViewJavascriptBridge(callback) {
-
-          if(window.isIOS){
-            if (window.WebViewJavascriptBridge) {
-              return callback(WebViewJavascriptBridge);
-            }
-            if (window.WVJBCallbacks) {
-              return window.WVJBCallbacks.push(callback);
-            }
-            window.WVJBCallbacks = [callback];
-            var WVJBIframe = document.createElement('iframe');
-            WVJBIframe.style.display = 'none';
-            WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-            document.documentElement.appendChild(WVJBIframe);
-            setTimeout(function () {
-              document.documentElement.removeChild(WVJBIframe)
-            }, 0)
-          }else{
-            if(window.WebViewJavascriptBridge){
-              callback(WebViewJavascriptBridge);
-            }else{
-              document.addEventListener('WebViewJavascriptBridgeReady',function(){
-                callback(WebViewJavascriptBridge);
-              },false)
-            }
-          }
-
-        }
 
         /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
         setupWebViewJavascriptBridge(function(bridge){
@@ -85,22 +55,20 @@ var MediaIntro = jsmod.util.klass({
 
     },
 
-    initInfo: function(){
-        var self = this;
-
-        self.baseInfo = {
-            "mediaName": self.data.mediaInfo.mediaName,
-            "mediaId": self.data.mediaInfo.mediaId,
-            "mediaSlogan": self.data.mediaInfo.mediaSlogan,
-            "mediaLogo": self.data.mediaInfo.mediaLogo
+    initBase: function(data){
+        this.baseInfo = {
+            "mediaName": data.mediaInfo.mediaName,
+            "mediaId": data.mediaInfo.mediaId,
+            "mediaSlogan": data.mediaInfo.mediaSlogan,
+            "mediaLogo": data.mediaInfo.mediaLogo
         }
     },
 
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/media/detail?mediaId=1&userId=200148';
-        // URL_MEDIA = 'http://dev.im-dangdang.com/ddweb/v1/news/media/detail';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/media/detail?mediaId=51&userId=200148';
+        // URL_MEDIA = 'http://app.im-dangdang.com/ddweb/v1/news/media/detail';
 
         var data = {};
 
@@ -115,10 +83,9 @@ var MediaIntro = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    self.initBase(json.data);
                     self.render(self.data);
-                    self.deviceDetect();
                     self.initBridge();
-                    // self.initPhotoSwipe();
                     return;
                 }
 
@@ -127,6 +94,10 @@ var MediaIntro = jsmod.util.klass({
                 }).render();
 
                 self.$container.html(html);
+
+                self.$container.find('.media-intro').delegate('a','click',function(e){
+                    e.preventDefault();
+                })
 
             }
         })

@@ -2,6 +2,10 @@ require('page/common/common.js');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var trans = require('lib/self/trans.js');
+
+var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+
 var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
@@ -24,8 +28,8 @@ var IN24H = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=7&longitude=116.488580&latitude=39.915222';
-        // URL_DISCOVERY_IN24 = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=1376316&longitude=116.488580&latitude=39.915222';
+        // URL_DISCOVERY_IN24 = 'http://app.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
         var data = {};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
@@ -40,6 +44,7 @@ var IN24H = jsmod.util.klass({
             success: function (json) {
                 if (json.status == 1) {
                     self.data = json.data;
+                    self.initBase(json.data);
                     self.render(json.data);
                     return;
                 }
@@ -53,6 +58,10 @@ var IN24H = jsmod.util.klass({
     },
 
     render: function(data){
+        data.in24hInfo.detailContent = trans(data.in24hInfo.detailContent);
+        if(data.in24hInfo.review || data.in24hInfo.reviewImages){
+            data.in24hInfo.review = trans(data.in24hInfo.review);
+        }
         var html = swig.render(TPL_DISCOVERY_IN24, {
             locals: {
                 data: data
@@ -61,83 +70,35 @@ var IN24H = jsmod.util.klass({
 
         this.$container.html(html);
 
-        // this.initAvatar();
-
-        this.deviceDetect();
-
         this.initBridge();
     },
 
-    initAvatar: function(){
-        var width_avatar = this.$container.find('.tap-avatar').width();
-        jsmod.util.stretchImg($('.avatar')[0],width_avatar,width_avatar,true,false);
-    },
-
-    deviceDetect: function () {
-        var self = this;
-
-        var u = window.navigator.userAgent;
-
-        window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-
-        window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
+    initBase: function(data){
+        this.baseInfo = {
+            "viewedUserId": data.in24hInfo.webInfo.viewedUserId,
+            "activityLongitude": data.in24hInfo.activityLongitude,
+            "activityLatitude": data.in24hInfo.activityLatitude,
+            "activityLocation": data.in24hInfo.activityLocation,
+            "longitude": data.in24hInfo.longitude,
+            "latitude": data.in24hInfo.latitude,
+            "location": data.in24hInfo.location,
+            "in24hId": data.in24hInfo.webInfo.in24hId,
+            "showAccess": data.in24hInfo.showAccess,
+            "applyStatus": data.in24hInfo.applyStatus,
+            "headImage": data.in24hInfo.userInfo.headImage,
+            "showName": data.in24hInfo.userInfo.showName,
+            "isCanSeePersonFile": data.in24hInfo.isCanSeePersonFile,
+            "isFollow": data.in24hInfo.isFollow,
+            "isCanSignUp": data.in24hInfo.isCanSignUp,
+            "userImage": data.in24hInfo.userInfo.userImage,
+            "title": data.in24hInfo.title,
+            "detailImages": data.in24hInfo.detailImages,
+            "detailContent": data.in24hInfo.detailContent
+        }
     },
 
     initBridge: function(){
         var self = this;
-
-        self.baseInfo = {
-            "viewedUserId": self.data.in24hInfo.webInfo.viewedUserId,
-            "activityLongitude": self.data.in24hInfo.activityLongitude,
-            "activityLatitude": self.data.in24hInfo.activityLatitude,
-            "activityLocation": self.data.in24hInfo.activityLocation,
-            "longitude": self.data.in24hInfo.longitude,
-            "latitude": self.data.in24hInfo.latitude,
-            "location": self.data.in24hInfo.location,
-            "in24hId": self.data.in24hInfo.webInfo.in24hId,
-            "showAccess": self.data.in24hInfo.showAccess,
-            "applyStatus": self.data.in24hInfo.applyStatus,
-            "headImage":self.data.in24hInfo.userInfo.headImage,
-            "showName":self.data.in24hInfo.userInfo.showName,
-            "isCanSeePersonFile":self.data.in24hInfo.isCanSeePersonFile,
-            "isFollow":self.data.in24hInfo.isFollow,
-            "isCanSignUp":self.data.in24hInfo.isCanSignUp,
-            "userImage":self.data.in24hInfo.userInfo.userImage,
-            "title":self.data.in24hInfo.title,
-            "detailImages":self.data.in24hInfo.detailImages,
-            "detailContent":self.data.in24hInfo.detailContent
-        }
-
-        /*这段代码是固定的，必须要放到js中*/
-        function setupWebViewJavascriptBridge(callback) {
-
-            if(window.isIOS){
-                if (window.WebViewJavascriptBridge) {
-                    return callback(WebViewJavascriptBridge);
-                }
-                if (window.WVJBCallbacks) {
-                    return window.WVJBCallbacks.push(callback);
-                }
-                window.WVJBCallbacks = [callback];
-                var WVJBIframe = document.createElement('iframe');
-                WVJBIframe.style.display = 'none';
-                WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-                document.documentElement.appendChild(WVJBIframe);
-                setTimeout(function () {
-                    document.documentElement.removeChild(WVJBIframe)
-                }, 0)
-            }else{
-                if(window.WebViewJavascriptBridge){
-                    callback(WebViewJavascriptBridge);
-                }else{
-                    document.addEventListener('WebViewJavascriptBridgeReady',function(){
-                        callback(WebViewJavascriptBridge);
-                    },false)
-                }
-            }
-
-        }
 
         /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
         setupWebViewJavascriptBridge(function (bridge) {

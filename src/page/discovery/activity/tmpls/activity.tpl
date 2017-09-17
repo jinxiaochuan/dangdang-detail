@@ -86,7 +86,7 @@
 {% if data.activityInfo.review || data.activityInfo.reviewImages %}
 <div class="common-review-wrap">
     <p class="review-title">回顾</p>
-    <pre class="review-content">{{ data.activityInfo.review|safe }}</pre>
+    <div class="review-content">{{ data.activityInfo.review|safe }}</div>
 </div>
 {% endif %}
 

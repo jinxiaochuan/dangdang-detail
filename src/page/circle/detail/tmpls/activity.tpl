@@ -46,7 +46,7 @@
 {% endif %}
 <div class="common-detail-wrap">
     <p class="detail-title">详情</p>
-    <pre class="detail-content">{{ data.articleInfo.detail|safe }}</pre>
+    <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
 </div>
 <div class="common-address">
     <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
@@ -90,7 +90,7 @@
 {% endif %}
 {% endif %}
 
-{% if data.articleInfo.activityInfo.review || data.articleInfo.activityInfo.reviewImages %}
+{% if data.articleInfo.activityInfo.review %}
 <div class="common-review-wrap">
     <p class="review-title">回顾</p>
     <div class="review-content">{{ data.articleInfo.activityInfo.review|safe }}</div>

@@ -81,7 +81,7 @@
 {% if data.in24hInfo.review || data.in24hInfo.reviewImages %}
 <div class="common-review-wrap">
     <p class="review-title">回顾</p>
-    <pre class="review-content">{{ data.in24hInfo.review|safe }}</pre>
+    <div class="review-content">{{ data.in24hInfo.review|safe }}</div>
 </div>
 {% endif %}
 

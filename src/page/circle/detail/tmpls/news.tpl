@@ -15,18 +15,11 @@
     <div class="circle-news-detail">
         <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
     </div>
-    <!-- <div class="circle-news-code">
-        <span class="name">{{ data.circleInfo.circleName }}</span>
-        <div class="code-wrap">
-            <img src="{{ data.circleInfo.twoDimensionCode.pictureUrl }}" alt="">
-        </div>
-        <span class="word">长按识别图中二维码</span>
-    </div> -->
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
     </div>
     <div class="common-comment-wrap">
-        <span>
+        <span class="access">
             <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
             {% if data.articleInfo.isOwner == '1' && data.isAdminIdentity == '1' %}
             {% if data.articleInfo.showAccess == 1 %}

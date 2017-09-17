@@ -88,10 +88,10 @@
 {% endif %}
 {% endif %}
 
-{% if data.articleInfo.coopInfo.review || data.articleInfo.coopInfo.reviewImageList.length %}
+{% if data.articleInfo.coopInfo.review %}
 <div class="common-review-wrap">
     <p class="review-title">回顾</p>
-    <pre class="review-content">{{ data.articleInfo.coopInfo.review|safe }}</pre>
+    <div class="review-content">{{ data.articleInfo.coopInfo.review|safe }}</div>
 </div>
 {% endif %}
 

@@ -2,6 +2,10 @@ require('page/common/common.js');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var trans = require('lib/self/trans.js');
+
+var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+
 var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
@@ -24,8 +28,8 @@ var Activity = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/discovery/v1/activity/detail?userId=200110&activityId=500';
-        // URL_DISCOVERY_ACTIVITY = 'http://dev.im-dangdang.com/discovery/v1/activity/detail';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/discovery/activity/detail?userId=200110&activityId=1376318';
+        // URL_DISCOVERY_ACTIVITY = 'http://app.im-dangdang.com/ddweb/v1/discovery/activity/detail';
         var data={};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
@@ -39,6 +43,7 @@ var Activity = jsmod.util.klass({
             success:function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    self.initBase(json.data);
                     self.render(self.data);
                     return;
                 }
@@ -53,6 +58,10 @@ var Activity = jsmod.util.klass({
     },
 
     render: function(data){
+        data.activityInfo.detailContent = trans(data.activityInfo.detailContent);
+        if(data.activityInfo.review || data.activityInfo.reviewImages){
+            data.activityInfo.review = trans(data.activityInfo.review);
+        }
         var html = swig.render(TPL_DISCOVERY_ACTIVITY,{
             locals:{
                 data:data
@@ -61,80 +70,33 @@ var Activity = jsmod.util.klass({
 
         this.$container.html(html);
 
-        // this.initAvatar();
-
-        this.deviceDetect();
-
         this.initBridge();
 
     },
 
-    initAvatar: function(){
-        var width_avatar = this.$container.find('.tap-avatar').width();
-        jsmod.util.stretchImg($('.avatar')[0],width_avatar,width_avatar,true,false);
+    initBase: function(data){
+        this.baseInfo = {
+            "endTime": data.activityInfo.endTime,
+            "applyStatus": data.activityInfo.applyStatus,
+            "showAccess":data.activityInfo.showAccess,
+            "showName":data.activityInfo.userInfo.showName,
+            "viewUserId":data.activityInfo.webInfo.viewedUserId,
+            "headImage":data.activityInfo.userInfo.headImage,
+            "isOver":data.activityInfo.isOver,
+            "activityId":data.activityInfo.webInfo.activityId,
+            "isCanSignUp":data.activityInfo.isCanSignUp,
+            "location":data.activityInfo.location,
+            "longitude":data.activityInfo.longitude,
+            "latitude":data.activityInfo.latitude,
+            "userImage":data.activityInfo.userInfo.userImage,
+            "title":data.activityInfo.title,
+            "detailImages":data.activityInfo.detailImages,
+            "detailContent":data.activityInfo.detailContent
+        }
     },
-
-    deviceDetect: function () {
-      var self = this;
-
-      var u = window.navigator.userAgent;
-
-      window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-
-      window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
-  },
 
   initBridge: function(){
       var self = this;
-
-      self.baseInfo = {
-          "endTime": self.data.activityInfo.endTime,
-          "applyStatus": self.data.activityInfo.applyStatus,
-          "showAccess":self.data.activityInfo.showAccess,
-          "showName":self.data.activityInfo.userInfo.showName,
-          "viewUserId":self.data.activityInfo.webInfo.viewedUserId,
-          "headImage":self.data.activityInfo.userInfo.headImage,
-          "isOver":self.data.activityInfo.isOver,
-          "activityId":self.data.activityInfo.webInfo.activityId,
-          "isCanSignUp":self.data.activityInfo.isCanSignUp,
-          "location":self.data.activityInfo.location,
-          "longitude":self.data.activityInfo.longitude,
-          "latitude":self.data.activityInfo.latitude,
-          "userImage":self.data.activityInfo.userInfo.userImage,
-          "title": self.data.activityInfo.title,
-          "detailImages": self.data.activityInfo.detailImages,
-          "detailContent": self.data.activityInfo.detailContent
-      }
-
-      /*这段代码是固定的，必须要放到js中*/
-      function setupWebViewJavascriptBridge(callback) {
-          if(window.isIOS){
-              if (window.WebViewJavascriptBridge) {
-                  return callback(WebViewJavascriptBridge);
-              }
-              if (window.WVJBCallbacks) {
-                  return window.WVJBCallbacks.push(callback);
-              }
-              window.WVJBCallbacks = [callback];
-              var WVJBIframe = document.createElement('iframe');
-              WVJBIframe.style.display = 'none';
-              WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-              document.documentElement.appendChild(WVJBIframe);
-              setTimeout(function () {
-                document.documentElement.removeChild(WVJBIframe)
-              }, 0)
-
-          }else{
-              if(window.WebViewJavascriptBridge){
-                callback(WebViewJavascriptBridge);
-              }else{
-                document.addEventListener('WebViewJavascriptBridgeReady',function(){
-                  callback(WebViewJavascriptBridge);
-                },false)
-              }
-          }
-      }
 
       /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
       setupWebViewJavascriptBridge(function(bridge) {
