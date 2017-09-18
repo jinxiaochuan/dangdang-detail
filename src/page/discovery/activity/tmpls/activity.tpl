@@ -44,6 +44,10 @@
     <p class="detail-title">详情</p>
     <div class="detail-content">{{ data.activityInfo.detailContent|safe }}</div>
 </div>
+<div class="common-deadline-wrap">
+    <span class="deadline {% if data.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.activityInfo.formatDeadline }}</span>
+    <span class="limit">{% if data.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.activityInfo.activityNum }}人{% endif %}</span>
+</div>
 <div class="common-address">
     <a class="tap-location" href="javascript:void(0)">{{ (data.activityInfo.location|json_parse).name }}</a>
 </div>
@@ -57,10 +61,6 @@
     {% else %}
     {% endif %}
     {% endif %}
-</div>
-<div class="common-deadline-wrap">
-    <span class="deadline {% if data.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.activityInfo.formatDeadline }}</span>
-    <span class="limit">{% if data.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.activityInfo.activityNum }}人{% endif %}</span>
 </div>
 {% if data.activityInfo.isOwner == '1' %}
 <div class="common-sign-list-wrap">

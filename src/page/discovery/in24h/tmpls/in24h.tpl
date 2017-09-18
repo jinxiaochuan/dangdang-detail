@@ -38,6 +38,10 @@
     <p class="detail-title">详情</p>
     <div class="detail-content">{{ data.in24hInfo.detailContent|safe }}</div>
 </div>
+<div class="common-deadline-wrap">
+    <span class="deadline {% if data.in24hInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.in24hInfo.formatDeadline }}</span>
+    <span class="limit">{% if data.in24hInfo.activityNum == '0' %}不限人数{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</span>
+</div>
 <div class="common-address">
     <a class="tap-location" href="javascript:void(0)">{{ (data.in24hInfo.location|json_parse).name }}</a>
 </div>
@@ -52,11 +56,6 @@
     {% endif %}
     {% endif %}
 </div>
-<div class="common-deadline-wrap">
-    <span class="deadline {% if data.in24hInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.in24hInfo.formatDeadline }}</span>
-    <span class="limit">{% if data.in24hInfo.activityNum == '0' %}不限人数{%else%}限{{ data.in24hInfo.activityNum }}人{% endif %}</span>
-</div>
-
 {% if data.in24hInfo.isOwner == '1' %}
 <div class="common-sign-list-wrap">
     <a class="tap-sign" href="javascript:void(0)">

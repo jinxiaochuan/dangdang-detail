@@ -46,6 +46,9 @@
     <p class="detail-title">详情</p>
     <div class="detail-content">{{ data.detailContent|safe }}</div>
 </div>
+<div class="common-deadline-wrap">
+    <span class="deadline {% if data.isCanSignUp == '0' %}over{% endif %}">发意向截止时间：{{ data.formatDeadline }}</span>
+</div>
 <div class="common-address">
     <a class="tap-location" href="javascript:void(0)">{{ (data.location|json_parse).name }}</a>
 </div>
@@ -60,10 +63,6 @@
     {% endif %}
     {% endif %}
 </div>
-<div class="common-deadline-wrap">
-    <span class="deadline {% if data.isCanSignUp == '0' %}over{% endif %}">发意向截止时间：{{ data.formatDeadline }}</span>
-</div>
-
 {% if data.isOwner == '1' %}
 <div class="common-sign-list-wrap">
     <a class="tap-sign" href="javascript:void(0)">

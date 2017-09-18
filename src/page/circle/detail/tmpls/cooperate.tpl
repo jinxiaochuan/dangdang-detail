@@ -45,6 +45,9 @@
     <p class="detail-title">详情</p>
     <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
 </div>
+<div class="common-deadline-wrap">
+    <span class="deadline {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}over{% endif %}">发意向截止时间：{{  data.articleInfo.coopInfo.formatDeadline }}</span>
+</div>
 <div class="common-address">
     <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
 </div>
@@ -61,10 +64,6 @@
     {% endif %}
     {% endif %}
 </div>
-<div class="common-deadline-wrap">
-    <span class="deadline {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}over{% endif %}">发意向截止时间：{{  data.articleInfo.coopInfo.formatDeadline }}</span>
-</div>
-
 {% if data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == 1 %}
 <div class="common-sign-list-wrap">
     <a class="tap-sign" href="javascript:void(0)">

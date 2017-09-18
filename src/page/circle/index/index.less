@@ -28,6 +28,7 @@ body{
     }
 
     .avatar-wrap{
+        .box-sizing();
         position: absolute;
         left: 50%;
         margin-left: -@base*61rem;
@@ -48,9 +49,11 @@ body{
             display: block;
             width: 100%;
             height: 100%;
+            .border-radius(50%);
             .avatar{
-                width: @base*122rem;
-                height: @base*122rem;
+                width: 100%;
+                height: 100%;
+                .border-radius(50%);
             }
         }
     }
