@@ -93,7 +93,8 @@ var IN24H = jsmod.util.klass({
             "userImage": data.in24hInfo.userInfo.userImage,
             "title": data.in24hInfo.title,
             "detailImages": data.in24hInfo.detailImages,
-            "detailContent": data.in24hInfo.detailContent
+            "detailContent": data.in24hInfo.detailContent,
+            "auditType": data.in24hInfo.auditType
         }
     },
 

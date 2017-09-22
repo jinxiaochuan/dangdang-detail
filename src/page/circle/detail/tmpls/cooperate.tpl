@@ -14,12 +14,12 @@
         <span class="label-name label-name-address">地区：</span>
         <span class="label-detail">{{ data.articleInfo.coopInfo.provinceName }}{% if data.articleInfo.coopInfo.cityId != 0 %} {{ data.articleInfo.coopInfo.cityName }}{% endif %}</span>
     </div>
-    {% if data.articleInfo.coopInfo.detailAddress %}
+    <!-- {% if data.articleInfo.coopInfo.detailAddress %}
     <div class="info-item">
         <span class="label-name label-name-address-detail">地址：</span>
         <span class="label-detail">{{ data.articleInfo.coopInfo.detailAddress }}</span>
     </div>
-    {% endif %}
+    {% endif %} -->
 </div>
 <div class="common-title-wrap">
     {{ data.articleInfo.articleTitle }}

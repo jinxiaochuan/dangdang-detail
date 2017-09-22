@@ -29,7 +29,7 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=1376340';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=1376568';
         // URL_NEWS = 'http://app.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};

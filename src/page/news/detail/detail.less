@@ -8,7 +8,8 @@
         .title{
             .font-dpr(24px);
             line-height: @base*60rem;
-            word-break: break-all;
+            word-break: normal;
+            word-wrap: break-word;
         }
         .source{
             .flex();
@@ -47,7 +48,7 @@
             text-align: justify!important;
             .font-dpr(19px)!important;
             line-height: @base*64rem!important;
-            word-break: break-all;
+            word-break: normal;
             word-wrap: break-word;
             *{
                 .font-dpr(19px)!important;
@@ -114,6 +115,7 @@
     }
 
     .news-list-wrap{
+        .box-sizing();
         padding: 25px 0;
         .news-list-title{
             .flex();
@@ -145,8 +147,8 @@
             &:active{
                 background: #E6E8EE;
             }
-            margin: 0 -30px;
-            padding: @base*32rem 30px;
+            margin: 0 -@base*30rem;
+            padding: @base*32rem @base*30rem;
             .flex();
             .justify-content(space-between);
 

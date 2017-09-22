@@ -19,12 +19,12 @@
         <span class="label-name label-name-address">地区：</span>
         <span class="label-detail">{{ data.articleInfo.activityInfo.provinceName }} {% if data.articleInfo.activityInfo.cityId != 0 %}{{ data.articleInfo.activityInfo.cityName }}{% endif %}</span>
     </div>
-    {% if data.articleInfo.activityInfo.detailAddress %}
+    <!-- {% if data.articleInfo.activityInfo.detailAddress %}
     <div class="info-item">
         <span class="label-name label-name-address-detail">地址：</span>
         <span class="label-detail">{{ data.articleInfo.activityInfo.detailAddress }}</span>
     </div>
-    {% endif %}
+    {% endif %} -->
 </div>
 <div class="common-title-wrap">
     {{ data.articleInfo.articleTitle }}

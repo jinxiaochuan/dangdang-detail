@@ -145,7 +145,7 @@ var CircleDetail = jsmod.util.klass({
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1178&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1265&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376728&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376814&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376843&isAdminIdentity=1';
         // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
         var data = {}, isAdminIdentity;
 

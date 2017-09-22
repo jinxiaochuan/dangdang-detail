@@ -91,7 +91,8 @@ var Activity = jsmod.util.klass({
             "userImage":data.activityInfo.userInfo.userImage,
             "title":data.activityInfo.title,
             "detailImages":data.activityInfo.detailImages,
-            "detailContent":data.activityInfo.detailContent
+            "detailContent":data.activityInfo.detailContent,
+            "auditType":data.activityInfo.auditType
         }
     },
 

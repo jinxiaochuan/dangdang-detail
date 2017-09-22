@@ -17,7 +17,7 @@ function trans(html){
 
     var reg_enter = /\n\n/g;
 
-    var reg_format = /(\<img\s*src=")([a-zA-z]+:\/\/[^\s]*)\/format,webp("\>)/ig;
+    var reg_format = /(\<img\s*src=")([a-zA-z]+:\/\/[^\s]*)\/format,webp("\s*(alt="")?\>)/ig;
 
     if(dpr != 1){
         html_tran = html.replace(reg_px,function(){
@@ -31,14 +31,13 @@ function trans(html){
 
     html_tran = html_tran || html;
 
-
     html_tran = html_tran.replace(reg_enter,function(){
         return '<br/>'
     })
 
-    html_tran = html_tran.replace(reg_format,function(){
-        return arguments[1] + arguments[2] + arguments[3]
-    })
+    // html_tran = html_tran.replace(reg_format,function(){
+    //     return arguments[1] + arguments[2] + arguments[3]
+    // })
 
     html_tran = html_tran.replace(reg_xx_small,function(){
         return 'font-size: ' + 8*dpr + 'px';

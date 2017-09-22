@@ -14,5 +14,5 @@
     {{ data.mediaInfo.mediaDetail|safe }}
 </div>
 <div class="media-handle-wrap">
-    <a class="media-home" href="javascript:void(0)">进入媒体主页</a>
+    <a class="media-home" href="javascript:void(0)">进入媒体</a>
 </div>
