@@ -3,8 +3,10 @@
 @base:1/75;
 
 .news-detail-wrap{
+
     margin-top: -@base*18rem;
     .news-detail-header{
+        padding: 0 @base*30rem;
         .title{
             .font-dpr(24px);
             line-height: @base*60rem;
@@ -43,7 +45,7 @@
     }
 
     .news-detail-main{
-        padding: @base*18rem @base*6rem @base*39rem;
+        padding: @base*18rem @base*36rem @base*39rem;
         .content{
             text-align: justify!important;
             .font-dpr(19px)!important;
@@ -67,6 +69,7 @@
     }
 
     .comment-outer-wrap{
+        padding: 0 @base*30rem;
         .flex();
         .justify-content(space-between);
         color: #737373;
@@ -115,8 +118,7 @@
     }
 
     .news-list-wrap{
-        .box-sizing();
-        padding: 25px 0;
+        padding: @base*25rem @base*30rem;
         .news-list-title{
             .flex();
             .align-items(center);

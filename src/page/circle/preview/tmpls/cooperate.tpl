@@ -38,7 +38,7 @@
     <span class="deadline {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}over{% endif %}">发意向截止时间：{{  data.articleInfo.coopInfo.formatDeadline }}</span>
 </div>
 
-<div class="preview-fix clearfix">
+<div class="preview-fix">
     <span>此为临时链接，仅用于文章预览，将在短期内失效</span>
     <i class="close-icon">×</i>
 </div>

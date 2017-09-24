@@ -11,12 +11,10 @@
 }
 
 .common-fix{
-  .box-sizing(content-box);
   position: fixed;
-  left: 50%;
+  width: 100%;
+  left: 0;
   bottom: 0;
-  width: @base*690rem;
-  margin-left: -@base*375rem;
   padding: 0 @base*30rem;
   height: @base*112rem;
   line-height: @base*112rem;
@@ -34,10 +32,6 @@
     color: #3C3C3C;
     line-height: @base*112rem;
     vertical-align: middle;
-    // width: @base*320rem;
-    // height: @base*120rem;
-    // background: url("~assets/logo_word_icon.png") no-repeat center center;
-    // background-size: @base*320rem  @base*31rem;
   }
   .app-btn{
     margin: @base*26rem 0;
@@ -124,13 +118,9 @@
 }
 
 .container{
-    .box-sizing(content-box);
-    *{
-        .box-sizing();
-    }
     margin: 0 auto;
-    width: @base*690rem;
-    padding: @base*50rem @base*30rem @base*220rem;
+    width: 100%;
+    padding: @base*50rem 0 @base*220rem;
 
     &::-webkit-scrollbar {
         width: 0px;
@@ -150,9 +140,7 @@
 }
 
 .split-mark{
-    .box-sizing();
-    width: @base*750rem;
-    margin: 0 -@base*30rem;
+    width: 100%;
     height: @base*12rem;
     background: #F0F2F7;
 }
@@ -161,6 +149,7 @@
     .flex();
     .align-items(center);
     margin-bottom: @base*30rem;
+    padding: 0 @base*30rem;
     .avatar-wrap{
         width: @base*84rem;
         height: @base*84rem;
@@ -194,7 +183,7 @@
 .common-info-wrap{
     .info-item{
         .flex();
-        padding: @base*15rem 0;
+        padding: @base*15rem @base*30rem;
         .label-name{
             min-width: @base*130rem;
             padding-left: @base*44rem;
@@ -241,7 +230,7 @@
 }
 
 .common-title-wrap{
-    padding: @base*25rem 0;
+    padding: @base*25rem @base*30rem;
     .font-dpr(19px);
     color: #000000;
     line-height: @base*44rem;
@@ -250,7 +239,7 @@
 }
 
 .common-notice-wrap{
-    padding: @base*14rem 0 @base*24rem;
+    padding: @base*14rem @base*30rem @base*24rem;
     .notice-list-wrap{
         .notice-title{
             padding-left: @base*50rem;
@@ -299,7 +288,7 @@
 }
 
 .common-detail-wrap{
-    padding: @base*14rem 0 @base*10rem;
+    padding: @base*14rem @base*30rem @base*10rem;
     .detail-title{
         padding-left: @base*50rem;
         .font-dpr(15px);
@@ -331,6 +320,7 @@
 }
 
 .common-address{
+    padding: 0 @base*30rem;
     .font-dpr(12px);
     line-height: @base*38rem;
     a{
@@ -346,6 +336,7 @@
     .align-items(center);
     .justify-content(space-between);
     line-height: @base*38rem;
+    padding: 0 @base*30rem;
 
     .access{
         .flex();
@@ -416,6 +407,7 @@
 }
 .common-publish-wrap{
     margin-bottom: @base*50rem;
+    padding: 0 @base*30rem;
     .flex();
     .align-items(center);
 
@@ -453,7 +445,7 @@
 }
 
 .common-deadline-wrap{
-    margin:  @base*10rem 0 @base*34rem;
+    margin:  @base*10rem @base*30rem @base*34rem;
     .flex();
     .justify-content(space-between);
     .font-dpr(14px);
@@ -478,8 +470,6 @@
 }
 
 .common-sign-list-wrap{
-    width: 10rem;
-    margin: 0 -@base*30rem;
     padding: @base*25rem 0;
     .setLine('top',#E5E5E5);
     .sign-wrap{
@@ -509,6 +499,7 @@
 
 .common-review-wrap{
     margin-top: @base*60rem;
+    padding: 0 @base*30rem;
     .review-title{
         padding-left: @base*50rem;
         .font-dpr(15px);
@@ -541,6 +532,7 @@
 
 .common-edit-wrap{
     margin-top: @base*65rem;
+    padding: 0 @base*40rem;
     text-align: center;
     .edit-btn{
         &:active{
@@ -548,13 +540,13 @@
             color: #0D69CF;
         }
         .border-radius-dpr(5px);
-        .btn-border(@base*670rem,@base*94rem,17px,#FFFFFF,#007AFF,#007AFF);
+        .btn-border(100%,@base*94rem,17px,#FFFFFF,#007AFF,#007AFF);
         .font-dpr(17px);
     }
 }
 
 .common-sign-wrap{
-    padding: @base*55rem 0 @base*50rem;
+    padding: @base*55rem @base*30rem @base*50rem;
     text-align: center;
     .sign-btn{
         &:active{
@@ -588,15 +580,13 @@
 
 .common-circle-header{
     .flex();
+    width: 100%;
     height: @base*120rem;
     background: #F0F2F7;
-
-    width: @base*750rem;
-    margin: -@base*50rem -@base*30rem @base*121rem;
+    margin: -@base*50rem 0 @base*121rem;
     position: relative;
 
     .avatar-wrap{
-        .box-sizing();
         position: absolute;
         left: 50%;
         margin-left: -@base*61rem;
@@ -627,6 +617,7 @@
 
 .common-circle-news-wrap{
     .circle-news-title{
+        padding: 0 @base*30rem;
         .font-dpr(24px);
         color: #000000;
         line-height: @base*60rem;
@@ -634,6 +625,7 @@
         word-wrap: break-word;
     }
     .circle-news-source{
+        padding: 0 @base*30rem;
         margin-top: @base*44rem;
         .source{
             .font-dpr(12px);
@@ -642,6 +634,7 @@
         }
     }
     .circle-news-detail{
+        padding: 0 @base*30rem;
         margin-top: @base*66rem;
         .detail-content{
             .font-dpr(17px);
@@ -673,8 +666,7 @@
         .align-items(center);
         margin-top: @base*20rem;
         margin-bottom: 10px;
-        padding: @base*110rem 0;
-        width: 100%;
+        padding: @base*110rem @base*30rem;
         height: @base*755rem;
         background: #EFEFEF;
         .name{

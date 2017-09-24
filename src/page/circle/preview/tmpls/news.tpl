@@ -22,7 +22,7 @@
     </div>
 </div>
 
-<div class="preview-fix clearfix">
+<div class="preview-fix">
     <span>此为临时链接，仅用于文章预览，将在短期内失效</span>
     <i class="close-icon">×</i>
 </div>

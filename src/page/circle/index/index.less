@@ -14,8 +14,7 @@ body{
     .flex();
     height: @base*120rem;
     background: #F0F2F7;
-    width: @base*750rem;
-    margin: -@base*50rem -@base*30rem 0;
+    margin: -@base*50rem 0 0;
     position: relative;
 
     .dangdang-code{
@@ -61,7 +60,6 @@ body{
 
 .circle-intro{
     background:#FFFFFF;
-    margin:  0 -@base*30rem;
     padding: @base*153rem @base*30rem @base*32rem;
     word-break: normal;
     word-wrap: break-word;
@@ -84,12 +82,11 @@ body{
     .justify-content(space-between);
     .align-items(center);
     height: @base*88rem;
-    margin: @base*40rem -@base*30rem 0;
+    margin: @base*40rem 0 0;
     padding: 0 @base*30rem;
     background: #FFFFFF;
     .setLine('top',#DEE0E7);
     .setLine('bottom',#DEE0E7);
-    // box-shadow: inset 0 1px 0 0 #E5E5E5, inset 0 -1px 0 0 #E5E5E5;
 
     &:active{
         background: #E6E8EE;
@@ -124,11 +121,12 @@ body{
 }
 
 .circle-handle-wrap{
-    text-align: center;
     margin-top: @base*40rem;
+    padding: 0 @base*40rem;
+    text-align: center;
     .circle-home{
         .border-radius(10px);
-        .btn(@base*670rem,@base*94rem,34px,#007AFF,#FFFFFF);
+        .btn(100%,@base*94rem,34px,#007AFF,#FFFFFF);
         .font-dpr(17px);
         &:active{
             background: #0070EB;

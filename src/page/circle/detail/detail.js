@@ -129,7 +129,8 @@ var CircleDetail = jsmod.util.klass({
             "latitude": data.articleInfo.latitude,
             "longitude": data.articleInfo.longitude,
             "pictureUrl": data.circleInfo.circleLogo.pictureUrl,
-            "articleTitle": data.articleInfo.articleTitle
+            "articleTitle": data.articleInfo.articleTitle,
+            "auditType": data.articleInfo.activityInfo ? data.articleInfo.activityInfo.auditType : null
         }
 
         this.logoInfo = {

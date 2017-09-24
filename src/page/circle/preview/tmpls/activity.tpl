@@ -36,7 +36,7 @@
     <span class="limit">{% if data.articleInfo.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.articleInfo.activityInfo.activityNum }}人{% endif %}</span>
 </div>
 
-<div class="preview-fix clearfix">
+<div class="preview-fix">
     <span>此为临时链接，仅用于文章预览，将在短期内失效</span>
     <i class="close-icon">×</i>
 </div>
