@@ -118,6 +118,13 @@ var CircleIndex = jsmod.util.klass({
 
                 self.$container.html(html);
 
+            },
+            error: function(error,errorType,errorMsg){
+                var html = new Empty({
+                    word: errorMsg,
+                }).render();
+
+                self.$container.html(html);
             }
         })
 
@@ -135,6 +142,10 @@ var CircleIndex = jsmod.util.klass({
         })
 
         this.$container.html(html);
+
+        this.$container.delegate('.circle-intro','click',function(e){
+            e.preventDefault();
+        })
 
         this.$container.find('.circle-intro').delegate('a','click',function(e){
             e.preventDefault();

@@ -182,6 +182,13 @@ var CircleDetail = jsmod.util.klass({
 
                 self.$container.html(html);
 
+            },
+            error: function(error,errorType,errorMsg){
+                var html = new Empty({
+                    word: errorMsg,
+                }).render();
+
+                self.$container.html(html);
             }
 
         })

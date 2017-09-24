@@ -53,6 +53,13 @@ var IN24H = jsmod.util.klass({
                 }).render();
 
                 self.$container.html(html);
+            },
+            error: function(error,errorType,errorMsg){
+                var html = new Empty({
+                    word: errorMsg,
+                }).render();
+
+                self.$container.html(html);
             }
         })
     },

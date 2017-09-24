@@ -99,6 +99,13 @@ var MediaIntro = jsmod.util.klass({
                     e.preventDefault();
                 })
 
+            },
+            error: function(error,errorType,errorMsg){
+                var html = new Empty({
+                    word: errorMsg,
+                }).render();
+
+                self.$container.html(html);
             }
         })
 

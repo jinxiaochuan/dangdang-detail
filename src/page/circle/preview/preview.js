@@ -58,7 +58,7 @@ var CirclePreview = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1348';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000000&articleId=1376874';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1346';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1376777';
         // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
@@ -74,6 +74,7 @@ var CirclePreview = jsmod.util.klass({
             data: data,
             jsonp: 'callback',
             success: function(json){
+                console.log(json);
                 if(json.status == 1){
                     self.data = json.data;
                     self.baseInfo = {
@@ -106,6 +107,13 @@ var CirclePreview = jsmod.util.klass({
                         word: json.msg,
                     }).render();
                 }
+
+                self.$container.html(html);
+            },
+            error: function(error,errorType,errorMsg){
+                var html = new Empty({
+                    word: errorMsg,
+                }).render();
 
                 self.$container.html(html);
             }

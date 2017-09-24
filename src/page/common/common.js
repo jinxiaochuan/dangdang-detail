@@ -6,14 +6,16 @@ require('lib/third/flexible.js');
 
 require('lib/self/filter.js');
 
+var COMMON_FIX = require('./tmpls/common_fix.tpl');
+
 var jsmod=require('lib/self/jsmod/jsmod_extend.js');
 
-var url=window.location.href;
+var url = window.location.href;
 
 var source=jsmod.util.url.getParam(url,'source');
 
-if(source != 1){
-    $('.common-fix').remove();
+if(source == 1){
+    $('.container').after(COMMON_FIX);
 }
 
 //针对打开进行操作
@@ -58,7 +60,6 @@ var dialog = new jsmod.util.Dialog({
 });
 
 $app.on('click',function(){
-
     if(mobileDevice().isWei){
         dialog.show({fade:true});
         return;
