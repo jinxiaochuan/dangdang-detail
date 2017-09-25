@@ -28,8 +28,8 @@ var IN24H = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=1376316&longitude=116.488580&latitude=39.915222';
-        // URL_DISCOVERY_IN24 = 'http://app.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=164&longitude=116.488580&latitude=39.915222';
+        // URL_DISCOVERY_IN24 = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
         var data = {};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
@@ -77,7 +77,22 @@ var IN24H = jsmod.util.klass({
 
         this.$container.html(html);
 
+        this.initFlex();
+
         this.initBridge();
+    },
+
+    initFlex: function(){
+        var w = $('.label-detail.label-detail-in24h').width();
+        var w_a = $('.in24-address').width();
+        var w_d = $('.distance').width() + 20;
+
+        if(w_a + w_d > w){
+            $('.in24-address').css({
+                'float': 'left',
+                'width': w - w_d + 'px'
+            })
+        }
     },
 
     initBase: function(data){

@@ -6,6 +6,9 @@ require('lib/third/flexible.js');
 
 require('lib/self/filter.js');
 
+var FastClick = require('fastclick');
+FastClick.attach(document.body);
+
 var COMMON_FIX = require('./tmpls/common_fix.tpl');
 
 var jsmod=require('lib/self/jsmod/jsmod_extend.js');
