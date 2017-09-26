@@ -54,31 +54,31 @@ function trans(html){
     }
 
     html_tran = html_tran.replace(reg_xx_small,function(){
-        return 'font-size: ' + 8*dpr + 'px';
+        return 'font-size: ' + 8*dpr + 'px;'
     });
 
     html_tran = html_tran.replace(reg_x_small,function(){
-        return 'font-size: ' + 11*dpr + 'px';
+        return 'font-size: ' + 11*dpr + 'px;'
     });
 
     html_tran = html_tran.replace(reg_small,function(){
-        return 'font-size: ' + 14*dpr + 'px';
+        return 'font-size: ' + 14*dpr + 'px;'
     });
 
     html_tran = html_tran.replace(reg_xx_large,function(){
-        return 'font-size: ' + 26*dpr + 'px';
+        return 'font-size: ' + 26*dpr + 'px;'
     });
 
     html_tran = html_tran.replace(reg_x_large,function(){
-        return 'font-size: ' + 23*dpr + 'px';
+        return 'font-size: ' + 23*dpr + 'px;'
     });
 
     html_tran = html_tran.replace(reg_large,function(){
-        return 'font-size: ' + 20*dpr + 'px';
+        return 'font-size: ' + 20*dpr + 'px;'
     });
 
     html_tran = html_tran.replace(reg_medium,function(){
-        return 'font-size: ' + 17*dpr + 'px';
+        return 'font-size: ' + 17*dpr + 'px;'
     });
 
     return html_tran;
