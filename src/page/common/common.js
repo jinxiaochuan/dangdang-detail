@@ -11,11 +11,11 @@ FastClick.attach(document.body);
 
 var COMMON_FIX = require('./tmpls/common_fix.tpl');
 
-var jsmod=require('lib/self/jsmod/jsmod_extend.js');
+var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var url = window.location.href;
 
-var source=jsmod.util.url.getParam(url,'source');
+var source = jsmod.util.url.getParam(url,'source');
 
 if(source == 1){
     $('.container').after(COMMON_FIX);
@@ -68,10 +68,10 @@ $app.on('click',function(){
         return;
     };
 
-    var the_href="http://im-dangdang.com/hxhServer/pages/user/download.html";
-    window.location="dangdangsocialcontact://my.com/";//打开某手机上的某个app应用
+    var the_href = "http://im-dangdang.com/hxhServer/pages/user/download.html";
+    window.location = "dangdangsocialcontact://my.com/";//打开某手机上的某个app应用
     setTimeout(function(){
-        window.location=the_href;//如果超时就跳转到app下载页
+        window.location = the_href;//如果超时就跳转到app下载页
     },5000);
 });
 

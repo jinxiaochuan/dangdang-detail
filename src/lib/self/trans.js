@@ -1,4 +1,8 @@
+var jsmod = require('lib/self/jsmod/jsmod_extend.js');
+
 function trans(html){
+    var source = jsmod.util.url.getParam(window.location.href, 'source');
+
     var dpr = window.document.documentElement.getAttribute('data-dpr'), html_tran;
 
     var MAP_SIZE = [11,14,17,20,23,26,29];
@@ -13,20 +17,28 @@ function trans(html){
 
     var reg_px = /font-size:\s*(\d+)px/ig;
 
+    var reg_lineheight = /line-height:\s*(\d+)px/ig;
+
     var reg_font = /(\<font.*)(size=")(\d+)(")(.*\>.*\<\/font\>)/ig;
 
     var reg_enter = /\n\n/g;
 
-    var reg_format = /(\<img\s*src=")([a-zA-z]+:\/\/[^\s]*)\/format,webp("\s*(alt="")?\>)/ig;
+    var reg_format = /(\<img\s*src=")([a-zA-z]+:\/\/[^\s]*)\/format,webp("\s*(alt="")?.*?\>)/ig;
 
     if(dpr != 1){
+
         html_tran = html.replace(reg_px,function(){
             return 'font-size: ' + arguments[1]*dpr + 'px';
+        });
+
+        html_tran = html_tran.replace(reg_lineheight,function(){
+            return 'line-height: ' + arguments[1]*dpr + 'px';
         });
 
         html_tran = html_tran.replace(reg_font,function(){
             return arguments[1] + "style='font-size: " + MAP_SIZE[arguments[3]-1]*dpr + "px'" + arguments[5]
         });
+
     }
 
     html_tran = html_tran || html;
@@ -35,9 +47,11 @@ function trans(html){
         return '<br/>'
     })
 
-    // html_tran = html_tran.replace(reg_format,function(){
-    //     return arguments[1] + arguments[2] + arguments[3]
-    // })
+    if(source == 1){
+        html_tran = html_tran.replace(reg_format,function(){
+            return arguments[1] + arguments[2] + arguments[3]
+        })
+    }
 
     html_tran = html_tran.replace(reg_xx_small,function(){
         return 'font-size: ' + 8*dpr + 'px';

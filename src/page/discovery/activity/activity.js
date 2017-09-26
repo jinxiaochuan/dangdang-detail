@@ -77,6 +77,10 @@ var Activity = jsmod.util.klass({
 
         this.$container.html(html);
 
+        this.$container.find('.detail-content').delegate('a','click',function(e){
+            e.preventDefault();
+        })
+
         this.initBridge();
 
     },

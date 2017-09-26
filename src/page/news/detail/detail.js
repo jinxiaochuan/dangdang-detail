@@ -29,8 +29,8 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/detail?userId=200119&newsId=176';
-        // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/detail?userId=1000034&newsId=1376921';
+        // URL_NEWS = 'http://app.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
 
@@ -55,9 +55,10 @@ var News = jsmod.util.klass({
 
                 self.$container.html(html);
 
-                self.$container.find('.news-detail-main').delegate('a','click',function(e){
+                self.$container.find('.common-detail-wrap').delegate('a','click',function(e){
                     e.preventDefault();
                 })
+
             },
             error: function(error,errorType,errorMsg){
                 var html = new Empty({

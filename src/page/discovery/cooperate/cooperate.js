@@ -28,7 +28,7 @@ var Cooperate = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=200110&coopId=1376357&viewUserId=200110';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=1000063&coopId=18&viewUserId=1000063';
         // URL_COOPERATION = 'http://app.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
         var data={};
 
@@ -77,6 +77,10 @@ var Cooperate = jsmod.util.klass({
         })
 
         this.$container.html(html);
+
+        this.$container.find('.detail-content').delegate('a','click',function(e){
+            e.preventDefault();
+        })
 
         this.initBridge();
     },

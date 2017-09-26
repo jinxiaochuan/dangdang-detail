@@ -92,6 +92,9 @@ var CirclePreview = jsmod.util.klass({
                     self.data.articleInfo.detail = trans(self.data.articleInfo.detail);
                     var html = swig.render(TPL_MAP_PRE[json.data.articleInfo.articleType],{locals:{data:self.data}});
                     self.$container.html(html);
+                    self.$container.find('.detail-content').delegate('a','click',function(e){
+                        e.preventDefault();
+                    })
                     self.initBridge();
                     self.initEvents();
                     return;

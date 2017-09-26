@@ -146,7 +146,7 @@ var CircleDetail = jsmod.util.klass({
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1178&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1265&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376728&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376843&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=112&userId=1000034&articleStatus=1&source=1&from=singlemessage&isappinstalled=0';
         // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
         var data = {}, isAdminIdentity;
 
@@ -172,6 +172,11 @@ var CircleDetail = jsmod.util.klass({
                     }
                     var html = swig.render(TPL_MAP[self.data.articleInfo.articleType],{locals:{data:$.extend(self.data,{'isAdminIdentity':isAdminIdentity})}});
                     self.$container.html(html);
+
+                    self.$container.find('.detail-content').delegate('a','click',function(e){
+                        e.preventDefault();
+                    })
+
                     self.initBridge();
                     return;
                 }

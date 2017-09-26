@@ -52,7 +52,7 @@
   width: @base*610rem;
   height: @base*520rem;
   background: url("~assets/ios.png") no-repeat center center;
-  background-size: @base*610rem @base*520rem;
+  background-size: contain;
 }
 
 .android-icon{
@@ -60,7 +60,7 @@
   width: @base*610rem;
   height: @base*520rem;
   background: url("~assets/android.png") no-repeat center center;
-  background-size: @base*610rem @base*520rem;
+  background-size: contain;
 }
 
 .common-footer{
@@ -305,6 +305,12 @@
         .font-dpr(17px);
         word-break: normal;
         word-wrap: break-word;
+        *{
+            max-width: 100%!important;
+        }
+        table{
+            width: 100%!important;
+        }
         ul{
             list-style: disc inside;
             padding-left: 1em;
@@ -517,6 +523,12 @@
         .font-dpr(17px);
         word-break: normal;
         word-wrap: break-word;
+        *{
+            max-width: 100%!important;
+        }
+        table{
+            width: 100%!important;
+        }
         ul{
             list-style: disc inside;
             padding-left: 1em;
@@ -645,6 +657,12 @@
             margin-bottom: 10px;
             word-break: normal;
             word-wrap: break-word;
+            *{
+                max-width: 100%!important;
+            }
+            table{
+                width: 100%!important;
+            }
             ul{
                 list-style: disc inside;
                 padding-left: 1em;
