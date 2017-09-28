@@ -1,0 +1,87 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+body{
+    background: #F0F2F7;
+}
+.container{
+    padding: 0;
+    position: relative;
+}
+
+.feedback-error-wrap{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -@base*30rem;
+    height: @base*65rem;
+    line-height: @base*65rem;
+    background: red;
+    text-align: center;
+    color: #FFFFFF;
+    .font-dpr(12px);
+    display: none;
+    &.show{
+        display: block;
+    }
+}
+
+.feedback-wrap{
+    .feedback-item{
+        margin-top: @base*30rem;
+        .label{
+            padding: 0 @base*30rem;
+            .font-dpr(14px);
+            color: #888888;
+        }
+        .opinion{
+            margin-top: @base*10rem;
+            width: 100%;
+            padding: @base*20rem @base*30rem;
+            background: #FFFFFF;
+            .font-dpr(16px);
+            textarea{
+                .font-dpr(16px);
+                width: 100%;
+                height: @base*140rem;
+                line-height:  @base*38rem;
+                border: none;
+                .placeholder();
+            }
+            .opinion-calculation{
+                height: @base*50rem;
+                line-height: @base*50rem;
+                color: #ABABAB;
+                text-align: right;
+
+                &.limit{
+                    color: red;
+                }
+            }
+        }
+        .telphone{
+            margin-top: @base*10rem;
+            width: 100%;
+            height: @base*88rem;
+            line-height: @base*88rem;
+            padding: 0 @base*30rem;
+            background: #FFFFFF;
+            input{
+                width: 100%;
+                .font-dpr(16px);
+                border: none;
+                .placeholder();
+            }
+        }
+    }
+
+    .feedback-handle-wrap{
+        padding: @base*40rem;
+        .done{
+            .border-radius(10px);
+            .btn(100%,@base*94rem,17px,#007AFF,#FFFFFF);
+            .font-dpr(17px);
+        }
+    }
+}

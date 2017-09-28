@@ -1,0 +1,57 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+body{
+    background: #F0F2F7;
+}
+
+.help-list-wrap{
+    .help-item{
+        margin-top: @base*30rem;
+        .label{
+            padding: 0 @base*30rem;
+            .font-dpr(14px);
+            color: #888888;
+        }
+        .list{
+            margin-top: @base*10rem;
+            .setLine('top',#DEE0E7);
+            .setLine('bottom',#DEE0E7);
+            background: #FFFFFF;
+
+            .item{
+                // padding-left: @base*30rem;
+                height: @base*88rem;
+                line-height: @base*88rem;
+                .font-dpr(17px);
+
+                &:active{
+                    background: #E6E8EE;
+                }
+
+                .arrow{
+                    float: right;
+                    margin: @base*31rem 0;
+                    width: @base*16rem;
+                    height: @base*24rem;
+                    background: url("~assets/arrow_right.png") no-repeat right center;
+                    background-size: contain;
+                }
+
+                &:not(:last-child){
+                    a{
+                        .setLine('bottom',#DEE0E7);
+                    }
+                }
+
+                a{
+                    display: block;
+                    padding-right: @base*30rem;
+                    margin-left: @base*30rem;
+                    color: #000000;
+                }
+            }
+        }
+    }
+}

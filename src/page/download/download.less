@@ -1,0 +1,65 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.container{
+    padding: 0 0 @base*150rem;
+}
+.download-wrap{
+    .download-banner{
+        position: relative;
+        img{
+            width: 100%;
+        }
+        .download-slogan{
+            position: absolute;
+            left: 50%;
+            top: @base*108rem;
+            margin-left: -@base*200rem;
+            width: @base*400rem;
+            height: @base*100rem;
+            background: url('~assets/slogan@1.5x.png') center center no-repeat;
+            background-size: contain;
+        }
+    }
+    .download-invite{
+        position: absolute;
+        width: 100%;
+        top: @base*305rem;
+        text-align: center;
+        .invite-avatar{
+            display: inline-block;
+            vertical-align: top;
+            width: @base*80rem;
+            height: @base*80rem;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .invite-name{
+            display: inline-block;
+            vertical-align: top;
+            margin-left: @base*12rem;
+            text-align: left;
+            .name{
+                padding-left: @base*10rem;
+                .font-dpr(12px);
+                color: #737373;
+            }
+            .word{
+                margin-top: @base*8rem;
+                width: @base*470rem;
+                height: @base*80rem;
+                background: url('~assets/download_invite@1.5x.png') left center no-repeat;
+                background-size: contain;
+            }
+        }
+    }
+    .download-intro{
+        text-align: center;
+        img{
+            width: @base*560rem;
+        }
+    }
+}

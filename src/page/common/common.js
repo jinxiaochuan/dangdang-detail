@@ -9,15 +9,31 @@ require('lib/self/filter.js');
 var FastClick = require('fastclick');
 FastClick.attach(document.body);
 
+var u = window.navigator.userAgent;
+
+window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+
+window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
 var COMMON_FIX = require('./tmpls/common_fix.tpl');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
-var url = window.location.href;
+var HREF_ORIGIN = window.location.href;
 
-var source = jsmod.util.url.getParam(url,'source');
+var PATH_ORIGIN = window.location.pathname;
+
+var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
+
+var download = jsmod.util.url.getParam(HREF_ORIGIN,'download');
 
 if(source == 1){
+
+    COMMON_FIX = swig.render(COMMON_FIX, {
+        locals: {
+            download : download ? true : false
+        }
+    })
     $('.container').after(COMMON_FIX);
 }
 
@@ -68,11 +84,15 @@ $app.on('click',function(){
         return;
     };
 
-    var the_href = "http://im-dangdang.com/hxhServer/pages/user/download.html";
-    window.location = "dangdangsocialcontact://my.com/";//打开某手机上的某个app应用
+    window.location.href = "dangdangsocialcontact://";//打开某手机上的某个app应用
+
     setTimeout(function(){
-        window.location = the_href;//如果超时就跳转到app下载页
-    },5000);
+        if(window.isIOS){
+            window.location.href = 'https://itunes.apple.com/cn/app/id967227032';
+        }else {
+            window.location.href = 'http://dangdangshejiao.oss-cn-beijing.aliyuncs.com/app/app-buildVersion-debug.apk';
+        }
+    },2000);
 });
 
 $('.mod-dialog-frame').on('click',function(){
