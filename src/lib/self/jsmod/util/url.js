@@ -57,5 +57,6 @@ module.exports = {
     getParamMap: getParamMap,
     addParam: addParam,
     getParam: getParam,
+    getParamStr:getParamStr,
     getSplitValue: getSplitValue
 }
