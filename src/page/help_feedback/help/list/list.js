@@ -6,14 +6,20 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var TPL_LIST = require('./tmpls/list.tpl');
 
-//var HREF_ORIGIN = window.location.href;
-var HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/feedback/help/list?userId=200119&ddtoken=5%2b9XQOpxoFZDDDrC%2fNyUrcha1Nazbuvz5XitGS8b8D03M764qxAvl5787cW2puKQbbBr06yaviiPsMrIpcICCHGD89SgF75rbXczJX0QzNI%3d&platform=ios';
+var HREF_ORIGIN = window.location.href;
 
-var userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+// var HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/help/list?userId=200072&channelId=100000&os=11.0&platform=ios&appVersion=1.2.4&ddtoken=5+9XQOpxoFZDDDrC/NyUrQ9+6WbrruAyv+vBUSzvuJdo8WoBH7IdZm9Whj5Do1ZrZMg7ncAOOJqp2EDTmi5YiSQUTVQC2vKtjxuFGtXkycU';
 
 var ddtoken = jsmod.util.url.getParam(HREF_ORIGIN,'ddtoken');
+var PARAMS = jsmod.util.url.getParamMap(HREF_ORIGIN);
+PARAMS = $.extend(PARAMS,{'ddtoken':encodeURIComponent(ddtoken)})
 
-var paramUrl = jsmod.util.url.getParamStr(HREF_ORIGIN);
+var PARAMSMAP = [];
+$.each(PARAMS,function(key,value){
+    PARAMSMAP.push(key + '=' + value)
+})
+var PARAMSTRING = PARAMSMAP.join('&');
+
 var List = jsmod.util.klass({
     initialize: function(option){
         this.option = option;
@@ -24,29 +30,21 @@ var List = jsmod.util.klass({
     render: function(){
         var self = this;
         $.ajax({
-            url:HREF_ORIGIN,
+            url: '/ddweb/v1/feedback/help/list?' + PARAMSTRING,
             dataType :'jsonp',
             jsonp:'callback',
+            cache:true,
             success:function(data){
-                console.log(data);
                 var html = swig.render(TPL_LIST,{
-                    //locals:data
                     locals: {
                         data: data,
-                        ddtoken: ddtoken,
-                        userId: userId,
-                        paramUrl:paramUrl
+                        paramUrl: PARAMSTRING
                     }
                 });
                 self.$container.html(html);
+
             }
         });
-        // var html = swig.render(TPL_LIST,{
-        //     locals: {
-        //         ddtoken: ddtoken,
-        //         userId: userId
-        //     }
-        // })
     }
 })
 

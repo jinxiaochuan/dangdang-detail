@@ -17,7 +17,7 @@ body{
     top: -@base*30rem;
     height: @base*65rem;
     line-height: @base*65rem;
-    background: red;
+    background: #FC4B4A;
     text-align: center;
     color: #FFFFFF;
     .font-dpr(12px);
@@ -41,6 +41,16 @@ body{
             padding: @base*20rem @base*30rem;
             background: #FFFFFF;
             .font-dpr(16px);
+            &.limit{
+                textarea{
+                    color: #FC4B4A;
+                }
+
+                .opinion-calculation{
+                    color: #FC4B4A;
+                }
+            }
+
             textarea{
                 .font-dpr(16px);
                 width: 100%;
@@ -54,10 +64,6 @@ body{
                 line-height: @base*50rem;
                 color: #ABABAB;
                 text-align: right;
-
-                &.limit{
-                    color: red;
-                }
             }
         }
         .telphone{
@@ -72,6 +78,7 @@ body{
                 .font-dpr(16px);
                 border: none;
                 .placeholder();
+                padding-left: 0;
             }
         }
     }
@@ -82,6 +89,53 @@ body{
             .border-radius(10px);
             .btn(100%,@base*94rem,17px,#007AFF,#FFFFFF);
             .font-dpr(17px);
+            &.disable{
+
+            }
         }
     }
+}
+
+.success-wrap{
+    .success-icon{
+        margin: @base*70rem auto;
+        display: block;
+        width: @base*184rem;
+        height: @base*184rem;
+        background: url('~assets/success_icon@1.5x.png') center center no-repeat;
+        background-size: contain;
+    }
+    .success-word{
+        text-align: center;
+        span{
+            .font-dpr(19px);
+            color: #000000;
+        }
+        p{
+            margin-top: @base*10rem;
+            padding: 0 @base*75rem;
+            .font-dpr(13px);
+            color: #888888;
+            line-height: @base*44rem;
+        }
+    }
+    .close-handle-wrap{
+        padding: @base*40rem;
+        .close{
+            .border-radius(10px);
+            .btn(100%,@base*94rem,17px,#007AFF,#FFFFFF);
+            .font-dpr(17px);
+        }
+    }
+}
+
+
+.layui-m-layer-msg .layui-m-layercont{
+    padding: @base*10rem @base*20rem;
+}
+
+.layui-m-layercont{
+    width: @base*180rem;
+    line-height: @base*60rem;
+    .font-dpr(14px);
 }

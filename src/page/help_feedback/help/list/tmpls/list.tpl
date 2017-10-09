@@ -1,27 +1,17 @@
-{% for index,item in data.data.helpInfo %}
+{% for index,item in data.data.helpList %}
 <div class="help-list-wrap">
     <div class="help-item">
-        <span class="label">{{ index }}</span>
+        <span class="label">{{ item.module }}</span>
         <div class="list">
-            {% for subitem in item %}
+            {% for subitem in item.subList %}
             <div class="item">
-                <a href="/ddweb/help/detail?{{paramUrl}}&helpId={{subitem.helpId}}">{{subitem.title}}<i class="arrow"></i></a>
+                <a href="/ddweb/help/detail?{{paramUrl}}&helpId={{ subitem.helpId }}">{{ subitem.title }}<i class="arrow"></i></a>
             </div>
-            {% endfor %} 
+            {% endfor %}
         </div>
     </div>
 </div>
-{% endfor %}    
-  <!--   <div class="help-item">
-        <span class="label">合作</span>
-        <div class="list">
-            <div class="item">
-                <a href="/ddweb/help/detail?ddtoken={{ ddtoken }}&userId={{ userId }}&type=4">发布合作后如何统计人数？<i class="arrow"></i></a>
-            </div>
-        </div>
-    </div>
- -->
-<!-- </div> -->
+{% endfor %}
 <div class="help-list-wrap">
     <div class="help-item">
         <div class="list">

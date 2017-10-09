@@ -1,0 +1,37 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+body{
+    background: #F0F2F7;
+}
+
+.container{
+    padding: 0;
+}
+
+.help-wrap{
+    background: #FFFFFF;
+    padding-left: @base*30rem;
+    .help-title{
+        padding: @base*32rem @base*30rem @base*20rem 0;
+        .font-dpr(16px);
+        color: #000000;
+        .one-line();
+        .setLine('bottom',#E5E5E5);
+        font-weight: 500;
+    }
+    .help-content{
+        padding: @base*25rem @base*30rem @base*48rem 0;
+        .font-dpr(15px)!important;
+        color: #363636!important;
+        line-height: @base*38rem!important;
+        word-break: break-all;
+        word-wrap: break-word;
+        img{
+            display: block;
+            margin-top: @base*10rem;
+            width: 100%!important;
+        }
+    }
+}

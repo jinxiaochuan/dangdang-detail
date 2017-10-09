@@ -1,18 +1,23 @@
 require('page/common/common.js');
 
-require('./feedback.less');
-
 require('lib/third/jquery.validate.js');
+
 require('lib/third/layer/mobile/need/layer.css');
 require('lib/third/layer/mobile/layer.js');
 
+require('./feedback.less');
+
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
+
+var TPL_SUCCESS = require('./tmpls/success.tpl');
 
 var HREF_ORIGIN = window.location.href;
 
-var userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+var PARAMS = jsmod.util.url.getParamMap(HREF_ORIGIN);
 
-var ddtoken = jsmod.util.url.getParam(HREF_ORIGIN,'ddtoken');
+if(PARAMS.ddtoken){
+    PARAMS.ddtoken = decodeURIComponent(PARAMS.ddtoken);
+}
 
 var Feedback = jsmod.util.klass({
     initialize: function(option){
@@ -55,24 +60,25 @@ var Feedback = jsmod.util.klass({
     initEvents: function(){
         var self = this;
 
-        this.$container.delegate('textarea','keyup',function(){
+        this.$container.delegate('textarea','input propertychange',function(){
             var len = $(this).val().length;
             var maxLen = 200;
             if(len - maxLen > 0){
-                $('.opinion-calculation').addClass('limit');
+                $('.opinion').addClass('limit');
             }else {
-                $('.opinion-calculation').removeClass('limit');
+                $('.opinion').removeClass('limit');
             }
             self.$container.find('.num').text(len);
         })
 
         this.$container.delegate('.done:not(".disable")','click',function(){
+            var me = this;
 
             if(!self.$form.valid()){
                 return;
             }
 
-            $(this).addClass('.disable');
+            $(this).addClass('disable');
 
             var data = self.$form.serializeArray();
 
@@ -82,28 +88,32 @@ var Feedback = jsmod.util.klass({
                 postData[item.name] = item.value;
             })
 
-            postData = $.extend(postData, {'userId':userId,'ddtoken':ddtoken});
+            postData = $.extend(postData, PARAMS);
 
             $.ajax({
                 url: '/ddweb/v1/feedback',
                 type: 'POST',
                 data: postData,
+                dataType: 'json',
                 success: function(json){
+                    $(me).removeClass('disable');
                     if(json.status == 1){
-                        layer.open({
-                            content: '反馈成功',
-                            skin: 'msg',
-                            time: 2,
-                            success: function(){
-                                setTimeout(function(){
-                                    window.history.back();
-                                },2000)
-                            }
-                         });
+                        self.$container.html(TPL_SUCCESS);
+                        return;
                     }
+
+                    layer.open({
+                        content: json.msg,
+                        skin: 'msg',
+                        time: 2
+                     });
                 }
 
             })
+        })
+
+        this.$container.delegate('.close','click',function(){
+            window.history.back();
         })
     }
 })

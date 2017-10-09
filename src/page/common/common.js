@@ -90,7 +90,7 @@ $app.on('click',function(){
         if(window.isIOS){
             window.location.href = 'https://itunes.apple.com/cn/app/id967227032';
         }else {
-            window.location.href = 'http://dangdangshejiao.oss-cn-beijing.aliyuncs.com/app/app-buildVersion-debug.apk';
+            window.location.href = 'http://m.app.so.com/detail/index?from=qing&id=3895302';
         }
     },2000);
 });
