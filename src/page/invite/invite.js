@@ -19,6 +19,9 @@ var Invite = jsmod.util.klass({
         this.option = option;
         this.$container = $('.container');
         this.getAjax();
+
+
+        
     },
     getAjax: function(){
         var self = this;
