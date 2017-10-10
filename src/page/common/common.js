@@ -80,7 +80,11 @@ var dialog = new jsmod.util.Dialog({
 
 $app.on('click',function(){
     if(mobileDevice().isWei){
-        dialog.show({fade:true});
+        if(window.isIOS){
+            dialog.show({fade:true});
+        }else {
+            window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
+        }
         return;
     };
 
@@ -90,7 +94,7 @@ $app.on('click',function(){
         if(window.isIOS){
             window.location.href = 'https://itunes.apple.com/cn/app/id967227032';
         }else {
-            window.location.href = 'http://m.app.so.com/detail/index?from=qing&id=3895302';
+            window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
         }
     },2000);
 });
