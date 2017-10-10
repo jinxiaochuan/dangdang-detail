@@ -1,6 +1,7 @@
 require('page/common/common.js');
 
 require('./detail.less');
+// require('lib/third/swiper.min.css');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
@@ -17,6 +18,7 @@ var TPL_NESWS = require('./tmpls/detail.tpl');
 var URL_NEWS = PATH_ORIGIN + PATH_NAME;
 
 var Empty = require('page/components/empty/empty.js');
+// var Swiper = require('swiper');
 
 var News = jsmod.util.klass({
     initialize: function(option){
@@ -26,10 +28,20 @@ var News = jsmod.util.klass({
         this.getAjax();
     },
 
+    // initSwiper: function(){
+
+    //     var mySwiper = new swiper('.swiper-container', {
+            
+    //     });
+
+    //     console.log('initSwiper');
+    //     console.log(mySwiper);
+    // },
+
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/detail?userId=1000034&newsId=1377006';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/detail?userId=1000034&newsId=1376619';
         // URL_NEWS = 'http://app.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
@@ -47,6 +59,7 @@ var News = jsmod.util.klass({
                     self.data = json.data;
                     self.commentAmount = self.data.newsDetail.commentAmount;
                     self.render(self.data);
+                    // self.initSwiper();
                     return;
                 }
                 var html = new Empty({
@@ -54,6 +67,7 @@ var News = jsmod.util.klass({
                 }).render();
 
                 self.$container.html(html);
+                
 
                 self.$container.find('.common-detail-wrap').delegate('a','click',function(e){
                     e.preventDefault();

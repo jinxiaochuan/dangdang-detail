@@ -73,20 +73,21 @@ webpackLoaders = webpackLoaders.concat(AppLoaders);
 //    })
 // );
 
-webpackPlugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-            drop_console: true
-      }
-    })
-)
+// webpackPlugins.push(
+//     new webpack.optimize.UglifyJsPlugin({
+//         compress: {
+//             warnings: false,
+//             drop_console: true
+//       }
+//     })
+// )
 
 webpackPlugins.push(
     new webpack.ProvidePlugin({
         $:'jquery',
         jQuery:'jquery',
-        swig: path.join(conf.CONFIG_BUILD.src,'/lib/third/swig.min.js')
+        swig: path.join(conf.CONFIG_BUILD.src,'/lib/third/swig.min.js'),
+        // swiper: path.join(conf.CONFIG_BUILD.src, '/lib/third/swiper.jquery.min.js')
     })
 );
 
