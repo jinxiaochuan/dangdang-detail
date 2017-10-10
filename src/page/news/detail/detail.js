@@ -31,7 +31,7 @@ var News = jsmod.util.klass({
     // initSwiper: function(){
 
     //     var mySwiper = new swiper('.swiper-container', {
-            
+
     //     });
 
     //     console.log('initSwiper');
@@ -67,7 +67,7 @@ var News = jsmod.util.klass({
                 }).render();
 
                 self.$container.html(html);
-                
+
 
                 self.$container.find('.common-detail-wrap').delegate('a','click',function(e){
                     e.preventDefault();

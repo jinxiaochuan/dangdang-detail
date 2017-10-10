@@ -73,14 +73,14 @@ webpackLoaders = webpackLoaders.concat(AppLoaders);
 //    })
 // );
 
-// webpackPlugins.push(
-//     new webpack.optimize.UglifyJsPlugin({
-//         compress: {
-//             warnings: false,
-//             drop_console: true
-//       }
-//     })
-// )
+webpackPlugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false,
+            drop_console: true
+      }
+    })
+)
 
 webpackPlugins.push(
     new webpack.ProvidePlugin({
