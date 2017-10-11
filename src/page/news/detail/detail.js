@@ -1,7 +1,7 @@
 require('page/common/common.js');
 
 require('./detail.less');
-// require('lib/third/swiper.min.css');
+require('lib/third/swiper.min.css');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
@@ -18,25 +18,17 @@ var TPL_NESWS = require('./tmpls/detail.tpl');
 var URL_NEWS = PATH_ORIGIN + PATH_NAME;
 
 var Empty = require('page/components/empty/empty.js');
-// var Swiper = require('swiper');
+
+var ModSwiper = require('page/components/modswiper/modswiper.js');
 
 var News = jsmod.util.klass({
     initialize: function(option){
         this.option = option;
         this.isOpenFromInternalApp = true;
         this.$container = $('.container');
+        this.modSwiper = new ModSwiper();
         this.getAjax();
     },
-
-    // initSwiper: function(){
-
-    //     var mySwiper = new swiper('.swiper-container', {
-            
-    //     });
-
-    //     console.log('initSwiper');
-    //     console.log(mySwiper);
-    // },
 
     getAjax: function(){
         var self = this;
@@ -59,7 +51,9 @@ var News = jsmod.util.klass({
                     self.data = json.data;
                     self.commentAmount = self.data.newsDetail.commentAmount;
                     self.render(self.data);
-                    // self.initSwiper();
+
+                    self.modSwiper.render();
+
                     return;
                 }
                 var html = new Empty({
@@ -67,7 +61,6 @@ var News = jsmod.util.klass({
                 }).render();
 
                 self.$container.html(html);
-                
 
                 self.$container.find('.common-detail-wrap').delegate('a','click',function(e){
                     e.preventDefault();

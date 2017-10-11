@@ -87,7 +87,7 @@ webpackPlugins.push(
         $:'jquery',
         jQuery:'jquery',
         swig: path.join(conf.CONFIG_BUILD.src,'/lib/third/swig.min.js'),
-        // swiper: path.join(conf.CONFIG_BUILD.src, '/lib/third/swiper.jquery.min.js')
+        swiper: path.join(conf.CONFIG_BUILD.src, '/lib/third/swiper.jquery.min.js')
     })
 );
 
