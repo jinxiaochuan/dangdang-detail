@@ -6,8 +6,8 @@ require('page/common/common.js');
 
 require('./detail.less');
 
-// require('lib/third/viewerjs/viewer.css');
-// var Viewer = require('lib/third/viewerjs/viewer.js');
+require('lib/third/viewerjs/viewer.css');
+var Viewer = require('lib/third/viewerjs/viewer.js');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
@@ -184,7 +184,7 @@ var CircleDetail = jsmod.util.klass({
                     })
 
                     self.initBridge();
-                    //self.initViewer();
+                    self.initViewer();
                     return;
                 }
 
@@ -209,7 +209,11 @@ var CircleDetail = jsmod.util.klass({
     },
 
     initViewer: function(){
-        var viewer = new Viewer($('.detail-content').get(0));
+        var viewer = new Viewer($('.detail-content').get(0),{
+            toolbar: false,
+            navbar : false,
+            movable: false
+        });
     },
 
     initPhotoSwipe: function(){

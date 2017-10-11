@@ -19,14 +19,11 @@ var URL_NEWS = PATH_ORIGIN + PATH_NAME;
 
 var Empty = require('page/components/empty/empty.js');
 
-var ModSwiper = require('page/components/modswiper/modswiper.js');
-
 var News = jsmod.util.klass({
     initialize: function(option){
         this.option = option;
         this.isOpenFromInternalApp = true;
         this.$container = $('.container');
-        this.modSwiper = new ModSwiper();
         this.getAjax();
     },
 
@@ -52,7 +49,7 @@ var News = jsmod.util.klass({
                     self.commentAmount = self.data.newsDetail.commentAmount;
                     self.render(self.data);
 
-                    self.modSwiper.render();
+                    // self.modSwiper.render();
 
                     return;
                 }
