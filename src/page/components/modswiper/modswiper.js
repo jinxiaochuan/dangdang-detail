@@ -37,14 +37,18 @@ var ModSwiper = jsmod.util.klass({
         var windowHeight = $(window).height();
 
         this.$swiperContainer.css('height',windowHeight);
-        $('body').css('overflow','hidden');
-
-        this.swiper && this.swiper.destroy();
+        $('body').css({
+            'overflow':'hidden',
+            'height':windowHeight
+        });
    
+        this.swiper && this.swiper.destroy();
+
         this.swiper = new swiper('.swiper-container', {
             initialSlide: index,
             pagination : '.swiper-pagination',
         });    
+
        
     },
 
@@ -55,7 +59,8 @@ var ModSwiper = jsmod.util.klass({
             self.$swiperContainer.hide();
             $('body').css({
                 'overflow-x':'hidden',
-                'overflow-y':'scroll'
+                'overflow-y':'scroll',
+                'height':'auto'
             });
         });
 
@@ -76,6 +81,8 @@ var ModSwiper = jsmod.util.klass({
             
                 // 获取当前下标
             var index = $(this).index('img') - 1;
+            console.log(index);
+
             self.initSwiper(index);
         });
     }
