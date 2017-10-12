@@ -2,12 +2,18 @@ require('lib/third/photoswipe/dist/photoswipe.css');
 require('lib/third/photoswipe/dist/default-skin/default-skin.css');
 var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
 var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
+var PinchZoom =  require('lib/third/pinchzoom.js');
+console.log(PinchZoom);
+
 require('page/common/common.js');
 
 require('./detail.less');
 
-require('lib/third/viewerjs/viewer.css');
-var Viewer = require('lib/third/viewerjs/viewer.js');
+require('lib/third/swiper.jquery.min.js');
+require('lib/third/swiper.min.css');
+
+// require('lib/third/viewerjs/viewer.css');
+// var Viewer = require('lib/third/viewerjs/viewer.js');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
@@ -147,13 +153,13 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1130&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1280&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1178&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=5&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376728&isAdminIdentity=1';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=112&userId=1000034&articleStatus=1&source=1&from=singlemessage&isappinstalled=0';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=234&userId=1000081&articleStatus=1';
-        // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
+        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
         var data = {}, isAdminIdentity;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
@@ -182,6 +188,19 @@ var CircleDetail = jsmod.util.klass({
                     self.$container.find('.detail-content').delegate('a','click',function(e){
                         e.preventDefault();
                     })
+
+                    // self.$container.find('.detail-content').delegate('img','click',function(e){
+                    //     jsmod.util.Dialog.setOpacity(1);
+                    //     var src = $(this).attr('src');
+                    //     this.dg = new jsmod.util.Dialog({
+                    //         html: '<div class="pinch-zoom"><img style="max-width:100%;" src="'+ src +'"></div>',
+                    //         backgroundColor: '#000000'
+                    //     })
+                    //     this.dg.show({fade:true});
+                    //     $('div.pinch-zoom').each(function () {
+                    //           new PinchZoom($(this), {});
+                    //       });
+                    // })
 
                     self.initBridge();
                     // self.initViewer();

@@ -1,0 +1,34 @@
+@base : 1/75;
+
+.swiper-container{
+    display: none;
+    position: fixed !important;
+    // width:100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0;
+    background: #333;
+    .swiper-slide{
+        position: relative;
+        height: auto !important;
+        overflow-y: scroll;
+        img{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            width: 100%;
+
+            &.long{
+                top: 0;
+                transform: none;
+            }
+        }
+    }
+
+
+    .swiper-pagination{
+        position: fixed;
+        bottom:@base*160rem !important;
+    }
+}
