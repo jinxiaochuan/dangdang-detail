@@ -1,4 +1,4 @@
-<div class="common-circle-header">
+<div class="common-circle-header my-gallery">
     <div class="avatar-wrap">
         <a class="tap-avatar" href="javascript:void(0)">
             <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
@@ -13,7 +13,21 @@
     </div>
     {% endif %}
     <div class="circle-news-detail">
-        <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
+        <div class="detail-content my-gallery">
+            <!-- <div class="">
+                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                    <a href="{{ data.circleInfo.circleLogo.pictureUrl }}" itemprop="contentUrl" data-size="690x690">
+                        <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
+                    </a>
+                </figure>
+                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                    <a href="http://s1.im-dangdang.com/20170930/e8R8WTZXmp.jpg" itemprop="contentUrl" data-size="72x72">
+                        <img class="avatar" src="http://s1.im-dangdang.com/20170930/e8R8WTZXmp.jpg" alt="">
+                    </a>
+                </figure>
+            </div> -->
+            {{ data.articleInfo.detail|safe }}
+        </div>
     </div>
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>

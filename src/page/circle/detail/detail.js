@@ -1,7 +1,7 @@
-// require('lib/third/photoswipe/dist/photoswipe.css');
-// require('lib/third/photoswipe/dist/default-skin/default-skin.css');
-// var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
-// var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
+require('lib/third/photoswipe/dist/photoswipe.css');
+require('lib/third/photoswipe/dist/default-skin/default-skin.css');
+var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
+var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
 require('page/common/common.js');
 
 require('./detail.less');
@@ -184,7 +184,8 @@ var CircleDetail = jsmod.util.klass({
                     })
 
                     self.initBridge();
-                    self.initViewer();
+                    // self.initViewer();
+                    // self.initPhotoSwipe();
                     return;
                 }
 

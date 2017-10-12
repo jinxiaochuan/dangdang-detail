@@ -80,11 +80,12 @@ var dialog = new jsmod.util.Dialog({
 
 $app.on('click',function(){
     if(mobileDevice().isWei){
-        if(window.isIOS){
-            dialog.show({fade:true});
-        }else {
-            window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
-        }
+        // if(window.isIOS){
+        //     dialog.show({fade:true});
+        // }else {
+        //     window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
+        // }
+        window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
         return;
     };
 
