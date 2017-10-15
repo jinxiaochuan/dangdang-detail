@@ -79,7 +79,7 @@
     {% if data.applyStatus == -1 %}
     <a class="sign-btn {% if data.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">发意向</a>
     {% else %}
-    <a class="communicate-btn" href="javascript:void (0)">沟通</a>
+    <a class="communicate-btn" href="javascript:void (0)">留言</a>
     {% endif %}
 </div>
 {% endif %}

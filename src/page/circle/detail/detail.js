@@ -67,7 +67,7 @@ var CircleDetail = jsmod.util.klass({
             })
 
             bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
-                self.$container.find('.sign-btn').removeClass('sign-btn').addClass('communicate-btn').text('沟通');
+                self.$container.find('.sign-btn').removeClass('sign-btn').addClass('communicate-btn').text('留言');
             })
 
             self.$container.delegate('.tap-avatar','click',function(){
