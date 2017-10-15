@@ -3,7 +3,6 @@ require('lib/third/photoswipe/dist/default-skin/default-skin.css');
 var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
 var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
 var PinchZoom =  require('lib/third/pinchzoom.js');
-console.log(PinchZoom);
 
 require('page/common/common.js');
 
@@ -12,8 +11,8 @@ require('./detail.less');
 require('lib/third/swiper.jquery.min.js');
 require('lib/third/swiper.min.css');
 
-// require('lib/third/viewerjs/viewer.css');
-// var Viewer = require('lib/third/viewerjs/viewer.js');
+require('lib/third/viewerjs/viewer.css');
+var Viewer = require('lib/third/viewerjs/viewer.js');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
@@ -193,13 +192,13 @@ var CircleDetail = jsmod.util.klass({
                     //     jsmod.util.Dialog.setOpacity(1);
                     //     var src = $(this).attr('src');
                     //     this.dg = new jsmod.util.Dialog({
-                    //         html: '<div class="pinch-zoom"><img style="max-width:100%;" src="'+ src +'"></div>',
+                    //         html: '<div class="pinch-zoom"><img src="'+ src +'"></div>',
                     //         backgroundColor: '#000000'
                     //     })
-                    //     this.dg.show({fade:true});
                     //     $('div.pinch-zoom').each(function () {
                     //           new PinchZoom($(this), {});
-                    //       });
+                    //     });
+                    //     this.dg.show({fade:true});
                     // })
 
                     self.initBridge();

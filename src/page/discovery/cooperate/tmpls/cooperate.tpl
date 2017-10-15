@@ -43,7 +43,7 @@
 {% endif %}
 
 <div class="common-detail-wrap">
-    <p class="detail-title">详情</p>
+    <!-- <p class="detail-title">详情</p> -->
     <div class="detail-content">{{ data.detailContent|safe }}</div>
 </div>
 <div class="common-deadline-wrap">
