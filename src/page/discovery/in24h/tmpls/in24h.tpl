@@ -12,7 +12,7 @@
         <span class="label-detail">{{ data.in24hInfo.formatStartTime }}</span>
     </div>
     <div class="info-item">
-        <span class="label-name label-name-address">地点：</span>
+        <span class="label-name label-name-location">地点：</span>
         <span class="label-detail label-detail-in24h"><a class="in24-address" href="javascript:void (0)">{{ (data.in24hInfo.webInfo.activityLocation|json_parse).name }}</a> <span class="distance">{{ data.in24hInfo.formatDistance }}</span></span>
     </div>
 </div>
