@@ -11,21 +11,21 @@
         img{
             width: 100%;
         }
-        .download-logo{
+        .download-logo-wrap{
             position: absolute;
-            left: 50%;
-            top: @base*108rem;
-            margin-left: -@base*71rem;
-            width: @base*142rem;
-            height: @base*142rem;
+            top: @base*200rem;
+            width: 100%;
+            .flex();
+            .justify-content(center);
+        }
+        .download-logo{
+            width: @base*100rem;
+            height: @base*100rem;
             background: url('~assets/logo@1.5x.png') center center no-repeat;
             background-size: contain;
         }
         .download-slogan{
-            position: absolute;
-            left: 50%;
-            top: @base*268rem;
-            margin-left: -@base*200rem;
+            margin-left: @base*35rem;
             width: @base*400rem;
             height: @base*100rem;
             background: url('~assets/slogan@1.5x.png') center center no-repeat;
