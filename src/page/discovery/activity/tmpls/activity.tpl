@@ -59,6 +59,7 @@
     {% elseif data.activityInfo.showAccess == 2 || data.activityInfo.showAccess == 3 %}
     <a class="show-access" href="javascript:void (0)"><i class="part"></i></a>
     {% else %}
+    <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
     {% endif %}
     {% endif %}
 </div>

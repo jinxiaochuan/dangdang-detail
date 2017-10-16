@@ -55,12 +55,13 @@
     <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
     {% if data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == '1' %}
     {% if data.articleInfo.showAccess == 1 %}
-    <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
+    <a class="show-access" href="javascript:void (0)"><i class="member-part"></i></a>
     {% elseif data.articleInfo.showAccess == 2 %}
     <a class="show-access" href="javascript:void (0)"><i class="member-join"></i></a>
     {% elseif data.articleInfo.showAccess == 3 %}
     <a class="show-access" href="javascript:void (0)"><i class="member-part"></i></a>
     {% else %}
+    <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
     {% endif %}
     {% endif %}
 </div>
