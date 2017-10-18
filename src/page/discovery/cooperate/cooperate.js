@@ -4,6 +4,8 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var trans = require('lib/self/trans.js');
 
+var share = require('lib/self/share.js');
+
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
 var HREF_ORIGIN = window.location.href;
@@ -23,6 +25,7 @@ var Cooperate = jsmod.util.klass({
         this.option = option;
         this.$container = $('.container');
         this.getAjax();
+        console.log(window.wx);
     },
 
     getAjax: function(){
@@ -32,9 +35,9 @@ var Cooperate = jsmod.util.klass({
         // URL_COOPERATION = 'http://app.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
         var data={};
 
-        data.userId=jsmod.util.url.getParam(HREF_ORIGIN,'userId');
-        data.coopId=jsmod.util.url.getParam(HREF_ORIGIN,'coopId');
-        data.viewUserId=jsmod.util.url.getParam(HREF_ORIGIN,'viewUserId');
+        data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
+        data.coopId = jsmod.util.url.getParam(HREF_ORIGIN, 'coopId');
+        data.viewUserId = jsmod.util.url.getParam(HREF_ORIGIN, 'viewUserId');
 
         $.ajax({
             url:URL_COOPERATION,
@@ -83,6 +86,21 @@ var Cooperate = jsmod.util.klass({
         })
 
         this.initBridge();
+
+        // this.initShare();
+    },
+
+    initShare: function(){
+        var self = this;
+
+        var param = {
+            'title' : this.baseInfo.title || '微信分享标题',
+            'desc' : this.baseInfo.desc || '微信分享描述',
+            'link' : HREF_ORIGIN,
+            'imgUrl': ''
+        }
+
+        share(param);
     },
 
     initBase: function(data){
