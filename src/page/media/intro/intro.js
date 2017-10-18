@@ -29,40 +29,7 @@ var MediaIntro = jsmod.util.klass({
         this.getAjax();
     },
 
-    initBridge: function(){
-        var self = this;
 
-        /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
-        setupWebViewJavascriptBridge(function(bridge){
-
-            bridge.callHandler('baseInfo',self.baseInfo,function(){})
-
-            self.$container.delegate('.tap-avatar','click',function(){
-
-                bridge.callHandler('clickMediaLogo')
-
-            })
-
-            self.$container.delegate('.media-home','click',function(){
-
-                bridge.callHandler('mediaMainPage')
-
-            })
-
-
-        })
-
-
-    },
-
-    initBase: function(data){
-        this.baseInfo = {
-            "mediaName": data.mediaInfo.mediaName,
-            "mediaId": data.mediaInfo.mediaId,
-            "mediaSlogan": data.mediaInfo.mediaSlogan,
-            "mediaLogo": data.mediaInfo.mediaLogo
-        }
-    },
 
     getAjax: function(){
         var self = this;
@@ -83,9 +50,7 @@ var MediaIntro = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
-                    self.initBase(json.data);
                     self.render(self.data);
-                    self.initBridge();
                     return;
                 }
 
@@ -120,6 +85,54 @@ var MediaIntro = jsmod.util.klass({
         })
 
         this.$container.html(html);
+
+        this.initEnlarge();
+
+        this.initBridge();
+
+    },
+
+    initEnlarge: function(){
+        var self  = this;
+        this.$imgList = this.$container.find('.media-intro img');
+        var imgList = $.map($.makeArray(self.$imgList), function(item){
+            return {
+                'url': $(item).attr('src')
+            }
+        })
+
+        this.baseInfo = {
+            "mediaName": this.data.mediaInfo.mediaName,
+            "mediaId": this.data.mediaInfo.mediaId,
+            "mediaSlogan": this.data.mediaInfo.mediaSlogan,
+            "mediaLogo": this.data.mediaInfo.mediaLogo,
+            "imgList": imgList
+        }
+
+    },
+
+    initBridge: function(){
+        var self = this;
+
+        /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
+        setupWebViewJavascriptBridge(function(bridge){
+
+            bridge.callHandler('baseInfo',self.baseInfo,function(){})
+
+            self.$container.delegate('.tap-avatar','click',function(){
+                bridge.callHandler('clickMediaLogo')
+            })
+
+            self.$container.delegate('.media-home','click',function(){
+                bridge.callHandler('mediaMainPage')
+            })
+
+            self.$container.delegate('.media-intro img', 'click', function(){
+                var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
+                bridge.callHandler('tapEnlarge', index, function(){})
+            })
+
+        })
 
     },
 

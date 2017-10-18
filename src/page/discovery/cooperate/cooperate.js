@@ -25,7 +25,6 @@ var Cooperate = jsmod.util.klass({
         this.option = option;
         this.$container = $('.container');
         this.getAjax();
-        console.log(window.wx);
     },
 
     getAjax: function(){
@@ -47,7 +46,6 @@ var Cooperate = jsmod.util.klass({
             success:function(json){
                 if(json.status == 1){
                     self.data = json.data;
-                    self.initBase(json.data);
                     self.render(json.data);
                     return;
                 }
@@ -85,41 +83,44 @@ var Cooperate = jsmod.util.klass({
             e.preventDefault();
         })
 
+        this.initEnlarge();
+
+        this.initShare();
+
         this.initBridge();
 
-        // this.initShare();
     },
 
     initShare: function(){
-        var self = this;
-
-        var param = {
-            'title' : this.baseInfo.title || '微信分享标题',
-            'desc' : this.baseInfo.desc || '微信分享描述',
-            'link' : HREF_ORIGIN,
-            'imgUrl': ''
-        }
-
-        share(param);
+        share();
     },
 
-    initBase: function(data){
+    initEnlarge: function(){
+        var self = this;
+        this.$imgList = this.$container.find('.common-detail-wrap .detail-content img');
+        var imgList = $.map($.makeArray(self.$imgList), function(item){
+            return {
+                'url': $(item).attr('src')
+            }
+        })
+
         this.baseInfo = {
-            "applyStatus":data.applyStatus,
-            "showAccess":data.showAccess,
-            "userShowName":data.userShowName,
-            "userId":data.userId,
-            "headImage":data.headImage,
-            "isFinished":data.isFinished,
-            "coopId":data.webInfo.coopId,
-            "isCanSignUp":data.isCanSignUp,
-            "location":data.location,
-            "longitude":data.longitude,
-            "latitude":data.latitude,
-            "userImage":data.userImage,
-            "title":data.title,
-            "detailImageList":data.detailImageList,
-            "detailContent":data.detailContent
+            "applyStatus": this.data.applyStatus,
+            "showAccess": this.data.showAccess,
+            "userShowName": this.data.userShowName,
+            "userId": this.data.userId,
+            "headImage": this.data.headImage,
+            "isFinished": this.data.isFinished,
+            "coopId": this.data.webInfo.coopId,
+            "isCanSignUp": this.data.isCanSignUp,
+            "location": this.data.location,
+            "longitude": this.data.longitude,
+            "latitude": this.data.latitude,
+            "userImage": this.data.userImage,
+            "title": this.data.title,
+            "detailImageList": this.data.detailImageList,
+            "detailContent": this.data.detailContent,
+            "imgList": imgList
         }
     },
 
@@ -166,6 +167,12 @@ var Cooperate = jsmod.util.klass({
              self.$container.delegate('.tap-location','click',function(){
                  bridge.callHandler('tapPlace')
              })
+
+             self.$container.delegate('.common-detail-wrap .detail-content img', 'click', function(){
+                 var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
+                 bridge.callHandler('tapEnlarge', index, function(){})
+             })
+
        })
     }
 })

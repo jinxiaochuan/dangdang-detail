@@ -44,7 +44,6 @@ var IN24H = jsmod.util.klass({
             success: function (json) {
                 if (json.status == 1) {
                     self.data = json.data;
-                    self.initBase(json.data);
                     self.render(json.data);
                     return;
                 }
@@ -83,6 +82,8 @@ var IN24H = jsmod.util.klass({
 
         this.initFlex();
 
+        this.initEnlarge();
+
         this.initBridge();
     },
 
@@ -99,28 +100,37 @@ var IN24H = jsmod.util.klass({
         }
     },
 
-    initBase: function(data){
+    initEnlarge: function(){
+        var self = this;
+        this.$imgList = this.$container.find('.common-detail-wrap .detail-content img');
+        var imgList = $.map($.makeArray(self.$imgList), function(item){
+            return {
+                'url': $(item).attr('src')
+            }
+        })
+
         this.baseInfo = {
-            "viewedUserId": data.in24hInfo.webInfo.viewedUserId,
-            "activityLongitude": data.in24hInfo.activityLongitude,
-            "activityLatitude": data.in24hInfo.activityLatitude,
-            "activityLocation": data.in24hInfo.activityLocation,
-            "longitude": data.in24hInfo.longitude,
-            "latitude": data.in24hInfo.latitude,
-            "location": data.in24hInfo.location,
-            "in24hId": data.in24hInfo.webInfo.in24hId,
-            "showAccess": data.in24hInfo.showAccess,
-            "applyStatus": data.in24hInfo.applyStatus,
-            "headImage": data.in24hInfo.userInfo.headImage,
-            "showName": data.in24hInfo.userInfo.showName,
-            "isCanSeePersonFile": data.in24hInfo.isCanSeePersonFile,
-            "isFollow": data.in24hInfo.isFollow,
-            "isCanSignUp": data.in24hInfo.isCanSignUp,
-            "userImage": data.in24hInfo.userInfo.userImage,
-            "title": data.in24hInfo.title,
-            "detailImages": data.in24hInfo.detailImages,
-            "detailContent": data.in24hInfo.detailContent,
-            "auditType": data.in24hInfo.auditType
+            "viewedUserId": this.data.in24hInfo.webInfo.viewedUserId,
+            "activityLongitude": this.data.in24hInfo.activityLongitude,
+            "activityLatitude": this.data.in24hInfo.activityLatitude,
+            "activityLocation": this.data.in24hInfo.activityLocation,
+            "longitude": this.data.in24hInfo.longitude,
+            "latitude": this.data.in24hInfo.latitude,
+            "location": this.data.in24hInfo.location,
+            "in24hId": this.data.in24hInfo.webInfo.in24hId,
+            "showAccess": this.data.in24hInfo.showAccess,
+            "applyStatus": this.data.in24hInfo.applyStatus,
+            "headImage": this.data.in24hInfo.userInfo.headImage,
+            "showName": this.data.in24hInfo.userInfo.showName,
+            "isCanSeePersonFile": this.data.in24hInfo.isCanSeePersonFile,
+            "isFollow": this.data.in24hInfo.isFollow,
+            "isCanSignUp": this.data.in24hInfo.isCanSignUp,
+            "userImage": this.data.in24hInfo.userInfo.userImage,
+            "title": this.data.in24hInfo.title,
+            "detailImages": this.data.in24hInfo.detailImages,
+            "detailContent": this.data.in24hInfo.detailContent,
+            "auditType": this.data.in24hInfo.auditType,
+            "imgList": imgList
         }
     },
 
@@ -176,8 +186,12 @@ var IN24H = jsmod.util.klass({
                 bridge.callHandler('tapPlace')
             })
 
-        })
+            self.$container.delegate('.common-detail-wrap .detail-content img', 'click', function(){
+                var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
+                bridge.callHandler('tapEnlarge', index, function(){})
+            })
 
+        })
 
     }
 })

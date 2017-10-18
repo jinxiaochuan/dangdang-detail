@@ -1,9 +1,10 @@
 require('page/common/common.js');
 
 require('./detail.less');
-require('lib/third/swiper.min.css');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
+
+var share = require('lib/self/share.js');
 
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
@@ -30,8 +31,8 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/detail?userId=1000034&newsId=1376619';
-        // URL_NEWS = 'http://app.im-dangdang.com/ddweb/v1/news/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/news/detail?userId=1000034&newsId=181';
+        // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
 
@@ -47,10 +48,7 @@ var News = jsmod.util.klass({
                 if(json.status == 1){
                     self.data = json.data;
                     self.commentAmount = self.data.newsDetail.commentAmount;
-                    self.render(self.data);
-
-                    // self.modSwiper.render();
-
+                    self.render(json.data);
                     return;
                 }
                 var html = new Empty({
@@ -98,28 +96,48 @@ var News = jsmod.util.klass({
 
         this.$container.html(html);
 
+        this.initEnlarge();
+
+        this.initShare();
+
         this.initAvatar();
 
         this.initBridge();
 
     },
 
+    initShare: function(){
+        share();
+    },
+
+    initEnlarge: function(){
+        var self  = this;
+        this.$imgList = this.$container.find('.news-detail-main img');
+        var imgList = $.map($.makeArray(self.$imgList), function(item){
+            return {
+                'url': $(item).attr('src')
+            }
+        })
+
+        this.baseInfo = {
+            "mediaId": this.data.newsDetail.mediaId,
+            "title": this.data.newsDetail.title,
+            "mediaLogoUrl": this.data.newsDetail.mediaLogoUrl,
+            "imgList": imgList
+        }
+
+        this.avatarInfo = {
+            mediaId: this.data.newsDetail.mediaId
+        }
+
+        this.nameInfo = {
+            mediaId: this.data.newsDetail.mediaId
+        }
+
+    },
+
   initBridge: function(){
       var self = this;
-
-      self.baseInfo = {
-          mediaId: self.data.newsDetail.mediaId,
-          title: self.data.newsDetail.title,
-          mediaLogoUrl: self.data.newsDetail.mediaLogoUrl
-      }
-
-      self.avatarInfo = {
-          mediaId:self.data.newsDetail.mediaId
-      }
-
-      self.nameInfo = {
-          mediaId:self.data.newsDetail.mediaId
-      }
 
       /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
       setupWebViewJavascriptBridge(function(bridge){
@@ -168,6 +186,11 @@ var News = jsmod.util.klass({
                   return;
               }
               window.location.href = '/ddweb/news/detail?userId='+ userId +'&newsId=' + newsId;
+          })
+
+          self.$container.delegate('.news-detail-main img', 'click', function(){
+              var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
+              bridge.callHandler('tapEnlarge', index, function(){})
           })
 
       })

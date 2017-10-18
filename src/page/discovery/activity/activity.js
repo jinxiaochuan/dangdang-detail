@@ -4,6 +4,8 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var trans = require('lib/self/trans.js');
 
+var share = require('lib/self/share.js');
+
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
 var HREF_ORIGIN = window.location.href;
@@ -43,8 +45,7 @@ var Activity = jsmod.util.klass({
             success:function(json){
                 if(json.status == 1){
                     self.data = json.data;
-                    self.initBase(json.data);
-                    self.render(self.data);
+                    self.render(json.data);
                     return;
                 }
 
@@ -81,30 +82,48 @@ var Activity = jsmod.util.klass({
             e.preventDefault();
         })
 
+        this.initEnlarge();
+
+        this.initShare();
+
         this.initBridge();
 
     },
 
-    initBase: function(data){
+    initShare: function(){
+        share();
+    },
+
+    initEnlarge: function(){
+        var self = this;
+        this.$imgList = this.$container.find('.common-detail-wrap .detail-content img');
+        var imgList = $.map($.makeArray(self.$imgList), function(item){
+            return {
+                'url': $(item).attr('src')
+            }
+        })
+
         this.baseInfo = {
-            "endTime": data.activityInfo.endTime,
-            "applyStatus": data.activityInfo.applyStatus,
-            "showAccess":data.activityInfo.showAccess,
-            "showName":data.activityInfo.userInfo.showName,
-            "viewUserId":data.activityInfo.webInfo.viewedUserId,
-            "headImage":data.activityInfo.userInfo.headImage,
-            "isOver":data.activityInfo.isOver,
-            "activityId":data.activityInfo.webInfo.activityId,
-            "isCanSignUp":data.activityInfo.isCanSignUp,
-            "location":data.activityInfo.location,
-            "longitude":data.activityInfo.longitude,
-            "latitude":data.activityInfo.latitude,
-            "userImage":data.activityInfo.userInfo.userImage,
-            "title":data.activityInfo.title,
-            "detailImages":data.activityInfo.detailImages,
-            "detailContent":data.activityInfo.detailContent,
-            "auditType":data.activityInfo.auditType
+            "endTime": this.data.activityInfo.endTime,
+            "applyStatus": this.data.activityInfo.applyStatus,
+            "showAccess": this.data.activityInfo.showAccess,
+            "showName": this.data.activityInfo.userInfo.showName,
+            "viewUserId": this.data.activityInfo.webInfo.viewedUserId,
+            "headImage": this.data.activityInfo.userInfo.headImage,
+            "isOver": this.data.activityInfo.isOver,
+            "activityId": this.data.activityInfo.webInfo.activityId,
+            "isCanSignUp": this.data.activityInfo.isCanSignUp,
+            "location": this.data.activityInfo.location,
+            "longitude": this.data.activityInfo.longitude,
+            "latitude": this.data.activityInfo.latitude,
+            "userImage": this.data.activityInfo.userInfo.userImage,
+            "title": this.data.activityInfo.title,
+            "detailImages": this.data.activityInfo.detailImages,
+            "detailContent": this.data.activityInfo.detailContent,
+            "auditType": this.data.activityInfo.auditType,
+            "imgList": imgList
         }
+
     },
 
   initBridge: function(){
@@ -150,6 +169,12 @@ var Activity = jsmod.util.klass({
           self.$container.delegate('.communicate-btn','click',function(){
               bridge.callHandler('doChat')
           })
+
+          self.$container.delegate('.common-detail-wrap .detail-content img', 'click', function(){
+              var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
+              bridge.callHandler('tapEnlarge', index, function(){})
+          })
+
       })
   }
 })

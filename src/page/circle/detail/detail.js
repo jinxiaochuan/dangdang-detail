@@ -1,22 +1,19 @@
-require('lib/third/photoswipe/dist/photoswipe.css');
-require('lib/third/photoswipe/dist/default-skin/default-skin.css');
-var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
-var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
-var PinchZoom =  require('lib/third/pinchzoom.js');
-
+// require('lib/third/photoswipe/dist/photoswipe.css');
+// require('lib/third/photoswipe/dist/default-skin/default-skin.css');
+// var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
+// var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
+// var PinchZoom =  require('lib/third/pinchzoom.js');
+// require('lib/third/viewerjs/viewer.css');
+// var Viewer = require('lib/third/viewerjs/viewer.js');
 require('page/common/common.js');
 
 require('./detail.less');
 
-require('lib/third/swiper.jquery.min.js');
-require('lib/third/swiper.min.css');
-
-require('lib/third/viewerjs/viewer.css');
-var Viewer = require('lib/third/viewerjs/viewer.js');
-
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var trans = require('lib/self/trans.js');
+
+var share = require('lib/self/share.js');
 
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
@@ -49,6 +46,122 @@ var CircleDetail = jsmod.util.klass({
         this.getAjax();
     },
 
+    getAjax: function(){
+        var self = this;
+
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1280&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1178&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1643&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376728&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=112&userId=1000034&articleStatus=1&source=1&from=singlemessage&isappinstalled=0';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=234&userId=1000081&articleStatus=1';
+        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
+        var data = {}, isAdminIdentity;
+
+        data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+        data.articleId = jsmod.util.url.getParam(HREF_ORIGIN,'articleId');
+        isAdminIdentity  = jsmod.util.url.getParam(HREF_ORIGIN,'isAdminIdentity');
+        $.ajax({
+            url: URL_CIRCLE,
+            dataType: 'jsonp',
+            data: data,
+            jsonp: 'callback',
+            success: function(json){
+                if(json.status == 1){
+                    self.data = json.data;
+                    self.commentCount = json.data.webShowInfo.commentCount;
+                    self.render(json.data, isAdminIdentity);
+                    return;
+                }
+
+                var html = new Empty({
+                    word: json.msg
+                }).render();
+
+                self.$container.html(html);
+
+            },
+            error: function(error,errorType,errorMsg){
+                var html = new Empty({
+                    word: errorMsg,
+                }).render();
+
+                self.$container.html(html);
+            }
+
+        })
+
+
+    },
+
+    render: function(data, isAdminIdentity){
+
+        data.articleInfo.detail = trans(data.articleInfo.detail);
+        if((data.articleInfo.articleType == '2') && (data.articleInfo.activityInfo.review)){
+            data.articleInfo.activityInfo.review = trans(data.articleInfo.activityInfo.review);
+        }
+        if((data.articleInfo.articleType == '3') && (data.articleInfo.coopInfo.review)){
+            data.articleInfo.coopInfo.review = trans(data.articleInfo.coopInfo.review);
+        }
+        var html = swig.render(TPL_MAP[data.articleInfo.articleType],{
+            locals:{
+                data: $.extend(data, {'isAdminIdentity': isAdminIdentity})
+            }
+        });
+
+        this.$container.html(html);
+
+        this.$container.find('.detail-content').delegate('a','click',function(e){
+            e.preventDefault();
+        })
+
+        this.initEnlarge();
+
+        this.initShare();
+
+        this.initBridge();
+
+    },
+
+    initShare: function(){
+        share();
+    },
+
+    initEnlarge: function(){
+        var self = this;
+        this.$imgList = this.$container.find('.common-detail-wrap .detail-content img,.circle-news-detail .detail-content img');
+        var imgList = $.map($.makeArray(self.$imgList), function(item){
+            return {
+                'url': $(item).attr('src')
+            }
+        })
+
+        this.baseInfo = {
+            "userId": this.data.webShowInfo.userId,
+            "targetId": this.data.articleInfo.articleId,
+            "articleId": this.data.articleInfo.articleId,
+            "type": this.data.articleInfo.articleType,
+            "circleId": this.data.circleInfo.circleId,
+            "circleName": this.data.circleInfo.circleName,
+            "memberType": this.data.circleInfo.memberType,
+            "showAccess": this.data.articleInfo.showAccess,
+            "isCanComment": this.data.articleInfo.isCanComment,
+            "activityIsCanSignUp": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.isCanSignUp : null,
+            "coopIsCanSignUp": this.data.articleInfo.coopInfo ? this.data.articleInfo.coopInfo.isCanSignUp : null,
+            "location": this.data.articleInfo.location,
+            "latitude": this.data.articleInfo.latitude,
+            "longitude": this.data.articleInfo.longitude,
+            "pictureUrl": this.data.circleInfo.circleLogo.pictureUrl,
+            "articleTitle": this.data.articleInfo.articleTitle,
+            "auditType": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.auditType : null,
+            "imgList": imgList
+        }
+
+        this.logoInfo = {
+            "imgUrl": this.data.circleInfo.circleLogo
+        }
+    },
+
     initBridge: function(){
         var self = this;
 
@@ -71,156 +184,41 @@ var CircleDetail = jsmod.util.klass({
             })
 
             self.$container.delegate('.tap-avatar','click',function(){
-
                 bridge.callHandler('tapUserImage',self.logoInfo,function(){})
-
             })
 
             self.$container.delegate('.tap-sign','click',function(){
-
                 bridge.callHandler('tapAppliedUserList')
-
             })
 
-
             self.$container.delegate('.sign-btn','click',function(){
-
                 bridge.callHandler('apply')
-
             })
 
             self.$container.delegate('.edit-btn','click',function(){
-
                 bridge.callHandler('edit')
             })
 
             self.$container.delegate('.communicate-btn','click',function(){
-
                 bridge.callHandler('doChat')
-
             })
 
             self.$container.delegate('.show-access','click',function(){
-
                 bridge.callHandler('tapShowAccess')
-
             })
 
             self.$container.delegate('.comment-wrap','click',function(){
-
                 bridge.callHandler('doComment')
-
             })
-
 
             self.$container.delegate('.tap-location','click',function(){
                 bridge.callHandler('tapPlace')
             })
 
-        })
-
-
-    },
-
-    initBase: function(data){
-        this.baseInfo = {
-            "userId": data.webShowInfo.userId,
-            "targetId": data.articleInfo.articleId,
-            "articleId": data.articleInfo.articleId,
-            "type": data.articleInfo.articleType,
-            "circleId": data.circleInfo.circleId,
-            "circleName": data.circleInfo.circleName,
-            "memberType": data.circleInfo.memberType,
-            "showAccess": data.articleInfo.showAccess,
-            "isCanComment": data.articleInfo.isCanComment,
-            "activityIsCanSignUp": data.articleInfo.activityInfo ? data.articleInfo.activityInfo.isCanSignUp : null,
-            "coopIsCanSignUp": data.articleInfo.coopInfo ? data.articleInfo.coopInfo.isCanSignUp : null,
-            "location": data.articleInfo.location,
-            "latitude": data.articleInfo.latitude,
-            "longitude": data.articleInfo.longitude,
-            "pictureUrl": data.circleInfo.circleLogo.pictureUrl,
-            "articleTitle": data.articleInfo.articleTitle,
-            "auditType": data.articleInfo.activityInfo ? data.articleInfo.activityInfo.auditType : null
-        }
-
-        this.logoInfo = {
-            "imgUrl": data.circleInfo.circleLogo
-        }
-
-    },
-
-    getAjax: function(){
-        var self = this;
-
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1280&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1178&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=5&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376728&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=112&userId=1000034&articleStatus=1&source=1&from=singlemessage&isappinstalled=0';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=234&userId=1000081&articleStatus=1';
-        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
-        var data = {}, isAdminIdentity;
-
-        data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
-        data.articleId = jsmod.util.url.getParam(HREF_ORIGIN,'articleId');
-        isAdminIdentity  = jsmod.util.url.getParam(HREF_ORIGIN,'isAdminIdentity');
-        $.ajax({
-            url: URL_CIRCLE,
-            dataType: 'jsonp',
-            data: data,
-            jsonp: 'callback',
-            success: function(json){
-                if(json.status == 1){
-                    self.data = json.data;
-                    self.initBase(json.data);
-                    self.commentCount = json.data.webShowInfo.commentCount;
-                    self.data.articleInfo.detail = trans(self.data.articleInfo.detail);
-                    if((self.data.articleInfo.articleType == '2') && (self.data.articleInfo.activityInfo.review)){
-                        self.data.articleInfo.activityInfo.review = trans(self.data.articleInfo.activityInfo.review);
-                    }
-                    if((self.data.articleInfo.articleType == '3') && (self.data.articleInfo.coopInfo.review)){
-                        self.data.articleInfo.coopInfo.review = trans(self.data.articleInfo.coopInfo.review);
-                    }
-                    var html = swig.render(TPL_MAP[self.data.articleInfo.articleType],{locals:{data:$.extend(self.data,{'isAdminIdentity':isAdminIdentity})}});
-                    self.$container.html(html);
-
-                    self.$container.find('.detail-content').delegate('a','click',function(e){
-                        e.preventDefault();
-                    })
-
-                    // self.$container.find('.detail-content').delegate('img','click',function(e){
-                    //     jsmod.util.Dialog.setOpacity(1);
-                    //     var src = $(this).attr('src');
-                    //     this.dg = new jsmod.util.Dialog({
-                    //         html: '<div class="pinch-zoom"><img src="'+ src +'"></div>',
-                    //         backgroundColor: '#000000'
-                    //     })
-                    //     $('div.pinch-zoom').each(function () {
-                    //           new PinchZoom($(this), {});
-                    //     });
-                    //     this.dg.show({fade:true});
-                    // })
-
-                    self.initBridge();
-                    // self.initViewer();
-                    // self.initPhotoSwipe();
-                    return;
-                }
-
-                var html = new Empty({
-                    word: json.msg
-                }).render();
-
-                self.$container.html(html);
-
-            },
-            error: function(error,errorType,errorMsg){
-                var html = new Empty({
-                    word: errorMsg,
-                }).render();
-
-                self.$container.html(html);
-            }
+            self.$container.delegate('.common-detail-wrap .detail-content img,.circle-news-detail .detail-content img', 'click', function(){
+                var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
+                bridge.callHandler('tapEnlarge', index, function(){})
+            })
 
         })
 

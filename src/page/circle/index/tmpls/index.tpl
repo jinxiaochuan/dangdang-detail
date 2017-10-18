@@ -1,10 +1,5 @@
 <div class="circle-index-header my-gallery">
     <div class="avatar-wrap">
-        <!-- <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-            <a class="tap-avatar" href="{{ data.baseInfo.circleLogo.pictureUrl }}" itemprop="contentUrl" data-size="{{ data.baseInfo.circleLogo.width }}x{{ data.baseInfo.circleLogo.height }}">
-                <img class="avatar" src="{{ data.baseInfo.circleLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_200,limit_0" alt="">
-            </a>
-        </figure> -->
         <a class="tap-avatar" href="javascript:void(0)">
             <img class="avatar" src="{{ data.baseInfo.circleLogo.pictureUrl }}" alt="">
         </a>
@@ -15,11 +10,6 @@
 </div>
 <div class="circle-intro">
     {{ data.baseInfo.summary|safe }}
-    {% if data.baseInfo.summaryImages %}
-    {% for item in data.baseInfo.summaryImages %}
-    <img src="{{ item.pictureUrl }}" alt=""/>
-    {% endfor %}
-    {% endif %}
 </div>
 <div class="circle-handle circle-handle-account">
     <span class="name">帐号主体</span>
