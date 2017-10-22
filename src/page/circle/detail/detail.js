@@ -49,13 +49,8 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1280&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1178&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1643&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000034&articleId=1376728&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=112&userId=1000034&articleStatus=1&source=1&from=singlemessage&isappinstalled=0';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=234&userId=1000081&articleStatus=1';
-        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=1556&userId=1000037&articleStatus=1&shareType=6&shareId=1556';
+        // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
         var data = {}, isAdminIdentity;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');

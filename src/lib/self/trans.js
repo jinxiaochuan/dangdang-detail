@@ -19,7 +19,7 @@ function trans(html){
 
     var reg_lineheight = /line-height:\s*(\d+)px/ig;
 
-    var reg_font = /(\<font.*)(size=")(\d+)(")(.*\>.*\<\/font\>)/ig;
+    var reg_font = /(\<font size=")(\d+)("\>.*?\<\/font\>)/ig;
 
     var reg_enter = /\n\n/g;
 
@@ -36,7 +36,7 @@ function trans(html){
         });
 
         html_tran = html_tran.replace(reg_font,function(){
-            return arguments[1] + "style='font-size: " + MAP_SIZE[arguments[3]-1]*dpr + "px'" + arguments[5]
+            return arguments[1] + arguments[2]*dpr + arguments[3]
         });
 
     }

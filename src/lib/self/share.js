@@ -50,7 +50,7 @@ function shareWxConfig (configParam) {
         wx.onMenuShareTimeline({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: configParam.shareInfo.shareUrl || HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.shareImage || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
@@ -64,7 +64,7 @@ function shareWxConfig (configParam) {
         window.wx.onMenuShareAppMessage({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: configParam.shareInfo.shareUrl || HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.shareImage || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
@@ -78,7 +78,7 @@ function shareWxConfig (configParam) {
         wx.onMenuShareQQ({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: configParam.shareInfo.shareUrl || HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.shareImage || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
@@ -92,7 +92,7 @@ function shareWxConfig (configParam) {
         wx.onMenuShareWeibo({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: configParam.shareInfo.shareUrl || HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.shareImage || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
@@ -106,7 +106,7 @@ function shareWxConfig (configParam) {
         wx.onMenuShareQZone({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: configParam.shareInfo.shareUrl || HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.shareImage || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
