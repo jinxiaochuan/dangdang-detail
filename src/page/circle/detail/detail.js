@@ -49,7 +49,7 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=1891&userId=200207&articleStatus=1&shareType=6&shareId=1891';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=1933&userId=200073&articleStatus=1&shareType=6&shareId=1891';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
         var data = {}, isAdminIdentity;
 
@@ -124,12 +124,22 @@ var CircleDetail = jsmod.util.klass({
 
     initEnlarge: function(){
         var self = this;
+
         this.$imgList = this.$container.find('.common-detail-wrap .detail-content img,.circle-news-detail .detail-content img');
         var imgList = $.map($.makeArray(self.$imgList), function(item){
             return {
                 'url': $(item).attr('src')
             }
         })
+
+        this.$reviewImgList = this.$container.find('.common-review-wrap .review-content img');
+        var reviewImgList = $.map($.makeArray(self.$reviewImgList), function(item){
+            return {
+                'url': $(item).attr('src')
+            }
+        })
+
+        imgList = imgList.concat(reviewImgList);
 
         this.baseInfo = {
             "userId": this.data.webShowInfo.userId,
@@ -212,6 +222,11 @@ var CircleDetail = jsmod.util.klass({
 
             self.$container.delegate('.common-detail-wrap .detail-content img,.circle-news-detail .detail-content img', 'click', function(){
                 var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
+                bridge.callHandler('tapEnlarge', index, function(){})
+            })
+
+            self.$container.delegate('.common-review-wrap .review-content img', 'click', function(){
+                var index = $.makeArray(self.$reviewImgList).indexOf($(this).get(0)) + self.$imgList.length;
                 bridge.callHandler('tapEnlarge', index, function(){})
             })
 

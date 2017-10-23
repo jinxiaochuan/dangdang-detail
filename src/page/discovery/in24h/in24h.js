@@ -102,12 +102,22 @@ var IN24H = jsmod.util.klass({
 
     initEnlarge: function(){
         var self = this;
+
         this.$imgList = this.$container.find('.common-detail-wrap .detail-content img');
         var imgList = $.map($.makeArray(self.$imgList), function(item){
             return {
                 'url': $(item).attr('src')
             }
         })
+
+        this.$reviewImgList = this.$container.find('.common-review-wrap .review-content img');
+        var reviewImgList = $.map($.makeArray(self.$reviewImgList), function(item){
+            return {
+                'url': $(item).attr('src')
+            }
+        })
+
+        imgList = imgList.concat(reviewImgList);
 
         this.baseInfo = {
             "viewedUserId": this.data.in24hInfo.webInfo.viewedUserId,
@@ -188,6 +198,11 @@ var IN24H = jsmod.util.klass({
 
             self.$container.delegate('.common-detail-wrap .detail-content img', 'click', function(){
                 var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
+                bridge.callHandler('tapEnlarge', index, function(){})
+            })
+
+            self.$container.delegate('.common-review-wrap .review-content img', 'click', function(){
+                var index = $.makeArray(self.$reviewImgList).indexOf($(this).get(0)) + self.$imgList.length;
                 bridge.callHandler('tapEnlarge', index, function(){})
             })
 
