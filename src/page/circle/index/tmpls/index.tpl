@@ -26,7 +26,7 @@
     <span class="detail"><i class="arrow"></i></span>
 </div>
 
-{% if data.baseInfo.isJoin == 1 %}
+{% if data.baseInfo.memberType == 4 || data.baseInfo.isJoin == 1 %}
 <div class="circle-handle-wrap">
     <a class="circle-home" href="javascript:void(0)">{% if data.baseInfo.memberType == 4 %}加入公众圈{% else %}进入公众圈{% endif %}</a>
 </div>
