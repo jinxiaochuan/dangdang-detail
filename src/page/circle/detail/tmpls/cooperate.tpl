@@ -94,7 +94,6 @@
     <div class="review-content">{{ data.articleInfo.coopInfo.review|safe }}</div>
 </div>
 {% endif %}
-
 {% if data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == '1' %}
 <div class="common-edit-wrap">
     <a class="edit-btn" href="javascript:void(0)">编辑合作</a>

@@ -97,7 +97,6 @@
     <div class="review-content">{{ data.articleInfo.activityInfo.review|safe }}</div>
 </div>
 {% endif %}
-
 {% if data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == '1' %}
 <div class="common-edit-wrap">
     <a class="edit-btn" href="javascript:void(0)">编辑活动</a>
