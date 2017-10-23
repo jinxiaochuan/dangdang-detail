@@ -48,11 +48,31 @@
                 color: #737373;
             }
             .word{
+                margin-left: @base*10rem;
                 margin-top: @base*8rem;
-                width: @base*470rem;
-                height: @base*80rem;
-                background: url('~assets/download_invite@1.5x.png') left center no-repeat;
-                background-size: contain;
+                padding: @base*20rem @base*25rem;
+                max-width: @base*505rem;
+                line-height: @base*40rem;
+                background: #F0F2F7;
+                border: 1px solid #DEE0E7;
+                .border-radius(@base*8rem);
+                .font-dpr(16px);
+                word-wrap: break-word;
+                word-break: break-all;
+                position: relative;
+                z-index: 5;
+                .pop-arrow{
+                    position: absolute;
+                    top: @base*16rem;
+                    left: -@base*10rem;
+                    width: @base*20rem;
+                    height: @base*20rem;
+                    background: #F0F2F7;
+                    border-left: 1px solid #DEE0E7;
+                    border-bottom: 1px solid #DEE0E7;
+                    transform: rotate(45deg);
+                    z-index: 2;
+                }
             }
         }
     }
