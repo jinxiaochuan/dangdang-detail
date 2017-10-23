@@ -15,7 +15,7 @@ var Download = jsmod.util.klass({
             window.location.href = 'https://itunes.apple.com/cn/app/id967227032';
         })
         this.$container.delegate('.android-download','click',function(){
-            window.location.href = 'http://dangdangshejiao.oss-cn-beijing.aliyuncs.com/app/app-buildVersion-debug.apk';
+            window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
         })
     }
 })

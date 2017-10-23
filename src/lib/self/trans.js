@@ -25,6 +25,8 @@ function trans(html){
 
     var reg_format = /(\<img\s*src=")([a-zA-z]+:\/\/[^\s]*)\/format,webp("\s*(alt="")?.*?\>)/ig;
 
+    var reg_embed = /\<embed\s*src="([a-zA-z]+:\/\/[^\s]*\.mp4)".*?\>/ig;
+
     if(dpr != 1){
 
         html_tran = html.replace(reg_px,function(){
@@ -46,6 +48,11 @@ function trans(html){
     html_tran = html_tran.replace(reg_enter,function(){
         return '<br/>'
     })
+
+    html_tran = html_tran.replace(reg_embed,function(){
+        return '<video controls src="'+ arguments[1] +'">您的浏览器不支持 video 标签</video>'
+    })
+
 
     if(source == 1){
         html_tran = html_tran.replace(reg_format,function(){
