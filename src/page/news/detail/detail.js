@@ -152,6 +152,15 @@ var News = jsmod.util.klass({
               self.$container.find('.comment-num').text(++self.commentAmount);
           })
 
+          bridge.registerHandler('videoPause', function(data, responseCallback){
+              var $video = self.$container.find('video');
+              $video.each(function(index, item){
+                  if(!item.paused){
+                      item.pause();
+                  }
+              })
+          })
+
           bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
           bridge.callHandler('isOpenFromInternalApp',null,function(data){

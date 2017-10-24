@@ -152,8 +152,23 @@ var IN24H = jsmod.util.klass({
 
             bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
+            if(!window.isIOS){
+                bridge.init(function(message, responseCallback) {
+
+                });
+            }
+
             bridge.registerHandler('doChangeStatus',function(data, responseCallback){
                 self.$container.find('.sign-btn').removeClass('sign-btn').addClass('communicate-btn').text('留言');
+            })
+
+            bridge.registerHandler('videoPause', function(data, responseCallback){
+                var $video = self.$container.find('video');
+                $video.each(function(index, item){
+                    if(!item.paused){
+                        item.pause();
+                    }
+                })
             })
 
             self.$container.delegate('.tap-avatar', 'click', function () {

@@ -7,11 +7,12 @@
 </div>
 <div class="common-circle-news-wrap">
     <div class="circle-news-title">{{ data.articleInfo.articleTitle }}</div>
-    {% if data.articleInfo.source %}
+
     <div class="circle-news-source">
-        <span class="source">来源：{{ data.articleInfo.source }}</span>
+        {% if data.articleInfo.source %}<span class="source">{{ data.articleInfo.source }}</span>{% endif %}
+        <span class="time">{{ data.articleInfo.formatNewsTime }}</span>
     </div>
-    {% endif %}
+
     <div class="circle-news-detail">
         <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
     </div>

@@ -165,6 +165,7 @@ var CircleDetail = jsmod.util.klass({
         this.logoInfo = {
             "imgUrl": this.data.circleInfo.circleLogo
         }
+
     },
 
     initBridge: function(){
@@ -186,6 +187,15 @@ var CircleDetail = jsmod.util.klass({
 
             bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
                 self.$container.find('.sign-btn').removeClass('sign-btn').addClass('communicate-btn').text('留言');
+            })
+
+            bridge.registerHandler('videoPause', function(data, responseCallback){
+                var $video = self.$container.find('video');
+                $video.each(function(index, item){
+                    if(!item.paused){
+                        item.pause();
+                    }
+                })
             })
 
             self.$container.delegate('.tap-avatar','click',function(){
