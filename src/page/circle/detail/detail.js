@@ -49,7 +49,7 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=1690&userId=1000012&articleStatus=1&shareType=7&shareId=1690';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=1755&userId=1000034&articleStatus=1&shareType=6&shareId=1755';
         // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
         var data = {}, isAdminIdentity;
 

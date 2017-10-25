@@ -74,7 +74,6 @@ var CirclePreview = jsmod.util.klass({
             data: data,
             jsonp: 'callback',
             success: function(json){
-                console.log(json);
                 if(json.status == 1){
                     self.data = json.data;
                     self.baseInfo = {
