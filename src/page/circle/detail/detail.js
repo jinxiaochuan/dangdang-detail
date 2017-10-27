@@ -240,6 +240,10 @@ var CircleDetail = jsmod.util.klass({
                 bridge.callHandler('tapEnlarge', index, function(){})
             })
 
+            self.$container.delegate('.detail-content video,.review-content video','click',function(e){
+                bridge.callHandler('stopBgm')
+            })
+
         })
 
 
