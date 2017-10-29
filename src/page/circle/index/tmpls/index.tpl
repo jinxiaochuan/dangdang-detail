@@ -25,6 +25,7 @@
     <span class="name">查看公开内容</span>
     <span class="detail"><i class="arrow"></i></span>
 </div>
+{% if data.baseInfo.memberType == 4 && data.baseInfo.isJoin == 1 %}
 {% if data.baseInfo.publicSchool == 1 || data.baseInfo.publicWork == 1 %}
 <div class="prompt-word">
     {% if data.baseInfo.publicSchool == 1 && data.baseInfo.publicWork == 1 %}
@@ -36,6 +37,7 @@
     {% else %}
     {% endif %}
 </div>
+{% endif %}
 {% endif %}
 {% if data.baseInfo.memberType != 4 || data.baseInfo.isJoin == 1 %}
 <div class="circle-handle-wrap">
