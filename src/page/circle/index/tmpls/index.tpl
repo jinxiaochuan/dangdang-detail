@@ -25,7 +25,18 @@
     <span class="name">查看公开内容</span>
     <span class="detail"><i class="arrow"></i></span>
 </div>
-
+{% if data.baseInfo.publicSchool == 1 || data.baseInfo.publicWork == 1 %}
+<div class="prompt-word">
+    {% if data.baseInfo.publicSchool == 1 && data.baseInfo.publicWork == 1 %}
+    *该公众圈管理员需查看成员工作经历和学习经历
+    {% elseif data.baseInfo.publicSchool == 1 && data.baseInfo.publicWork == 0 %}
+    *该公众圈管理员需查看成员学习经历
+    {% elseif data.baseInfo.publicSchool == 0 && data.baseInfo.publicWork == 1 %}
+    *该公众圈管理员需查看成员工作经历
+    {% else %}
+    {% endif %}
+</div>
+{% endif %}
 {% if data.baseInfo.memberType != 4 || data.baseInfo.isJoin == 1 %}
 <div class="circle-handle-wrap">
     <a class="circle-home" href="javascript:void(0)">{% if data.baseInfo.memberType == 4 %}加入公众圈{% else %}进入公众圈{% endif %}</a>
