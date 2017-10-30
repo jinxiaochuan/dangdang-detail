@@ -241,8 +241,17 @@ var CircleDetail = jsmod.util.klass({
             })
 
             self.$container.find('.detail-content video,.review-content video').on('play',function(e){
-                bridge.callHandler('stopBgm')
+                bridge.callHandler('beginVideo')
             })
+
+            self.$container.find('.detail-content video,.review-content video').on('pause',function(e){
+                bridge.callHandler('pauseVideo')
+            })
+
+            self.$container.find('.detail-content video,.review-content video').on('ended',function(e){
+                bridge.callHandler('completeVideo')
+            })
+
 
         })
 

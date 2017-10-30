@@ -74,6 +74,17 @@ var CircleIndex = jsmod.util.klass({
 
             bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
+            if(!window.isIOS){
+                bridge.init(function(message, responseCallback) {
+
+                });
+            }
+
+            bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
+                self.$container.find('.circle-home').text('进入公众圈');
+                self.$container.find('.prompt-word').remove();
+            })
+
             self.$container.delegate('.tap-avatar','click',function(){
                 bridge.callHandler('clickCircleLogo')
             })
