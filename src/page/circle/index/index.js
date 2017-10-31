@@ -28,7 +28,7 @@ var CircleIndex = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/base?circleId=14865973&userId=200072';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/base?circleId=14865973&userId=200073';
         // URL_INDEX = 'http://dev.im-dangdang.com/ddweb/v1/circle/base';
 
         var data = {};
