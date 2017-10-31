@@ -4,6 +4,8 @@ require('./invite.less');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var share = require('lib/self/share.js');
+
 var TPL_INVITE = require('./tmpls/invite.tpl');
 
 var HREF_ORIGIN = window.location.href;
@@ -50,9 +52,15 @@ var Invite = jsmod.util.klass({
 
                     self.$container.find('.download-invite').html(html);
 
+                    self.initShare();
+
                 }
             }
         })
+    },
+
+    initShare: function(){
+        share();
     }
 })
 
