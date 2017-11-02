@@ -15,6 +15,13 @@
         <div class="content">
             {{ data.newsDetail.content|safe }}
         </div>
+        {% if data.newsDetail.links %}
+        <div class="download-link-wrap">
+            {% for item in data.newsDetail.links %}
+            <a class="download-link-item" href="{{ item.url }}">{{ item.name }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
     <div class="comment-outer-wrap">
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
