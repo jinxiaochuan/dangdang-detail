@@ -45,6 +45,7 @@ var CircleIndex = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    document.title = json.data.baseInfo.circleName;
                     self.render($.extend(self.data,{'source': source}));
                     return;
                 }
