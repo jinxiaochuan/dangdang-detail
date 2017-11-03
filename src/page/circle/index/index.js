@@ -4,6 +4,8 @@ require('./index.less');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var share = require('lib/self/share.js');
+
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
 var HREF_ORIGIN = window.location.href;
@@ -131,6 +133,8 @@ var CircleIndex = jsmod.util.klass({
 
         this.initEnlarge();
 
+        this.initShare();
+
         this.initBridge();
 
     },
@@ -157,6 +161,10 @@ var CircleIndex = jsmod.util.klass({
             "imgList": imgList
         }
 
+    },
+
+    initShare: function(){
+        share();
     }
 
 })
