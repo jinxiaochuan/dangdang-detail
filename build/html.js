@@ -39,7 +39,7 @@ var createHTMLPlugin = function () {
         htmls.push(plugin);
     });
 
-    console.info('htmls', htmls);
+    // console.info('htmls', htmls);
 
     return htmls;
 }

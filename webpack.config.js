@@ -20,10 +20,12 @@ var loader = require('./build/loader.js');
 
 var NAMESPACE='web_detail';
 
+var env = process.env.NODE_ENV || 'dev';
+
 // 设置配置数据
 conf.setConf({
     ext: 'html',
-    //env: option.env,
+    env: env,
     templateRoot: 'ddweb/template/' + NAMESPACE,
     staticRoot: 'ddweb/static/' + NAMESPACE,
     serverLayoutName: 'common'
@@ -73,14 +75,17 @@ webpackLoaders = webpackLoaders.concat(AppLoaders);
 //    })
 // );
 
-webpackPlugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-            drop_console: true
-      }
-    })
-)
+console.log('------' + conf.CONFIG_BUILD.env + '---------s');
+if(conf.CONFIG_BUILD.env == 'prod'){
+    webpackPlugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                drop_console: true
+          }
+        })
+    )
+}
 
 webpackPlugins.push(
     new webpack.ProvidePlugin({

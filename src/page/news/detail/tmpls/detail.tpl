@@ -13,7 +13,18 @@
     </div>
     <div class="news-detail-main">
         <div class="content">
+            {% if data.newsDetail.newsType == 1 %}
+            {% for item in data.newsDetail.newsPictures %}
+            <div class="news-album-item">
+                <img class="album" src="{{ item.picture.picture }}" alt="">
+                <div class="album-desc">
+                    {{ item.desc }}
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
             {{ data.newsDetail.content|safe }}
+            {% endif %}
         </div>
         {% if data.newsDetail.links %}
         <div class="download-link-wrap">
