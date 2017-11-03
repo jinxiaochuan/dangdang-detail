@@ -35,6 +35,7 @@ var CircleIndex = jsmod.util.klass({
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.circleId = jsmod.util.url.getParam(HREF_ORIGIN,'circleId');
+        var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 
         $.ajax({
             url:URL_INDEX,
@@ -44,7 +45,7 @@ var CircleIndex = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
-                    self.render(self.data);
+                    self.render($.extend(self.data,{'source': source}));
                     return;
                 }
 

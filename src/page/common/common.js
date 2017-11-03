@@ -62,8 +62,6 @@ var mobileDevice = function(){
     }
 };
 
-var $app = $('.app-btn');
-
 var ios_html = '<i class="ios-icon"></i>';
 
 var android_html = '<i class="android-icon"></i>';
@@ -78,13 +76,8 @@ var dialog = new jsmod.util.Dialog({
     closeToTop:true
 });
 
-$app.on('click',function(){
+$('body').delegate('.app-btn','click',function(){
     if(mobileDevice().isWei){
-        // if(window.isIOS){
-        //     dialog.show({fade:true});
-        // }else {
-        //     window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
-        // }
         window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
         return;
     };
@@ -98,7 +91,7 @@ $app.on('click',function(){
             window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
         }
     },2000);
-});
+})
 
 $('.mod-dialog-frame').on('click',function(){
     dialog.hide({fade:true});
