@@ -49,8 +49,8 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=2277&userId=200207&articleStatus=1&shareType=6&shareId=1814';
-        URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=2277&userId=200207&articleStatus=1&shareType=6&shareId=1814';
+        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
         var data = {}, isAdminIdentity;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
@@ -165,7 +165,6 @@ var CircleDetail = jsmod.util.klass({
         this.logoInfo = {
             "imgUrl": this.data.circleInfo.circleLogo
         }
-
     },
 
     initBridge: function(){
@@ -192,6 +191,15 @@ var CircleDetail = jsmod.util.klass({
             bridge.registerHandler('videoPause', function(data, responseCallback){
                 var $video = self.$container.find('video');
                 $video.each(function(index, item){
+                    if(!item.paused){
+                        item.pause();
+                    }
+                })
+            })
+
+            bridge.registerHandler('audioPause', function(data, responseCallback){
+                var $audio = self.$container.find('audio');
+                $audio.each(function(index, item){
                     if(!item.paused){
                         item.pause();
                     }
@@ -241,7 +249,13 @@ var CircleDetail = jsmod.util.klass({
             })
 
             self.$container.find('.detail-content video,.review-content video').on('play',function(e){
-                bridge.callHandler('beginVideo')
+                bridge.callHandler('beginVideo');
+                var $audio = self.$container.find('audio');
+                $audio.each(function(index, item){
+                    if(!item.paused){
+                        item.pause();
+                    }
+                })
             })
 
             self.$container.find('.detail-content video,.review-content video').on('pause',function(e){
@@ -250,6 +264,24 @@ var CircleDetail = jsmod.util.klass({
 
             self.$container.find('.detail-content video,.review-content video').on('ended',function(e){
                 bridge.callHandler('completeVideo')
+            })
+
+            self.$container.find('.detail-content audio,.review-content audio').on('play',function(e){
+                bridge.callHandler('beginAudio');
+                var $video = self.$container.find('video');
+                $video.each(function(index, item){
+                    if(!item.paused){
+                        item.pause();
+                    }
+                })
+            })
+
+            self.$container.find('.detail-content audio,.review-content audio').on('pause',function(e){
+                bridge.callHandler('pauseAudio')
+            })
+
+            self.$container.find('.detail-content audio,.review-content audio').on('ended',function(e){
+                bridge.callHandler('completeAudio')
             })
 
 
