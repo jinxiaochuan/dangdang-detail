@@ -4,6 +4,8 @@ require('./index.less');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var trans = require('lib/self/trans.js');
+
 var share = require('lib/self/share.js');
 
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
@@ -30,8 +32,8 @@ var CircleIndex = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/base?circleId=14865973&userId=200073';
-        // URL_INDEX = 'http://dev.im-dangdang.com/ddweb/v1/circle/base';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/circle/base?circleId=1&userId=200073';
+        // URL_INDEX = 'http://app.im-dangdang.com/ddweb/v1/circle/base';
 
         var data = {};
 
@@ -119,6 +121,7 @@ var CircleIndex = jsmod.util.klass({
     },
 
     render: function(data){
+        data.baseInfo.summary = trans(data.baseInfo.summary);
         var html = swig.render(TPL_CIRCLE_INDEX,{
             locals:{
                 data:data

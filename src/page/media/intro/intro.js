@@ -8,6 +8,8 @@ require('./intro.less');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var trans = require('lib/self/trans.js');
+
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
 var HREF_ORIGIN = window.location.href;
@@ -78,6 +80,7 @@ var MediaIntro = jsmod.util.klass({
     },
 
     render: function(data){
+        data.mediaInfo.mediaDetail = trans(data.mediaInfo.mediaDetail);
         var html = swig.render(TPL_MEDIA_INTRO,{
             locals:{
                 data:data
