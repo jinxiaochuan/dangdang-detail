@@ -25,7 +25,9 @@ function trans(html){
 
     var reg_format = /(\<img\s*src=")([a-zA-z]+:\/\/[^\s]*)\/format,webp("\s*(alt="")?.*?\>)/ig;
 
-    var reg_embed = /\<embed\s*src="([a-zA-z]+:\/\/[^\s]*\.mp4)".*?\>/ig;
+    var reg_embed_mp4 = /\<embed\s*src="([a-zA-z]+:\/\/[^\s]*\.mp4)".*?\>/ig;
+
+    var reg_embed_mp3 = /\<embed\s*src="([a-zA-z]+:\/\/[^\s]*\.mp3)".*?\>/ig;
 
     if(dpr != 1){
 
@@ -49,8 +51,12 @@ function trans(html){
         return '<br/>'
     })
 
-    html_tran = html_tran.replace(reg_embed,function(){
+    html_tran = html_tran.replace(reg_embed_mp4,function(){
         return '<video controls src="'+ arguments[1] +'">您的浏览器不支持 video 标签</video>'
+    })
+
+    html_tran = html_tran.replace(reg_embed_mp3,function(){
+        return '<audio controls src="'+ arguments[1] +'">您的浏览器不支持 audio 标签</audio>'
     })
 
 
