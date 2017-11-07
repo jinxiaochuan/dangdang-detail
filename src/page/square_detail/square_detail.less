@@ -4,107 +4,13 @@
 
 .container{
   margin: 0 auto;
-  // .square-header{
-  //   .avatar{
-  //     float: left;
-  //     width: @base*84rem;
-  //     height: @base*84rem;
-  //     .border-radius();
-  //   }
-  //   .square-detail-wrap{
-  //     float: left;
-  //     width: @base*588rem;
-  //     margin-left: @base*20rem;
-  //     .name{
-  //       margin-top: @base*4rem;
-  //       color: #6A7BA1;
-  //       line-height: @base*30rem;
-  //       .font-dpr(15px);
-  //     }
-  //     .content{
-  //       margin: @base*18rem 0;
-  //       .font-dpr(15px);
-  //       color: #000000;
-  //       line-height: @base*35rem;
-  //       &.content-outline{
-  //         .clamp(6);
-  //       }
-  //     }
-  //     .slide-down-btn,
-  //     .slide-up-btn{
-  //       .font-dpr(15px);
-  //       color: #6A7BA1;
-  //     }
-  //     .share-link-container{
-  //       margin-top: @base*15rem;
-  //       width: @base*588rem;
-  //       padding: @base*10rem @base*14rem;
-  //       background: #F3F3F5;
-  //       .share-link-avatar{
-  //         float: left;
-  //         width: @base*80rem;
-  //         height: @base*80rem;
-  //       }
-  //       .share-link-content{
-  //         float: left;
-  //         width: @base*480rem;
-  //         padding: @base*4rem 0 @base*4rem  @base*20rem;
-  //         .font-dpr(15px);
-  //         color: #000000;
-  //         line-height: @base*36rem;
-  //         .clamp(2);
-  //       }
-  //     }
-  //
-  //     .album-container{
-  //       margin-top: @base*20rem;
-  //       .single-container{
-  //         .single-image{
-  //           max-width: @base*360rem;
-  //           max-height: @base*360rem;
-  //         }
-  //       }
-  //       .more-container{
-  //         &.four-more-container{
-  //           width: @base*340rem;
-  //         }
-  //         .more-image{
-  //           float: left;
-  //           margin: 0 @base*10rem @base*10rem 0;
-  //           width: @base*158rem;
-  //           height: @base*158rem;
-  //         }
-  //       }
-  //     }
-  //
-  //     .square-address{
-  //       margin: @base*15rem 0;
-  //       .font-dpr(12px);
-  //       color: #6A7BA1;
-  //       line-height: @base*24rem;
-  //     }
-  //
-  //     .square-time{
-  //       .font-dpr(12px);
-  //       color: #737373;
-  //       line-height: @base*28rem;
-  //       .spread-icon{
-  //         float: right;
-  //         width: @base*37rem;
-  //         height: @base*28rem;
-  //         background: url("~assets/square/sort.png") no-repeat center center;
-  //         background-size: @base*37rem @base*28rem;
-  //       }
-  //     }
-  //   }
-  // }
-
+  background: #fff;
 }
 
 //赞列表
 .praise-list-wrap{
     padding: @base*15rem @base*24rem;
-    .setLine('top',#E5E5E5);
+    .setLine('top',#DEE0E7);
     .praise-number{
         padding: @base*15rem @base*32rem;
         .font-dpr(12px);
@@ -155,7 +61,7 @@
 //评论列表
 .comment-list-wrap{
     padding: @base*15rem @base*24rem;
-    .setLine('top',#E5E5E5);
+    .setLine('top',#DEE0E7);
     .comment-title{
         .flex();
         .justify-content(space-between);
@@ -178,7 +84,7 @@
     }
     .comment-item{
         padding: @base*12rem 0;
-        .setLine('bottom','#E5E5E5');
+        .setLine('bottom','#DEE0E7');
         img{
             float: left;
             width: @base*70rem;
@@ -210,7 +116,7 @@
                 }
                 .sub-comment-wrap{
                     position: relative;
-                    background: #F3F3F5;
+                    background: #f2f3f6;
                     margin-top: @base*20rem;
 
                     &::after{
@@ -224,7 +130,7 @@
                         border-style: dashed;
                         border-color: transparent;
                         border-top-width: 0;
-                        border-bottom-color: #dee017;
+                        border-bottom-color: #f2f3f6;
                         border-bottom-style: solid;
                     }
 
@@ -242,7 +148,7 @@
                             margin: 0 @base*12rem;
                             padding: @base*12rem 0;
                             &:not(:last-child){
-                                .setLine('bottom',#E5E5E5);
+                                .setLine('bottom',#DEE0E7);
                             }
                             img{
                                 width: @base*70rem;
@@ -280,7 +186,7 @@
                         padding: 0 @base*12rem;
                         height: @base*64rem;
                         background: #F3F3F5;
-                        .setLine('top',#E5E5E5);
+                        .setLine('top',#DEE0E7);
                         a{
                             .font-dpr(13px);
                             color: #556994;
@@ -309,33 +215,33 @@
   padding-left: @base*132rem;
   padding-right: @base*64rem;
   padding-bottom: @base*30rem;
-  .setLine('bottom',#dee017);
+  .setLine('bottom',#dee0e7);
 
   .avatar{
     position: absolute;
     left: @base*28rem;
-    top: @base*30rem;
+    top: @base*0rem;
     width: @base*84rem;
     height: @base*84rem;
   }
 
   .pub-name{
+    display: block;
     color: #6a7ba1;
+    line-height: @base*42rem;
     font-size: @base*30rem;
-    margin-bottom: @base*10rem;
+    margin-bottom: @base*9rem;
   }
 
   .content{
-    padding-top: @base*30rem;
 
     .content-detail{
       margin-bottom: @base*20rem;
+      line-height: @base*35rem;
     }
 
     .content-img{
-      & + .content-img{
-        margin-top: 20px;
-      }
+      margin-bottom: @base*20rem;
 
       .pic{
         width: @base*158rem;
@@ -393,11 +299,21 @@
       }
 
       &.single-pic{
-        max-width: @base*360rem;
-        max-height: @base*360rem;
+        width: @base*360rem;
+        height: @base*360rem;
 
-        .is-video{
+
+        .is-video,
+        .pic1{
           position: relative;
+          width: 100%;
+          height: 100%;
+
+          img{
+              margin:0!important;
+              max-width: 100%;
+              max-height: 100%;
+          }
 
           .play-btn{
             position: absolute;
@@ -421,6 +337,8 @@
       padding: @base*10rem;
       padding-left: @base*100rem;
       background: #f3f3f5;
+      display: flex;
+      align-items: center;
 
       .share-pic{
         position: absolute;
@@ -431,7 +349,6 @@
       }
 
       .share-content{
-        margin-top: @base*8rem;
         line-height: @base*32rem;
         word-break: break-all;
         .clamp(2);
@@ -454,6 +371,7 @@
 
       .time{
         font-size: @base*24rem;
+        line-height: @base*24rem;
         color: #737373;
       }
 
@@ -463,6 +381,7 @@
         width: @base*40rem;
         height: @base*30rem;
         background: url('~assets/share_comment.png') right center no-repeat;
+        background-size: contain;
       }
     }
   }

@@ -56,7 +56,9 @@
       <p class="share-content">{{ info.shareInfo.shareTitle }}</p>
     </div>
     {% endif %}
+    {% if info.location %}
     <p class="address">{{ (info.location|json_parse).name }}</p>
+    {% endif %}
     <p class="func"><span class="time">{{ info.createTime }}</span><i class="leave-msg"></i></p>
   </div>
 
