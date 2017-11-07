@@ -24,7 +24,7 @@ var SquareDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1302';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1317';
         // URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
 
         var data = {};

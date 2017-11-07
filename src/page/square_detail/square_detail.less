@@ -393,11 +393,18 @@
       }
 
       &.single-pic{
-        max-width: @base*360rem;
-        max-height: @base*360rem;
+        width: @base*360rem;
+        height: @base*360rem;
 
         .is-video{
           position: relative;
+          width: 100%;
+          height: 100%;
+
+          img{
+              max-width: 100%;
+              max-height: 100%;
+          }
 
           .play-btn{
             position: absolute;
@@ -463,6 +470,7 @@
         width: @base*40rem;
         height: @base*30rem;
         background: url('~assets/share_comment.png') right center no-repeat;
+        background-size: contain;
       }
     }
   }
