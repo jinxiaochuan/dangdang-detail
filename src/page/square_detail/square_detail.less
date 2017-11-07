@@ -3,6 +3,7 @@
 @base:1/75;
 
 .container{
+  padding-top: @base*20rem;
   margin: 0 auto;
   background: #fff;
 }
@@ -12,12 +13,12 @@
     padding: @base*15rem @base*24rem;
     .setLine('top',#DEE0E7);
     .praise-number{
-        padding: @base*15rem @base*32rem;
+        padding: @base*15rem @base*35rem;
         .font-dpr(12px);
         color: #000000;
         line-height: @base*25rem;
         background: url("~assets/square/praise.png") no-repeat left center;
-        background-size: @base*25rem;
+        background-size: @base*30rem;
     }
     .praise-avatar-wrap{
         .avatar-item{
@@ -27,7 +28,7 @@
             margin-right: @base*9rem;
             margin-bottom: @base*9rem;
             background: #F3F3F5;
-            &:nth-child(8n){
+            &:nth-child(9n){
                 margin-right: 0;
             }
             img{
@@ -66,12 +67,12 @@
         .flex();
         .justify-content(space-between);
         .comment-number{
-            padding: @base*15rem 0 @base*15rem @base*32rem;
+            padding: @base*15rem 0 @base*15rem @base*38rem;
             .font-dpr(12px);
             color: #000000;
             line-height: @base*25rem;
             background: url("~assets/square/comment.png") no-repeat left center;
-            background-size: @base*25rem;
+            background-size: @base*30rem;
         }
         .comment-sort{
             padding: @base*15rem 0 @base*15rem @base*32rem;
@@ -93,13 +94,17 @@
         }
         .comment-info{
             margin-left: @base*90rem;
+            margin-top: -@base*4rem;
             .comment-title{
                 .flex();
                 .justify-content(space-between);
                 .nickname{
                     .font-dpr(15px);
-                    color: #556994;
+                    color: #6A7BA1;
+                    font-weight: 700;
                     .one-line();
+
+
                 }
                 .time{
                     min-width: @base*170rem;
@@ -122,11 +127,11 @@
                     &::after{
                         content: '';
                         position: absolute;
-                        top: -@base*10rem;
+                        top: -@base*12rem;
                         left: @base*50rem;
                         width: 0;
                         height: 0;
-                        border-width: @base*10rem;
+                        border-width: @base*12rem;
                         border-style: dashed;
                         border-color: transparent;
                         border-top-width: 0;
@@ -136,12 +141,12 @@
 
                     .sub-comment-num{
                         margin-left: @base*12rem;
-                        padding: @base*15rem 0 @base*15rem @base*32rem;
+                        padding: @base*15rem 0 @base*15rem @base*35rem;
                         .font-dpr(12px);
                         color: #767676;
                         line-height: @base*25rem;
                         background: url("~assets/square/sub_comment.png") no-repeat left center;
-                        background-size: @base*25rem;
+                        background-size: @base*28rem;
                     }
                     .sub-comment-list{
                         .sub-comment-item{
@@ -157,13 +162,20 @@
                             }
                             .sub-comment-info{
                                 margin-left: @base*90rem;
+                                margin-top: -@base*4rem;
                                 .sub-comment-title{
                                     .flex();
                                     .justify-content(space-between);
                                     .nickname{
                                         .font-dpr(15px);
-                                        color: #556994;
+                                        color: #6A7BA1;
+                                        font-weight: 700;
                                         .one-line();
+
+                                        .reply-word{
+                                          color: #000;
+                                          font-weight: 500;
+                                        }
                                     }
                                     .time{
                                         min-width: @base*170rem;
@@ -213,7 +225,7 @@
   position: relative;
   margin: 0 auto;
   padding-left: @base*132rem;
-  padding-right: @base*64rem;
+  padding-right: @base*20rem;
   padding-bottom: @base*30rem;
   .setLine('bottom',#dee0e7);
 
@@ -227,10 +239,12 @@
 
   .pub-name{
     display: block;
-    color: #6a7ba1;
+    color: #6A7BA1;
+    font-weight: 700;
     line-height: @base*42rem;
     font-size: @base*30rem;
     margin-bottom: @base*9rem;
+    .one-line();
   }
 
   .content{
@@ -238,6 +252,7 @@
     .content-detail{
       margin-bottom: @base*20rem;
       line-height: @base*35rem;
+      font-size: @base*30rem;
     }
 
     .content-img{
@@ -299,20 +314,22 @@
       }
 
       &.single-pic{
-        width: @base*360rem;
-        height: @base*360rem;
 
 
         .is-video,
         .pic1{
           position: relative;
-          width: 100%;
-          height: 100%;
+          width: auto;
+          height: auto;
 
           img{
               margin:0!important;
-              max-width: 100%;
-              max-height: 100%;
+              max-width: @base*360rem;
+              max-height: @base*360rem;
+          }
+
+          &.is-video{
+            display: inline-block;
           }
 
           .play-btn{
@@ -323,6 +340,7 @@
             top: 50%;
             transform: translate(-50%, -50%);
             background: url('~assets/video_icon.png') center center no-repeat;
+            background-size: 100% 100%;
           }
         }
       }
@@ -332,6 +350,7 @@
     .share-wrapper{
       position: relative;
       margin-top: @base*20rem;
+      margin-bottom: @base*19rem;
       width: @base*600rem;
       height: @base*100rem;
       padding: @base*10rem;
@@ -351,6 +370,7 @@
       .share-content{
         line-height: @base*32rem;
         word-break: break-all;
+        font-size: @base*28rem;
         .clamp(2);
       }
     }
@@ -358,7 +378,7 @@
 
     .address{
       margin-top: @base*20rem;
-      margin-bottom: @base*20rem;
+      margin-bottom: @base*16rem;
       font-size: @base*24rem;
       color: #6A7BA1;
       .one-line();
@@ -381,7 +401,7 @@
         width: @base*40rem;
         height: @base*30rem;
         background: url('~assets/share_comment.png') right center no-repeat;
-        background-size: contain;
+        background-size: 100%;
       }
     }
   }

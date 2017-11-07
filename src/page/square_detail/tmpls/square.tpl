@@ -56,7 +56,7 @@
       <p class="share-content">{{ info.shareInfo.shareTitle }}</p>
     </div>
     {% endif %}
-    {% if info.location %}
+    {% if info.locationjson_parse %}
     <p class="address">{{ (info.location|json_parse).name }}</p>
     {% endif %}
     <p class="func"><span class="time">{{ info.createTime }}</span><i class="leave-msg"></i></p>
@@ -108,7 +108,7 @@
                             <img src="{{ subitem.fromUserImageUrl }}" alt="">
                             <div class="sub-comment-info">
                                 <div class="sub-comment-title">
-                                    <span class="nickname">{{ subitem.fromUserName }}{% if subitem.toUserId %}回复{{ subitem.toUserName }}{% endif %}</span>
+                                    <span class="nickname">{{ subitem.fromUserName }}{% if subitem.toUserId %}<span class="reply-word">回复</span>{{ subitem.toUserName }}{% endif %}</span>
                                     <span class="time">{{ subitem.createTime }}</span>
                                 </div>
                                 <div class="sub-comment-content">
