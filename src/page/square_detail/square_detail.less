@@ -53,7 +53,7 @@
             width: @base*25rem;
             height: @base*25rem;
             background: url("~assets/square/arrow_right.png") no-repeat center center;
-            background-size: @base*20rem;
+            background-size: 100%;
         }
     }
 }
@@ -61,8 +61,11 @@
 
 //评论列表
 .comment-list-wrap{
-    padding: @base*15rem @base*24rem;
+    padding: @base*15rem 0 @base*15rem @base*24rem;
     .setLine('top',#DEE0E7);
+    &>.comment-title{
+      padding-right: @base*15rem;
+    }
     .comment-title{
         .flex();
         .justify-content(space-between);
@@ -84,7 +87,7 @@
         }
     }
     .comment-item{
-        padding: @base*12rem 0;
+        padding: @base*26rem @base*15rem @base*15rem 0;
         .setLine('bottom',#DEE0E7);
         img{
             float: left;
@@ -129,7 +132,7 @@
                     &::after{
                         content: '';
                         position: absolute;
-                        top: -@base*12rem;
+                        top: -@base*10rem;
                         left: @base*50rem;
                         width: 0;
                         height: 0;
@@ -143,7 +146,7 @@
 
                     .sub-comment-num{
                         margin-left: @base*12rem;
-                        padding: @base*15rem 0 @base*15rem @base*35rem;
+                        padding: @base*19rem 0 @base*15rem @base*25rem;
                         .font-dpr(12px);
                         color: #767676;
                         line-height: @base*25rem;
@@ -187,7 +190,7 @@
                                     }
                                 }
                                 .sub-comment-content{
-                                    margin-top: @base*4rem;
+                                    margin-top: @base*10rem;
                                     .font-dpr(15px);
                                     color: #282828;
                                     word-break: break-all;
@@ -200,6 +203,7 @@
                         .flex();
                         .align-items(center);
                         padding: 0 @base*12rem;
+                        padding-bottom: @base*10rem;
                         height: @base*90rem;
                         background: #F3F3F5;
                         .setLine('top',#DEE0E7);
@@ -213,7 +217,7 @@
                             width: @base*25rem;
                             height: @base*25rem;
                             background: url("~assets/square/arrow_down.png") no-repeat center center;
-                            background-size: @base*20rem;
+                            background-size: 100%;
                         }
 
                     }
