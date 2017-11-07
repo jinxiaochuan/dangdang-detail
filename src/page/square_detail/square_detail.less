@@ -3,7 +3,7 @@
 @base:1/75;
 
 .container{
-  padding-top: @base*20rem;
+  padding-top: @base*25rem;
   margin: 0 auto;
   background: #fff;
 }
@@ -53,7 +53,7 @@
             width: @base*25rem;
             height: @base*25rem;
             background: url("~assets/square/arrow_right.png") no-repeat center center;
-            background-size: 100%;
+            background-size: @base*20rem;
         }
     }
 }
@@ -146,7 +146,7 @@
 
                     .sub-comment-num{
                         margin-left: @base*12rem;
-                        padding: @base*19rem 0 @base*15rem @base*25rem;
+                        padding: @base*9rem 0 @base*15rem @base*35rem;
                         .font-dpr(12px);
                         color: #767676;
                         line-height: @base*25rem;
@@ -203,8 +203,7 @@
                         .flex();
                         .align-items(center);
                         padding: 0 @base*12rem;
-                        padding-bottom: @base*10rem;
-                        height: @base*90rem;
+                        height: @base*100rem;
                         background: #F3F3F5;
                         .setLine('top',#DEE0E7);
                         a{

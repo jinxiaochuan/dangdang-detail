@@ -10,6 +10,8 @@ var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
 
+var share = require('lib/self/share.js');
+
 var PATH_NAME = '/ddweb/v1/square/detail';
 
 var URL_SQUARE = PATH_ORIGIN + PATH_NAME;
@@ -19,6 +21,10 @@ var SquareDetail = jsmod.util.klass({
         this.option = option;
         this.$container = $('.container');
         this.getAjax();
+    },
+
+    initShare:function(){
+        share()
     },
 
     getAjax: function(){
@@ -44,6 +50,7 @@ var SquareDetail = jsmod.util.klass({
                         locals: json.data
                     })
                     self.$container.html(html);
+                    self.initShare();
                 }
             }
         })
