@@ -1,3 +1,68 @@
+<div class="content-wrapper">
+  <img  src="{{ info.userImageUrl }}" alt="" class="avatar"/>
+  <div class="content">
+    <span class="pub-name">{{ info.userName }}</span>
+    {% if info.content %}
+    <div class="content-detail">
+      {{ info.content }}
+    </div>
+    {% endif %}
+    {% if info.video %}
+    <div class="content-img single-pic">
+      <div class="pic pic1 is-video">
+        <img src="{{ info.video.pictureUrl }}" alt="">
+        <div class="play-btn"></div>
+      </div>
+    </div>
+    {% endif %}
+    {% if info.pictureList %}
+      {% if info.pictureList.length == 1 %}
+      <div class="content-img single-pic">
+        <div class="pic pic1">
+          <img src="{{ info.pictureList[0].pictureUrl }}" alt="">
+        </div>
+      </div>
+      {% elseif info.pictureList.length > 1 and info.pictureList.length < 4 %}
+        <div class="content-img normal-layout one-row">
+          {% for index,item in info.pictureList %}
+            <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" />
+          {% endfor %}
+        </div>
+      {% elseif info.pictureList.length == 4 %}
+      <div class="content-img four-pic">
+        {% for index,item in info.pictureList %}
+          <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" />
+        {% endfor %}
+      </div>
+      {% elseif info.pictureList.length > 3 and info.pictureList.length <= 6%}
+      <div class="content-img normal-layout two-row">
+        <div class="pic">1</div>
+        <div class="pic">2</div>
+        <div class="pic">3</div>
+        <div class="pic">4</div>
+        <div class="pic">5</div>
+      </div>
+      {% elseif info.pictureList.length > 6 %}
+        <div class="content-img full-pic">
+          {% for index,item in info.pictureList %}
+            <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" />
+          {% endfor %}
+        </div>
+      {% endif %}
+      {%endif%}
+    {% if info.shareInfo %}
+    <div class="share-wrapper">
+      <img src="{{ info.shareInfo.shareImage }}" alt="" class="share-pic">
+      <p class="share-content">{{ info.shareInfo.shareTitle }}</p>
+    </div>
+    {% endif %}
+    <p class="address">{{ (info.location|json_parse).name }}</p>
+    <p class="func"><span class="time">{{ info.createTime }}</span><i class="leave-msg"></i></p>
+  </div>
+
+</div>
+
+{% if info.likeCount != 0%}
 <div class="praise-list-wrap">
     <p class="praise-number">{{ info.likeCount }}</p>
     <div class="praise-avatar-wrap clearfix">
@@ -16,7 +81,8 @@
     </div>
     {% endif %}
 </div>
-
+{% endif %}
+{% if info.commentCount != 0%}
 <div class="comment-list-wrap">
     <p class="comment-title"><span class="comment-number">{{ info.commentCount }}</span><span class="comment-sort">按时间</span></p>
     {% for item in commentList %}
@@ -63,3 +129,4 @@
     </div>
     {% endfor %}
 </div>
+{% endif %}

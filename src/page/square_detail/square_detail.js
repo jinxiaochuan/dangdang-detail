@@ -4,14 +4,6 @@ require('./square_detail.less');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
-var TPL_SQUARE_HEADER = require('./tmpls/square_header.tpl');
-
-var TPL_SHARE = require('./tmpls/share_detail.tpl');
-
-var TPL_PRAISE = require('./tmpls/praise_detail.tpl');
-
-var TPL_REPLY = require('./tmpls/reply_detail.tpl');
-
 var TPL_SQUARE = require('./tmpls/square.tpl');
 
 var HREF_ORIGIN = window.location.href;
@@ -32,8 +24,8 @@ var SquareDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1301';
-        URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1302';
+        // URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
 
         var data = {};
 
