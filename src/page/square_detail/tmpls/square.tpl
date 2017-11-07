@@ -25,27 +25,28 @@
       {% elseif info.pictureList.length > 1 and info.pictureList.length < 4 %}
         <div class="content-img normal-layout one-row">
           {% for index,item in info.pictureList %}
-            <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" />
+            <!-- <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" /> -->
+            <div class="pic pic{{ index + 1 }} pic-block" style="background-image:url('{{ item.pictureUrl }}')"></div>
           {% endfor %}
         </div>
       {% elseif info.pictureList.length == 4 %}
       <div class="content-img four-pic">
         {% for index,item in info.pictureList %}
-          <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" />
+          <!-- <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" /> -->
+          <div class="pic pic{{ index + 1}} pic-block" style="background-image:url('{{ item.pictureUrl }}')"></div>
         {% endfor %}
       </div>
       {% elseif info.pictureList.length > 3 and info.pictureList.length <= 6%}
       <div class="content-img normal-layout two-row">
-        <div class="pic">1</div>
-        <div class="pic">2</div>
-        <div class="pic">3</div>
-        <div class="pic">4</div>
-        <div class="pic">5</div>
+        {% for index,item in info.pictureList %}
+        <div class="pic pic{{index+1}} pic-block" style="background-image:url('{{ item.pictureUrl }}')"></div>
+        {% endfor %}
       </div>
       {% elseif info.pictureList.length > 6 %}
         <div class="content-img full-pic">
           {% for index,item in info.pictureList %}
-            <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" />
+            <!-- <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" /> -->
+            <div class="pic pic-block" style="background-image:url('{{ item.pictureUrl }}')"></div>
           {% endfor %}
         </div>
       {% endif %}
