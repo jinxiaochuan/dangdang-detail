@@ -1,147 +1,66 @@
 require('page/common/common.js');
 
-var jsmod=require('lib/self/jsmod/jsmod_extend.js');
-
 require('./square_detail.less');
 
-var square_header_tpl=require('./tmpls/square_header.tpl');
+var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
-var share_tpl=require('./tmpls/share_detail.tpl');
+var TPL_SQUARE_HEADER = require('./tmpls/square_header.tpl');
 
-var praise_tpl=require('./tmpls/praise_detail.tpl');
+var TPL_SHARE = require('./tmpls/share_detail.tpl');
 
-var reply_tpl=require('./tmpls/reply_detail.tpl');
+var TPL_PRAISE = require('./tmpls/praise_detail.tpl');
 
-var URL_SQUARE = 'http://test.im-dangdang.com/ddweb/v1/square/detail/base';
+var TPL_REPLY = require('./tmpls/reply_detail.tpl');
 
-var URL_SHARE = 'http://test.im-dangdang.com/ddweb/v1/square/detail/share/list';
+var TPL_SQUARE = require('./tmpls/square.tpl');
 
-var URL_PRAISE = 'http://test.im-dangdang.com/ddweb/v1/square/detail/zan/list';
+var HREF_ORIGIN = window.location.href;
 
-var URL_COMMENT = 'http://test.im-dangdang.com/ddweb/v1/square/detail/comment/list';
+var PATH_ORIGIN = window.location.origin;
 
-var page_url=window.location.href;
+var PATH_NAME = '/ddweb/v1/square/detail';
 
-function baseInfoRender(data){
-    var tpl = swig.render(square_header_tpl,{locals:{data:data}});
-    $('.square-header-container').html(tpl);
-    jsmod.util.stretchImg($('.single-image')[0],360,360,false,true);
-}
+var URL_SQUARE = PATH_ORIGIN + PATH_NAME;
 
-function getAjaxBase(url){
+var SquareDetail = jsmod.util.klass({
+    initialize: function(option){
+        this.option = option;
+        this.$container = $('.container');
+        this.getAjax();
+    },
 
-    //url='http://test.im-dangdang.com/ddweb/v1/square/detail/base?userId=189568&squareId=488&ddtoken=E7EF5740EA71A056430C3AC2FCDC94AD4D75B10A90D22B3F8C2A5E08E1A4742D038789815B66F374D17FA134BEE9E46FEDF22E5098DA5F29D2B9F4AB111A2975A666C2D43A08BFF44A34BE16A91B88DA';
+    getAjax: function(){
+        var self = this;
 
-    var data= {};
+        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1301';
+        URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
 
-    data.userId=jsmod.util.url.getParam(url,'userId');
-    data.squareId=jsmod.util.url.getParam(url,'squareId');
-    data.ddtoken=jsmod.util.url.getParam(url,'ddtoken');
+        var data = {};
 
-    $.ajax({
-        url:URL_SQUARE,
-        type:'GET',
-        dataType:'jsonp',
-        jsonp:'callback',
-        data:data,
-        success:function(json){
-         if(json.data){
-            baseInfoRender(json.data);
-         }
-        }
-    });
-}
+        data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+        data.squareId = jsmod.util.url.getParam(HREF_ORIGIN,'squareId');
 
-getAjaxBase(page_url);
-
-function shareInfoRender(data){
-    var tpl=swig.render(share_tpl,{locals:{data:data}});
-    $('.share-detail-container').html(tpl);
-}
-
-function getAjaxShare(url){
-    //url='http://test.im-dangdang.com/ddweb/v1/square/detail/base?userId=189568&squareId=488&ddtoken=E7EF5740EA71A056430C3AC2FCDC94AD4D75B10A90D22B3F8C2A5E08E1A4742D038789815B66F374D17FA134BEE9E46FEDF22E5098DA5F29D2B9F4AB111A2975A666C2D43A08BFF44A34BE16A91B88DA';
-
-    var data= {};
-
-    data.userId=jsmod.util.url.getParam(url,'userId');
-    data.squareId=jsmod.util.url.getParam(url,'squareId');
-    data.ddtoken=jsmod.util.url.getParam(url,'ddtoken');
-    $.ajax({
-        url:URL_SHARE,
-        type:'GET',
-        dataType:'jsonp',
-        jsonp:'callback',
-        data:data,
-        success:function(json){
-            if(json.data){
-                shareInfoRender(json.data);
+        $.ajax({
+            url: URL_SQUARE,
+            dataType: 'jsonp',
+            data: data,
+            jsonp: 'callback',
+            success: function(json){
+                if(json.status == 1){
+                    console.log(json.data);
+                    var html = swig.render(TPL_SQUARE,{
+                        locals: json.data
+                    })
+                    self.$container.html(html);
+                }
             }
-        }
-    });
-}
-
-getAjaxShare(page_url);
+        })
+    }
 
 
-function praiseInfoRender(data){
-    var tpl=swig.render(praise_tpl,{locals:{data:data}});
-    $('.praise-detail-container').html(tpl);
-}
+})
 
-function getAjaxPraise(url){
-    //url='http://test.im-dangdang.com/ddweb/v1/square/detail/base?userId=189568&squareId=488&ddtoken=E7EF5740EA71A056430C3AC2FCDC94AD4D75B10A90D22B3F8C2A5E08E1A4742D038789815B66F374D17FA134BEE9E46FEDF22E5098DA5F29D2B9F4AB111A2975A666C2D43A08BFF44A34BE16A91B88DA';
-
-    var data= {};
-
-    data.userId=jsmod.util.url.getParam(url,'userId');
-    data.squareId=jsmod.util.url.getParam(url,'squareId');
-    data.ddtoken=jsmod.util.url.getParam(url,'ddtoken');
-    $.ajax({
-        url:URL_PRAISE,
-        type:'GET',
-        dataType:'jsonp',
-        jsonp:'callback',
-        data:data,
-        success:function(json){
-            if(json.data){
-                praiseInfoRender(json.data);
-            }
-        }
-    });
-}
-
-getAjaxPraise(page_url);
-
-function commentInfoRender(data){
-    var tpl=swig.render(reply_tpl,{locals:{data:data}});
-    $('.reply-detail-container').html(tpl);
-}
-
-function getAjaxComment(url){
-    //url='http://test.im-dangdang.com/ddweb/v1/ddweb/detail/base?userId=189568&squareId=488&ddtoken=E7EF5740EA71A056430C3AC2FCDC94AD4D75B10A90D22B3F8C2A5E08E1A4742D038789815B66F374D17FA134BEE9E46FEDF22E5098DA5F29D2B9F4AB111A2975A666C2D43A08BFF44A34BE16A91B88DA';
-
-    var data= {};
-
-    data.userId=jsmod.util.url.getParam(url,'userId');
-    data.squareId=jsmod.util.url.getParam(url,'squareId');
-    data.ddtoken=jsmod.util.url.getParam(url,'ddtoken');
-    $.ajax({
-        url:URL_COMMENT,
-        type:'GET',
-        dataType:'jsonp',
-        jsonp:'callback',
-        data:data,
-        success:function(json){
-            if(json.data){
-                commentInfoRender(json.data);
-            }
-        }
-    });
-}
-
-getAjaxComment(page_url);
-
+new SquareDetail();
 
 var $squareContainer=$('.container');
 
