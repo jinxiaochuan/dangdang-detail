@@ -52,20 +52,15 @@ var SquareDetail = jsmod.util.klass({
       });
 
       $('body').delegate('.video-wrapper','click',function(e){
-        e.stopPropagation();
         $('.video-wrapper').remove();
       });
-
-      $('body').delegate('video','click',function(e){
-        e.stopPropagation();
-      })
     },
 
     getAjax: function(){
         var self = this;
 
-        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1303';
-        URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1303';
+        // URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
 
         var data = {};
 
