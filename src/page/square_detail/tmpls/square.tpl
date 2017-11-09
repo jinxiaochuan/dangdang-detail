@@ -18,35 +18,35 @@
     {% if info.pictureList %}
       {% if info.pictureList.length == 1 %}
       <div class="content-img single-pic">
-        <div class="pic pic1">
+        <a class="pic pic1" href="{{info.pictureList[0].pictureUrl}}" target="_blank">
           <img src="{{ info.pictureList[0].pictureUrl }}" alt="">
-        </div>
+        </a>
       </div>
       {% elseif info.pictureList.length > 1 and info.pictureList.length < 4 %}
         <div class="content-img normal-layout one-row">
           {% for index,item in info.pictureList %}
             <!-- <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" /> -->
-            <div class="pic pic{{ index + 1 }} pic-block" style="background-image:url('{{ item.pictureUrl }}')"></div>
+            <a class="pic pic{{ index + 1 }} pic-block" href="{{ item.pictureUrl }}" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></a>
           {% endfor %}
         </div>
       {% elseif info.pictureList.length == 4 %}
       <div class="content-img four-pic">
         {% for index,item in info.pictureList %}
           <!-- <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" /> -->
-          <div class="pic pic{{ index + 1}} pic-block" style="background-image:url('{{ item.pictureUrl }}')"></div>
+          <a class="pic pic{{ index + 1}} pic-block" href="{{ item.pictureUrl }}" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></a>
         {% endfor %}
       </div>
       {% elseif info.pictureList.length > 3 and info.pictureList.length <= 6%}
       <div class="content-img normal-layout two-row">
         {% for index,item in info.pictureList %}
-        <div class="pic pic{{index+1}} pic-block" style="background-image:url('{{ item.pictureUrl }}')"></div>
+        <a class="pic pic{{index+1}} pic-block" href="{{ item.pictureUrl }}" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></a>
         {% endfor %}
       </div>
       {% elseif info.pictureList.length > 6 %}
         <div class="content-img full-pic">
           {% for index,item in info.pictureList %}
             <!-- <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" /> -->
-            <div class="pic pic-block" style="background-image:url('{{ item.pictureUrl }}')"></div>
+            <a class="pic pic-block" href="{{ item.pictureUrl }}" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></a>
           {% endfor %}
         </div>
       {% endif %}
