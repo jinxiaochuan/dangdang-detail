@@ -36,7 +36,7 @@ var SquareDetail = jsmod.util.klass({
 
       var self = this;
 
-      $('body').delegate('.is-video','click',function(){
+      $('body').delegate('.is-video','touchstart',function(){
 
         var url = $(this).data('url');
 
@@ -47,7 +47,7 @@ var SquareDetail = jsmod.util.klass({
         $('body').append(html);
       });
 
-      $('body').delegate('.video-wrapper','click',function(e){
+      $('body').delegate('.video-wrapper','touchstart',function(e){
         $('.video-wrapper').remove();
       });
     },
@@ -55,8 +55,8 @@ var SquareDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1303';
-        // URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
+        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1303';
+        URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
 
         var data = {};
 
