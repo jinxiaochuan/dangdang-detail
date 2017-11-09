@@ -40,11 +40,7 @@ var SquareDetail = jsmod.util.klass({
 
         var url = $(this).data('url');
 
-        var html =`
-        <div class="video-wrapper">
-          <video controls preload src="${url}"></video>
-        </div>
-        `;
+        var html ='<div class="video-wrapper"><video controls preload src="' + url +'"></video></div>';
 
         $('html').addClass('fixed-html');
         $('body').addClass('fixed-body');
