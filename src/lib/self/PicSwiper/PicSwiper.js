@@ -17,7 +17,7 @@ module.exports = function PicSwiper(options) {
          str += "<ul class='pic-list'>";
          for(var i = 0; i < this.picCount; i++){
            str += "<li class='pic-item'>";
-           str += "<img class='single-pic' src='" + this.picArr[i].pictureUrl + "'>";
+           str += "<img class='per-pic' src='" + this.picArr[i].pictureUrl + "'>";
            str += "</li>"
          }
          str += "</ul>";

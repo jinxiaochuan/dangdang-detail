@@ -36,14 +36,36 @@ var SquareDetail = jsmod.util.klass({
 
       var self = this;
 
+      $('body').delegate('.is-video','click',function(){
 
+        var url = $(this).data('url');
+
+        var html =`
+        <div class="video-wrapper">
+          <video controls preload src="${url}"></video>
+        </div>
+        `;
+
+        $('html').addClass('fixed-html');
+        $('body').addClass('fixed-body');
+        $('body').append(html);
+      });
+
+      $('body').delegate('.video-wrapper','click',function(e){
+        e.stopPropagation();
+        $('.video-wrapper').remove();
+      });
+
+      $('body').delegate('video','click',function(e){
+        e.stopPropagation();
+      })
     },
 
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1318';
-        // URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
+        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1303';
+        URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
 
         var data = {};
 
@@ -62,12 +84,17 @@ var SquareDetail = jsmod.util.klass({
                     })
                     self.$container.html(html);
 
-                    self.picSwiper = new PicSwiper({
-                      picArr : json.data.info.pictureList,
-                      triggerClass : '.pic'
-                    });
+                    console.log(json.data);
 
-                    self.picSwiper.init();
+                    if(json.data.info.pictureList.length){
+                      self.picSwiper = new PicSwiper({
+                        picArr : json.data.info.pictureList,
+                        triggerClass : '.pic'
+                      });
+
+                      self.picSwiper.init();
+
+                    }
 
                     self.initShare();
                 }

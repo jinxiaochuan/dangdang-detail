@@ -9,7 +9,7 @@
     {% endif %}
     {% if info.video %}
     <div class="content-img single-pic">
-      <div class="pic pic1 is-video">
+      <div class="pic pic1 is-video" data-url="{{ info.video.videoUrl }}">
         <img src="{{ info.video.pictureUrl }}" alt="">
         <div class="play-btn"></div>
       </div>
