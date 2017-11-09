@@ -16,22 +16,34 @@ var PATH_NAME = '/ddweb/v1/square/detail';
 
 var URL_SQUARE = PATH_ORIGIN + PATH_NAME;
 
+var PicSwiper = require('lib/self/PicSwiper/PicSwiper.js');
+
+require('lib/self/PicSwiper/PicSwiper.css');
+
 var SquareDetail = jsmod.util.klass({
     initialize: function(option){
         this.option = option;
         this.$container = $('.container');
         this.getAjax();
+        this.initEvents();
     },
 
     initShare:function(){
         share()
     },
 
+    initEvents:function(){
+
+      var self = this;
+
+
+    },
+
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1301';
-        // URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
+        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1318';
+        URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
 
         var data = {};
 
@@ -45,11 +57,18 @@ var SquareDetail = jsmod.util.klass({
             jsonp: 'callback',
             success: function(json){
                 if(json.status == 1){
-                    console.log(json.data);
                     var html = swig.render(TPL_SQUARE,{
                         locals: json.data
                     })
                     self.$container.html(html);
+
+                    self.picSwiper = new PicSwiper({
+                      picArr : json.data.info.pictureList,
+                      triggerClass : '.pic'
+                    });
+
+                    self.picSwiper.init();
+
                     self.initShare();
                 }
             }

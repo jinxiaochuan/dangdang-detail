@@ -25,9 +25,9 @@ function trans(html){
 
     var reg_format = /(\<img\s*src=")([a-zA-z]+:\/\/[^\s]*)\/format,webp("\s*(alt="")?.*?\>)/ig;
 
-    var reg_embed_mp4 = /\<embed\s*src="([a-zA-z]+:\/\/[^\s]*\.mp4)".*?\>/ig;
+    var reg_embed_mp4 = /\<embed\s*src="([a-zA-z]+:\/\/[^\s]*\.(avi|flv|mkv|mp4|mpg|wmv))".*?\>/ig;
 
-    var reg_embed_mp3 = /\<embed\s*src="([a-zA-z]+:\/\/[^\s]*\.mp3)".*?\>/ig;
+    var reg_embed_mp3 = /\<embed\s*src="([a-zA-z]+:\/\/[^\s]*\.(amr|mp3|wav|wma))".*?\>/ig;
 
     if(dpr != 1){
 

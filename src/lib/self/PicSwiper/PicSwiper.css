@@ -1,0 +1,59 @@
+body{
+  position: relative;
+}
+
+.fixed-html,
+.fixed-body{
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+
+.pic-container{
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  top: 0;
+  left: 0;
+}
+
+.pic-container.active{
+  display: block;
+}
+
+.pic-wrapper,
+.pic-list{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.pic-item{
+  float: left;
+  display: none;
+  position: relative;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+}
+
+.pic-item.active{
+  display: block;
+}
+
+.single-pic{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+}
+
+.pic-tip-container{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+}
