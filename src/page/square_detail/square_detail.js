@@ -47,7 +47,7 @@ var SquareDetail = jsmod.util.klass({
         $('body').append(html);
       });
 
-      $('body').delegate('.video-wrapper','click touchstart',function(e){
+      $('body').delegate('.video-wrapper','click',function(e){
         $('.video-wrapper').remove();
       });
     },
