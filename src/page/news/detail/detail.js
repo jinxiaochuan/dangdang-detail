@@ -31,8 +31,8 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?userId=200119&newsId=1';
-        // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
+        HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?userId=200119&newsId=1';
+        URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
 
@@ -192,7 +192,7 @@ var News = jsmod.util.klass({
               var userId = $(this).data('user');
               var newsId = $(this).data('news');
               var mediaId = $(this).data('media');
-              var newsType = $(this).data('newsType');
+              var newsType = $(this).data('type');
               if(self.isOpenFromInternalApp){
                   bridge.callHandler('tapOpenOtherArticle',{"userId":userId.toString(),"newsId":newsId.toString(),"mediaId":mediaId.toString(),"newsType":newsType.toString()},function(){})
                   return;
