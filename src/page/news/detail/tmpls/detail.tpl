@@ -59,7 +59,9 @@
                 </div>
                 <div class="news-cover-wrap">
                     <img class="news-cover" src="{{ item.coverImageUrl[0] }}" alt="">
+                    {% if item.pictureNum > 0 %}
                     <span class="pic-count">{{ item.pictureNum }}图</span>
+                    {% endif %}
                 </div>
             </div>
         </a>
