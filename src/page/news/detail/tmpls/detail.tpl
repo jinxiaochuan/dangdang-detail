@@ -51,7 +51,7 @@
             <span class="short"></span>
         </div>
         {% for item in data.recommendNews %}
-        <a class="news-link" data-user="{{ data.userId }}" data-news="{{ item.newsId }}" data-media="{{ item.mediaId }}" href="javascript:void(0)">
+        <a class="news-link" data-user="{{ data.userId }}" data-type="{{ item.newsType }}" data-news="{{ item.newsId }}" data-media="{{ item.mediaId }}" href="javascript:void(0)">
             <div class="news-item">
                 <div class="news-detail">
                     <p class="news-title">{{ item.title }}</p>

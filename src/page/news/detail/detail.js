@@ -192,8 +192,9 @@ var News = jsmod.util.klass({
               var userId = $(this).data('user');
               var newsId = $(this).data('news');
               var mediaId = $(this).data('media');
+              var newsType = $(this).data('newsType');
               if(self.isOpenFromInternalApp){
-                  bridge.callHandler('tapOpenOtherArticle',{"userId":userId.toString(),"newsId":newsId.toString(),"mediaId":mediaId.toString()},function(){})
+                  bridge.callHandler('tapOpenOtherArticle',{"userId":userId.toString(),"newsId":newsId.toString(),"mediaId":mediaId.toString(),"newsType":newsType.toString()},function(){})
                   return;
               }
               window.location.href = '/ddweb/news/detail?userId='+ userId +'&newsId=' + newsId;
