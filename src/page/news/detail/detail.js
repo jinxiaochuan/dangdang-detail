@@ -32,6 +32,7 @@ var News = jsmod.util.klass({
         var self = this;
 
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?userId=200119&newsId=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?userId=200119&newsId=315'
         // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
@@ -46,7 +47,6 @@ var News = jsmod.util.klass({
             jsonp:'callback',
             success: function(json){
                 if(json.status == 1){
-                    console.log(json);
                     self.data = json.data;
                     self.commentAmount = self.data.newsDetail.commentAmount;
                     self.render(json.data);
