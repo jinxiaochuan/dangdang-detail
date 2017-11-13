@@ -48,6 +48,7 @@ var News = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    console.log(self.data);
                     self.commentAmount = self.data.newsDetail.commentAmount;
                     self.render(json.data);
                     return;
@@ -128,6 +129,10 @@ var News = jsmod.util.klass({
             "imgList": imgList
         }
 
+        if(this.data.liveInfo){
+          this.baseInfo.liveId = this.data.liveInfo.liveId
+        }
+
         this.avatarInfo = {
             mediaId: this.data.newsDetail.mediaId
         }
@@ -186,6 +191,10 @@ var News = jsmod.util.klass({
 
           self.$container.delegate('.comment-wrap','click',function(){
               bridge.callHandler('tapComment')
+          })
+
+          self.$container.delegate('.live-wrapper','click',function(){
+            bridge.callHandler('goLive');
           })
 
           self.$container.delegate('.news-list-wrap .news-link','click',function(){
