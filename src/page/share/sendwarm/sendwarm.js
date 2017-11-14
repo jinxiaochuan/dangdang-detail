@@ -4,7 +4,7 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
 var HREF_ORIGIN = window.location.href;
-console.log(HREF_ORIGIN);
+alert('href'+HREF_ORIGIN);
 var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 var share_count  = jsmod.util.url.getParam(HREF_ORIGIN,'userTotalNum');
 var share_button =  $('.share_button');
