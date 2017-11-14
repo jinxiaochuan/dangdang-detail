@@ -1,0 +1,52 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+.container{
+	background-color: #f9eedc;
+	padding: 0;
+	margin:0;
+}
+.warm-wrap{
+	.warm-top{
+		position: relative;
+		img{
+			width:100%;
+			margin:0;
+			padding:0 0 @base*90rem;
+		}
+	}
+	.dd-logo{
+		position: absolute;
+		left:@base*40rem;
+		top:@base*40rem;
+		width:@base*272rem;
+		height:@base*69rem;
+		background: url('~assets/logo.png') center center no-repeat;
+		background-size: contain;
+	}
+	.warm-content{
+		position: absolute;
+		width:100%;
+	    top: @base*625rem;
+	    text-align: center;
+	    .para{
+	    	font-size: @base*40rem;
+	    	color:#000;
+	    	font-weight: bold;
+	    	margin-bottom: @base*127rem;
+	    }
+	    .share_finish{
+	    	display: inline-block;
+	    	width:@base*400rem;
+	    	height:@base*88rem;
+	    	line-height: @base*88rem;
+	    	color:#fff;
+	    	text-align: center;
+	    	background-color: #FFBC29;
+	    	font-size:@base*30rem;
+	    	.border-radius(200px);
+	    	cursor: pointer;
+	    	.box-shadow(0 10px 50px 0 rgba(143,89,38,0.30));
+	    }
+	}
+}	
