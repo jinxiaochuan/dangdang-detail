@@ -75,11 +75,12 @@
 
               &.video-play{
                 background: url('~assets/video-play.png') center center no-repeat;
+                background-size: @base*82rem @base*82rem;
               }
             }
 
             .live-status{
-              position: absolute;
+              position: absolute !important;
               right: @base*26rem;
               top: @base*26rem;
               line-height: @base*40rem;
@@ -90,26 +91,11 @@
               background: rgba(0,0,0,.2);
               box-sizing: border-box;
 
-              .top-line{
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: @base*1rem;
-                background: rgba(255,255,255,.2);
-              }
+              .setLine('top',#dcdcdc);
+              .setLine('bottom',#dcdcdc);
 
-              .bottom-line{
-                position: absolute;
-                top: bottom;
-                left: 0;
-                width: 100%;
-                height: @base*1rem;
-                background: rgba(255,255,255,.2);
-              }
-
-              &:before,
-              &:after{
+              .left,
+              .right{
                 position: absolute;
                 width: @base*18rem;
                 height: @base*42rem;
@@ -119,14 +105,14 @@
                 background-size: @base*18rem @base*42rem;
               }
 
-              &:before{
-                left:-@base*18rem;
+              .left{
+                right:-@base*18rem;
                 background-position: right center;
                 background-image: url('~assets/left_cir.png');
               }
 
-              &:after{
-                right: -@base*18rem;
+              .right{
+                left: -@base*18rem;
                 background-position: left center;
                 background-image: url('~assets/right_cir.png');
               }

@@ -15,14 +15,14 @@
       {% if data.liveInfo %}
         <div class="live-wrapper" style="background-image:url('{{ data.liveInfo.coverImage.picture }}')">
           <div class="blur-layer">
-            {% if data.liveinfo.liveStatus > 1 %}
+            {% if data.liveinfo.liveStatus < 0 %}
             <div class="play-btn"></div>
             {% else %}
             <div class="video-play"></div>
             {% endif %}
             <span class="live-status">
-                <span class="top-line"></span>
-                <span class="bottom-line"></span>
+                <span class="left"></span>
+                <span class="right"></span>
                 {{ data.liveInfo.coverMsg }}
             </span>
           </div>
