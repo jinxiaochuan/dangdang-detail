@@ -15,7 +15,7 @@
       {% if data.liveInfo %}
         <div class="live-wrapper" style="background-image:url('{{ data.liveInfo.coverImage.picture }}')">
           <div class="blur-layer">
-            {% if data.liveinfo.liveStatus != 4 %}
+            {% if data.liveInfo.liveStatus != 4 %}
             <div class="play-btn"></div>
             {% else %}
             <div class="video-play"></div>
