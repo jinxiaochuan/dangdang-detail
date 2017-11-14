@@ -2,21 +2,22 @@ require('page/common/common.js');
 require('./sendwarm.less');
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+window.onload = function(){
+	var HREF_ORIGIN = window.location.href;
+	alert(HREF_ORIGIN);
+	var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
+	var share_count  = jsmod.util.url.getParam(HREF_ORIGIN,'userTotalNum');
+	var share_button =  $('.share_button');
+	var count = $('.warm_count');
+	var num = $('.warm_count .num');
 
-var HREF_ORIGIN = window.location.href;
-alert('href'+HREF_ORIGIN);
-var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
-var share_count  = jsmod.util.url.getParam(HREF_ORIGIN,'userTotalNum');
-var share_button =  $('.share_button');
-var count = $('.warm_count');
-var num = $('.warm_count .num');
-
-if(source && source == 1){
-	share_button.hide();
-	count.hide();
+	if(source && source == 1){
+		share_button.hide();
+		count.hide();
+	}
+	alert('share_count:'+share_count);
+	num.html(share_count);
 }
-alert('share_count:'+share_count);
-num.html(share_count);
 var SendWarm = jsmod.util.klass({
 	initialize: function(option){
         this.option = option;
