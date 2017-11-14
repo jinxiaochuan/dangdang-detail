@@ -1,0 +1,90 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+body,html{
+  padding:0;
+  margin:0;
+}
+.container{
+	background-color: #f9eedc;
+	padding: 0;
+	margin:0;
+}
+.warm-wrap{
+	.warm-top{
+		position: relative;
+		img{
+			width:100%;
+			margin:0;
+			padding:0 0 @base*90rem;
+		}
+	}
+	.dd-logo{
+		position: absolute;
+		left:@base*40rem;
+		top:@base*40rem;
+		width:@base*272rem;
+		height:@base*69rem;
+		background: url('~assets/logo.png') center center no-repeat;
+		background-size: contain;
+	}
+	.warm-content{
+		position: absolute;
+	    top: @base*350rem;
+	    padding:@base*60rem;
+	    text-align: left;
+		.prag_01{
+			color:#302C48;
+			font-size:@base*40rem;
+			font-weight:bold;
+			margin-bottom:@base*20rem;		
+		}
+		.prag_02{
+			font-size:@base*24rem;
+			color:#958975;
+			line-height: @base*48rem;
+			margin-bottom:@base*40rem;
+		}
+		.prag_03{
+           font-size:@base*36rem;
+           color:#302C48;
+           font-weight: bold;
+		}
+		.small-img{
+			margin-bottom:@base*40rem;
+			margin-top:@base*15rem;
+			img{
+				display: inline-block;
+				width: @base*100rem;
+				height:@base*100rem;
+                margin:@base*25rem;
+			}
+		}
+		.prag_04{
+			font-size:@base*24rem;
+			line-height: @base*48rem;
+			color:#958975;
+		}
+		.share_button{
+			display: inline-block;
+			text-align: center;
+			color:#fff;
+			font-size:@base*30rem;
+			width:@base*600rem;
+			height:@base*88rem;
+			line-height:@base*88rem;
+			background-color: #FFBC29;
+			.border-radius(200px);
+			margin:@base*67rem 0;
+			cursor:pointer;
+			.box-shadow(0 10px 50px 0 rgba(143,89,38,0.30));
+		}
+		.warm_count{
+			float:right;
+			font-size:@base*24rem;
+			color:#666;
+		}
+	}
+
+}
