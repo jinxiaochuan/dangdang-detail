@@ -4,7 +4,7 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 window.onload = function(){
 	var HREF_ORIGIN = window.location.href;
-	alert(HREF_ORIGIN);
+	//alert(HREF_ORIGIN);
 	var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 	var share_count  = jsmod.util.url.getParam(HREF_ORIGIN,'userTotalNum');
 	var share_button =  $('.share_button');
@@ -15,7 +15,7 @@ window.onload = function(){
 		share_button.hide();
 		count.hide();
 	}
-	alert('share_count:'+share_count);
+	//alert('share_count:'+share_count);
 	num.html(share_count);
 }
 var SendWarm = jsmod.util.klass({
