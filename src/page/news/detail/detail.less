@@ -81,9 +81,25 @@
               line-height: @base*40rem;
               font-size: @base*24rem;
               color: #fff;
-              border-top:@base*1rem solid rgba(255,255,255,.2);
-              border-bottom:@base*1rem solid rgba(255,255,255,.2);
               background: rgba(0,0,0,.2);
+
+              .top-line{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: @base*1rem;
+                background: url('~assets/1px.png') repeat;
+              }
+
+              .bottom-line{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: @base*1rem;
+                background: url('~assets/1px.png') repeat;
+              }
 
               &:before,
               &:after{
