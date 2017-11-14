@@ -62,7 +62,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,.2);
+            background: rgba(0,0,0,.1);
             .play-btn{
               position: absolute;
               width: @base*82rem;
@@ -81,6 +81,8 @@
               line-height: @base*40rem;
               font-size: @base*24rem;
               color: #fff;
+              border-top:@base*1rem solid rgba(255,255,255,.2);
+              border-bottom:@base*1rem solid rgba(255,255,255,.2);
               background: rgba(0,0,0,.2);
 
               &:before,
@@ -296,7 +298,7 @@
                   right: @base*12rem;
                   bottom: @base*4rem;
                   color: #fff;
-                  text-shadow: 0 @base*2rem @base*4rem;
+                  text-shadow: 0 @base*2rem @base*4rem #000;
                 }
             }
 
