@@ -16,16 +16,7 @@
         <div class="live-wrapper" style="background-image:url('{{ data.liveInfo.coverImage.picture }}')">
           <div class="play-btn"><span class="triangle"></span></div>
           <span class="live-status">
-            <!-- 直播未开始 -->
-            {% if data.liveInfo.liveStatus == 1 %}
               {{ data.liveInfo.coverMsg }}
-            <!-- 直播中 -->
-            {% elseif data.liveInfo.liveStatus == 2%}
-              直播中...
-            <!-- 已开始 -->
-            {% else %}
-              精彩回放
-            {% endif %}
           </span>
         </div>
       {% endif %}
