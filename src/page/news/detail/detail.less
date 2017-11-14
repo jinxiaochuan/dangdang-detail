@@ -81,7 +81,7 @@
               line-height: @base*40rem;
               font-size: @base*24rem;
               color: #fff;
-              background: rgba(0,0,0,.2);
+              background: linear-gradient(to bottom,transparent 0,transparent @base*1rem,rgba(0,0,0,.2) @base*1rem,rgba(0,0,0,.2) @base*39rem,transparent @base*39rem);
 
               .top-line{
                 position: absolute;
@@ -89,16 +89,16 @@
                 left: 0;
                 width: 100%;
                 height: @base*1rem;
-                background: url('~assets/1px.png') repeat;
+                background: rgba(255,255,255,.2);
               }
 
               .bottom-line{
                 position: absolute;
-                bottom: 0;
+                top: bottom;
                 left: 0;
                 width: 100%;
                 height: @base*1rem;
-                background: url('~assets/1px.png') repeat;
+                background: rgba(255,255,255,.2);
               }
 
               &:before,
