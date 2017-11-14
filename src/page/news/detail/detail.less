@@ -86,36 +86,11 @@
               line-height: @base*40rem;
               font-size: @base*24rem;
               color: #fff;
-              border-top:@base*1rem solid transparent;
-              border-bottom:@base*1rem solid transparent;
               background: rgba(0,0,0,.2);
               box-sizing: border-box;
-
-              .setLine('top',#dcdcdc);
-              .setLine('bottom',#dcdcdc);
-
-              .left,
-              .right{
-                position: absolute;
-                width: @base*18rem;
-                height: @base*42rem;
-                top: 0;
-                content:'';
-                background-repeat: no-repeat;
-                background-size: @base*18rem @base*42rem;
-              }
-
-              .left{
-                right:-@base*18rem;
-                background-position: right center;
-                background-image: url('~assets/left_cir.png');
-              }
-
-              .right{
-                left: -@base*18rem;
-                background-position: left center;
-                background-image: url('~assets/right_cir.png');
-              }
+              padding: 0 @base*17rem;
+              border: @base*2rem solid rgba(255,255,255,.2);
+              border-radius: @base*40rem
             }
           }
         }
