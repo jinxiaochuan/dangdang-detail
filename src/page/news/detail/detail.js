@@ -32,7 +32,7 @@ var News = jsmod.util.klass({
         var self = this;
 
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?userId=200119&newsId=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?userId=200119&newsId=315'
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?newsId=361&userId=200246'
         // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};

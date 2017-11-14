@@ -58,36 +58,54 @@
           background-size: cover;
           background-repeat: no-repeat;
 
-          .play-btn{
-            position: absolute;
-            width: @base*82rem;
-            height: @base*82rem;
-            top: 50%;
-            left: 50%;
-            transform:translate(-50%, -50%);
-            border:@base*2rem solid #fff;
-            border-radius: 50%;
-
-            .triangle{
+          .blur-layer{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.2);
+            .play-btn{
               position: absolute;
-              left: @base*31rem;
-              top: @base*24rem;
-              border-width: @base*16rem @base*24rem;
-              border-style: solid;
-              border-color: transparent transparent transparent #fff;
+              width: @base*82rem;
+              height: @base*82rem;
+              top: 50%;
+              left: 50%;
+              transform:translate(-50%, -50%);
+              background: url('~assets/play_btn.png') center center no-repeat;
+              background-size: 100% 100%;
             }
-          }
 
-          .live-status{
-            position: absolute;
-            right: @base*26rem;
-            top: @base*26rem;
-            line-height: @base*40rem;
-            padding: 0 @base*18rem;
-            border: @base*1rem solid #fff;
-            border-radius:@base*40rem;
-            font-size: @base*24rem;
-            color: #fff;
+            .live-status{
+              position: absolute;
+              right: @base*26rem;
+              top: @base*26rem;
+              line-height: @base*40rem;
+              font-size: @base*24rem;
+              color: #fff;
+              background: rgba(0,0,0,.2);
+
+              &:before,
+              &:after{
+                position: absolute;
+                width: @base*18rem;
+                height: @base*40rem;
+                top: 0;
+                content:'';
+                background-repeat: no-repeat;
+                background-size: @base*18rem @base*42rem;
+              }
+
+              &:before{
+                left:-@base*18rem;
+                background-position: right center;
+                background-image: url('~assets/left_cir.png');
+              }
+
+              &:after{
+                right: -@base*18rem;
+                background-position: left center;
+                background-image: url('~assets/right_cir.png');
+              }
+            }
           }
         }
 
@@ -275,9 +293,10 @@
                 .pic-count{
                   position: absolute;
                   font-size: @base*24rem;
-                  right: @base*16rem;
-                  bottom: @base*16rem;
+                  right: @base*12rem;
+                  bottom: @base*4rem;
                   color: #fff;
+                  text-shadow: 0 @base*2rem @base*4rem;
                 }
             }
 

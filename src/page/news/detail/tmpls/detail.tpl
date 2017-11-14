@@ -14,10 +14,12 @@
     <div class="news-detail-main">
       {% if data.liveInfo %}
         <div class="live-wrapper" style="background-image:url('{{ data.liveInfo.coverImage.picture }}')">
-          <div class="play-btn"><span class="triangle"></span></div>
-          <span class="live-status">
-              {{ data.liveInfo.coverMsg }}
-          </span>
+          <div class="blur-layer">
+            <div class="play-btn"><span class="triangle"></span></div>
+            <span class="live-status">
+                {{ data.liveInfo.coverMsg }}
+            </span>
+          </div>
         </div>
       {% endif %}
         <div class="content">
