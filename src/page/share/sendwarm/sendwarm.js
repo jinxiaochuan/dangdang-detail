@@ -5,6 +5,9 @@ var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridg
 var share = require('lib/self/share.js');
 
 var HREF_ORIGIN = window.location.href;
+var PATH_ORIGIN = window.location.origin;
+var PATH_NAME = '/ddweb/v1/tg/qr/num';
+var COUNT_URL = PATH_ORIGIN + PATH_NAME;
 //alert(HREF_ORIGIN);
 var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 //var share_count  = jsmod.util.url.getParam(HREF_ORIGIN,'userTotalNum');
@@ -29,7 +32,7 @@ var SendWarm = jsmod.util.klass({
     getAjaxCount:function(){
         var num = $('.warm_count .num');
         $.ajax({
-            url:'http://dev.im-dangdang.com/ddweb/v1/tg/qr/num',
+            url: COUNT_URL,
             dataType: 'jsonp',
             jsonp: 'callback',
             success:function(data){
