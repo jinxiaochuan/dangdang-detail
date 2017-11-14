@@ -42,7 +42,6 @@ var SendWarm = jsmod.util.klass({
             }
 
             self.$container.delegate('.share_button','click',function(){
-            	$(this).addClass('clicked');
                 bridge.callHandler('tapShare')
             })
         })

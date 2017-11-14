@@ -27,7 +27,6 @@ var AlreadyWarm = jsmod.util.klass({
             }
 
             self.$container.delegate('.share_finish','click',function(){
-            	$(this).addClass('clicked');
                 bridge.callHandler('tapComplete')
             })
         })
