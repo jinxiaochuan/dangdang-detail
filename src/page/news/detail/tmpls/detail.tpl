@@ -17,6 +17,8 @@
           <div class="blur-layer">
             <div class="play-btn"><span class="triangle"></span></div>
             <span class="live-status">
+                <span class="top-line"></span>
+                <span class="bottom-line"></span>
                 {{ data.liveInfo.coverMsg }}
             </span>
           </div>
