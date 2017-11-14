@@ -7,24 +7,40 @@ var share = require('lib/self/share.js');
 var HREF_ORIGIN = window.location.href;
 //alert(HREF_ORIGIN);
 var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
-var share_count  = jsmod.util.url.getParam(HREF_ORIGIN,'userTotalNum');
+//var share_count  = jsmod.util.url.getParam(HREF_ORIGIN,'userTotalNum');
 var share_button =  $('.share_button');
 var count = $('.warm_count');
-var num = $('.warm_count .num');
+
 
 if(source && source == 1){
 	share_button.hide();
 	count.hide();
 }
 //alert('share_count:'+share_count);
-num.html(share_count);
 
 var SendWarm = jsmod.util.klass({
 	initialize: function(option){
         this.option = option;
         this.$container = $('.container');
+        this.getAjaxCount();
         this.initBridge();
         this.initShare();
+    },
+    getAjaxCount:function(){
+        var num = $('.warm_count .num');
+        $.ajax({
+            url:'http://dev.im-dangdang.com/ddweb/v1/tg/qr/num',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success:function(data){
+                if(data.status == 1) {
+                    var share_count = data.data.userTotalNum;
+                    num.html(share_count);
+                    console.log(data.data.userTotalNum);
+                }  
+            }
+
+        })
     },
     initBridge: function(){
         var self = this;
