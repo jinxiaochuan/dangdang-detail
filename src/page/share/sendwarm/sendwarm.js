@@ -36,7 +36,6 @@ var SendWarm = jsmod.util.klass({
                 if(data.status == 1) {
                     var share_count = data.data.userTotalNum;
                     num.html(share_count);
-                    console.log(data.data.userTotalNum);
                 }  
             }
 
