@@ -11,17 +11,15 @@ var HREF_ORIGIN = window.location.href;
 var PATH_ORIGIN = window.location.origin;
 var PATH_NAME = '/ddweb/v1/tg/qr/num';
 var COUNT_URL = PATH_ORIGIN + PATH_NAME;
+//var COUNT_URL = 'http://dev.im-dangdang.com/' + PATH_NAME;
 
 var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 var userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
 var share_button =  $('.share_button');
 var count = $('.warm_count');
+var para = $('prag_01');
 
-
-if(source && source == 1){
-	share_button.hide();
-	count.hide();
-}
+console.log(source);
 
 var SendWarm = jsmod.util.klass({
 	initialize: function(option){
@@ -33,7 +31,7 @@ var SendWarm = jsmod.util.klass({
     },
     getAjaxCount:function(){
         var self = this;
-		//var COUNT_URL = 'http://dev.im-dangdang.com/' + PATH_NAME;
+		
         $.ajax({
             url: COUNT_URL,
 			data: {'userId':userId},
@@ -42,13 +40,18 @@ var SendWarm = jsmod.util.klass({
             success:function(data){
                 if(data.status == 1) {
                     var share_count = data.data.userTotalNum;
-                    console.log(share_count);
                     var html = swig.render(WARM_MODEL,{
                         locals: {
-                            data: share_count
+                            data: data.data,
+                            source: source
                         }
                     });
                     self.$container.html(html);
+                    // if(source && source == 1){
+                    //     share_button.hide();
+                    //     count.hide();
+                    //     para.hide();
+                    // }
                 }
             }
 

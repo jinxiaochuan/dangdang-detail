@@ -28,7 +28,7 @@ body,html{
 	}
 	.warm-content{
 		position: absolute;
-	    top: @base*350rem;
+	    top: @base*200rem;
 	    padding:@base*60rem;
 	    text-align: left;
 		.prag_01{
@@ -91,18 +91,46 @@ body,html{
 			line-height:@base*88rem;
 			background-color: #FFBC29;
 			.border-radius(200px);
-			margin:@base*67rem 0 @base*40rem;
+			margin:@base*67rem 0;
 			cursor:pointer;
 			.box-shadow(0 10px 50px 0 rgba(143,89,38,0.30));
-			&.clicked{
-				background-color: #DEA21D;
+				&.clicked{
+					background-color: #DEA21D;
+				}
+			}
+			.warm_count{
+				float:right;
+				font-size:@base*24rem;
+				color:#666;
 			}
 		}
-		.warm_count{
-			float:right;
-			font-size:@base*24rem;
-			color:#666;
-		}
+		.warm_info{
+			margin-top:@base*70rem;
+			position: relative;
+			.photo{
+				width:@base*80rem;
+				height:@base*80rem;
+				margin-right:@base*20rem;
+			}
+			.name{
+				font-size:@base*24rem;
+				color:#666;
+				vertical-align: top;
+			}
+			.data{
+				display: inline-block;
+				width:@base*520rem;
+				font-size:@base*24rem;
+				color:#333;
+				height:@base*106rem;
+				padding:@base*12rem @base*20rem @base*12rem  @base*40rem;
+				line-height: @base*40rem;
+				position: absolute;
+				top:@base*50rem;
+				left:@base*90rem;
+				background: url('~assets/text_bg.png') no-repeat center center;
+				background-size: contain;
+			}
 		}
 		
 	}
