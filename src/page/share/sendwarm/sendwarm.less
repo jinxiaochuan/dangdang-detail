@@ -6,6 +6,8 @@ body,html{
   padding:0;
   margin:0;
   background-color: #f9eedc;
+  background: url('~assets/bg_1.png') no-repeat;
+  font-size: cover;
 }
 .container{
 	background-color: #f9eedc;
@@ -15,9 +17,6 @@ body,html{
 .warm-wrap{
 	.warm-top{
 		position: relative;
-		img{
-			width:100%;
-		}
 	}
 	.dd-logo{
 		position: absolute;
@@ -51,12 +50,18 @@ body,html{
            font-weight: bold;
 		}
 		.small-img{
-			img{
+			div{
 				display: inline-block;
-				width: @base*100rem;
+				width:@base*100rem;
 				height:@base*100rem;
-                margin:@base*25rem;
+				&.hot_dog{
+					background: url('~assets/HotDog.png') no-repeat center center;
+				}
+				&.coffee{
+					background: url('~assets/Coffee.png') no-repeat center center;
+				}
 			}
+			
 		}
 		.prag_04{
 			font-size:@base*24rem;

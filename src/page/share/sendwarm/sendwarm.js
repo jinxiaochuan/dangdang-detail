@@ -1,13 +1,17 @@
 require('page/common/common.js');
+
 require('./sendwarm.less');
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 var share = require('lib/self/share.js');
+var WARM_MODEL = require('./tmpls/warm.tpl');
+
 
 var HREF_ORIGIN = window.location.href;
 var PATH_ORIGIN = window.location.origin;
 var PATH_NAME = '/ddweb/v1/tg/qr/num';
-var COUNT_URL = PATH_ORIGIN + PATH_NAME;
+//var COUNT_URL = PATH_ORIGIN + PATH_NAME;
+var COUNT_URL = 'http://dev.im-dangdang.com/ddweb/v1/tg/qr/num';
 //alert(HREF_ORIGIN);
 var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 //var share_count  = jsmod.util.url.getParam(HREF_ORIGIN,'userTotalNum');
@@ -27,10 +31,10 @@ var SendWarm = jsmod.util.klass({
         this.$container = $('.container');
         this.getAjaxCount();
         this.initBridge();
-        this.initShare();
+        //this.initShare();
     },
     getAjaxCount:function(){
-        var num = $('.warm_count .num');
+        var self = this;
         $.ajax({
             url: COUNT_URL,
             dataType: 'jsonp',
@@ -38,7 +42,14 @@ var SendWarm = jsmod.util.klass({
             success:function(data){
                 if(data.status == 1) {
                     var share_count = data.data.userTotalNum;
-                    num.html(share_count);
+                    console.log(share_count);
+                    //num.html(share_count);
+                    var html = swig.render(WARM_MODEL,{
+                        locals: {
+                            data: share_count
+                        }
+                    });
+                    self.$container.html(html);
                 }  
             }
 
