@@ -5,9 +5,8 @@
 body,html{
   padding:0;
   margin:0;
-  background-color: #f9eedc;
-  background: url('~assets/bg_1.png') no-repeat;
-  font-size: cover;
+  background: url('~assets/bg_1.png') no-repeat #f9eedc;
+  background-size: cover;
 }
 .container{
 	background-color: #f9eedc;
@@ -52,13 +51,25 @@ body,html{
 		.small-img{
 			div{
 				display: inline-block;
+				overflow: hidden;
 				width:@base*100rem;
 				height:@base*100rem;
+				margin:@base*25rem;
 				&.hot_dog{
 					background: url('~assets/HotDog.png') no-repeat center center;
+					background-size: contain;
 				}
 				&.coffee{
 					background: url('~assets/Coffee.png') no-repeat center center;
+					background-size: contain;
+				}
+				&.fruits{
+					background: url('~assets/Fruits.png') no-repeat center center;
+					background-size: contain;
+				}
+				&.money{
+					background: url('~assets/Money.png') no-repeat center center;
+					background-size: contain;
 				}
 			}
 			
