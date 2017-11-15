@@ -15,11 +15,6 @@ var COUNT_URL = PATH_ORIGIN + PATH_NAME;
 
 var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 var userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
-var share_button =  $('.share_button');
-var count = $('.warm_count');
-var para = $('prag_01');
-
-console.log(source);
 
 var SendWarm = jsmod.util.klass({
 	initialize: function(option){
@@ -27,7 +22,7 @@ var SendWarm = jsmod.util.klass({
         this.$container = $('.container');
         this.getAjaxCount();
         this.initBridge();
-        //this.initShare();
+        this.initShare();
     },
     getAjaxCount:function(){
         var self = this;
@@ -47,11 +42,6 @@ var SendWarm = jsmod.util.klass({
                         }
                     });
                     self.$container.html(html);
-                    // if(source && source == 1){
-                    //     share_button.hide();
-                    //     count.hide();
-                    //     para.hide();
-                    // }
                 }
             }
 
