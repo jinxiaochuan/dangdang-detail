@@ -8,9 +8,8 @@ var HREF_ORIGIN = window.location.href;
 var PATH_ORIGIN = window.location.origin;
 var PATH_NAME = '/ddweb/v1/tg/qr/num';
 var COUNT_URL = PATH_ORIGIN + PATH_NAME;
-//alert(HREF_ORIGIN);
 var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
-//var share_count  = jsmod.util.url.getParam(HREF_ORIGIN,'userTotalNum');
+var userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
 var share_button =  $('.share_button');
 var count = $('.warm_count');
 
@@ -19,7 +18,6 @@ if(source && source == 1){
 	share_button.hide();
 	count.hide();
 }
-//alert('share_count:'+share_count);
 
 var SendWarm = jsmod.util.klass({
 	initialize: function(option){
@@ -31,15 +29,17 @@ var SendWarm = jsmod.util.klass({
     },
     getAjaxCount:function(){
         var num = $('.warm_count .num');
+		// COUNT_URL = 'http://dev.im-dangdang.com/' + PATH_NAME;
         $.ajax({
             url: COUNT_URL,
+			data: {'userId':userId},
             dataType: 'jsonp',
             jsonp: 'callback',
             success:function(data){
                 if(data.status == 1) {
                     var share_count = data.data.userTotalNum;
                     num.html(share_count);
-                }  
+                }
             }
 
         })
