@@ -29,14 +29,14 @@ body,html{
 	.warm-content{
 		position: absolute;
 	    top: @base*200rem;
-	    padding:@base*60rem;
+	    padding:@base*60rem @base*50rem @base*60rem @base*40rem;
 	    text-align: left;
 		.prag_01{
 			color:#302C48;
 			height:@base*50rem;
 			font-size:@base*40rem;
 			font-weight:bold;
-			margin-bottom:@base*10rem;		
+			margin-bottom:@base*10rem;
 		}
 		.prag_02{
 			font-size:@base*24rem;
@@ -73,7 +73,7 @@ body,html{
 					background-size: contain;
 				}
 			}
-			
+
 		}
 		.prag_04{
 			font-size:@base*24rem;
@@ -127,13 +127,32 @@ body,html{
 				padding:@base*12rem @base*20rem @base*12rem  @base*40rem;
 				line-height: @base*40rem;
 				position: absolute;
-				top:@base*50rem;
+				top:@base*40rem;
 				left:@base*90rem;
 				background: url('~assets/text_bg.png') no-repeat center center;
 				background-size: contain;
 			}
+            .address{
+                margin-right: -@base*20rem;
+                margin-top: @base*100rem;
+                .flex();
+                .justify-content(flex-end);
+                p{
+                    .flex();
+                    .align-items(center);
+                    .font-dpr(12px);
+                    color: #A6A6A6;
+                    .fubao{
+                        margin-right: @base*5rem;
+                        width: @base*30rem;
+                        height: @base*30rem;
+                        background: url('~assets/fuhao.png') no-repeat center center;
+                    }
+                }
+
+            }
 		}
-		
+
 	}
 
 }

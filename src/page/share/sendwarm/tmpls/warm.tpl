@@ -16,19 +16,24 @@
 			<div class="fruits"></div>
 			<div class="money"></div>
 		</div>
-		<p class="prag_04">铛铛致力于开放社交平台建设，遵循 “开放、隐私、平等、个体 ”矛盾统一的基础理念，搭建多彩的社交世界。</p><br>
-		<p class="prag_04">在铛铛，遇见老朋友，结识新朋友；朋友多了，路好走，人生也会更温暖...</p>
+		<p class="prag_04">铛铛致力于开放社交平台建设，遵循 “开放、隐私、平等、个体 ”矛盾统一的基础理念，搭建多彩的社交世界</p><br>
+		<p class="prag_04">在铛铛，遇见老朋友，结识新朋友；朋友多了，路好走，人生也会更温暖…</p>
 		<p class="prag_04">让我们一起建设更美好，更温暖的网上世界</p><br>
 		{% if source != 1 %}
 		<div class="warm-bottom">
 			<a class="share_button">分享温暖至朋友圈</a>
 			<div class="warm_count">你是第<span class="num">{{data.userTotalNum}}</span>位分享温暖的人</div>
-		</div>	
+		</div>
 		{% else %}
         <div class="warm_info">
         	<img src="{{data.headImage.pictureUrl}}" alt="" class="photo">
         	<span class="name">{{data.showName}}</span>
         	<p class="data">我是第{{data.userTotalNum}}位分享温暖的人，加入我们，一起接力，共同送出100万份温暖。</p>
+			{% if data.shopName %}
+			<div class="address">
+				<p><i class="fubao"></i>领取温暖点：{{data.shopName}}</p>
+			</div>
+			{% endif %}
         </div>
         {%endif%}
 	</div>
