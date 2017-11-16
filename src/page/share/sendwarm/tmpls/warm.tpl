@@ -3,9 +3,11 @@
 		<div class="dd-logo"></div>
 	</div>
 	<div class="warm-content">
-		{% if source != 1 %}
-		<p class="prag_01">铛铛送温暖啦</p>
-		{% endif %}
+		<p class="prag_01">
+			{% if source != 1 %}
+			铛铛送温暖啦
+			{% endif %}
+		</p>
 		<p class="prag_02">寒冷的冬日，送上一份温暖<br>铛铛用户可以在写字楼、住宅、商业等场所的合作点</p>
 		<p class="prag_03">领取1份 早餐/热饮/水果/优惠</p>
 		<div class="small-img">
