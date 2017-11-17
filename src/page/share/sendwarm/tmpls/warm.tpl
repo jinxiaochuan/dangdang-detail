@@ -26,12 +26,14 @@
 		</div>
 		{% else %}
         <div class="warm_info">
-        	<img src="{{data.headImage.pictureUrl}}" alt="" class="photo">
+			<div class="photo-wrap">
+				<img src="{{data.headImage.pictureUrl}}" alt="" class="photo">
+			</div>
         	<span class="name">{{data.showName}}</span>
         	<p class="data">我是第{{data.userTotalNum}}位分享温暖的人，加入我们，一起接力，共同送出100万份温暖。</p>
-			{% if data.shopName %}
+			{% if !data.shopName %}
 			<div class="address">
-				<p><i class="fubao"></i>领取温暖点：{{data.shopName}}</p>
+				<p class="word-wrap"><i class="fubao"></i><span class="word">领取温暖点：{{data.shopName}}</span></p>
 			</div>
 			{% endif %}
         </div>

@@ -28,7 +28,7 @@ body,html{
 	}
 	.warm-content{
 		position: absolute;
-	    top: @base*200rem;
+	    top: @base*160rem;
 	    padding:@base*60rem @base*50rem @base*60rem @base*40rem;
 	    text-align: left;
 		.prag_01{
@@ -83,18 +83,11 @@ body,html{
 		.warm-bottom{
 			text-align: center;
 			.share_button{
-			display: inline-block;
-			text-align: center;
-			color:#fff;
-			font-size:@base*30rem;
-			width:@base*600rem;
-			height:@base*88rem;
-			line-height:@base*88rem;
-			background-color: #FFBC29;
-			.border-radius(200px);
-			margin:@base*67rem 0;
-			cursor:pointer;
-			.box-shadow(0 10px 50px 0 rgba(143,89,38,0.30));
+                .btn(@base*600rem,@base*88rem,15px,#FFBC29,#FFFFFF);
+                .font-dpr(15px);
+			    .border-radius(@base*200rem);
+			    margin:@base*67rem 0;
+               .box-shadow(0 10px 50px 0 rgba(143,89,38,0.30));
 				&.clicked{
 					background-color: #DEA21D;
 				}
@@ -106,13 +99,16 @@ body,html{
 			}
 		}
 		.warm_info{
-			margin-top:@base*30rem;
 			position: relative;
-			.photo{
-				width:@base*80rem;
-				height:@base*80rem;
-				margin-right:@base*20rem;
-			}
+            .photo-wrap{
+                width:@base*80rem;
+                height:@base*80rem;
+                margin-right:@base*20rem;
+                .photo{
+    				width:100%;
+    				height:100%;
+    			}
+            }
 			.name{
 				font-size:@base*24rem;
 				color:#666;
@@ -134,19 +130,25 @@ body,html{
 			}
             .address{
                 margin-right: -@base*20rem;
-                margin-top: @base*100rem;
+                margin-top: @base*90rem;
                 .flex();
                 .justify-content(flex-end);
                 p{
                     .flex();
+                    height: @base*30rem;
                     .align-items(center);
                     .font-dpr(12px);
                     color: #A6A6A6;
+
                     .fubao{
-                        margin-right: @base*5rem;
-                        width: @base*30rem;
-                        height: @base*30rem;
+                        margin: @base*5rem;
+                        width: @base*25rem;
+                        height: @base*25rem;
                         background: url('~assets/fuhao.png') no-repeat center center;
+                        background-size: contain;
+                    }
+                    .word{
+                        line-height: @base*30rem;
                     }
                 }
 

@@ -11,7 +11,7 @@ var HREF_ORIGIN = window.location.href;
 var PATH_ORIGIN = window.location.origin;
 var PATH_NAME = '/ddweb/v1/tg/qr/num';
 var COUNT_URL = PATH_ORIGIN + PATH_NAME;
-// var COUNT_URL = 'http://dev.im-dangdang.com/' + PATH_NAME;
+// var COUNT_URL = 'http://app.im-dangdang.com/' + PATH_NAME;
 
 var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 var userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
