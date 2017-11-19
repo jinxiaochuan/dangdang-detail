@@ -27,7 +27,7 @@
 		{% else %}
         <div class="warm_info">
 			<div class="photo-wrap">
-				<img src="{{data.headImage.pictureUrl}}" alt="" class="photo">
+				<img src="{{data.userImage}}" alt="" class="photo">
 			</div>
         	<span class="name">{{data.showName}}</span>
         	<p class="data">我是第{{data.userTotalNum}}位分享温暖的人，加入我们，一起接力，共同送出100万份温暖。</p>

@@ -16,6 +16,7 @@ var COUNT_URL = PATH_ORIGIN + PATH_NAME;
 var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 var userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
 var qrId = jsmod.util.url.getParam(HREF_ORIGIN,'qrId');
+var openid = jsmod.util.url.getParam(HREF_ORIGIN,'openid');
 
 var SendWarm = jsmod.util.klass({
 	initialize: function(option){
@@ -30,7 +31,11 @@ var SendWarm = jsmod.util.klass({
 
         $.ajax({
             url: COUNT_URL,
-			data: {'userId':userId,'qrId':qrId},
+			data: {
+				'userId': userId,
+				'qrId': qrId,
+				'openid': openid
+			},
             dataType: 'jsonp',
             jsonp: 'callback',
             success:function(data){
