@@ -81,7 +81,7 @@ if(conf.CONFIG_BUILD.env == 'prod'){
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
-                drop_console: true
+                drop_console: false
           }
         })
     )
