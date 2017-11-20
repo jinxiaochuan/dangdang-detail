@@ -11,9 +11,6 @@ function share () {
     var userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
     var shareType = jsmod.util.url.getParam(HREF_ORIGIN, 'shareType');
     var shareId = jsmod.util.url.getParam(HREF_ORIGIN, 'shareId');
-    var openid = jsmod.util.url.getParam(HREF_ORIGIN, 'openid');
-    var newOpenid = jsmod.util.url.getParam(HREF_ORIGIN, 'newOpenid');
-    var isOpen = openid || newOpenid;
 
     $.ajax({
         url: PATH_ORIGIN + WEIXIN_HREF,
@@ -22,19 +19,17 @@ function share () {
             url: HREF_ORIGIN,
             shareType: shareType,
             shareId: shareId,
-            userId: userId,
-            openid: openid,
-            newOpenid: newOpenid
+            userId: userId
         },
         success: function (json) {
             if(json.status == 1){
-                shareWxConfig(json.data, isOpen);
+                shareWxConfig(json.data);
             }
         }
     })
 }
 
-function shareWxConfig (configParam, isOpen) {
+function shareWxConfig (configParam) {
     window.wx.config({
         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: 'wx394248922854ae74', // 必填，公众号的唯一标识
@@ -55,7 +50,7 @@ function shareWxConfig (configParam, isOpen) {
         wx.onMenuShareTimeline({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: isOpen ? configParam.shareInfo.shareUrl : HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.outImageUrl || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
@@ -69,7 +64,7 @@ function shareWxConfig (configParam, isOpen) {
         window.wx.onMenuShareAppMessage({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: isOpen ? configParam.shareInfo.shareUrl : HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.outImageUrl || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
@@ -83,7 +78,7 @@ function shareWxConfig (configParam, isOpen) {
         wx.onMenuShareQQ({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: isOpen ? configParam.shareInfo.shareUrl : HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.outImageUrl || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
@@ -97,7 +92,7 @@ function shareWxConfig (configParam, isOpen) {
         wx.onMenuShareWeibo({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: isOpen ? configParam.shareInfo.shareUrl : HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.outImageUrl || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
@@ -111,7 +106,7 @@ function shareWxConfig (configParam, isOpen) {
         wx.onMenuShareQZone({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
-            link: isOpen ? configParam.shareInfo.shareUrl : HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: HREF_ORIGIN, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: configParam.shareInfo.outImageUrl || '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {

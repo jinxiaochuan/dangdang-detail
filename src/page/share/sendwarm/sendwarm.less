@@ -9,26 +9,39 @@ body,html{
   background-size: cover;
 }
 .container{
-	background-color: #f9eedc;
 	padding: 0;
 	margin:0;
 }
+.pop-common-wrap{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0.5;
+    background: url('~assets/curved_arrow.png') @base*555rem @base*100rem no-repeat #000000;
+    z-index: 10;
+    &::after{
+        position: absolute;
+        width: 100%;
+        top: @base*300rem;
+        content: '点击“分享到朋友圈”进行分享';
+        .font-dpr(20px);
+        color: #FFFFFF;
+        text-align: center;
+    }
+}
 .warm-wrap{
 	.warm-top{
-		position: relative;
+        padding: @base*40rem;
 	}
 	.dd-logo{
-		position: absolute;
-		left:@base*40rem;
-		top:@base*40rem;
 		width:@base*272rem;
 		height:@base*69rem;
 		background: url('~assets/logo.png') center center no-repeat;
 		background-size: contain;
 	}
 	.warm-content{
-		position: absolute;
-	    top: @base*160rem;
 	    padding:@base*60rem @base*50rem @base*60rem @base*40rem;
 	    text-align: left;
 		.prag_01{
@@ -101,6 +114,7 @@ body,html{
 		.warm_info{
 			position: relative;
             .photo-wrap{
+                display: inline-block;
                 width:@base*80rem;
                 height:@base*80rem;
                 margin-right:@base*20rem;
@@ -127,6 +141,11 @@ body,html{
 				left:@base*90rem;
 				background: url('~assets/text_bg.png') no-repeat center center;
 				background-size: contain;
+                .num{
+                    font-size:@base*30rem;
+                    font-weight: 600;
+                    color: #000000;
+                }
 			}
             .address{
                 margin-right: -@base*20rem;
@@ -152,6 +171,19 @@ body,html{
                     }
                 }
 
+            }
+            .relay{
+                margin-right: -@base*20rem;
+                margin-top: @base*60rem;
+                .font-dpr(15px);
+                text-align: right;
+                a{
+                    display: inline-block;
+                    padding-right: @base*50rem;
+                    color: #FFBC29;
+                    background: url('~assets/arrow2.png') no-repeat right center;
+                    background-size: @base*30rem;
+                }
             }
 		}
 

@@ -26,6 +26,14 @@ var SendWarm = jsmod.util.klass({
         this.initBridge();
         this.initShare();
     },
+	initView:function(){
+		if(openid){
+			$('.container').after('<div class="pop-common-wrap"></div>');
+		}
+		$('body').delegate('.pop-common-wrap','click',function(){
+			$(this).remove();
+		})
+	},
     getAjaxCount:function(){
         var self = this;
 
@@ -44,10 +52,12 @@ var SendWarm = jsmod.util.klass({
                     var html = swig.render(WARM_MODEL,{
                         locals: {
                             data: data.data,
-                            source: source
+                            source: source,
+							link: '/ddweb/tg/relay?qrId='+ qrId +'&userId=' + userId
                         }
                     });
                     self.$container.html(html);
+					self.initView();
                 }
             }
 
