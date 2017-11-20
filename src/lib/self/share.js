@@ -50,7 +50,7 @@ function shareWxConfig (configParam, shareLink) {
         console.log(shareLink);
         console.log(configParam.shareInfo);
         //分享到朋友圈
-        wx.onMenuShareTimeline({
+        window.wx.onMenuShareTimeline({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
             link: shareLink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -78,7 +78,7 @@ function shareWxConfig (configParam, shareLink) {
             }
         });
         //分享到QQ
-        wx.onMenuShareQQ({
+        window.wx.onMenuShareQQ({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
             link: shareLink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -92,7 +92,7 @@ function shareWxConfig (configParam, shareLink) {
             }
         });
         //分享到腾讯微博
-        wx.onMenuShareWeibo({
+        window.wx.onMenuShareWeibo({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
             link: shareLink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -106,7 +106,7 @@ function shareWxConfig (configParam, shareLink) {
             }
         });
         //分享到QQ空间
-        wx.onMenuShareQZone({
+        window.wx.onMenuShareQZone({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
             desc: configParam.shareInfo.shareDetail || '', // 分享描述
             link: shareLink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
