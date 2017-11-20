@@ -36,6 +36,13 @@ var getParam = function(url, key) {
     return map[key];
 }
 
+var delParam = function(url, key){
+    var map = getParamMap(url);
+    if(!map.hasOwnProperty(key)) return;
+    delete map[key];
+    return map;
+}
+
 var getSplitValue = function (index) {
     var pathname = window.location.pathname;
 
@@ -53,9 +60,28 @@ var addParam = function(url, paramStr) {
     return url;
 }
 
+var deleParam = function(url, key) {
+    var map = delParam(url, key);
+    if(!map) return url;
+
+    var urlParts = url.split("?");
+    var pathname = urlParts[0];
+
+    var mapLen = Object.getOwnPropertyNames(map).length;
+    if(!mapLen) return pathname;
+
+    var arr = [];
+    $.each(map, function(key, val){
+        arr.push(key + '=' + val)
+    })
+    return pathname + '?' + arr.join('&')
+}
+
 module.exports = {
     getParamMap: getParamMap,
     addParam: addParam,
+    delParam: delParam,
+    deleParam: deleParam,
     getParam: getParam,
     getParamStr:getParamStr,
     getSplitValue: getSplitValue

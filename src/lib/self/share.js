@@ -2,6 +2,8 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var HREF_ORIGIN = window.location.href;
 
+HREF_ORIGIN = jsmod.util.url.deleParam(HREF_ORIGIN, 'relay');
+
 var PATH_ORIGIN = window.location.origin;
 
 var WEIXIN_HREF = '/ddweb/weixin';

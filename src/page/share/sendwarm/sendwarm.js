@@ -17,6 +17,7 @@ var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 var userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
 var qrId = jsmod.util.url.getParam(HREF_ORIGIN,'qrId');
 var openid = jsmod.util.url.getParam(HREF_ORIGIN,'openid');
+var relay = jsmod.util.url.getParam(HREF_ORIGIN,'relay');
 
 var SendWarm = jsmod.util.klass({
 	initialize: function(option){
@@ -27,7 +28,7 @@ var SendWarm = jsmod.util.klass({
         this.initShare();
     },
 	initView:function(){
-		if(openid){
+		if(relay){
 			$('.container').after('<div class="pop-common-wrap"></div>');
 		}
 		$('body').delegate('.pop-common-wrap','click',function(){
@@ -53,6 +54,7 @@ var SendWarm = jsmod.util.klass({
                         locals: {
                             data: data.data,
                             source: source,
+							relay: relay,
 							link: '/ddweb/tg/relay?qrId='+ qrId +'&userId=' + userId
                         }
                     });
