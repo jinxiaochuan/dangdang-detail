@@ -29,8 +29,10 @@
 			<div class="photo-wrap">
 				<img src="{{data.userImage}}" alt="" class="photo">
 			</div>
-        	<span class="name">{{data.showName}}</span>
-        	<p class="data">我是第<span class="num">{{data.userTotalNum}}</span>位分享温暖的人，加入我们，一起接力，共同送出100万份温暖。</p>
+			<div class="info-wrap">
+				<span class="name">{{data.showName}}</span>
+				<p class="data">我是第<span class="num">{{data.userTotalNum}}</span>位分享温暖的人，加入我们，一起接力，共同送出100万份温暖。</p>
+			</div>
 			{% if data.shopName %}
 			<div class="address">
 				<p class="word-wrap"><i class="fubao"></i><span class="word">领取温暖点：{{data.shopName}}</span></p>

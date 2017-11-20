@@ -24,8 +24,7 @@ var SendWarm = jsmod.util.klass({
         this.option = option;
         this.$container = $('.container');
         this.getAjaxCount();
-        this.initBridge();
-        this.initShare();
+
     },
 	initView:function(){
 		if(relay){
@@ -60,6 +59,8 @@ var SendWarm = jsmod.util.klass({
                     });
                     self.$container.html(html);
 					self.initView();
+					self.initBridge();
+			        self.initShare();
                 }
             }
 

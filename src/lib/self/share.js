@@ -4,8 +4,6 @@ function share () {
 
     var HREF_ORIGIN = window.location.href;
     HREF_ORIGIN = jsmod.util.url.deleParam(HREF_ORIGIN, 'relay');
-    HREF_ORIGIN = jsmod.util.url.deleParam(HREF_ORIGIN, 'from');
-    HREF_ORIGIN = jsmod.util.url.deleParam(HREF_ORIGIN, 'isappinstalled');
 
     var PATH_ORIGIN = window.location.origin;
 
@@ -47,9 +45,10 @@ function shareWxConfig (configParam, shareLink) {
             'onMenuShareQZone'
         ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     })
-    console.log(shareLink);
-    console.log(configParam.shareInfo);
+
     window.wx.ready(function (){
+        console.log(shareLink);
+        console.log(configParam.shareInfo);
         //分享到朋友圈
         wx.onMenuShareTimeline({
             title: configParam.shareInfo.shareTitle || '', // 分享标题

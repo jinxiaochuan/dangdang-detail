@@ -113,33 +113,32 @@ body,html{
 			}
 		}
 		.warm_info{
-			position: relative;
             .photo-wrap{
-                display: inline-block;
+                float: left;
                 width:@base*80rem;
                 height:@base*80rem;
-                margin-right:@base*20rem;
                 .photo{
     				width:100%;
     				height:100%;
     			}
             }
+            .info-wrap{
+                margin-left:@base*100rem;
+            }
 			.name{
-				font-size:@base*24rem;
+                line-height: @base*30rem;
+                .font-dpr(12px);
 				color:#666;
-				vertical-align: top;
 			}
 			.data{
-				display: inline-block;
+                margin-top: @base*5rem;
+                margin-left: -@base*12rem;
 				width:@base*520rem;
 				font-size:@base*24rem;
 				color:#333;
 				height:@base*106rem;
 				padding:@base*12rem @base*20rem @base*12rem  @base*40rem;
 				line-height: @base*40rem;
-				position: absolute;
-				top:@base*40rem;
-				left:@base*90rem;
 				background: url('~assets/text_bg.png') no-repeat center center;
 				background-size: contain;
                 .num{
@@ -175,7 +174,7 @@ body,html{
             }
             .relay{
                 margin-right: -@base*20rem;
-                padding-top: @base*60rem;
+                margin-top: @base*60rem;
                 .font-dpr(15px);
                 text-align: right;
                 a{
