@@ -3,9 +3,6 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 function share () {
 
     var HREF_ORIGIN_ = window.location.href;
-    console.log(HREF_ORIGIN_);
-    HREF_ORIGIN_ = jsmod.util.url.deleParam(HREF_ORIGIN_, 'ddrelay');
-    console.log(HREF_ORIGIN_);
 
     var PATH_ORIGIN = window.location.origin;
 
@@ -27,6 +24,7 @@ function share () {
         },
         success: function (json) {
             if(json.status == 1){
+
                 shareWxConfig(json.data, HREF_ORIGIN_);
             }
         }
@@ -51,16 +49,10 @@ function shareWxConfig (configParam, shareLink) {
 
     window.wx.error(function(res){
         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-        console.log('---------wx.error-----------');
         console.log(res);
     });
 
-    console.log(configParam.shareInfo);
-    console.log('------------outer-----------');
-
     window.wx.ready(function (){
-        console.log(configParam.shareInfo);
-        console.log('------------inner-----------');
         //分享到朋友圈
         window.wx.onMenuShareTimeline({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
