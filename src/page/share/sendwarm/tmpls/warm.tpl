@@ -38,7 +38,7 @@
 				<p class="word-wrap"><i class="fubao"></i><span class="word">领取温暖点：{{data.shopName}}</span></p>
 			</div>
 			{% endif %}
-			{% if !relay %}
+			{% if !ddrelay %}
 			<p class="relay"><a href="{{link}}">接力送温暖</a></p>
 			{% endif %}
         </div>

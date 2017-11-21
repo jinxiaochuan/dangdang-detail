@@ -3,7 +3,9 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 function share () {
 
     var HREF_ORIGIN = window.location.href;
-    HREF_ORIGIN = jsmod.util.url.deleParam(HREF_ORIGIN, 'relay');
+    console.log(HREF_ORIGIN);
+    HREF_ORIGIN = jsmod.util.url.deleParam(HREF_ORIGIN, 'ddrelay');
+    console.log(HREF_ORIGIN);
 
     var PATH_ORIGIN = window.location.origin;
 
@@ -16,6 +18,7 @@ function share () {
     $.ajax({
         url: PATH_ORIGIN + WEIXIN_HREF,
         dataType: 'jsonp',
+        jsonp: 'callback',
         data:{
             url: HREF_ORIGIN,
             shareType: shareType,
@@ -46,9 +49,18 @@ function shareWxConfig (configParam, shareLink) {
         ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     })
 
+    window.wx.error(function(res){
+        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        console.log('---------wx.error-----------');
+        console.log(res);
+    });
+
+    console.log(configParam.shareInfo);
+    console.log('------------outer-----------');
+
     window.wx.ready(function (){
-        console.log(shareLink);
         console.log(configParam.shareInfo);
+        console.log('------------inner-----------');
         //分享到朋友圈
         window.wx.onMenuShareTimeline({
             title: configParam.shareInfo.shareTitle || '', // 分享标题
