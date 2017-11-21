@@ -52,7 +52,6 @@ var SendWarm = jsmod.util.klass({
                         locals: {
                             data: data.data,
                             source: source,
-							ddrelay: ddrelay,
 							link: '/ddweb/tg/relay?qrId='+ qrId +'&userId=' + userId
                         }
                     });
