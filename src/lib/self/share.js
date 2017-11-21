@@ -2,32 +2,32 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 function share () {
 
-    var HREF_ORIGIN = window.location.href;
-    console.log(HREF_ORIGIN);
-    HREF_ORIGIN = jsmod.util.url.deleParam(HREF_ORIGIN, 'ddrelay');
-    console.log(HREF_ORIGIN);
+    var HREF_ORIGIN_ = window.location.href;
+    console.log(HREF_ORIGIN_);
+    HREF_ORIGIN_ = jsmod.util.url.deleParam(HREF_ORIGIN_, 'ddrelay');
+    console.log(HREF_ORIGIN_);
 
     var PATH_ORIGIN = window.location.origin;
 
     var WEIXIN_HREF = '/ddweb/weixin';
 
-    var userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
-    var shareType = jsmod.util.url.getParam(HREF_ORIGIN, 'shareType');
-    var shareId = jsmod.util.url.getParam(HREF_ORIGIN, 'shareId');
+    var userId = jsmod.util.url.getParam(HREF_ORIGIN_, 'userId');
+    var shareType = jsmod.util.url.getParam(HREF_ORIGIN_, 'shareType');
+    var shareId = jsmod.util.url.getParam(HREF_ORIGIN_, 'shareId');
 
     $.ajax({
         url: PATH_ORIGIN + WEIXIN_HREF,
         dataType: 'jsonp',
         jsonp: 'callback',
         data:{
-            url: HREF_ORIGIN,
+            url: HREF_ORIGIN_,
             shareType: shareType,
             shareId: shareId,
             userId: userId
         },
         success: function (json) {
             if(json.status == 1){
-                shareWxConfig(json.data, HREF_ORIGIN);
+                shareWxConfig(json.data, HREF_ORIGIN_);
             }
         }
     })
