@@ -69,7 +69,7 @@
 <div class="common-sign-list-wrap">
     <a class="tap-sign" href="javascript:void(0)">
         <div class="sign-wrap">
-            <span class="num">发意向的人{% if data.webShowInfo.enterCount != 0 %}（{{ data.webShowInfo.enterCount }}）{% endif %}</span>
+            <span class="num">有意向的人{% if data.webShowInfo.enterCount != 0 %}（{{ data.webShowInfo.enterCount }}）{% endif %}</span>
             <span class="arrow"></span>
         </div>
     </a>
