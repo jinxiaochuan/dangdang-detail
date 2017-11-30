@@ -2,56 +2,31 @@
 
 @base:1/75;
 body,html{
-	background-color: #f9eedc
+  padding:0;
+  margin:0;
+  background: url('~assets/bg1.png') no-repeat;
+  background-size: cover;
 }
 .container{
-	background-color: #f9eedc;
 	padding: 0;
 	margin:0;
 }
 .warm-wrap{
-	.warm-top{
-		position: relative;
-		img{
-			width:100%;
-		}
-	}
-	.dd-logo{
-		position: absolute;
-		left:@base*40rem;
-		top:@base*40rem;
-		width:@base*272rem;
-		height:@base*69rem;
-		background: url('~assets/logo.png') center center no-repeat;
-		background-size: contain;
-	}
+	padding-top: @base*414rem;
 	.warm-content{
-		position: absolute;
 		width:100%;
-	    top: @base*655rem;
 	    text-align: center;
 	    .para{
-	    	font-size: @base*30rem;
-	    	color:#000;
-	    	font-weight: bold;
-	    	margin-bottom: @base*127rem;
-	    	opacity: 0.6;
+			font-size: @base*40rem;
+	    	color:#FFF;
+	    	margin-bottom: @base*425rem;
 	    }
 	    .share_finish{
-	    	display: inline-block;
-	    	width:@base*400rem;
-	    	height:@base*88rem;
-	    	line-height: @base*88rem;
-	    	color:#fff;
-	    	text-align: center;
-	    	background-color: #FFBC29;
-	    	font-size:@base*30rem;
-	    	cursor: pointer;
-	    	.border-radius(200px);
-	    	.box-shadow(0 10px 50px 0 rgba(143,89,38,0.30));
-	    	&.clicked{
-	    		background-color: #DEA21D;
-	    	}
+			.btn(@base*670rem,@base*94rem,17px,#FFFFFF,#333333);
+			.font-dpr(17px);
+			.border-radius(@base*10rem);
+			margin:@base*10rem 0;
+		   .box-shadow(0 10px 50px 0 rgba(143,89,38,0.30));
 	    }
 	}
-}	
+}

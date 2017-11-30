@@ -4,7 +4,7 @@ require('./sendwarm.less');
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 var share = require('lib/self/share.js');
-var WARM_MODEL = require('./tmpls/warm.tpl');
+var WARM_MODEL = require('./tmpls/warm_new.tpl');
 
 
 var HREF_ORIGIN = window.location.href;
@@ -70,9 +70,6 @@ var SendWarm = jsmod.util.klass({
     initBridge: function(){
         var self = this;
 
-        self.$container.delegate('.share_button','click',function(){
-        	$(this).addClass('clicked');
-        })
         /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
         setupWebViewJavascriptBridge(function(bridge){
 
@@ -84,6 +81,10 @@ var SendWarm = jsmod.util.klass({
 
             self.$container.delegate('.share_button','click',function(){
                 bridge.callHandler('tapShare')
+            })
+
+			self.$container.delegate('.done_button','click',function(){
+                bridge.callHandler('tapMainPageComplete')
             })
         })
     },
