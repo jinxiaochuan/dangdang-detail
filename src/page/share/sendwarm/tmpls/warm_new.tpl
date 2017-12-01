@@ -6,7 +6,7 @@
         <p class="warm-word">铛铛社交，遇见世界；一起携手，共建美好铛铛世界！</p>
 		{% if source != 1 %}
 		<div class="warm-bottom">
-			<a class="share_button" href="javascript:void(0)">分享温暖至朋友圈</a>
+			<a class="share_button" href="javascript:void(0)">分享至朋友圈</a>
             <a class="done_button" href="javascript:void(0)">完成</a>
 		</div>
 		{% else %}
@@ -16,7 +16,7 @@
 			</div>
 			<div class="info-wrap">
 				<span class="name">{{data.showName}}</span>
-				<p class="data">我是第<span class="num">{{data.userTotalNum}}</span>位分享温暖的人，加入我们，一起接力，共同送出100万份温暖。</p>
+				<p class="data">我是第<span class="num">{{data.userTotalNum}}</span>位分享铛铛的人，加入我们，一起携手，共建美好铛铛世界！</p>
 			</div>
 			<p class="relay"><a href="{{link}}">接力分享</a></p>
         </div>
