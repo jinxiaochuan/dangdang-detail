@@ -47,6 +47,11 @@
             {% endfor %}
         </div>
         {% endif %}
+        {% if data.newsDetail.localLink %}
+        <div class="local-link-wrap">
+            <a class="local-link-item" data-live="{{ data.newsDetail.localLink.liveId }}" href="javascript:void(0)">{{ data.newsDetail.localLink.name }}</a>
+        </div>
+        {% endif %}
     </div>
     <div class="comment-outer-wrap">
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>

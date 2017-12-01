@@ -162,6 +162,20 @@
                 .border-radius(10px);
             }
         }
+
+        .local-link-wrap{
+            .local-link-item{
+                &:nth-child(odd){
+                    .btn-border(@base*670rem,@base*86rem,17px,#FFFFFF,#007AFF,#007AFF);
+                }
+                &:nth-child(even){
+                    .btn-border(@base*670rem,@base*86rem,17px,#007AFF,#FFFFFF,#007AFF);
+                }
+                .font-dpr(17px);
+                margin-top: @base*40rem;
+                .border-radius(10px);
+            }
+        }
     }
 
     .comment-outer-wrap{

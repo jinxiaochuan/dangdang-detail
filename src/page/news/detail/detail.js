@@ -31,7 +31,7 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?userId=200119&newsId=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?userId=200119&newsId=422';
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?newsId=361&userId=200246'
         // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
 
@@ -48,7 +48,6 @@ var News = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
-                    console.log(self.data);
                     self.commentAmount = self.data.newsDetail.commentAmount;
                     self.render(json.data);
                     return;
@@ -85,7 +84,6 @@ var News = jsmod.util.klass({
 
         this.$container.find('.news-cover').each(function(index,item){
             jsmod.util.stretchImg($(item)[0],width_cover,height_cover,true,false);
-
         })
     },
 
@@ -129,8 +127,12 @@ var News = jsmod.util.klass({
             "imgList": imgList
         }
 
+        if(this.data.newsDetail.localLink){
+            this.baseInfo.liveId = this.data.newsDetail.localLink.liveId
+        }
+
         if(this.data.liveInfo){
-          this.baseInfo.liveId = this.data.liveInfo.liveId
+            this.baseInfo.liveId = this.data.liveInfo.liveId
         }
 
         this.avatarInfo = {
@@ -194,7 +196,7 @@ var News = jsmod.util.klass({
           })
 
           self.$container.delegate('.live-wrapper','click',function(){
-            bridge.callHandler('goLive');
+              bridge.callHandler('goLive');
           })
 
           self.$container.delegate('.news-list-wrap .news-link','click',function(){
@@ -212,6 +214,10 @@ var News = jsmod.util.klass({
           self.$container.delegate('.news-detail-main img', 'click', function(){
               var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
               bridge.callHandler('tapEnlarge', index, function(){})
+          })
+
+          self.$container.delegate('.local-link-wrap .local-link-item','click',function(){
+              bridge.callHandler('goLive');
           })
 
       })
