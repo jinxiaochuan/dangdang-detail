@@ -94,6 +94,23 @@ function trans(html){
         return 'font-size: ' + 17*dpr + 'px;'
     });
 
+    //wangeditor
+
+    var regDDAudio = /\<ddaudio class="wangeditor-iframe-audio" src="(.*?)"\>\<\/ddaudio\>/gi;
+    var regDDVideo = /\<ddvideo class="wangeditor-iframe-video" src="(.*?)"\>\<\/ddvideo\>/gi;
+
+    html_tran = html_tran.replace(regDDAudio, function(){
+        var name = jsmod.util.url.getParam(arguments[1],'name');
+        var url = jsmod.util.url.getParam(arguments[1],'url');
+        return arguments[0] + '<div class="wangeditor-iframe-audio-wrap" data-source="'+ decodeURIComponent(url) +'"><div class="wangeditor-iframe-audio-inner"><span class="wangeditor-iframe-name">'+ decodeURIComponent(name) +'</span></div></div>'
+    })
+
+    html_tran = html_tran.replace(regDDVideo, function(){
+        var name = jsmod.util.url.getParam(arguments[1],'name');
+        var url = jsmod.util.url.getParam(arguments[1],'url');
+        return '<video preload="metadata" poster controls src="'+ decodeURIComponent(url) +'">您的浏览器不支持 video 标签</video>'
+    })
+
     return html_tran;
 
 }

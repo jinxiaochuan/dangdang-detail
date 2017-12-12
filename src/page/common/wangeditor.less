@@ -1,0 +1,31 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.wangeditor-iframe-audio-wrap{
+    padding: @base*10rem;
+    width: 100%;
+    height: @base*60rem;
+    border: 1px solid #e7e7eb;
+    cursor: pointer;
+    &.playing{
+        .wangeditor-iframe-audio-inner{
+            background: url('~assets/editor_audio_playing_icon.gif') left center no-repeat;
+            background-size: contain;
+        }
+    }
+    .wangeditor-iframe-audio-inner{
+        padding-left: @base*50rem;
+        line-height: @base*40rem;
+        background: url('~assets/editor_audio_icon.png') left center no-repeat;
+        background-size: contain;
+        .wangeditor-iframe-name{
+            display: block;
+            font-weight: 400;
+            .font-dpr(14px);
+            color: #222;
+            .one-line();
+            max-width: 50%;
+        }
+    }
+}

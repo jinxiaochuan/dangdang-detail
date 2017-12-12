@@ -13,6 +13,8 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var trans = require('lib/self/trans.js');
 
+var AudioHandler = require('lib/self/audioHandler.js');
+
 var share = require('lib/self/share.js');
 
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
@@ -49,7 +51,7 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=2277&userId=200207&articleStatus=1&shareType=6&shareId=1814';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=2578&userId=200072&articleStatus=1&shareType=6&shareId=1814';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
         var data = {}, isAdminIdentity;
 
@@ -116,6 +118,29 @@ var CircleDetail = jsmod.util.klass({
 
         this.initBridge();
 
+        this.initAudioHandler();
+
+    },
+
+    initAudioHandler: function(){
+        var self = this;
+        new AudioHandler({
+            playcallback: function(){
+                self.bridge.callHandler('beginAudio');
+                var $video = self.$container.find('video');
+                $video.each(function(index, item){
+                    if(!item.paused){
+                        item.pause();
+                    }
+                })
+            },
+            pausecallback: function(){
+                self.bridge.callHandler('pauseAudio');
+            },
+            endedcallback: function(){
+                self.bridge.callHandler('completeAudio')
+            }
+        });
     },
 
     initShare: function(){
@@ -171,6 +196,8 @@ var CircleDetail = jsmod.util.klass({
         var self = this;
 
         setupWebViewJavascriptBridge(function(bridge){
+
+            self.bridge = bridge;
 
             bridge.callHandler('baseInfo',self.baseInfo,function(){})
 
