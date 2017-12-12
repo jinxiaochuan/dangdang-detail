@@ -24,9 +24,11 @@ var AudioHandler = jsmod.util.klass({
                 var audioHtml = '<audio style="height:0;width:0;display:none;" autoplay src="'+ source +'">您的浏览器不支持 audio 标签</audio>'
                 $('body').append(audioHtml)
                 self.isHasAudio = true;
+                $(this).addClass('loading');
 
                 $('body audio').on('canplaythrough', function(){
                     self.canplay = true;
+                    $(_this).removeClass('loading');
                 })
                 $('body audio').on('play', function(){
                     $(_this).addClass('playing');

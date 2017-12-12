@@ -127,7 +127,7 @@ var CircleDetail = jsmod.util.klass({
         new AudioHandler({
             playcallback: function(){
                 self.bridge.callHandler('beginAudio');
-                var $video = self.$container.find('video');
+                var $video = $('body').find('video');
                 $video.each(function(index, item){
                     if(!item.paused){
                         item.pause();
@@ -216,7 +216,7 @@ var CircleDetail = jsmod.util.klass({
             })
 
             bridge.registerHandler('videoPause', function(data, responseCallback){
-                var $video = self.$container.find('video');
+                var $video = $('body').find('video');
                 $video.each(function(index, item){
                     if(!item.paused){
                         item.pause();
@@ -225,7 +225,7 @@ var CircleDetail = jsmod.util.klass({
             })
 
             bridge.registerHandler('audioPause', function(data, responseCallback){
-                var $audio = self.$container.find('audio');
+                var $audio = $('body').find('audio');
                 $audio.each(function(index, item){
                     if(!item.paused){
                         item.pause();
@@ -277,7 +277,7 @@ var CircleDetail = jsmod.util.klass({
 
             self.$container.find('.detail-content video,.review-content video').on('play',function(e){
                 bridge.callHandler('beginVideo');
-                var $audio = self.$container.find('audio');
+                var $audio = $('body').find('audio');
                 $audio.each(function(index, item){
                     if(!item.paused){
                         item.pause();
@@ -295,7 +295,7 @@ var CircleDetail = jsmod.util.klass({
 
             self.$container.find('.detail-content audio,.review-content audio').on('play',function(e){
                 bridge.callHandler('beginAudio');
-                var $video = self.$container.find('video');
+                var $video = $('body').find('video');
                 $video.each(function(index, item){
                     if(!item.paused){
                         item.pause();

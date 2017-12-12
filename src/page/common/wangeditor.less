@@ -8,6 +8,12 @@
     height: @base*60rem;
     border: 1px solid #e7e7eb;
     cursor: pointer;
+    &.loading{
+        .wangeditor-iframe-audio-inner{
+            background: url('~assets/editor_audio_loading_icon.png') left center no-repeat;
+            background-size: contain;
+        }
+    }
     &.playing{
         .wangeditor-iframe-audio-inner{
             background: url('~assets/editor_audio_playing_icon.gif') left center no-repeat;
