@@ -3,11 +3,13 @@
 @base:1/75;
 
 .wangeditor-iframe-audio-wrap{
-    padding: @base*10rem;
+    margin: @base*10rem 0;
+    padding: @base*15rem;
     width: 100%;
-    height: @base*60rem;
-    border: 1px solid #e7e7eb;
+    height: @base*100rem;
+    border: 1px solid #E7E7EB;
     cursor: pointer;
+    background-color: #FCFCFC;
     &.loading{
         .wangeditor-iframe-audio-inner{
             background: url('~assets/editor_audio_loading_icon.png') left center no-repeat;
@@ -21,8 +23,8 @@
         }
     }
     .wangeditor-iframe-audio-inner{
-        padding-left: @base*50rem;
-        line-height: @base*40rem;
+        padding-left: @base*85rem;
+        line-height: @base*70rem;
         background: url('~assets/editor_audio_icon.png') left center no-repeat;
         background-size: contain;
         .wangeditor-iframe-name{
