@@ -29,11 +29,11 @@
 {% if data.baseInfo.publicSchool == 1 || data.baseInfo.publicWork == 1 %}
 <div class="prompt-word">
     {% if data.baseInfo.publicSchool == 1 && data.baseInfo.publicWork == 1 %}
-    <i class="point"></i><span>加入该公众圈需公开工作经历和学习经历</span>
+    <i class="point"></i><span>该公众圈需公开工作经历和学习经历</span>
     {% elseif data.baseInfo.publicSchool == 1 && data.baseInfo.publicWork == 0 %}
-    <i class="point"></i><span>加入该公众圈需公开学习经历</span>
+    <i class="point"></i><span>该公众圈需公开学习经历</span>
     {% elseif data.baseInfo.publicSchool == 0 && data.baseInfo.publicWork == 1 %}
-    <i class="point"></i><span>加入该公众圈需公开工作经历</span>
+    <i class="point"></i><span>该公众圈需公开工作经历</span>
     {% else %}
     {% endif %}
 </div>
