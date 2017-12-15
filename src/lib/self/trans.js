@@ -108,7 +108,7 @@ function trans(html){
     html_tran = html_tran.replace(regDDVideo, function(){
         var name = jsmod.util.url.getParam(arguments[1],'name');
         var url = jsmod.util.url.getParam(arguments[1],'url');
-        return '<video preload="metadata" poster controls src="'+ decodeURIComponent(url) +'">您的浏览器不支持 video 标签</video>'
+        return '<video preload="metadata" poster controls src="'+ decodeURIComponent(url) +'" type="video/mp4">您的浏览器不支持 video 标签</video>'
     })
 
     return html_tran;
