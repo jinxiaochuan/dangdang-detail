@@ -156,8 +156,17 @@ body{
     text-align: center;
     .circle-home{
         .border-radius(@base*10rem);
-        .btn(100%,@base*94rem,17px,#007AFF,#FFFFFF);
+        // .btn(100%,@base*94rem,17px,#007AFF,#FFFFFF);
         .font-dpr(17px);
+        display: inline-block;
+        width: 100%;
+        height: @base*94rem;
+        background: #007AFF;
+        color: #FFFFFF;
+        .flex();
+        .align-items(center);
+        .justify-content(center);
+
         &:active{
             background: #0070EB;
             color: #99C5F7;
