@@ -42,12 +42,12 @@
 
 {% if data.source %}
 <div class="circle-handle-wrap">
-    <a class="circle-home app-btn" href="javascript:void(0)">加入公众圈</a>
+    <a class="circle-home app-btn" href="javascript:void(0)"><span>加入公众圈</span></a>
 </div>
 {% else %}
 {% if data.baseInfo.memberType != 4 || data.baseInfo.isJoin == 1 %}
 <div class="circle-handle-wrap">
-    <a class="circle-home" href="javascript:void(0)">{% if data.baseInfo.memberType == 4 %}加入公众圈{% else %}进入公众圈{% endif %}</a>
+    <a class="circle-home" href="javascript:void(0)"><span>{% if data.baseInfo.memberType == 4 %}加入公众圈{% else %}进入公众圈{% endif %}</span></a>
 </div>
 {% endif %}
 {% endif %}
