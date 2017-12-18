@@ -153,6 +153,14 @@ var CirclePreview = jsmod.util.klass({
         this.$container.delegate('.close-icon','click',function(){
             $(this).parents('.preview-fix').remove();
         })
+        this.$container.find('.detail-content video').on('play',function(){
+            var $audio = $('body').find('audio');
+            $audio.each(function(index, item){
+                if(!item.paused){
+                    item.pause();
+                }
+            })
+        })
     },
 
     deviceDetect: function () {
