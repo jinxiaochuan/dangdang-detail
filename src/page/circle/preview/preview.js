@@ -6,6 +6,8 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var trans = require('lib/self/trans.js');
 
+var AudioHandler = require('lib/self/audioHandler.js');
+
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
 var HREF_ORIGIN = window.location.href;
@@ -95,6 +97,9 @@ var CirclePreview = jsmod.util.klass({
                         e.preventDefault();
                     })
                     self.initBridge();
+
+                    self.initAudioHandler();
+
                     self.initEvents();
                     return;
                 }
@@ -122,6 +127,26 @@ var CirclePreview = jsmod.util.klass({
         })
 
 
+    },
+
+    initAudioHandler: function(){
+        var self = this;
+        new AudioHandler({
+            playcallback: function(){
+                var $video = $('body').find('video');
+                $video.each(function(index, item){
+                    if(!item.paused){
+                        item.pause();
+                    }
+                })
+            },
+            pausecallback: function(){
+
+            },
+            endedcallback: function(){
+
+            }
+        })
     },
 
     initEvents: function(){
