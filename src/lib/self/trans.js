@@ -40,7 +40,8 @@ function trans(html){
         });
 
         html_tran = html_tran.replace(reg_font,function(){
-            return arguments[1] + arguments[2]*dpr + arguments[3]
+            return '<font style="font-size:'+ dpr*MAP_SIZE[arguments[2]-1] +'px' + arguments[3]
+            // return arguments[1] + arguments[2]*dpr + arguments[3]
         });
 
     }
