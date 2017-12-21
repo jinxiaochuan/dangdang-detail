@@ -575,8 +575,42 @@
         }
         img{
             display: block;
-            margin-top: @base*20rem;
+            margin: @base*10rem 0;
             width: 100%!important;
+            height: auto!important;
+            &.first{
+                margin-top: @base*30rem;
+            }
+        }
+        video{
+            display: block;
+            width: 100%!important;
+            height: @base*390rem!important;
+            background: #000000;
+            margin-top: @base*20rem;
+        }
+        audio{
+            display: block;
+            width: 100%!important;
+            // height: @base*100rem!important;
+            //margin-top: @base*20rem;
+        }
+        blockquote{
+            display: block;
+            border-left: @base*8rem solid #d0e5f2;
+            padding: @base*5rem @base*10rem;
+            margin: @base*10rem 0;
+            line-height: 1.4;
+            font-size: 100%;
+            background-color: #f1f1f1;
+        }
+        code{
+            display: block;
+            background-color: #f1f1f1;
+            border-radius: @base*3rem;
+            padding: @base*3rem @base*5rem;
+            margin: 0 @base*3rem;
+            .font-dpr(14px);
         }
     }
 
