@@ -19,7 +19,7 @@ function trans(html){
 
     var reg_lineheight = /line-height:\s*(\d+)px/ig;
 
-    var reg_font = /(\<font size=")(\d+)("\>.*?\<\/font\>)/ig;
+    var reg_font = /(\<font (color=".*?" )?size=")(\d+)("( color=".*?")?( style="(background-color:.*?)?")?\>.*?\<\/font\>)/ig;
 
     var reg_enter = /\n\n/g;
 
@@ -40,8 +40,13 @@ function trans(html){
         });
 
         html_tran = html_tran.replace(reg_font,function(){
-            return '<font style="font-size:'+ dpr*MAP_SIZE[arguments[2]-1] +'px' + arguments[3]
-            // return arguments[1] + arguments[2]*dpr + arguments[3]
+            if(arguments[2]){
+                return '<font '+ arguments[2] +'style="font-size:'+ dpr*MAP_SIZE[arguments[3]-1] +'px' + arguments[4]
+            }
+            if(arguments[6] && arguments[7]){
+                return '<font style="font-size:'+ dpr*MAP_SIZE[arguments[3]-1] +'px;' + arguments[7] + arguments[4]
+            }
+            return '<font style="font-size:'+ dpr*MAP_SIZE[arguments[3]-1] +'px' + arguments[4]
         });
 
     }
