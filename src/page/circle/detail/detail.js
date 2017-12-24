@@ -180,6 +180,7 @@ var CircleDetail = jsmod.util.klass({
             "circleName": this.data.circleInfo.circleName,
             "memberType": this.data.circleInfo.memberType,
             "showAccess": this.data.articleInfo.showAccess,
+            "closeComment": this.data.articleInfo.closeComment,
             "isCanComment": this.data.articleInfo.isCanComment,
             "activityIsCanSignUp": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.isCanSignUp : null,
             "coopIsCanSignUp": this.data.articleInfo.coopInfo ? this.data.articleInfo.coopInfo.isCanSignUp : null,
