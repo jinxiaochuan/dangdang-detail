@@ -222,6 +222,10 @@ var CircleDetail = jsmod.util.klass({
                 self.$container.find('.sign-btn').removeClass('sign-btn').addClass('communicate-btn').text('留言');
             })
 
+            bridge.registerHandler('redEnvelopeStatus', function(data, responseCallback) {
+                window.location.reload()
+            })
+
             bridge.registerHandler('videoPause', function(data, responseCallback){
                 var $video = $('body').find('video');
                 $video.each(function(index, item){
