@@ -43,19 +43,26 @@
     <!-- <p class="detail-title">详情</p> -->
     <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
 </div>
-<!-- <div class="circle-red-envelope">
+{% if data.supportHb && data.articleInfo.hbInfo %}
+<div class="circle-red-envelope {% if data.articleInfo.hbInfo.hbStatus == 3 %}rev{% elseif data.articleInfo.hbInfo.hbStatus == 4 %}expire{% else %}{% endif %}">
+    {% if data.articleInfo.hbInfo.hbStatus == 2 %}
     <div class="red-envelope">
-        <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
+        <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
         <div class="red-envelope-status">领取红包</div>
     </div>
-    <div class="red-envelope-expire">
-        <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
-        <div class="red-envelope-status">红包已过期</div>
-    </div>
+    {% elseif data.articleInfo.hbInfo.hbStatus == 3 %}
     <div class="red-envelope-rev">
         <div class="red-envelope-status">红包已被领完</div>
     </div>
-</div> -->
+    {% elseif data.articleInfo.hbInfo.hbStatus == 4 %}
+    <div class="red-envelope-expire">
+        <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
+        <div class="red-envelope-status">红包已过期</div>
+    </div>
+    {% else %}
+    {% endif %}
+</div>
+{% endif %}
 <div class="common-deadline-wrap">
     <span class="deadline {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.articleInfo.activityInfo.formatDeadLine }}</span>
     <span class="limit">{% if data.articleInfo.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.articleInfo.activityInfo.activityNum }}人{% endif %}</span>

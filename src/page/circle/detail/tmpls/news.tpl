@@ -18,19 +18,26 @@
             {{ data.articleInfo.detail|safe }}
         </div>
     </div>
-    <!-- <div class="circle-red-envelope">
+    {% if data.supportHb && data.articleInfo.hbInfo %}
+    <div class="circle-red-envelope {% if data.articleInfo.hbInfo.hbStatus == 3 %}rev{% elseif data.articleInfo.hbInfo.hbStatus == 4 %}expire{% else %}{% endif %}">
+        {% if data.articleInfo.hbInfo.hbStatus == 2 %}
         <div class="red-envelope">
-            <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
+            <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
             <div class="red-envelope-status">领取红包</div>
         </div>
-        <div class="red-envelope-expire">
-            <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
-            <div class="red-envelope-status">红包已过期</div>
-        </div>
+        {% elseif data.articleInfo.hbInfo.hbStatus == 3 %}
         <div class="red-envelope-rev">
             <div class="red-envelope-status">红包已被领完</div>
         </div>
-    </div> -->
+        {% elseif data.articleInfo.hbInfo.hbStatus == 4 %}
+        <div class="red-envelope-expire">
+            <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
+            <div class="red-envelope-status">红包已过期</div>
+        </div>
+        {% else %}
+        {% endif %}
+    </div>
+    {% endif %}
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
     </div>

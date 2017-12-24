@@ -51,13 +51,17 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=2588&userId=200072&articleStatus=1&shareType=6&shareId=1814';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=2747&userId=200255&articleStatus=1&shareType=6&shareId=2747&supportHb=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
-        var data = {}, isAdminIdentity;
+        var data = {}, isAdminIdentity, supportHb;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.articleId = jsmod.util.url.getParam(HREF_ORIGIN,'articleId');
         isAdminIdentity  = jsmod.util.url.getParam(HREF_ORIGIN,'isAdminIdentity');
+        supportHb = jsmod.util.url.getParam(HREF_ORIGIN,'supportHb');
+        if(supportHb){
+            data.supportHb = supportHb
+        }
         $.ajax({
             url: URL_CIRCLE,
             dataType: 'jsonp',
@@ -66,8 +70,9 @@ var CircleDetail = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    console.log(json.data);
                     self.commentCount = json.data.webShowInfo.commentCount;
-                    self.render(json.data, isAdminIdentity);
+                    self.render(json.data, isAdminIdentity, supportHb);
                     return;
                 }
 
@@ -91,7 +96,7 @@ var CircleDetail = jsmod.util.klass({
 
     },
 
-    render: function(data, isAdminIdentity){
+    render: function(data, isAdminIdentity, supportHb){
 
         data.articleInfo.detail = trans(data.articleInfo.detail);
         if((data.articleInfo.articleType == '2') && (data.articleInfo.activityInfo.review)){
@@ -102,7 +107,7 @@ var CircleDetail = jsmod.util.klass({
         }
         var html = swig.render(TPL_MAP[data.articleInfo.articleType],{
             locals:{
-                data: $.extend(data, {'isAdminIdentity': isAdminIdentity})
+                data: $.extend(data, {'isAdminIdentity': isAdminIdentity, 'supportHb': supportHb})
             }
         });
 
@@ -184,7 +189,8 @@ var CircleDetail = jsmod.util.klass({
             "pictureUrl": this.data.circleInfo.circleLogo.pictureUrl,
             "articleTitle": this.data.articleInfo.articleTitle,
             "auditType": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.auditType : null,
-            "imgList": imgList
+            "imgList": imgList,
+            "hbInfo": this.data.articleInfo.hbInfo
         }
 
         this.logoInfo = {
@@ -311,6 +317,9 @@ var CircleDetail = jsmod.util.klass({
                 bridge.callHandler('completeAudio')
             })
 
+            self.$container.delegate('.circle-red-envelope', 'click', function(){
+                bridge.callHandler('redEnvelope')
+            })
 
         })
 
