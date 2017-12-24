@@ -1,10 +1,5 @@
 <div class="common-circle-header my-gallery">
     <div class="avatar-wrap">
-        <!-- <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-            <a class="tap-avatar" href="{{ data.circleInfo.circleLogo.pictureUrl }}" itemprop="contentUrl" data-size="964x1024">
-                <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
-            </a>
-        </figure> -->
         <a class="tap-avatar" href="javascript:void(0)">
             <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
         </a>
@@ -48,6 +43,19 @@
     <!-- <p class="detail-title">详情</p> -->
     <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
 </div>
+<!-- <div class="circle-red-envelope">
+    <div class="red-envelope">
+        <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
+        <div class="red-envelope-status">领取红包</div>
+    </div>
+    <div class="red-envelope-expire">
+        <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
+        <div class="red-envelope-status">红包已过期</div>
+    </div>
+    <div class="red-envelope-rev">
+        <div class="red-envelope-status">红包已被领完</div>
+    </div>
+</div> -->
 <div class="common-deadline-wrap">
     <span class="deadline {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.articleInfo.activityInfo.formatDeadLine }}</span>
     <span class="limit">{% if data.articleInfo.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.articleInfo.activityInfo.activityNum }}人{% endif %}</span>

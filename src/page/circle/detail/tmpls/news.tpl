@@ -18,6 +18,19 @@
             {{ data.articleInfo.detail|safe }}
         </div>
     </div>
+    <!-- <div class="circle-red-envelope">
+        <div class="red-envelope">
+            <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
+            <div class="red-envelope-status">领取红包</div>
+        </div>
+        <div class="red-envelope-expire">
+            <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
+            <div class="red-envelope-status">红包已过期</div>
+        </div>
+        <div class="red-envelope-rev">
+            <div class="red-envelope-status">红包已被领完</div>
+        </div>
+    </div> -->
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
     </div>
@@ -42,4 +55,5 @@
         {% endif %}
 
     </div>
+
 </div>

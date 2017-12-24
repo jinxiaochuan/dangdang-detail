@@ -45,6 +45,19 @@
     <!-- <p class="detail-title">详情</p> -->
     <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
 </div>
+<!-- <div class="circle-red-envelope">
+    <div class="red-envelope">
+        <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
+        <div class="red-envelope-status">领取红包</div>
+    </div>
+    <div class="red-envelope-expire">
+        <div class="red-envelope-word">恭喜发财，大吉大利，恭喜发财，大吉大利，恭喜发财，</div>
+        <div class="red-envelope-status">红包已过期</div>
+    </div>
+    <div class="red-envelope-rev">
+        <div class="red-envelope-status">红包已被领完</div>
+    </div>
+</div> -->
 <div class="common-deadline-wrap">
     <span class="deadline {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}over{% endif %}">发意向截止时间：{{  data.articleInfo.coopInfo.formatDeadline }}</span>
 </div>
