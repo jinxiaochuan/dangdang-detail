@@ -60,7 +60,7 @@ var CirclePreview = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=1000000&articleId=1376874';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=7324&userId=1000098&articleStatus=2&shareType=9&shareId=7324';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1346';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1376777';
         // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
