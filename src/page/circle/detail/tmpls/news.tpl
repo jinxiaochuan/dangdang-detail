@@ -36,7 +36,6 @@
         </div>
         {% elseif data.articleInfo.hbInfo.hbStatus == 5 %}
         <div class="red-envelope-rev-al">
-            <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
             <div class="red-envelope-status">红包已领取</div>
         </div>
         {% else %}
