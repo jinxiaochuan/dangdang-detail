@@ -6,8 +6,8 @@ require('lib/third/flexible.js');
 
 require('lib/self/filter.js');
 
-var FastClick = require('fastclick');
-FastClick.attach(document.body);
+// var FastClick = require('fastclick');
+// FastClick.attach(document.body);
 
 var u = window.navigator.userAgent;
 
