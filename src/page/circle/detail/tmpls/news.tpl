@@ -19,7 +19,7 @@
         </div>
     </div>
     {% if data.supportHb && data.articleInfo.hbInfo %}
-    <div class="circle-red-envelope {% if data.articleInfo.hbInfo.hbStatus == 3 %}rev{% elseif data.articleInfo.hbInfo.hbStatus == 4 %}expire{% else %}{% endif %}">
+    <div class="circle-red-envelope {% if data.articleInfo.hbInfo.hbStatus == 3 %}rev{% elseif data.articleInfo.hbInfo.hbStatus == 4 %}expire{% elseif data.articleInfo.hbInfo.hbStatus == 5 %}rev-al{% else %}{% endif %}">
         {% if data.articleInfo.hbInfo.hbStatus == 2 %}
         <div class="red-envelope">
             <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
@@ -33,6 +33,11 @@
         <div class="red-envelope-expire">
             <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
             <div class="red-envelope-status">红包已过期</div>
+        </div>
+        {% elseif data.articleInfo.hbInfo.hbStatus == 5 %}
+        <div class="red-envelope-rev-al">
+            <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
+            <div class="red-envelope-status">红包已领取</div>
         </div>
         {% else %}
         {% endif %}
