@@ -42,6 +42,13 @@
         {% endif %}
     </div>
     {% endif %}
+    {% if !data.supportHb && data.articleInfo.hbInfo %}
+    <div class="circle-red-envelope">
+        <div class="red-envelope-nosupport">
+
+        </div>
+    </div>
+    {% endif %}
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
     </div>
