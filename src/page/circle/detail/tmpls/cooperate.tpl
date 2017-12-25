@@ -94,9 +94,17 @@
         </div>
     </a>
 </div>
+{% else %}
+<div class="common-sign-wrap">
+    {% if data.articleInfo.coopInfo.applyStatus == -1 %}
+    <a class="sign-btn {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">发意向</a>
+    {% else %}
+    <a class="communicate-btn" href="javascript:void (0)">留言</a>
+    {% endif %}
+</div>
 {% endif %}
 
-{% if data.articleInfo.coopInfo.isOwner == '0' || data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == '0' %}
+<!-- {% if data.articleInfo.coopInfo.isOwner == '0' || data.articleInfo.coopInfo.isOwner == '1' && data.isAdminIdentity == '0' %}
 {% if data.circleInfo.memberType == 1 || data.circleInfo.memberType == 3 %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.coopInfo.applyStatus == -1 %}
@@ -106,7 +114,7 @@
     {% endif %}
 </div>
 {% endif %}
-{% endif %}
+{% endif %} -->
 
 {% if data.articleInfo.coopInfo.review %}
 <div class="common-review-wrap">

@@ -93,8 +93,16 @@
         </div>
     </a>
 </div>
+{% else %}
+<div class="common-sign-wrap">
+    {% if data.articleInfo.activityInfo.applyStatus == -1 %}
+    <a class="sign-btn {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">报名</a>
+    {% else %}
+    <a class="communicate-btn" href="javascript:void (0)">留言</a>
+    {% endif %}
+</div>
 {% endif %}
-{% if data.articleInfo.activityInfo.isOwner == '0' || data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == '0' %}
+<!-- {% if data.articleInfo.activityInfo.isOwner == '0' || data.articleInfo.activityInfo.isOwner == '1' && data.isAdminIdentity == '0' %}
 {% if data.circleInfo.memberType == 1 || data.circleInfo.memberType == 3 %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.activityInfo.applyStatus == -1 %}
@@ -104,7 +112,7 @@
     {% endif %}
 </div>
 {% endif %}
-{% endif %}
+{% endif %} -->
 
 {% if data.articleInfo.activityInfo.review %}
 <div class="common-review-wrap">
