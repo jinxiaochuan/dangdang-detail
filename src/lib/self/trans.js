@@ -5,7 +5,7 @@ function trans(html){
 
     var dpr = window.document.documentElement.getAttribute('data-dpr'), html_tran;
 
-    var MAP_SIZE = [11,14,17,20,23,26,29];
+    var MAP_SIZE = [12,14,16,20,24,26,28];
     var reg_xx_small = /font-size:\s*xx-small;/ig;
     var reg_x_small = /font-size:\s*x-small;/ig;
     var reg_small = /font-size:\s*small;/ig;

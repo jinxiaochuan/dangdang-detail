@@ -43,7 +43,7 @@
     <!-- <p class="detail-title">详情</p> -->
     <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
 </div>
-{% if data.supportHb && data.articleInfo.hbInfo %}
+<!-- {% if data.supportHb && data.articleInfo.hbInfo %}
 <div class="circle-red-envelope {% if data.articleInfo.hbInfo.hbStatus == 3 %}rev{% elseif data.articleInfo.hbInfo.hbStatus == 4 %}expire{% else %}{% endif %}">
     {% if data.articleInfo.hbInfo.hbStatus == 2 %}
     <div class="red-envelope">
@@ -62,7 +62,7 @@
     {% else %}
     {% endif %}
 </div>
-{% endif %}
+{% endif %} -->
 <div class="common-deadline-wrap">
     <span class="deadline {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.articleInfo.activityInfo.formatDeadLine }}</span>
     <span class="limit">{% if data.articleInfo.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.articleInfo.activityInfo.activityNum }}人{% endif %}</span>
