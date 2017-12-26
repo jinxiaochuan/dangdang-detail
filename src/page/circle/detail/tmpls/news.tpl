@@ -67,11 +67,24 @@
             {% endif %}
             {% endif %}
         </span>
-
         {% if data.articleInfo.isCanComment == 1 %}
         <a class="comment-wrap" href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{% if data.webShowInfo.commentCount != 0 %}{{ data.webShowInfo.commentCount }}{% endif %}</span></a>
         {% endif %}
-
     </div>
-
+    {% if data.articleInfo.openDonate == '1' %}
+    {% if data.isAdminIdentity ==  '1' %}
+    <div class="common-sign-list-wrap">
+        <a class="tap-donate" href="javascript:void(0)">
+            <div class="sign-wrap">
+                <span class="num">捐赠记录{% if data.articleInfo.donateCount != 0 %}（{{ data.articleInfo.donateCount }}）{% endif %}</span>
+                <span class="arrow"></span>
+            </div>
+        </a>
+    </div>
+    {% else %}
+    <div class="circle-donate-wrap">
+        <a class="donate-btn" href="javascript:void (0)">捐赠</a>
+    </div>
+    {% endif %}
+    {% endif %}
 </div>

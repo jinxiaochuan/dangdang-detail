@@ -252,6 +252,14 @@ var CircleDetail = jsmod.util.klass({
                 bridge.callHandler('tapAppliedUserList')
             })
 
+            self.$container.delegate('.tap-donate','click',function(){
+                bridge.callHandler('tapDonateList')
+            })
+
+            self.$container.delegate('.donate-btn','click',function(){
+                bridge.callHandler('donate')
+            })
+
             self.$container.delegate('.sign-btn','click',function(){
                 bridge.callHandler('apply')
             })

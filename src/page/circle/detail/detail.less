@@ -129,3 +129,17 @@ div.pinch-zoom img{
         text-align: center;
     }
 }
+
+.circle-donate-wrap{
+    padding: @base*55rem @base*30rem @base*50rem;
+    text-align: center;
+    .donate-btn{
+        &:active{
+            background-color: #0061CC;
+            color: #99BFEA;
+        }
+        .border-radius(50%);
+        .btn(@base*120rem,@base*120rem,18px,#007AFF,#FFFFFF);
+        .font-dpr(18px);
+    }
+}
