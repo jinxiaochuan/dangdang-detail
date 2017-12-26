@@ -114,8 +114,10 @@ div.pinch-zoom img{
         padding: @base*12rem @base*40rem;
         .font-dpr(20px);
         color: #FFDBA9;
-        line-height: @base*50rem;
-        text-align: center;
+        .flex();
+        .align-items(center);
+        .justify-content(center);
+        height: @base*120rem;
     }
     .red-envelope-status{
         position: absolute;
