@@ -175,7 +175,7 @@ var CircleDetail = jsmod.util.klass({
             "userId": this.data.webShowInfo.userId,
             "adminId" : this.data.circleInfo.userId,
             "adminName" : this.data.circleInfo.userName,
-            "adminPictureUrl" : this.data.circleInfo.userImage.pictureUrl,
+            "adminPictureUrl" : this.data.circleInfo.userImage && this.data.circleInfo.userImage.pictureUrl,
             "targetId": this.data.articleInfo.articleId,
             "articleId": this.data.articleInfo.articleId,
             "type": this.data.articleInfo.articleType,
