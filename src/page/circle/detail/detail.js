@@ -173,11 +173,15 @@ var CircleDetail = jsmod.util.klass({
 
         this.baseInfo = {
             "userId": this.data.webShowInfo.userId,
+            "adminId" : this.data.circleInfo.userId,
+            "adminName" : this.data.circleInfo.userName,
+            "adminPictureUrl" : this.data.circleInfo.userImage.pictureUrl,
             "targetId": this.data.articleInfo.articleId,
             "articleId": this.data.articleInfo.articleId,
             "type": this.data.articleInfo.articleType,
             "circleId": this.data.circleInfo.circleId,
             "circleName": this.data.circleInfo.circleName,
+            "pictureUrl": this.data.circleInfo.circleLogo.pictureUrl,
             "memberType": this.data.circleInfo.memberType,
             "showAccess": this.data.articleInfo.showAccess,
             "closeComment": this.data.articleInfo.closeComment,
@@ -187,7 +191,6 @@ var CircleDetail = jsmod.util.klass({
             "location": this.data.articleInfo.location,
             "latitude": this.data.articleInfo.latitude,
             "longitude": this.data.articleInfo.longitude,
-            "pictureUrl": this.data.circleInfo.circleLogo.pictureUrl,
             "articleTitle": this.data.articleInfo.articleTitle,
             "auditType": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.auditType : null,
             "imgList": imgList,
