@@ -27,26 +27,28 @@ var AudioHandler = jsmod.util.klass({
                 $(this).addClass('loading');
 
                 $('body audio').on('canplaythrough', function(){
+                    console.log('canplaythrough');
                     self.canplay = true;
                     $(_this).removeClass('loading');
-                    if(!self.play){
-                        $(_this).addClass('playing');
-                        self.play = true;
+                    console.log(self.play);
+                    if(self.play){
                         $('body audio')[0].play();
-                        option.playcallback && option.playcallback()
                     }
                 })
                 $('body audio').on('play', function(){
+                    console.log('play');
                     $(_this).addClass('playing');
                     self.play = true;
                     option.playcallback && option.playcallback()
                 })
                 $('body audio').on('pause', function(){
+                    console.log('pause');
                     $(_this).removeClass('playing');
                     self.play = false;
                     option.pausecallback && option.pausecallback()
                 })
                 $('body audio').on('ended', function(){
+                    console.log('ended');
                     $(_this).removeClass('playing');
                     self.play = false;
                     option.endedcallback && option.endedcallback()
