@@ -53,12 +53,13 @@ var CircleDetail = jsmod.util.klass({
 
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=2747&userId=200255&articleStatus=1&shareType=6&shareId=2747&supportHb=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
-        var data = {}, isAdminIdentity, supportHb;
+        var data = {}, isAdminIdentity, supportHb, sources;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.articleId = jsmod.util.url.getParam(HREF_ORIGIN,'articleId');
         isAdminIdentity  = jsmod.util.url.getParam(HREF_ORIGIN,'isAdminIdentity');
         supportHb = jsmod.util.url.getParam(HREF_ORIGIN,'supportHb');
+        source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
         if(supportHb){
             data.supportHb = supportHb
         }
@@ -72,7 +73,7 @@ var CircleDetail = jsmod.util.klass({
                     self.data = json.data;
                     console.log(json.data);
                     self.commentCount = json.data.webShowInfo.commentCount;
-                    self.render(json.data, isAdminIdentity, supportHb);
+                    self.render(json.data, isAdminIdentity, supportHb, source);
                     return;
                 }
 
@@ -96,7 +97,7 @@ var CircleDetail = jsmod.util.klass({
 
     },
 
-    render: function(data, isAdminIdentity, supportHb){
+    render: function(data, isAdminIdentity, supportHb, source){
 
         data.articleInfo.detail = trans(data.articleInfo.detail);
         if((data.articleInfo.articleType == '2') && (data.articleInfo.activityInfo.review)){
@@ -107,7 +108,7 @@ var CircleDetail = jsmod.util.klass({
         }
         var html = swig.render(TPL_MAP[data.articleInfo.articleType],{
             locals:{
-                data: $.extend(data, {'isAdminIdentity': isAdminIdentity, 'supportHb': supportHb})
+                data: $.extend(data, {'isAdminIdentity': isAdminIdentity, 'supportHb': supportHb, 'source': source})
             }
         });
 

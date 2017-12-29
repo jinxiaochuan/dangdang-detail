@@ -18,6 +18,18 @@
             {{ data.articleInfo.detail|safe }}
         </div>
     </div>
+    <!-- 分享至外部且有红包 -->
+    {% if data.source %}
+    {% if data.supportHb && data.articleInfo.hbInfo %}
+    <div class="circle-red-envelope">
+        <div class="red-envelope">
+            <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
+            <div class="red-envelope-status">领取红包</div>
+        </div>
+    </div>
+    {% endif %}
+    {% else %}
+    <!-- app内部支持红包且有红包 -->
     {% if data.supportHb && data.articleInfo.hbInfo %}
     <div class="circle-red-envelope {% if data.articleInfo.hbInfo.hbStatus == 3 %}rev{% elseif data.articleInfo.hbInfo.hbStatus == 4 %}expire{% elseif data.articleInfo.hbInfo.hbStatus == 5 %}rev-al{% else %}{% endif %}">
         {% if data.articleInfo.hbInfo.hbStatus == 2 %}
@@ -41,7 +53,7 @@
         {% else %}
         {% endif %}
     </div>
-    {% endif %}
+    <!-- app内部不支持红包且有红包 -->
     {% if !data.supportHb && data.articleInfo.hbInfo %}
     <div class="circle-red-envelope">
         <div class="red-envelope-nosupport">
@@ -49,6 +61,9 @@
         </div>
     </div>
     {% endif %}
+    {% endif %}
+    {% endif %}
+
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
     </div>

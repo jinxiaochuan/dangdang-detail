@@ -30,10 +30,6 @@ var AudioHandler = jsmod.util.klass({
                     console.log('canplaythrough');
                     self.canplay = true;
                     $(_this).removeClass('loading');
-                    console.log(self.play);
-                    if(self.play){
-                        $('body audio')[0].play();
-                    }
                 })
                 $('body audio').on('play', function(){
                     console.log('play');
