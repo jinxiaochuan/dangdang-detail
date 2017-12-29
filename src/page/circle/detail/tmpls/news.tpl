@@ -20,7 +20,7 @@
     </div>
     <!-- 分享至外部且有红包 -->
     {% if data.source %}
-    {% if data.supportHb && data.articleInfo.hbInfo %}
+    {% if data.articleInfo.hbInfo %}
     <div class="circle-red-envelope">
         <div class="red-envelope">
             <div class="red-envelope-word">{{ data.articleInfo.hbInfo.hbMessage }}</div>
@@ -53,6 +53,7 @@
         {% else %}
         {% endif %}
     </div>
+    {% endif %}
     <!-- app内部不支持红包且有红包 -->
     {% if !data.supportHb && data.articleInfo.hbInfo %}
     <div class="circle-red-envelope">
@@ -60,7 +61,6 @@
 
         </div>
     </div>
-    {% endif %}
     {% endif %}
     {% endif %}
 
