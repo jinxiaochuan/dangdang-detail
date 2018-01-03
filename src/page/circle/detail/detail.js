@@ -51,9 +51,9 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=2747&userId=200255&articleStatus=1&shareType=6&shareId=2747&supportHb=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=2747&userId=200255&articleStatus=1&shareType=6&shareId=2747&supportHb=1&source=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
-        var data = {}, isAdminIdentity, supportHb, sources;
+        var data = {}, isAdminIdentity, supportHb, source;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.articleId = jsmod.util.url.getParam(HREF_ORIGIN,'articleId');
@@ -207,6 +207,8 @@ var CircleDetail = jsmod.util.klass({
         var self = this;
 
         setupWebViewJavascriptBridge(function(bridge){
+
+            if(!bridge) return
 
             self.bridge = bridge;
 

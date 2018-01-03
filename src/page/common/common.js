@@ -76,7 +76,7 @@ var dialog = new jsmod.util.Dialog({
     closeToTop:true
 });
 
-$('body').delegate('.app-btn','click',function(){
+function appOpen() {
     if(mobileDevice().isWei){
         window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
         return;
@@ -85,13 +85,20 @@ $('body').delegate('.app-btn','click',function(){
     window.location.href = "dangdangsocialcontact://";//打开某手机上的某个app应用
 
     setTimeout(function(){
-        if(window.isIOS){
+        if(mobileDevice().isiOS){
             window.location.href = 'https://itunes.apple.com/cn/app/id967227032';
         }else {
             window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
         }
     },2000);
-})
+}
+
+$('body').delegate('.app-btn','click', appOpen);
+if(source == 1){
+    $('body').delegate('.circle-red-envelope','click', function(){
+        $('body').find('.app-btn').trigger('click')
+    });
+}
 
 $('.mod-dialog-frame').on('click',function(){
     dialog.hide({fade:true});
