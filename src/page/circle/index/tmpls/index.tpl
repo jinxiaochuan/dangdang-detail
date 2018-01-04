@@ -5,26 +5,31 @@
         </a>
     </div>
     {% if data.baseInfo.accountNum %}
-    <span class="dangdang-code">铛铛号: {{ data.baseInfo.accountNum }}</span>
+    <span class="dangdang-code">铛铛号：{{ data.baseInfo.accountNum }}</span>
     {% endif %}
 </div>
+
 <div class="circle-intro">
     {{ data.baseInfo.summary|safe }}
 </div>
+
 <div class="circle-handle circle-handle-account">
-    <span class="name">帐号主体</span>
+    <span class="name">账号主体</span>
     <span class="detail">{% if data.baseInfo.circleType == 1 %}个人{% elseif data.baseInfo.circleType == 2 %}企业{% elseif data.baseInfo.circleType == 3 %}组织{% else %}{% endif %}<i class="arrow"></i></span>
 </div>
+
 {% if data.baseInfo.location != '{}' && data.baseInfo.longitude != '0.0' && data.baseInfo.latitude != '0.0' %}
 <div class="circle-handle circle-handle-location">
     <span class="name">所在位置</span>
     <span class="detail detail-location"><span class="location">{{ (data.baseInfo.location|json_parse).name }}</span><i class="arrow"></i></span>
 </div>
 {% endif %}
+
 <div class="circle-handle circle-handle-look">
     <span class="name">查看公开内容</span>
     <span class="detail"><i class="arrow"></i></span>
 </div>
+
 {% if data.baseInfo.memberType == 4 && data.baseInfo.isJoin == 1 %}
 {% if data.baseInfo.publicSchool == 1 || data.baseInfo.publicWork == 1 %}
 <div class="prompt-word">
