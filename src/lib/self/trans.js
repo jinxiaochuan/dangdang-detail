@@ -53,9 +53,9 @@ function trans(html){
 
     html_tran = html_tran || html;
 
-    html_tran = html_tran.replace(reg_enter,function(){
-        return '<br/>'
-    })
+    // html_tran = html_tran.replace(reg_enter,function(){
+    //     return '<br/>'
+    // })
 
     html_tran = html_tran.replace(reg_embed_mp4,function(){
         return '<video controls src="'+ arguments[1] +'">您的浏览器不支持 video 标签</video>'
