@@ -182,21 +182,16 @@ body{
     padding: 0 @base*40rem;
     text-align: center;
     .circle-home{
-        .border-radius(@base*10rem);
-        // .btn(100%,@base*94rem,17px,#007AFF,#FFFFFF);
-        .font-dpr(17px);
-        display: inline-block;
-        width: 100%;
-        height: @base*94rem;
-        background: #007AFF;
-        color: #FFFFFF;
-        .flex();
-        .align-items(center);
-        .justify-content(center);
+        .border-radius(@base*100rem);
+        .btn(@base*502rem,@base*88rem,16px,#007AFF,#FFFFFF);
+        .font-dpr(16px);
+        background-image: linear-gradient(-90deg, #F6730A 0%, #FB5E0A 100%);
 
         &:active{
-            background: #0070EB;
-            color: #99C5F7;
+            background-image: linear-gradient(-90deg, #E56500 0%, #E65202 100%);
+            span{
+                opacity: .6;
+            }
         }
     }
 }

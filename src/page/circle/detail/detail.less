@@ -135,12 +135,16 @@ div.pinch-zoom img{
     padding: @base*55rem @base*30rem @base*50rem;
     text-align: center;
     .donate-btn{
+        .border-radius(@base*100rem);
+        .btn(@base*502rem,@base*88rem,16px,#007AFF,#FFFFFF);
+        .font-dpr(16px);
+        background-image: linear-gradient(-90deg, #F6730A 0%, #FB5E0A 100%);
+
         &:active{
-            background-color: #0061CC;
-            color: #99BFEA;
+            background-image: linear-gradient(-90deg, #E56500 0%, #E65202 100%);
+            span{
+                opacity: .6;
+            }
         }
-        .border-radius(50%);
-        .btn(@base*120rem,@base*120rem,18px,#007AFF,#FFFFFF);
-        .font-dpr(18px);
     }
 }

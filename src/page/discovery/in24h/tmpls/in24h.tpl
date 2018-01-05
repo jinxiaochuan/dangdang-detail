@@ -35,7 +35,6 @@
 </div>
 {% endif %}
 <div class="common-detail-wrap">
-    <!-- <p class="detail-title">详情</p> -->
     <div class="detail-content">{{ data.in24hInfo.detailContent|safe }}</div>
 </div>
 <div class="common-deadline-wrap">
@@ -71,9 +70,9 @@
 {% if data.in24hInfo.isOwner == '0' %}
 <div class="common-sign-wrap">
     {% if data.in24hInfo.applyStatus == -1 %}
-    <a class="sign-btn {% if data.in24hInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">报名</a>
+    <a class="sign-btn {% if data.in24hInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>我要报名</span></a>
     {% else %}
-    <a class="communicate-btn" href="javascript:void (0)">留言</a>
+    <a class="communicate-btn" href="javascript:void (0)"><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}

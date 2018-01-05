@@ -15,12 +15,6 @@
         <span class="label-name label-name-address">地区：</span>
         <span class="label-detail">{{ data.activityInfo.provinceName }} {% if data.activityInfo.cityId != 0 %}{{ data.activityInfo.cityName }}{% endif %}</span>
     </div>
-    <!-- {% if data.activityInfo.detailAddress %}
-    <div class="info-item">
-        <span class="label-name label-name-address-detail">地址：</span>
-        <span class="label-detail">{{ data.activityInfo.detailAddress }}</span>
-    </div>
-    {% endif %} -->
 </div>
 <div class="common-title-wrap">
     {{ data.activityInfo.title }}
@@ -77,9 +71,9 @@
 {% if data.activityInfo.isOwner == '0' %}
 <div class="common-sign-wrap">
     {% if data.activityInfo.applyStatus == -1 %}
-    <a class="sign-btn {% if data.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">报名</a>
+    <a class="sign-btn {% if data.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>我要报名</span></a>
     {% else %}
-    <a class="communicate-btn" href="javascript:void (0)">留言</a>
+    <a class="communicate-btn" href="javascript:void (0)"><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}

@@ -15,12 +15,6 @@
         <span class="label-name label-name-address">地区：</span>
         <span class="label-detail">{{ data.provinceName }}{% if data.cityId != 0 %} {{ data.cityName }}{% endif %}</span>
     </div>
-    <!-- {% if data.detailAddress %}
-    <div class="info-item">
-        <span class="label-name label-name-address-detail">地址：</span>
-        <span class="label-detail">{{ data.detailAddress }}</span>
-    </div>
-    {% endif %} -->
 </div>
 <div class="common-title-wrap">
     {{ data.title }}
@@ -43,7 +37,6 @@
 {% endif %}
 
 <div class="common-detail-wrap">
-    <!-- <p class="detail-title">详情</p> -->
     <div class="detail-content">{{ data.detailContent|safe }}</div>
 </div>
 <div class="common-deadline-wrap">
@@ -78,9 +71,9 @@
 {% if data.isOwner == '0' %}
 <div class="common-sign-wrap">
     {% if data.applyStatus == -1 %}
-    <a class="sign-btn {% if data.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)">发意向</a>
+    <a class="sign-btn {% if data.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>我要发意向</span></a>
     {% else %}
-    <a class="communicate-btn" href="javascript:void (0)">留言</a>
+    <a class="communicate-btn" href="javascript:void (0)"><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}
