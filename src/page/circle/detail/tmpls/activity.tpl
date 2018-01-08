@@ -69,7 +69,7 @@
 {% else %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.activityInfo.applyStatus == -1 %}
-    <a class="sign-btn {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>我要报名</span></a>
+    <a class="sign-btn {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>报名</span></a>
     {% else %}
     <a class="communicate-btn" href="javascript:void (0)"><span>留言</span></a>
     {% endif %}

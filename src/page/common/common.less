@@ -622,13 +622,14 @@
     padding: 0 @base*40rem;
     text-align: center;
     .edit-btn{
-        &:active{
-            border-color: #0D69CF;
-            color: #0D69CF;
-        }
-        .border-radius-dpr(5px);
-        .btn-border(100%,@base*94rem,17px,#FFFFFF,#007AFF,#007AFF);
+        border: 1px solid #FB5E0A;
+        .border-radius-dpr(100px);
+        .btn-border(@base*502rem,@base*88rem,17px,#FFFFFF,#FB5E0A,#FB5E0A);
         .font-dpr(17px);
+        &:active{
+            border-color: #E65202;
+            color: #E65202;
+        }
     }
 }
 

@@ -98,7 +98,7 @@
     </div>
     {% else %}
     <div class="circle-donate-wrap">
-        <a class="donate-btn" href="javascript:void (0)"><span>我要捐赠</span></a>
+        <a class="donate-btn" href="javascript:void (0)"><span>捐赠</span></a>
     </div>
     {% endif %}
     {% endif %}

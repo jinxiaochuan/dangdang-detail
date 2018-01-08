@@ -70,7 +70,7 @@
 {% else %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.coopInfo.applyStatus == -1 %}
-    <a class="sign-btn {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>我要发意向</span></a>
+    <a class="sign-btn {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>发意向</span></a>
     {% else %}
     <a class="communicate-btn" href="javascript:void (0)"><span>留言</span></a>
     {% endif %}

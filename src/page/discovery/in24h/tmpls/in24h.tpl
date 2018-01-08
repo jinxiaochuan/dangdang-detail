@@ -70,7 +70,7 @@
 {% if data.in24hInfo.isOwner == '0' %}
 <div class="common-sign-wrap">
     {% if data.in24hInfo.applyStatus == -1 %}
-    <a class="sign-btn {% if data.in24hInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>我要报名</span></a>
+    <a class="sign-btn {% if data.in24hInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>报名</span></a>
     {% else %}
     <a class="communicate-btn" href="javascript:void (0)"><span>留言</span></a>
     {% endif %}
