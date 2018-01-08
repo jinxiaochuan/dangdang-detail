@@ -14,7 +14,7 @@
 </div>
 
 <div class="circle-handle circle-handle-account">
-    <span class="name">账号主体</span>
+    <span class="name">帐号主体</span>
     <span class="detail">{% if data.baseInfo.circleType == 1 %}个人{% elseif data.baseInfo.circleType == 2 %}企业{% elseif data.baseInfo.circleType == 3 %}组织{% else %}{% endif %}<i class="arrow"></i></span>
 </div>
 
