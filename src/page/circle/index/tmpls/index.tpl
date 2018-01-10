@@ -30,13 +30,13 @@
     <span class="detail"><i class="arrow"></i></span>
 </div>
 
-{% if data.baseInfo.memberType == 4 && data.baseInfo.isJoin == 1 %}
+<!-- {% if data.baseInfo.memberType == 4 && data.baseInfo.isJoin == 1 %}
 {% if data.baseInfo.publicSchool == 1 || data.baseInfo.publicWork == 1 || data.baseInfo.publicCustom == 1 %}
 <div class="prompt-word">
     <i class="point"></i><span>该公众圈需公开信息</span>
 </div>
 {% endif %}
-{% endif %}
+{% endif %} -->
 
 {% if data.source %}
 <div class="circle-handle-wrap">
