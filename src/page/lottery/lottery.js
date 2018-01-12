@@ -6,6 +6,8 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var share = require('lib/self/share.js');
 
+var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+
 var TPL_ERROR = require('./tmpls/error.tpl');
 var TPL_JOIN = require('./tmpls/join.tpl');
 var TPL_NOJOIN = require('./tmpls/nojoin.tpl');
@@ -53,9 +55,42 @@ var Lottery = jsmod.util.klass({
                     locals: json.data
                 })
 
-                self.$container.html(html)
+                self.$container.html(html);
+
+                self.baseInfo = {
+                    'circleId': json.data.circleInfo.circleId,
+                    'circleName': json.data.circleInfo.circleName
+                }
+
+                self.initBridge();
 
             }
+        })
+    },
+
+    initBridge: function(){
+        var self = this;
+
+
+
+        setupWebViewJavascriptBridge(function(bridge){
+
+            if(!bridge) return
+
+            self.bridge = bridge;
+
+            bridge.callHandler('baseInfo',self.baseInfo,function(){})
+
+            if(!window.isIOS){
+                bridge.init(function(message, responseCallback) {
+
+                });
+            }
+
+            self.$container.delegate('.join-action', 'click', function(){
+                bridge.callHandler('joinCircle')
+            })
+
         })
     }
 })
