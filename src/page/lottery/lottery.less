@@ -1,0 +1,79 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+body,html{
+  padding:0;
+  margin:0;
+  background: url('~assets/bg_lottery.png') no-repeat;
+  background-size: cover;
+}
+
+.container{
+    padding: 0;
+	margin:0;
+}
+
+.lottery-join-wrap{
+    margin-top: @base*400rem;
+    text-align: center;
+    .circle-name-wrap{
+        .font-dpr(18px);
+        color: #FFFBC3;
+        .circle-name{
+            font-weight: 600;
+        }
+    }
+    .lottery-name-wrap{
+        margin-top: @base*10rem;
+        .font-dpr(24px);
+        color: #FFFBC3;
+        font-weight: 600;
+    }
+}
+
+.lottery-nojoin-wrap{
+    margin-top: @base*400rem;
+    text-align: center;
+    .circle-name-wrap{
+        .font-dpr(18px);
+        color: #FFFBC3;
+        .circle-name{
+            font-weight: 600;
+        }
+    }
+    .nojoin-name-wrap{
+        margin-top: @base*10rem;
+        .font-dpr(18px);
+        color: #FFFBC3;
+    }
+    .nojoin-action-wrap{
+        margin-top: @base*150rem;
+        .join-action{
+            .border-radius(@base*8rem);
+            .btn-border(@base*280rem,@base*70rem,18px,transparent,#FFFBC3,#FFFBC3);
+            .font-dpr(18px);
+        }
+    }
+}
+
+.lottery-nojoin-wrap{
+    margin-top: @base*400rem;
+    text-align: center;
+    .circle-name-wrap{
+        .font-dpr(18px);
+        color: #FFFBC3;
+        .circle-name{
+            font-weight: 600;
+        }
+    }
+}
+
+.lottery-error-wrap{
+    margin-top: @base*400rem;
+    text-align: center;
+    .error-wrap{
+        .font-dpr(18px);
+        color: #FFFBC3;
+    }
+}
