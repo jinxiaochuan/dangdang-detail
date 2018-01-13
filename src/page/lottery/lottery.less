@@ -2,7 +2,7 @@
 
 @base:1/75;
 
-body,html{
+body{
   padding:0;
   margin:0;
   background: url('~assets/bg_lottery.png') no-repeat;
@@ -15,6 +15,7 @@ body,html{
 }
 
 .lottery-join-wrap{
+    padding: 0 @base*50rem;
     margin-top: @base*400rem;
     text-align: center;
     .circle-name-wrap{
@@ -33,6 +34,7 @@ body,html{
 }
 
 .lottery-nojoin-wrap{
+    padding: 0 @base*50rem;
     margin-top: @base*400rem;
     text-align: center;
     .circle-name-wrap{
@@ -57,7 +59,8 @@ body,html{
     }
 }
 
-.lottery-nojoin-wrap{
+.lottery-nostart-wrap{
+    padding: 0 @base*50rem;
     margin-top: @base*400rem;
     text-align: center;
     .circle-name-wrap{
@@ -70,6 +73,7 @@ body,html{
 }
 
 .lottery-error-wrap{
+    padding: 0 @base*50rem;
     margin-top: @base*400rem;
     text-align: center;
     .error-wrap{
