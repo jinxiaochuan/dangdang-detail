@@ -72,18 +72,18 @@
             <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
             {% if data.articleInfo.isOwner == '1' && data.isAdminIdentity == '1' %}
             {% if data.articleInfo.showAccess == 1 %}
-            <a class="show-access" href="javascript:void (0)"><i class="member-part"></i></a>
+            <a class="show-access" href="javascript:void(0)"><i class="member-part"></i></a>
             {% elseif data.articleInfo.showAccess == 2 %}
-            <a class="show-access" href="javascript:void (0)"><i class="member-join"></i></a>
+            <a class="show-access" href="javascript:void(0)"><i class="member-join"></i></a>
             {% elseif data.articleInfo.showAccess == 3 %}
-            <a class="show-access" href="javascript:void (0)"><i class="member-part"></i></a>
+            <a class="show-access" href="javascript:void(0)"><i class="member-part"></i></a>
             {% else %}
-            <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
+            <a class="show-access" href="javascript:void(0)"><i class="member"></i></a>
             {% endif %}
             {% endif %}
         </span>
         {% if data.articleInfo.isCanComment == 1 %}
-        <a class="comment-wrap" href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{% if data.webShowInfo.commentCount != 0 %}{{ data.webShowInfo.commentCount }}{% endif %}</span></a>
+        <a class="comment-wrap" href="javascript:void(0)"><i class="comment"></i><span class="comment-num">{% if data.webShowInfo.commentCount != 0 %}{{ data.webShowInfo.commentCount }}{% endif %}</span></a>
         {% endif %}
     </div>
     {% if data.articleInfo.openDonate == '1' %}
@@ -98,7 +98,7 @@
     </div>
     {% else %}
     <div class="circle-donate-wrap">
-        <a class="donate-btn" href="javascript:void (0)"><span>捐赠</span></a>
+        <a class="donate-btn" href="javascript:void(0)"><span>捐赠</span></a>
     </div>
     {% endif %}
     {% endif %}

@@ -55,7 +55,7 @@
     </div>
     <div class="comment-outer-wrap">
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
-        <a class="comment-wrap" href="javascript:void (0)"><i class="comment"></i><span class="comment-num">{% if data.newsDetail.commentAmount != 0 %}{{ data.newsDetail.commentAmount }}{% endif %}</span></a>
+        <a class="comment-wrap" href="javascript:void(0)"><i class="comment"></i><span class="comment-num">{% if data.newsDetail.commentAmount != 0 %}{{ data.newsDetail.commentAmount }}{% endif %}</span></a>
     </div>
     {% if data.recommendNews.length %}
     <div class="split-mark">

@@ -49,11 +49,11 @@
     <span class="publish-time">{{ data.activityInfo.formatCreateTime }}</span>
     {% if data.activityInfo.isOwner == '1' %}
     {% if data.activityInfo.showAccess == 1 %}
-    <a class="show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
+    <a class="show-access" href="javascript:void(0)"><i class="only-friend"></i></a>
     {% elseif data.activityInfo.showAccess == 2 || data.activityInfo.showAccess == 3 %}
-    <a class="show-access" href="javascript:void (0)"><i class="part"></i></a>
+    <a class="show-access" href="javascript:void(0)"><i class="part"></i></a>
     {% else %}
-    <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
+    <a class="show-access" href="javascript:void(0)"><i class="member"></i></a>
     {% endif %}
     {% endif %}
 </div>
@@ -73,7 +73,7 @@
     {% if data.activityInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>报名</span></a>
     {% else %}
-    <a class="communicate-btn" href="javascript:void (0)"><span>留言</span></a>
+    <a class="communicate-btn" href="javascript:void(0)"><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}

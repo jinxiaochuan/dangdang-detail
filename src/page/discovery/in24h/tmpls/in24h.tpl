@@ -13,7 +13,7 @@
     </div>
     <div class="info-item">
         <span class="label-name label-name-location">地点：</span>
-        <span class="label-detail label-detail-in24h"><a class="in24-address" href="javascript:void (0)">{{ (data.in24hInfo.webInfo.activityLocation|json_parse).name }}</a> <span class="distance">{{ data.in24hInfo.formatDistance }}</span></span>
+        <span class="label-detail label-detail-in24h"><a class="in24-address" href="javascript:void(0)">{{ (data.in24hInfo.webInfo.activityLocation|json_parse).name }}</a> <span class="distance">{{ data.in24hInfo.formatDistance }}</span></span>
     </div>
 </div>
 <div class="common-title-wrap">
@@ -48,11 +48,11 @@
     <span class="publish-time">{{ data.in24hInfo.formatCreateTime }}</span>
     {% if data.in24hInfo.isOwner == '1' %}
     {% if data.in24hInfo.showAccess == 1 %}
-    <a class="show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
+    <a class="show-access" href="javascript:void(0)"><i class="only-friend"></i></a>
     {% elseif data.in24hInfo.showAccess == 2 || data.in24hInfo.showAccess == 3 %}
-    <a class="show-access" href="javascript:void (0)"><i class="part"></i></a>
+    <a class="show-access" href="javascript:void(0)"><i class="part"></i></a>
     {% else %}
-    <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
+    <a class="show-access" href="javascript:void(0)"><i class="member"></i></a>
     {% endif %}
     {% endif %}
 </div>
@@ -72,7 +72,7 @@
     {% if data.in24hInfo.applyStatus == -1 %}
     <a class="sign-btn {% if data.in24hInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>报名</span></a>
     {% else %}
-    <a class="communicate-btn" href="javascript:void (0)"><span>留言</span></a>
+    <a class="communicate-btn" href="javascript:void(0)"><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}

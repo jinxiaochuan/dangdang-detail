@@ -49,11 +49,11 @@
     <span class="publish-time">{{ data.formatCreateTime }}</span>
     {% if data.isOwner == '1' %}
     {% if data.showAccess == 1 %}
-    <a class="show-access" href="javascript:void (0)"><i class="only-friend"></i></a>
+    <a class="show-access" href="javascript:void(0)"><i class="only-friend"></i></a>
     {% elseif data.showAccess == 2 || data.showAccess == 3 %}
-    <a class="show-access" href="javascript:void (0)"><i class="part"></i></a>
+    <a class="show-access" href="javascript:void(0)"><i class="part"></i></a>
     {% else %}
-    <a class="show-access" href="javascript:void (0)"><i class="member"></i></a>
+    <a class="show-access" href="javascript:void(0)"><i class="member"></i></a>
     {% endif %}
     {% endif %}
 </div>
@@ -73,7 +73,7 @@
     {% if data.applyStatus == -1 %}
     <a class="sign-btn {% if data.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>发意向</span></a>
     {% else %}
-    <a class="communicate-btn" href="javascript:void (0)"><span>留言</span></a>
+    <a class="communicate-btn" href="javascript:void(0)"><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}
