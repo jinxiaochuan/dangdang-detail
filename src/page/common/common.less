@@ -38,14 +38,16 @@
   .app-btn{
     margin: @base*26rem 0;
     float: right;
-    width: @base*170rem;
-    height: @base*60rem;
-    line-height: @base*60rem;
-    text-align: center;
-    border: 1px solid #007AFF;
     .border-radius(@base*100rem);
+    .btn(@base*170rem,@base*60rem,14px,#007AFF,#FFFFFF);
     .font-dpr(14px);
-    color: #007AFF;
+    background-image: linear-gradient(-90deg, #FB5E0A 0%, #F6730A 100%);
+    &:active{
+        background-image: linear-gradient(-90deg, #E65202 0%, #E56500 100%);
+        span{
+            opacity: .6;
+        }
+    }
   }
 }
 
@@ -69,9 +71,6 @@
   .common-code{
     margin: @base*45rem 0;
     .code{
-      // float: left;
-      // width: @base*210rem;
-      // height: @base*210rem;
       width: 100%;
     }
     .common-follow{
@@ -217,8 +216,6 @@
             word-break: normal;
             word-wrap: break-word;
             &.label-detail-in24h{
-                // .flex();
-                // .justify-content(space-between);
                 color: #737373;
                 a{
                     .box-sizing();
@@ -340,8 +337,6 @@
         audio{
             display: block;
             width: 100%!important;
-            //height: @base*100rem!important;
-            //margin-top: @base*20rem;
         }
         blockquote{
             display: block;
@@ -593,8 +588,6 @@
         audio{
             display: block;
             width: 100%!important;
-            // height: @base*100rem!important;
-            //margin-top: @base*20rem;
         }
         blockquote{
             display: block;
@@ -776,8 +769,6 @@
             audio{
                 display: block;
                 width: 100%!important;
-                // height: @base*100rem!important;
-                //margin-top: @base*20rem;
             }
             blockquote{
                 display: block;
