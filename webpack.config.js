@@ -61,10 +61,21 @@ var webpackLoaders=[];
 
 webpackLoaders=webpackLoaders.concat(loaders);
 
-var AppLoaders=[{
-    test:/swig\.min\.js/i,
-    loader:'exports?window.swig'
-}];
+var AppLoaders=[
+    {
+        test:/swig\.min\.js/i,
+        loader:'exports?window.swig'
+    },
+    {
+        test: /\.js$/,
+        include: [
+            path.resolve(__dirname, 'page')
+        ],
+        use: {
+            loader: 'babel-loader'
+        }
+    }
+];
 
 webpackLoaders = webpackLoaders.concat(AppLoaders);
 
@@ -109,7 +120,8 @@ module.exports={
       alias:{
           assets:path.resolve(conf.CONFIG_BUILD.src,'assets'),
           lib:path.resolve(conf.CONFIG_BUILD.src,'lib'),
-          page:path.resolve(conf.CONFIG_BUILD.src,'page')
+          page:path.resolve(conf.CONFIG_BUILD.src,'page'),
+          'vue$': 'vue/dist/vue.js'
       }
     },
     module:{

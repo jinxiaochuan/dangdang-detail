@@ -1,0 +1,52 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.lotto-preheat-wrap{
+    padding: 0 @base*36rem;
+    .preheat-title{
+        .font-dpr(24px);
+        line-height: @base*60rem;
+    }
+    .preheat-video-wrap{
+        margin: @base*60rem auto @base*30rem;
+        width: @base*678rem;
+        height: @base*386rem;
+        background: #CFCFCF;
+    }
+    .preheat-detail{
+        .font-dpr(19px);
+        line-height: @base*64rem;
+    }
+    .preheat-time{
+        margin-top: @base*90rem;
+        .font-dpr(12px);
+        color: #737373;
+    }
+    .invite-wrap{
+        width: @base*678rem;
+        height: @base*388rem;
+        margin: @base*30rem auto @base*70rem;
+        cursor: pointer;
+        .invite-card{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: url('~assets/invite_card.png') center center no-repeat;
+            background-size: contain;
+            text-align: center;
+            .invite-code{
+                position: absolute;
+                bottom: @base*50rem;
+                width: 100%;
+                .font-dpr(15px);
+                color: #FFFFFF;
+            }
+        }
+        .invite-word{
+            padding-left: @base*35rem;
+            .font-dpr(12px);
+            color: #8B8B8B;
+        }
+    }
+}

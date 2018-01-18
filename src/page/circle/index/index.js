@@ -164,6 +164,7 @@ var CircleIndex = jsmod.util.klass({
             "publicWork": this.data.baseInfo.publicWork,
             "workAdminVisible": this.data.baseInfo.workAdminVisible,
             "publicCustom": this.data.baseInfo.publicCustom,
+            "isAudit": this.data.baseInfo.isAudit,
             "imgList": imgList
         }
 
