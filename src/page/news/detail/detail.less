@@ -54,7 +54,7 @@
           position: relative;
           width: @base*678rem;
           height: @base*386rem;
-          margin-bottom: @base*20rem;
+          margin: 0 auto @base*20rem;
           background-size: cover;
           background-repeat: no-repeat;
 
@@ -138,11 +138,6 @@
             audio{
                 display: block;
                 width: 100%!important;
-                //height: @base*100rem!important;
-                //margin-top: 0rem;
-                // padding-left: @base*50rem;
-                // background: url('~assets/music.png') left center no-repeat;
-                // background-size: @base*32rem;
             }
 
             div[data-player]{
@@ -150,13 +145,15 @@
             }
         }
         .download-link-wrap{
+            text-align: center;
             .download-link-item{
-                &:nth-child(odd){
-                    .btn-border(@base*670rem,@base*86rem,17px,#FFFFFF,#007AFF,#007AFF);
-                }
-                &:nth-child(even){
-                    .btn-border(@base*670rem,@base*86rem,17px,#007AFF,#FFFFFF,#007AFF);
-                }
+                // &:nth-child(odd){
+                //     .btn-border(@base*670rem,@base*86rem,17px,#FFFFFF,#007AFF,#007AFF);
+                // }
+                // &:nth-child(even){
+                //     .btn-border(@base*670rem,@base*86rem,17px,#007AFF,#FFFFFF,#007AFF);
+                // }
+                .btn-border(@base*670rem,@base*86rem,17px,#FFFFFF,#E65202,#E65202);
                 .font-dpr(17px);
                 margin-top: @base*40rem;
                 .border-radius(10px);
@@ -164,13 +161,15 @@
         }
 
         .local-link-wrap{
+            text-align: center;
             .local-link-item{
-                &:nth-child(odd){
-                    .btn-border(@base*670rem,@base*86rem,17px,#FFFFFF,#007AFF,#007AFF);
-                }
-                &:nth-child(even){
-                    .btn-border(@base*670rem,@base*86rem,17px,#007AFF,#FFFFFF,#007AFF);
-                }
+                // &:nth-child(odd){
+                //     .btn-border(@base*670rem,@base*86rem,17px,#FFFFFF,#007AFF,#007AFF);
+                // }
+                // &:nth-child(even){
+                //     .btn-border(@base*670rem,@base*86rem,17px,#007AFF,#FFFFFF,#007AFF);
+                // }
+                .btn-border(@base*670rem,@base*86rem,17px,#FFFFFF,#E65202,#E65202);
                 .font-dpr(17px);
                 margin-top: @base*40rem;
                 .border-radius(10px);
