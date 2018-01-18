@@ -8,12 +8,13 @@ var share = require('lib/self/share.js');
 
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
-var TPL_ERROR = require('./tmpls/error.tpl');
+var TPL_NOSTART = require('./tmpls/nostart.tpl');
 var TPL_JOIN = require('./tmpls/join.tpl');
 var TPL_NOJOIN = require('./tmpls/nojoin.tpl');
-var TPL_NOSTART = require('./tmpls/nostart.tpl');
+var TPL_ERROR = require('./tmpls/error.tpl');
+var TPL_APPLY = require('./tmpls/apply.tpl');
 
-var TPL_MAP = [TPL_NOSTART,TPL_JOIN,TPL_NOJOIN,TPL_ERROR];
+var TPL_MAP = [TPL_NOSTART, TPL_JOIN, TPL_NOJOIN, TPL_ERROR, TPL_APPLY];
 
 var HREF_ORIGIN = window.location.href;
 
@@ -34,7 +35,7 @@ var Lottery = jsmod.util.klass({
 
         var data = {};
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/lottery/info?userId=200119&circleId=1623374833';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/lottery/info?userId=200119&circleId=1623374988';
         // URL_LOTTERY = 'http://dev.im-dangdang.com/ddweb/v1/circle/lottery/info';
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
@@ -62,6 +63,8 @@ var Lottery = jsmod.util.klass({
                     'circleName': json.data.circleInfo.circleName
                 }
 
+                self.circleInfo = json.data.circleInfo;
+
                 self.initBridge();
 
             }
@@ -70,8 +73,6 @@ var Lottery = jsmod.util.klass({
 
     initBridge: function(){
         var self = this;
-
-
 
         setupWebViewJavascriptBridge(function(bridge){
 
@@ -87,8 +88,12 @@ var Lottery = jsmod.util.klass({
                 });
             }
 
-            self.$container.delegate('.join-action', 'click', function(){
-                bridge.callHandler('joinCircle')
+            self.$container.delegate('.nojoin-action', 'click', function(){
+                bridge.callHandler('joinCircle',self.circleInfo,function(){})
+            })
+
+            self.$container.delegate('.join-action, .nostart-action, .apply-action', 'click', function(){
+                bridge.callHandler('goBack')
             })
 
         })
