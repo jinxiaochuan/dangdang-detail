@@ -40,6 +40,8 @@ var Lottery = jsmod.util.klass({
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
         data.circleId = jsmod.util.url.getParam(HREF_ORIGIN, 'circleId');
+        data.appVersion = jsmod.util.url.getParam(HREF_ORIGIN, 'appVersion');
+        data.platform = jsmod.util.url.getParam(HREF_ORIGIN, 'platform');
 
         $.ajax({
             url: URL_LOTTERY,
