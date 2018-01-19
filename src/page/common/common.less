@@ -416,6 +416,30 @@
           }
         }
     }
+    .icon-wrap{
+        .flex();
+    }
+    .read-wrap{
+        .flex();
+        .align-items(center);
+        margin-right: @base*30rem;
+        i{
+          display: block;
+          width: @base*35rem;
+          height: @base*35rem;
+          background-size: contain;
+          background-position: left center;
+          background-repeat: no-repeat;
+          &.read{
+              background-image: url("~assets/read_icon.png");
+          }
+        }
+        .read-num{
+            padding-left: @base*9rem;
+            .font-dpr(10px);
+            color: #737373;
+        }
+    }
 
     .comment-wrap{
         &:active{

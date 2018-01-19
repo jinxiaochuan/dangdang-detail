@@ -82,9 +82,12 @@
             {% endif %}
             {% endif %}
         </span>
-        {% if data.articleInfo.isCanComment == 1 %}
-        <a class="comment-wrap" href="javascript:void(0)"><i class="comment"></i><span class="comment-num">{% if data.webShowInfo.commentCount != 0 %}{{ data.webShowInfo.commentCount }}{% endif %}</span></a>
-        {% endif %}
+        <span class="icon-wrap">
+            <a class="read-wrap" href="javascript:void(0)"><i class="read"></i><span class="read-num">{% if data.webShowInfo.readCount != 0 %}{{ data.webShowInfo.readCount }}{% endif %}</span></a>
+            {% if data.articleInfo.isCanComment == 1 %}
+            <a class="comment-wrap" href="javascript:void(0)"><i class="comment"></i><span class="comment-num">{% if data.webShowInfo.commentCount != 0 %}{{ data.webShowInfo.commentCount }}{% endif %}</span></a>
+            {% endif %}
+        </span>
     </div>
     {% if data.articleInfo.openDonate == '1' %}
     {% if data.isAdminIdentity ==  '1' %}
