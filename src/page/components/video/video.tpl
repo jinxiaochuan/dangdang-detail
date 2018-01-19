@@ -1,6 +1,6 @@
 <div class="video-player-wrap">
     <div class="video-player">
-        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster src="http://v4.music.126.net/20180120020412/39bf3b26fb32945d63101fb4807579c5/web/cloudmusic/ICBgYWA0IDYzMCEiIDAiMA==/mv/5780003/9cf8911807c98ba7474d8d6ef5f6245e.mp4" autoplay poster="posterimage.jpg">
+        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster src="http://s1.im-dangdang.com/online/20180119/等你下课 - 周杰伦.mp4" autoplay poster="posterimage.jpg">
 
         </video>
     </div>
