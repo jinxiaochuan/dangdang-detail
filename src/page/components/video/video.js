@@ -18,6 +18,7 @@ module.exports = Vue.extend({
 
     data: function () {
         return {
+            timer: null,
             canplay: false, // 是否可以播放
             loading: true, // 是否处于加载中
             playing: false, // 是否处于播放中
@@ -35,11 +36,18 @@ module.exports = Vue.extend({
         },
 
         tapVideo () {
+            var self = this;
+            clearTimeout(this.timer)
             this.controlBar = !this.controlBar;
+            if(this.controlBar){
+                this.timer = setTimeout(function(){
+                    self.controlBar = false;
+                    clearTimeout(self.timer)
+                },2000)
+            }
         },
 
         togglePlay () {
-            console.log('togglePlay');
             if(this.$refs.videoPlayer.paused){
                 this.$refs.videoPlayer.play();
             }else {
@@ -49,6 +57,22 @@ module.exports = Vue.extend({
 
         retry () {
 
+        },
+
+        fullScreen () {
+            var de = document.documentElement;
+            if(de.requestFullscreen){
+                de.requestFullscreen()
+                return
+            }
+            if(de.mozRequestFullScreen){
+                de.mozRequestFullScreen()
+                return
+            }
+            if(de.webkitRequestFullScreen){
+                de.webkitRequestFullScreen()
+                return
+            }
         },
 
         eventListener () {

@@ -8,7 +8,7 @@
         等你下课 - 周杰伦
     </div>
     <div v-show="loading" class="video-poster">
-        <img src="http://p3.music.126.net/OFhwUU6ozSVveVsACccADw==/109951163111179433.webp?imageView&thumbnail=600x0&quality=75&tostatic=0&type=webp" alt="">
+        <img src="http://s1.im-dangdang.com/online/20180119/video_poster.jpeg" alt="">
     </div>
     <div @click="tapVideo" class="video-button">
         <div v-show="isPause" @click="videoPlay" class="video-play-ico x-iconmode-new">
@@ -37,11 +37,11 @@
                 <div class="x-progress">
                     <span class="x-playtime">{{ currentTime|formatTime }}</span>
                     <div class="x-progress-track">
-                        <span class="x-progress-play" :style="{'width': currentTime/duration * 165 + 16 + 'px'}"><i class="seekBtn"></i></span>
+                        <span class="x-progress-play" :style="{'width': duration ? currentTime/duration * 165 + 15 + 'px' : '15px'}"><i class="seekBtn"></i></span>
                     </div>
                     <span class="x-alltime">{{ duration|formatTime }}</span>
                 </div>
-                <div class="x-iconmode i_fscreen">
+                <div @click="fullScreen" class="x-iconmode i_fscreen">
 
                 </div>
             </div>
