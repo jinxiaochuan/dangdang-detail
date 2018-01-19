@@ -7,8 +7,8 @@
     <div class="video-title" :class="{'show': !playing || controlBar}">
         等你下课 - 周杰伦
     </div>
-    <div v-show="loading" class="video-poster">
-        <img src="http://s1.im-dangdang.com/online/20180119/video_poster.jpeg" alt="">
+    <div v-show="poster" class="video-poster">
+        <img src="http://s1.im-dangdang.com/online/20180120/poster.png" alt="">
     </div>
     <div @click="tapVideo" class="video-button">
         <div v-show="isPause" @click="videoPlay" class="video-play-ico x-iconmode-new">

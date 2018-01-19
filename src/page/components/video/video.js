@@ -20,7 +20,8 @@ module.exports = Vue.extend({
         return {
             timer: null,
             canplay: false, // 是否可以播放
-            loading: true, // 是否处于加载中
+            poster: true, // 是否展示封面图片
+            loading: false, // 是否处于加载中
             playing: false, // 是否处于播放中
             controlBar: false, // 是否展示控制面板
             isPause: true, // 是否处于暂停状态
@@ -42,9 +43,9 @@ module.exports = Vue.extend({
         progressMove (e) {
             clearTimeout(this.timer)
             var left = e.targetTouches[0].clientX - this.spaceX;
-            left = left > 180 ? 180 : left;
+            left = left > 180 ? 180 : (left < 15 ? 15 : left);
             this.currentTime = (left - 15) / 165 * this.duration;
-            this.$refs.videoPlayer.currentTime = this.currentTime < 0 ? 0 : this.currentTime;
+            this.$refs.videoPlayer.currentTime = this.currentTime;
         },
 
         progressEnd (e) {
@@ -104,6 +105,7 @@ module.exports = Vue.extend({
 
             // 客户端开始请求数据
             this.$refs.videoPlayer.addEventListener('loadstart', function(){
+                self.loading = true;
                 console.log('客户端开始请求数据');
             }, false)
 
@@ -137,6 +139,7 @@ module.exports = Vue.extend({
             // play()和autoplay开始播放时触发
             this.$refs.videoPlayer.addEventListener('play', function(){
                 console.log('play()和autoplay开始播放时触发');
+                self.poster = false;
                 self.isPause = false;
             }, false)
 
