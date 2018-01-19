@@ -135,6 +135,7 @@ module.exports = Vue.extend({
             // 播放中
             this.$refs.videoPlayer.addEventListener('playing', function(){
                 console.log('播放中');
+                self.playError = false;
             }, false)
 
             // 可以播放，但中途可能因为加载而暂停
