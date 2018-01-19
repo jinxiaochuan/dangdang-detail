@@ -145,7 +145,6 @@ module.exports = Vue.extend({
             // 可以播放，歌曲全部加载完毕
             this.$refs.videoPlayer.addEventListener('canplaythrough', function(e){
                 console.log('可以播放，歌曲全部加载完毕');
-                this.pause();
                 self.playError = false;
                 self.loading = false;
                 self.canplay = true;
