@@ -44,7 +44,7 @@ module.exports = Vue.extend({
             var left = e.targetTouches[0].clientX - this.spaceX;
             left = left > 180 ? 180 : left;
             this.currentTime = (left - 15) / 165 * this.duration;
-            this.$refs.videoPlayer.currentTime = this.currentTime;
+            this.$refs.videoPlayer.currentTime = this.currentTime < 0 ? 0 : this.currentTime;
         },
 
         progressEnd (e) {
