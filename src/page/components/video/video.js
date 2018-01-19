@@ -27,10 +27,34 @@ module.exports = Vue.extend({
             playError: false, // 是否播放时发生错误
             duration: '', // 总时长
             currentTime: '', // 当前时间
+            spaceX: 0, // touch处位置
         }
     },
 
     methods: {
+
+        progressStart (e) {
+            // 记录下touchstart的时间
+            this.spaceX = $(this.$refs.progressPlayEl).offset().left;
+            this.spaceX  = this.spaceX < 15 ? 15 : this.spaceX;
+        },
+
+        progressMove (e) {
+            clearTimeout(this.timer)
+            var left = e.targetTouches[0].clientX - this.spaceX;
+            left = left > 180 ? 180 : left;
+            this.currentTime = (left - 15) / 165 * this.duration;
+            this.$refs.videoPlayer.currentTime = this.currentTime;
+        },
+
+        progressEnd (e) {
+            var self = this;
+            this.timer = setTimeout(function(){
+                self.controlBar = false;
+                clearTimeout(self.timer)
+            },2500)
+        },
+
         videoPlay () {
             this.$refs.videoPlayer.play();
         },

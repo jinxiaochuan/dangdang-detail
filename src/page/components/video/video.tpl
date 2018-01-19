@@ -36,8 +36,8 @@
                 </div>
                 <div class="x-progress">
                     <span class="x-playtime">{{ currentTime|formatTime }}</span>
-                    <div class="x-progress-track">
-                        <span class="x-progress-play" :style="{'width': duration ? currentTime/duration * 165 + 15 + 'px' : '15px'}"><i class="seekBtn"></i></span>
+                    <div class="x-progress-track" ref="progressTrackEl" v-on:touchmove="progressMove" v-on:touchend="progressEnd">
+                        <span class="x-progress-play" ref="progressPlayEl" v-on:touchstart="progressStart" :style="{'width': duration ? currentTime/duration * 165 + 15 + 'px' : '15px'}"><i class="seekBtn"></i></span>
                     </div>
                     <span class="x-alltime">{{ duration|formatTime }}</span>
                 </div>
