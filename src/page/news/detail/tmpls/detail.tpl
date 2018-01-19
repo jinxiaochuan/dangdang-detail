@@ -56,7 +56,7 @@
     <div class="comment-outer-wrap">
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
         <span class="icon-wrap">
-            <!-- <a class="read-wrap" href="javascript:void(0)"><i class="read"></i><span class="read-num">{% if data.newsDetail.readAmount != 0 %}{{ data.newsDetail.readAmount }}{% endif %}</span></a> -->
+            <a class="read-wrap" href="javascript:void(0)"><i class="read"></i><span class="read-num">{% if data.newsDetail.readAmount != 0 %}{{ data.newsDetail.readAmount }}{% endif %}</span></a>
             <a class="comment-wrap" href="javascript:void(0)"><i class="comment"></i><span class="comment-num">{% if data.newsDetail.commentAmount != 0 %}{{ data.newsDetail.commentAmount }}{% endif %}</span></a>
         </span>
     </div>

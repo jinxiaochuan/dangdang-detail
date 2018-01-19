@@ -198,28 +198,18 @@
             .flex();
         }
         .read-wrap{
-            &:active{
-                i{
-                    &.read{
-                        background-image: url("~assets/comment_icon_active.png");
-                    }
-                }
-
-                .read-num{
-                    color: #ABABAB;
-                }
-            }
             .flex();
             .align-items(center);
+            margin-right: @base*30rem;
             i{
               display: block;
-              width: @base*30rem;
-              height: @base*30rem;
+              width: @base*35rem;
+              height: @base*35rem;
               background-size: contain;
               background-position: left center;
               background-repeat: no-repeat;
               &.read{
-                  background-image: url("~assets/comment_icon.png");
+                  background-image: url("~assets/read_icon.png");
               }
           }
           .read-num{
