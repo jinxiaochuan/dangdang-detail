@@ -53,6 +53,10 @@
         background: url('~assets/new_player_icons.png') no-repeat;
         background-size: 375px 100px;
     }
+    .x-iconmode{
+        background: url('~assets/youku_sprite.png');
+        background-size: 445px 375px;
+    }
     .video-button{
         width: 100%;
         height: 100%;
@@ -100,6 +104,14 @@
                 left: 0;
                 right: 0;
                 display: block;
+                .i_fscreen{
+                    width: 50px;
+                    height: 40px;
+                    background-position: -286px -46px;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
                 .i_pause,.i_play{
                     width: 55px;
                     height: 40px;
@@ -107,7 +119,7 @@
                     top: 0;
                     left: 0;
                 }
-                .i_play{
+                .i_pause{
                     background-position: 5px 5px;
                 }
 
@@ -143,6 +155,8 @@
                         margin: 8px 45px 0;
                         background: rgba(255,255,255,.5);
                         position: relative;
+                        height: 3px;
+                        border-radius: 1.5px;
                         span{
                             height: 3px;
                             border-radius: 1.5px;
@@ -162,6 +176,30 @@
                                 top: -12px;
                                 background: 0 0!important;
                                 border-radius: 100%;
+                                &::before{
+                                    content: '';
+                                    width: 5px;
+                                    height: 5px;
+                                    background: #ff4e1f;
+                                    position: absolute;
+                                    z-index: 1;
+                                    left: auto;
+                                    right: 0;
+                                    top: 50%;
+                                    margin: -3px 5px 0 0!important;
+                                    border-radius: 50%;
+                                }
+                                &::after{
+                                    content: '';
+                                    width: 15px;
+                                    height: 15px;
+                                    background: #fff;
+                                    position: absolute;
+                                    right: 0;
+                                    top: 50%;
+                                    margin: -8px 0 0 -7.5px;
+                                    border-radius: 50%;
+                                }
                             }
                         }
                     }

@@ -21,15 +21,18 @@
     <div class="x-dashboard">
         <div class="x-console-out">
             <div class="x-console">
-                <div class="x-iconmode-new x-play i_pause">
+                <div class="x-iconmode-new i_pause">
 
                 </div>
                 <div class="x-progress">
                     <span class="x-playtime">00:43</span>
                     <div class="x-progress-track">
-                        <span class="x-progress-play"><i class="seekBtn"></i></span>
+                        <span class="x-progress-play" style="width:15px;"><i class="seekBtn"></i></span>
                     </div>
                     <span class="x-alltime">01:10</span>
+                </div>
+                <div class="x-iconmode i_fscreen">
+
                 </div>
             </div>
         </div>

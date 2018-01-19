@@ -21,7 +21,7 @@ module.exports = Vue.extend({
 
     mounted: function(){
         this.$nextTick(() =>{
-            console.log('sss');
+            
         })
     }
 })
