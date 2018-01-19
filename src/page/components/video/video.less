@@ -2,6 +2,21 @@
 
 @base:1/75;
 
+@keyframes shake {
+    0% {
+        transform: rotateZ(0);
+        -webkit-transform: rotateZ(0);
+        transform-origin: 50% 50%;
+        -webkit-transform-origin: 50% 50%;
+    }
+    100% {
+        transform: rotateZ(360deg);
+        -webkit-transform: rotateZ(360deg);
+        transform-origin: 50% 50%;
+        -webkit-transform-origin: 50% 50%;
+    }
+}
+
 .video-player-wrap{
     width: 100%;
     height: 100%;
@@ -20,7 +35,6 @@
         video{
             width: 100%;
             height: 100%;
-            display: none;
             position: relative;
         }
 
@@ -83,14 +97,74 @@
         z-index: 31;
         background-position: -61px 0;
     }
-
+    .x-video-loading{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 60;
+        margin-left: -20px;
+        margin-top: -20px;
+        background: url('~assets/new_loading.png');
+        background-size: 40px 40px;
+        -webkit-animation: shake 1s linear infinite;
+        animation: shake 1s linear infinite;
+    }
+    .x-noticeshow{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,.8);
+        font-size: 10px;
+        z-index: 90;
+        span{
+            display: block;
+            color: #a8a8a8;
+            position: relative;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 34px;
+            font-size: 14px;
+        }
+        .x-errortip{
+            width: 100%;
+            height: 126px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -15px;
+            bottom: 0;
+            margin: auto 0;
+            .x-youkulogo{
+                height: 32px;
+                width: 120px;
+                margin: 5px auto;
+                background-position: -3px -278px;
+            }
+            .x-error-retry{
+                width: 90px;
+                height: 40px;
+                position: relative;
+                margin: 10px auto;
+                background-position: -11px -48px;
+            }
+        }
+    }
     .x-dashboard{
         width: 100%;
         height: 60px;
         position: absolute;
-        bottom: 0;
+        bottom: -60px;
         left: 0;
         z-index: 90;
+        transition: bottom .8s;
+
+        &.show{
+            bottom: 0px;
+        }
 
         .x-console-out{
             width: 100%;
@@ -119,10 +193,12 @@
                     top: 0;
                     left: 0;
                 }
-                .i_pause{
+                .i_play{
                     background-position: 5px 5px;
                 }
-
+                .i_pause{
+                    background-position: 5px -40px;
+                }
                 .x-progress{
                     display: block;
                     top: -7px;
