@@ -44,12 +44,18 @@
         position: relative;
         .font-dpr(14px);
         color: #bbb;
-        padding: 0 @base*20rem;
+        padding: 0 10px;
         z-index: 20;
-        line-height: @base*60rem;
-        top: 0;
+        line-height: 30px;
+        top: -30px;
         overflow: hidden;
-        height: @base*60rem;
+        height: 30px;
+        transition: top .8s;
+
+        &.show{
+            top: 0;
+        }
+
     }
 
     .video-poster{

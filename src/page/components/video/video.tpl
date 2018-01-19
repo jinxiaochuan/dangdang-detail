@@ -4,7 +4,7 @@
 
         </video>
     </div>
-    <div v-show="loading" class="video-title">
+    <div class="video-title" :class="{'show': !playing || controlBar}">
         等你下课 - 周杰伦
     </div>
     <div v-show="loading" class="video-poster">
@@ -21,7 +21,7 @@
     <div v-show="loading" class="x-video-loading">
 
     </div>
-    <div v-show="playError" class="x-noticeshow">
+    <div v-show="!playing && playError" class="x-noticeshow">
         <div class="x-errortip">
             <div class="x-youkulogo x-iconmode"></div>
             <span>视频播放失败，请重试</span>

@@ -23,7 +23,7 @@ module.exports = Vue.extend({
             loading: true, // 是否处于加载中
             playing: false, // 是否处于播放中
             controlBar: false, // 是否展示控制面板
-            isPause: false, // 是否处于暂停状态
+            isPause: true, // 是否处于暂停状态
             playError: false, // 是否播放时发生错误
             duration: '', // 总时长
             currentTime: '', // 当前时间
@@ -43,7 +43,7 @@ module.exports = Vue.extend({
                 this.timer = setTimeout(function(){
                     self.controlBar = false;
                     clearTimeout(self.timer)
-                },2000)
+                },2500)
             }
         },
 
@@ -56,7 +56,7 @@ module.exports = Vue.extend({
         },
 
         retry () {
-
+            this.$refs.videoPlayer.load();
         },
 
         fullScreen () {
@@ -120,11 +120,13 @@ module.exports = Vue.extend({
             this.$refs.videoPlayer.addEventListener('pause', function(){
                 console.log('pause()触发');
                 self.isPause = true;
+                self.playing = false;
             }, false)
 
             // 成功获取资源长度
             this.$refs.videoPlayer.addEventListener('loadedmetadata', function(){
                 console.log('成功获取资源长度');
+                self.duration = this.duration;
             }, false)
 
             // 等待数据，并非错误
@@ -132,10 +134,12 @@ module.exports = Vue.extend({
                 console.log('等待数据，并非错误');
             }, false)
 
-            // 播放中
+            // 开始回放
             this.$refs.videoPlayer.addEventListener('playing', function(){
-                console.log('播放中');
-                self.playError = false;
+                console.log('开始回放');
+                self.loading = false;
+                self.isPause = false;
+                self.playing = true;
             }, false)
 
             // 可以播放，但中途可能因为加载而暂停
@@ -147,9 +151,7 @@ module.exports = Vue.extend({
             this.$refs.videoPlayer.addEventListener('canplaythrough', function(e){
                 console.log('可以播放，歌曲全部加载完毕');
                 self.playError = false;
-                self.loading = false;
                 self.canplay = true;
-                self.duration = this.duration;
             }, false)
 
             // 播放时间改变
