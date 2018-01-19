@@ -1,14 +1,14 @@
 <div class="video-player-wrap">
     <div class="video-player">
-        <video webkit-playsinline="true" playsinline="true" preload="metadata" poster src="https://pl-ali.youku.com/playlist/m3u8?vid=XMzMyODMyNzQ2MA%3D%3D&type=mp4&ups_client_netip=3d30528a&ups_ts=1516256259&utid=D%2BOnEtZInlECAT0wUorCReJf&ccode=0501&psid=688884b34ad41c7dcd4f0b3018f35003&ups_userid=1244983415&ups_ytid=1244983415&duration=70&expire=18000&ups_key=99c5d2e2687d73523aec7cb45cc1470a" autoplay poster="posterimage.jpg">
+        <video webkit-playsinline="true" playsinline="true" preload="metadata" poster src="http://v4.music.126.net/20180120020412/39bf3b26fb32945d63101fb4807579c5/web/cloudmusic/ICBgYWA0IDYzMCEiIDAiMA==/mv/5780003/9cf8911807c98ba7474d8d6ef5f6245e.mp4" autoplay poster="posterimage.jpg">
 
         </video>
     </div>
     <div class="video-title">
-        东航海航相继宣布 飞机上可使用手机
+        等你下课 - 周杰伦
     </div>
     <div class="video-poster">
-        <img src="http://vthumb.ykimg.com/054101015A5FD44E8B324C98E6430103" alt="">
+        <img src="http://p3.music.126.net/OFhwUU6ozSVveVsACccADw==/109951163111179433.webp?imageView&thumbnail=600x0&quality=75&tostatic=0&type=webp" alt="">
     </div>
     <div class="video-button">
         <div class="video-play-ico x-iconmode-new">
