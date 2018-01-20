@@ -32,6 +32,13 @@ module.exports = Vue.extend({
         }
     },
 
+    computed: {
+        // 不同设备的进度条长度不同，须计算
+        progressBarWidth: function(){
+            return $(this.$refs.progressTrackEl).width()
+        }
+    },
+
     methods: {
 
         progressStart (e) {
@@ -43,8 +50,8 @@ module.exports = Vue.extend({
         progressMove (e) {
             clearTimeout(this.timer)
             var left = e.targetTouches[0].clientX - this.spaceX;
-            left = left > 180 ? 180 : (left < 15 ? 15 : left);
-            this.currentTime = (left - 15) / 165 * this.duration;
+            left = left > this.progressBarWidth ? this.progressBarWidth : (left < 15 ? 15 : left);
+            this.currentTime = (left - 15) / (this.progressBarWidth - 15) * this.duration;
             this.$refs.videoPlayer.currentTime = this.currentTime;
         },
 
