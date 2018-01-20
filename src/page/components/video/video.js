@@ -85,17 +85,25 @@ module.exports = Vue.extend({
         },
 
         fullScreen () {
-            var de = document.documentElement;
-            if(de.requestFullscreen){
-                de.requestFullscreen()
+            var video = this.$refs.videoPlayer;
+            if(video.requestFullscreen){
+                video.requestFullscreen()
                 return
             }
-            if(de.mozRequestFullScreen){
-                de.mozRequestFullScreen()
+            if(video.mozRequestFullScreen){
+                video.mozRequestFullScreen()
                 return
             }
-            if(de.webkitRequestFullScreen){
-                de.webkitRequestFullScreen()
+            if(video.msRequestFullscreen){
+                video.msRequestFullscreen()
+                return
+            }
+            if(video.oRequestFullscreen){
+                video.oRequestFullscreen()
+                return
+            }
+            if(video.webkitRequestFullScreen){
+                video.webkitRequestFullScreen()
                 return
             }
         },
