@@ -1,0 +1,100 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.container{
+    margin: 0;
+    padding: 0;
+}
+
+.lotto-red-envelope-wrap{
+    .envelope-top{
+        margin: 0 auto;
+        height: @base*116rem;
+        background: url('~assets/bg_redenvelope.png') center center no-repeat;
+        background-size: contain;
+    }
+    .envelope-detail{
+        .flex();
+        .flex-flow(column);
+        .justify-content(center);
+        .align-items(center);
+        .font-dpr(14px);
+        color: #333333;
+        .avatar{
+            margin-top: -@base*58rem;
+            width: @base*124rem;
+            height: @base*124rem;
+            border: @base*2rem solid #FFDFC6;
+            .border-radius(@base*8rem);
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .name{
+            margin-top: @base*20rem;
+        }
+        .num{
+            margin-top: @base*10rem;
+        }
+        .amount{
+            .amount-num{
+                .font-dpr(52px);
+            }
+        }
+        .prize{
+            margin-top: -@base*10rem;
+            .font-dpr(20px);
+            color: #666666;
+        }
+        .sponsor{
+            margin-top: @base*70rem;
+            color: #E65F3A;
+            .flex();
+            .triangle{
+                position: relative;
+                top: 5px;
+                &::before{
+                    position: absolute;
+                    left: 0;
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    background: #FFFFFF;
+                    .rotate(45deg);
+                    z-index: 5;
+                }
+                &::after{
+                    position: absolute;
+                    left: 2px;
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    background: #E65F3A;
+                    .rotate(45deg);
+                }
+            }
+        }
+    }
+    .envelope-card{
+        margin: @base*80rem auto;
+        width: @base*672rem;
+        height: @base*382rem;
+        background: url('~assets/code_bg_redenvelope.png') center center no-repeat;
+        background-size: contain;
+        text-align: center;
+        .flex();
+        .flex-flow(column);
+        .code{
+            margin-top: @base*140rem;
+            .font-dpr(30px);
+            color: #FFDBA9;
+        }
+        .word{
+            margin-top: @base*20rem;
+            .font-dpr(15px);
+            color: #FFBB96;
+        }
+    }
+}

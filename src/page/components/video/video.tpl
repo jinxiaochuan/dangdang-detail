@@ -1,6 +1,6 @@
 <div class="video-player-wrap">
     <div class="video-player">
-        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster src="http://s1.im-dangdang.com/online/20180119/等你下课 - 周杰伦.mp4" autoplay poster="posterimage.jpg">
+        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster src="http://s1.im-dangdang.com/online/20180119/等你下课 - 周杰伦.mp4" autoplay>
 
         </video>
     </div>
