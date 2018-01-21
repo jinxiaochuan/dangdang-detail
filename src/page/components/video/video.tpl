@@ -1,14 +1,14 @@
 <div class="video-player-wrap">
     <div class="video-player">
-        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster src="http://s1.im-dangdang.com/online/20180119/等你下课 - 周杰伦.mp4" autoplay>
+        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster :src="videoUrl" autoplay>
 
         </video>
     </div>
     <div class="video-title" :class="{'show': !playing || controlBar}">
-        等你下课 - 周杰伦
+        {{ videoTitle }}
     </div>
     <div v-show="poster" class="video-poster">
-        <img src="http://s1.im-dangdang.com/online/20180120/poster.png" alt="">
+        <img :src="videoPoster" alt="">
     </div>
     <div @click="tapVideo" class="video-button">
         <div v-show="isPause" @click="videoPlay" class="video-play-ico x-iconmode-new">

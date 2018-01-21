@@ -16,6 +16,8 @@ module.exports = Vue.extend({
 
     template: TPL_VIDEO,
 
+    props: ['videoUrl', 'videoPoster', 'videoTitle', 'videoDuration'],
+
     data: function () {
         return {
             timer: null,
