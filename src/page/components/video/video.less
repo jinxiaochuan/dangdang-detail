@@ -96,6 +96,16 @@
             margin: -31px auto;
             background-position: -201px 1px;
         }
+        .video-play{
+            width: 41px;
+            height: 41px;
+            position: relative;
+            left: 0;
+            top: 50%;
+            margin: -20px auto;
+            background: url('~assets/play_btn.png') center center no-repeat;
+            background-size: 41px 41px;
+        }
     }
     .video-youkulogo{
         width: 80px;
@@ -107,16 +117,16 @@
         background-position: -61px 0;
     }
     .x-video-loading{
-        width: 40px;
-        height: 40px;
+        width: 24px;
+        height: 24px;
         position: absolute;
         top: 50%;
         left: 50%;
         z-index: 60;
-        margin-left: -20px;
-        margin-top: -20px;
-        background: url('~assets/new_loading.png');
-        background-size: 40px 40px;
+        margin-left: -12px;
+        margin-top: -12px;
+        background: url('~assets/dd_video_loading.png');
+        background-size: 24px 24px;
         -webkit-animation: shake 1s linear infinite;
         animation: shake 1s linear infinite;
     }
@@ -207,6 +217,33 @@
                 }
                 .i_pause{
                     background-position: 5px -40px;
+                }
+                .video_fscreen{
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 12px;
+                    right: 14px;
+                    background-position: center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-image: url('~assets/dd_video_fscreen.png')
+                }
+                .video_play,.video_pause{
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 12px;
+                    left: 15px;
+                    background-position: center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+                .video_play{
+                    background-image: url('~assets/dd_video_play.png')
+                }
+                .video_pause{
+                    background-image: url('~assets/dd_video_pause.png')
                 }
                 .x-progress{
                     display: block;

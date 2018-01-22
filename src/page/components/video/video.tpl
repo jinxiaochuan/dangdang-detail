@@ -11,7 +11,10 @@
         <img :src="videoPoster" alt="">
     </div>
     <div @click="tapVideo" class="video-button">
-        <div v-show="isPause" @click="videoPlay" class="video-play-ico x-iconmode-new">
+        <!-- <div v-show="isPause" @click="videoPlay" class="video-play-ico x-iconmode-new">
+
+        </div> -->
+        <div v-show="isPause" @click="videoPlay" class="video-play">
 
         </div>
     </div>
@@ -31,7 +34,7 @@
     <div class="x-dashboard" :class="{'show': controlBar}">
         <div class="x-console-out">
             <div class="x-console">
-                <div @click="togglePlay" class="x-iconmode-new" :class="[{'i_play': isPause}, {'i_pause': !isPause}]">
+                <div @click="togglePlay" class="x-iconmode-new" :class="[{'video_play': isPause}, {'video_pause': !isPause}]">
 
                 </div>
                 <div class="x-progress">
@@ -41,7 +44,7 @@
                     </div>
                     <span class="x-alltime">{{ duration|formatTime }}</span>
                 </div>
-                <div @click="fullScreen" class="x-iconmode i_fscreen">
+                <div @click="fullScreen" class="x-iconmode video_fscreen">
 
                 </div>
             </div>
