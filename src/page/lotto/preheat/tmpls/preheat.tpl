@@ -10,7 +10,7 @@
     <div class="preheat-time">
         {{ activityInfo && activityInfo.formatStartTime }}
     </div>
-    <div class="invite-wrap">
+    <div v-if="hasCard" class="invite-wrap">
         <div class="invite-card">
             <div class="invite-code">我的邀请码：{{ code }}</div>
         </div>

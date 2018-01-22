@@ -33,7 +33,8 @@ new Vue({
         return {
             activityInfo: null,
             cardNum: null,
-            code: ''
+            code: '',
+            hasCard: null
         }
     },
 
@@ -65,6 +66,7 @@ new Vue({
                         self.activityInfo = json.data.activityInfo;
                         self.cardNum = json.data.cardNum;
                         self.code = json.data.code;
+                        self.hasCard = jsmod.util.url.getParam(HREF_ORIGIN,'hasCard');
                     }
                 }
             })
