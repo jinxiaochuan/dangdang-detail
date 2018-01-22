@@ -15,15 +15,15 @@
 
         </div>
     </div>
-    <div class="x-iconmode-new video-youkulogo">
+    <!-- <div class="x-iconmode-new video-youkulogo">
 
-    </div>
+    </div> -->
     <div v-show="loading" class="x-video-loading">
 
     </div>
     <div v-show="!playing && playError" class="x-noticeshow">
         <div class="x-errortip">
-            <div class="x-youkulogo x-iconmode"></div>
+            <!-- <div class="x-youkulogo x-iconmode"></div> -->
             <span>视频播放失败，请重试</span>
             <div @click="retry" class="x-error-retry x-iconmode"></div>
         </div>
