@@ -32,6 +32,7 @@ new Vue({
     data: function () {
         return {
             activityInfo: null,
+            pictureUrl: '',
             cardNum: null,
             code: '',
             hasCard: null
@@ -47,8 +48,8 @@ new Vue({
         init () {
             var self = this;
 
-            HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=19&userId=200119&shareType=11&shareId=19';
-            URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/activity/detail';
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=19&userId=200119&shareType=11&shareId=19';
+            // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/activity/detail';
 
             var data = {};
 
@@ -61,9 +62,9 @@ new Vue({
                 data: data,
                 jsonp: 'callback',
                 success: function(json){
-                    console.log(json);
                     if(json.status == 1){
                         self.activityInfo = json.data.activityInfo;
+                        self.pictureUrl = json.data.activityInfo.coverImage.pictureUrl;
                         self.cardNum = json.data.cardNum;
                         self.code = json.data.code;
                         self.hasCard = jsmod.util.url.getParam(HREF_ORIGIN,'hasCard');

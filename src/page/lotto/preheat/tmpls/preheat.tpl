@@ -3,7 +3,8 @@
         {{ activityInfo && activityInfo.title }}
     </div>
     <div class="preheat-video-wrap">
-        <video-component :video-title="activityInfo && activityInfo.title" :video-poster="activityInfo && activityInfo.coverImage && activityInfo.coverImage.pictureUrl" :video-duration="activityInfo && activityInfo.coverImage && activityInfo.coverImage.duration" :video-url="activityInfo && activityInfo.coverImage && activityInfo.coverImage.videoUrl" v-if="activityInfo && activityInfo.coverImage && activityInfo.coverImage.videoUrl"></video-component>
+        <video-component v-if="activityInfo && activityInfo.coverImage && activityInfo.coverImage.videoUrl" :video-title="activityInfo && activityInfo.title" :video-poster="activityInfo && activityInfo.coverImage && activityInfo.coverImage.pictureUrl" :video-duration="activityInfo && activityInfo.coverImage && activityInfo.coverImage.duration" :video-url="activityInfo && activityInfo.coverImage && activityInfo.coverImage.videoUrl"></video-component>
+        <div v-else class="preheat-image-wrap" v-bind:style="{backgroundImage: 'url(' + pictureUrl + ')'}"></div>
     </div>
     <div class="preheat-detail" v-html="activityInfo && activityInfo.desc">
     </div>
