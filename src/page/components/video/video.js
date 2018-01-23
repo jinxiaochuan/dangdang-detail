@@ -156,6 +156,7 @@ module.exports = Vue.extend({
             // play()和autoplay开始播放时触发
             this.$refs.videoPlayer.addEventListener('play', function(){
                 console.log('play()和autoplay开始播放时触发');
+                self.canplay = true;
                 self.poster = false;
                 self.isPause = false;
             }, false)
@@ -176,26 +177,28 @@ module.exports = Vue.extend({
             // 等待数据，并非错误
             this.$refs.videoPlayer.addEventListener('waiting', function(){
                 console.log('等待数据，并非错误');
+                self.loading = true;
             }, false)
 
             // 开始回放
             this.$refs.videoPlayer.addEventListener('playing', function(){
                 console.log('开始回放');
-                self.loading = false;
                 self.isPause = false;
                 self.playing = true;
+                self.loading = false;
             }, false)
 
             // 可以播放，但中途可能因为加载而暂停
             this.$refs.videoPlayer.addEventListener('canplay', function(){
                 console.log('可以播放，但中途可能因为加载而暂停');
+                self.loading = false;
             }, false)
 
             // 可以播放，歌曲全部加载完毕
             this.$refs.videoPlayer.addEventListener('canplaythrough', function(e){
                 console.log('可以播放，歌曲全部加载完毕');
                 self.playError = false;
-                self.canplay = true;
+                self.loading = false;
             }, false)
 
             // 播放时间改变
