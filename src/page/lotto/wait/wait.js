@@ -25,7 +25,8 @@ new Vue({
 
     data: function () {
         return {
-            cardNum: 0
+            cardNum: 0,
+            baseInfo: null
         }
     },
 
@@ -49,8 +50,28 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.cardNum = json.data.cardNum;
+                        self.baseInfo = json.data;
+                        self.initBridge();
                     }
                 }
+            })
+        },
+
+        initBridge () {
+
+            var self = this;
+
+            setupWebViewJavascriptBridge(function(bridge){
+
+                if(!window.isIOS){
+                    bridge.init(function(message, responseCallback) {});
+                }
+
+                $('.container').delegate('.wait-card, .card-num', 'click', function(){
+                    bridge.callHandler('redCard', self.baseInfo, function(){})
+                })
+
+
             })
         }
 
