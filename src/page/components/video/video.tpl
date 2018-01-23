@@ -1,8 +1,7 @@
 <div class="video-player-wrap">
     <div class="video-player">
-        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster :src="videoUrl" autoplay>
-
-        </video>
+        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster :src="videoUrl" autoplay></video>
+        <!-- <video ref="videoPlayer" v-show="canplay" preload="metadata" poster :src="videoUrl" autoplay></video> -->
     </div>
     <div class="video-title" :class="{'show': !playing || controlBar}">
         {{ videoTitle }}
@@ -40,7 +39,7 @@
                 <div class="x-progress">
                     <span class="x-playtime">{{ currentTime|formatTime }}</span>
                     <div class="x-progress-track" ref="progressTrackEl" v-on:touchmove="progressMove" v-on:touchend="progressEnd">
-                        <span class="x-progress-play" ref="progressPlayEl" v-on:touchstart="progressStart" :style="{'width': duration ? currentTime/duration * (progressBarWidth - 15) + 15 + 'px' : '15px'}"><i class="seekBtn"></i></span>
+                        <span class="x-progress-play" ref="progressPlayEl" v-on:touchstart="progressStart" :style="{'width': progressPlayElWid}"><i class="seekBtn"></i></span>
                     </div>
                     <span class="x-alltime">{{ duration|formatTime }}</span>
                 </div>

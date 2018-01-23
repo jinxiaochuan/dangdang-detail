@@ -36,9 +36,24 @@ module.exports = Vue.extend({
 
     computed: {
         // 不同设备的进度条长度不同，须计算
-        progressBarWidth: function(){
-            return $(this.$refs.progressTrackEl).width()
+        progressBarWidth: {
+            get: function () {
+              return $(this.$refs.progressTrackEl).width()
+            },
+            set: function () {
+
+            }
+        },
+
+        progressPlayElWid: {
+            get: function () {
+                return this.duration ? this.currentTime/this.duration * (this.progressBarWidth - 15) + 15 + 'px' : '15px'
+            },
+            set: function () {
+
+            }
         }
+
     },
 
     methods: {
@@ -207,6 +222,25 @@ module.exports = Vue.extend({
                 self.currentTime = this.currentTime;
             }, false)
 
+            // 横屏/竖屏监听重新计算进度条的长度
+            //判断手机横竖屏状态：
+            window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+                // 竖屏状态
+                if (window.orientation === 180 || window.orientation === 0) {
+
+                }
+                // 横屏状态
+                if (window.orientation === 90 || window.orientation === -90 ){
+
+                }
+
+                var timer = setTimeout(function(){
+                    self.progressBarWidth = $(self.$refs.progressTrackEl).width();
+                    self.progressPlayElWid = self.duration ? self.currentTime/self.duration * (self.progressBarWidth - 15) + 15 + 'px' : '15px';
+                    clearTimeout(timer)
+                },200)
+
+            }, false);
 
         }
     },
