@@ -33,7 +33,7 @@ new Vue({
         return {
             activityInfo: null,
             pictureUrl: '',
-            cardNum: null,
+            cardNum: 0,
             code: '',
             hasCard: null,
             baseInfo: null
@@ -66,8 +66,8 @@ new Vue({
                     if(json.status == 1){
                         self.activityInfo = json.data.activityInfo;
                         self.pictureUrl = json.data.activityInfo.coverImage.pictureUrl;
-                        self.cardNum = json.data.cardNum;
-                        self.code = json.data.code;
+                        self.cardNum = json.data.codeInfo.cardNum;
+                        self.code = json.data.codeInfo.code;
                         self.hasCard = jsmod.util.url.getParam(HREF_ORIGIN,'hasCard');
                         self.initBridge();
                     }
