@@ -49,7 +49,7 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=28&userId=200256&shareType=11&shareId=28';
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=19&userId=200119&shareType=11&shareId=19';
             // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/activity/detail';
 
             var data = {};

@@ -11,6 +11,14 @@ Vue.filter('formatTime', function (value) {
   return min + ':' + sec
 })
 
+// 关于播放进度条的操作须注意以下几点
+// 1. 由于不同的设备的尺寸不同，进度条的总长度也不同，所以页面初始化时须计算进度条的长度
+// 2. 播放的位置的定位可采用两种方式：1> 采用px单位，需要计算当前位置时间/总时长*总进度条长度 （横竖屏切换时存在定位不准的问题）
+//                               2> 采用百分比，需要计算当前位置时间/总时长 （强烈建议）
+// 3. 由于存在横竖屏的切换，此时会造成：总进度条长度的改变，此时需要更新播放的位置，此时问题就出现了：
+//    由于js仅仅能检测到横竖屏的切换前的瞬间，此时获取进度条的长度肯定是之前的，唯一的方式就是setTimeout，但是不同的设备切换横竖屏的过程时间长短不一；
+//    所以更新获取进度条的长度放在touchstart触发时计算即可，但是播放的位置的重新计算必须采用百分比，这样不会发生横竖屏的切换时播放位置的定位不准的情况
+
 module.exports = Vue.extend({
     name: 'videoComponent',
 
@@ -31,6 +39,7 @@ module.exports = Vue.extend({
             playError: false, // 是否播放时发生错误
             duration: '', // 总时长
             currentTime: '', // 当前时间
+            currentPercent: '0%', // 当前播放的百分比
             spaceX: 0, // touch处位置
             progressBarWidth: '' // 当前设备的进度条长度 注意: 之所以不在computed中进行设置是由于当横竖屏切换时无法重新设置该属性的值
         }
@@ -46,7 +55,7 @@ module.exports = Vue.extend({
 
     watch: {
         currentTime: function(val, oldval){
-
+            this.currentPercent = val / this.duration * 100 + '%';
         }
     },
 
@@ -55,14 +64,16 @@ module.exports = Vue.extend({
         progressStart (e) {
             // 记录下touchstart的时间
             this.spaceX = $(this.$refs.progressPlayEl).offset().left;
-            this.spaceX  = this.spaceX < 15 ? 15 : this.spaceX;
+            this.spaceX  = this.spaceX < 0 ? 0 : this.spaceX;
+            // 重新更新当前进度条的长度
+            this.initProgressBarWidth()
         },
 
         progressMove (e) {
             this.timer && clearTimeout(this.timer)
             var left = e.targetTouches[0].clientX - this.spaceX;
-            left = left > this.progressBarWidth ? this.progressBarWidth : (left < 15 ? 15 : left);
-            this.currentTime = (left - 15) / (this.progressBarWidth - 15) * this.duration;
+            left = left > this.progressBarWidth ? this.progressBarWidth : (left < 0 ? 0 : left);
+            this.currentTime = left / this.progressBarWidth * this.duration;
             this.$refs.videoPlayer.currentTime = this.currentTime;
         },
 
@@ -230,11 +241,12 @@ module.exports = Vue.extend({
 
                 }
 
-                self.progressTimer && clearTimeout(self.progressTimer);
-                self.progressTimer = setTimeout(function(){
-                    self.progressBarWidth = $(self.$refs.progressTrackEl).width();
-                    clearTimeout(self.progressTimer)
-                },1500)
+                // 当检测到横屏/竖屏切换时，需要重新计算当前进度条的长度，但是旋转过程还需要一定的时间，不同的设备旋转的时间也不相同，要重新计算长度必须延迟相当的时间以保证重新计算的长度时准确的
+                // self.progressTimer && clearTimeout(self.progressTimer);
+                // self.progressTimer = setTimeout(function(){
+                //     self.progressBarWidth = $(self.$refs.progressTrackEl).width();
+                //     clearTimeout(self.progressTimer)
+                // },1500)
 
             }, false);
 
