@@ -20,6 +20,7 @@ module.exports = Vue.extend({
 
     data: function () {
         return {
+            progressTimer: null,
             timer: null,
             canplay: false, // 是否可以播放
             poster: true, // 是否展示封面图片
@@ -31,29 +32,22 @@ module.exports = Vue.extend({
             duration: '', // 总时长
             currentTime: '', // 当前时间
             spaceX: 0, // touch处位置
+            progressBarWidth: '' // 当前设备的进度条长度 注意: 之所以不在computed中进行设置是由于当横竖屏切换时无法重新设置该属性的值
         }
     },
 
     computed: {
-        // 不同设备的进度条长度不同，须计算
-        progressBarWidth: {
-            get: function () {
-              return $(this.$refs.progressTrackEl).width()
-            },
-            set: function () {
 
-            }
-        },
-
-        progressPlayElWid: {
-            get: function () {
-                return this.duration ? this.currentTime/this.duration * (this.progressBarWidth - 15) + 15 + 'px' : '15px'
-            },
-            set: function () {
-
-            }
+        progressPlayElWid: function () {
+            return this.duration ? this.currentTime/this.duration * (this.progressBarWidth - 15) + 15 + 'px' : '15px'
         }
 
+    },
+
+    watch: {
+        currentTime: function(val, oldval){
+
+        }
     },
 
     methods: {
@@ -65,7 +59,7 @@ module.exports = Vue.extend({
         },
 
         progressMove (e) {
-            clearTimeout(this.timer)
+            this.timer && clearTimeout(this.timer)
             var left = e.targetTouches[0].clientX - this.spaceX;
             left = left > this.progressBarWidth ? this.progressBarWidth : (left < 15 ? 15 : left);
             this.currentTime = (left - 15) / (this.progressBarWidth - 15) * this.duration;
@@ -86,7 +80,7 @@ module.exports = Vue.extend({
 
         tapVideo () {
             var self = this;
-            clearTimeout(this.timer)
+            this.timer && clearTimeout(this.timer)
             this.controlBar = !this.controlBar;
             if(this.controlBar){
                 this.timer = setTimeout(function(){
@@ -130,6 +124,10 @@ module.exports = Vue.extend({
                 video.webkitRequestFullScreen()
                 return
             }
+        },
+
+        initProgressBarWidth () {
+            this.progressBarWidth = $(this.$refs.progressTrackEl).width();
         },
 
         eventListener () {
@@ -218,12 +216,10 @@ module.exports = Vue.extend({
 
             // 播放时间改变
             this.$refs.videoPlayer.addEventListener('timeupdate', function(e){
-                console.log('播放时间改变');
                 self.currentTime = this.currentTime;
             }, false)
 
             // 横屏/竖屏监听重新计算进度条的长度
-            //判断手机横竖屏状态：
             window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
                 // 竖屏状态
                 if (window.orientation === 180 || window.orientation === 0) {
@@ -234,11 +230,11 @@ module.exports = Vue.extend({
 
                 }
 
-                var timer = setTimeout(function(){
+                self.progressTimer && clearTimeout(self.progressTimer);
+                self.progressTimer = setTimeout(function(){
                     self.progressBarWidth = $(self.$refs.progressTrackEl).width();
-                    self.progressPlayElWid = self.duration ? self.currentTime/self.duration * (self.progressBarWidth - 15) + 15 + 'px' : '15px';
-                    clearTimeout(timer)
-                },200)
+                    clearTimeout(self.progressTimer)
+                },1500)
 
             }, false);
 
@@ -247,6 +243,7 @@ module.exports = Vue.extend({
 
     mounted: function(){
         this.$nextTick(() =>{
+            this.initProgressBarWidth();
             this.eventListener()
         })
     }
