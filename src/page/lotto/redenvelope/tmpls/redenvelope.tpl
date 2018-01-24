@@ -17,7 +17,7 @@
             <span v-if="record && record.materialImage" class="material-img"><img :src="record && record.materialImage" alt=""></span>
             <span class="material-prize">{{ record && record.prizeName }}</span>
         </span>
-        <a :href="record && record.openUrl" class="sponsor"><span>{{ record && record.title }}</span> <i class="triangle"></i></a>
+        <a :href="record && record.openUrl + '&source=1'" class="sponsor"><span>{{ record && record.title }}</span> <i class="triangle"></i></a>
     </div>
     <div v-if="record && record.drawImage" class="envelope-star">
         <div class="avatar-wrap">
