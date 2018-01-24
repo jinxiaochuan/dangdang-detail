@@ -49,7 +49,7 @@ new Vue({
                 jsonp: 'callback',
                 success: function(json){
                     if(json.status == 1){
-                        self.cardNum = json.data.cardNum;
+                        self.cardNum = json.data.codeInfo.cardNum;
                         self.baseInfo = json.data;
                         self.initBridge();
                     }
