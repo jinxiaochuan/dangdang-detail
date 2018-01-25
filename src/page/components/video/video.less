@@ -53,7 +53,7 @@
         top: -30px;
         overflow: hidden;
         height: 30px;
-        transition: top .8s;
+        transition: top .5s;
 
         &.show{
             top: 0;
@@ -105,6 +105,29 @@
             margin: -20px auto;
             background: url('~assets/play_btn.png') center center no-repeat;
             background-size: 41px 41px;
+        }
+        .video-pause{
+            width: 41px;
+            height: 41px;
+            position: relative;
+            left: 0;
+            top: 50%;
+            margin: -20px auto;
+            background: url('~assets/pause_btn.png') center center no-repeat;
+            background-size: 41px 41px;
+            opacity: 0;
+            transition: all .5s;
+            &.show{
+                opacity: 1;
+            }
+        }
+        .video-time{
+            position: absolute;
+            right: 10px;
+            bottom: 5px;
+            font-size: 12px;
+            color: #FFFFFF;
+            text-shadow: 0 2px 4px rgba(0,0,0,.5);
         }
     }
     .video-youkulogo{
@@ -179,7 +202,7 @@
         bottom: -60px;
         left: 0;
         z-index: 90;
-        transition: bottom .8s;
+        transition: bottom .5s;
 
         &.show{
             bottom: 0px;

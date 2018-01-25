@@ -89,6 +89,10 @@ module.exports = Vue.extend({
             this.$refs.videoPlayer.play();
         },
 
+        videoPause () {
+            this.$refs.videoPlayer.pause();
+        },
+
         tapVideo () {
             var self = this;
             this.timer && clearTimeout(this.timer)

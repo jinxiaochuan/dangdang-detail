@@ -16,6 +16,12 @@
         <div v-show="isPause" @click="videoPlay" class="video-play">
 
         </div>
+        <div v-show="controlBar && !isPause" @click="videoPause" class="video-pause" :class="{'show': controlBar && !isPause}">
+
+        </div>
+        <span v-show="poster" class="video-time">
+            {{ videoDuration|formatTime }}
+        </span>
     </div>
     <!-- <div class="x-iconmode-new video-youkulogo">
 
