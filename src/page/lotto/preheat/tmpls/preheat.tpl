@@ -4,7 +4,7 @@
     </div>
     <div class="preheat-video-wrap">
         <video-component v-if="activityInfo && activityInfo.coverImage && activityInfo.coverImage.videoUrl" :video-title="activityInfo && activityInfo.title" :video-poster="activityInfo && activityInfo.coverImage && activityInfo.coverImage.pictureUrl" :video-duration="activityInfo && activityInfo.coverImage && activityInfo.coverImage.duration" :video-url="activityInfo && activityInfo.coverImage && activityInfo.coverImage.videoUrl"></video-component>
-        <div v-else class="preheat-image-wrap" v-bind:style="{backgroundImage: 'url(' + pictureUrl + ')'}"><img :src="pictureUrl" alt=""></div>
+        <div v-else class="preheat-image-wrap" v-bind:style="{backgroundImage: 'url(' + pictureUrl + ')'}"><img :src="pictureUrl" ref="preheatCover" alt=""></div>
     </div>
     <div class="preheat-detail" ref="preheatDetail" v-html="activityInfo && activityInfo.desc">
     </div>

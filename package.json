@@ -33,13 +33,14 @@
     "cross-env": "^3.1.4"
   },
   "dependencies": {
+    "exif-js": "^2.3.0",
     "fastclick": "^1.0.6",
     "jquery": "^3.1.1",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "node-libs-browser": "^2.0.0",
     "shelljs": "^0.7.6",
-    "webpack": "^1.9.11",
-    "vue": "^2.2.6"
+    "vue": "^2.2.6",
+    "webpack": "^1.9.11"
   }
 }

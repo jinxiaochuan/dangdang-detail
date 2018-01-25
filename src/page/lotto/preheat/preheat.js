@@ -24,6 +24,8 @@ var PATH_NAME = '/ddweb/v1/ttl/activity/detail';
 
 var URL_LOTTO = PATH_ORIGIN + PATH_NAME;
 
+var EXIF = require('exif-js');
+
 new Vue({
     el: '#lotto-preheat',
 
@@ -49,6 +51,7 @@ new Vue({
         init () {
             var self = this;
 
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=42&userId=200182&shareType=11&shareId=42';
             // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=19&userId=200119&shareType=11&shareId=19';
             // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/activity/detail';
 
@@ -70,10 +73,19 @@ new Vue({
                         self.code = json.data.codeInfo.code;
                         self.hasCard = jsmod.util.url.getParam(HREF_ORIGIN,'hasCard');
                         self.initBridge();
+                        // self.activityInfo.coverImage && !self.activityInfo.coverImage.videoUrl && self.initEXIF();
                     }
                 }
             })
 
+        },
+
+        initEXIF () {
+            var self = this;
+            EXIF.getData(this.$refs.preheatCover, function(){
+                var orientation = EXIF.getTag(this, "Orientation");
+                console.log("Orientation:" + orientation); // 拍照方向
+            })
         },
 
         initBridge () {
