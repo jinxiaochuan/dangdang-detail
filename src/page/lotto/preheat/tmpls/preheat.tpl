@@ -9,7 +9,7 @@
     <div class="preheat-detail" ref="preheatDetail" v-html="activityInfo && activityInfo.desc">
     </div>
     <div class="preheat-time">
-        {{ activityInfo && activityInfo.formatStartTime }}
+        {{ activityInfo && activityInfo.formatCreateTime }}
     </div>
     <div v-if="hasCard" class="invite-wrap">
         <div class="invite-card">
