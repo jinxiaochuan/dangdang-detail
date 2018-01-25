@@ -1,34 +1,109 @@
 @import "~assets/mixin.less";
 
 @base:1/75;
+.container{
+    padding: 0;
+}
 
 .rule-wrap{
-    padding: 0 @base*37rem;
-    .font-dpr(15px);
-    color: #000000;
-    line-height: @base*46rem;
-
-    .open-sentence{
-        margin-top: @base*46rem;
+    margin-top: @base*60rem;
+    .rule-title{
+        text-align: center;
+        .title{
+            .font-dpr(18px);
+            line-height: 1;
+        }
+        .line{
+            display: inline-block;
+            width: @base*84rem;
+            height: 0;
+            border-bottom: @base*5rem solid #000000;
+        }
     }
 
-    .rule-item{
-        margin-top: @base*46rem;
-
-        p{
-            margin-top: @base*46rem;
-
-            &.rule-item-title{
-                font-weight: 700;
+    .rule-intro{
+        padding: 0 @base*70rem;
+        .intro-item{
+            margin-top: @base*90rem;
+            &.intro-item-first{
+                margin-top: @base*80rem;
+            }
+            .intro-icon{
+                float: left;
+                width: @base*120rem;
+                height: @base*120rem;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                &.time{
+                    background-image: url('~assets/rule_time.png');
+                }
+                &.rob{
+                    background-image: url('~assets/rule_rob.png');
+                }
+                &.star{
+                    background-image: url('~assets/rule_star.png');
+                }
+                &.win{
+                    background-image: url('~assets/rule_win.png');
+                }
+            }
+            .intro-content{
+                margin-left: @base*150rem;
+                span{
+                    display: block;
+                }
+                .content-title{
+                    .font-dpr(16px);
+                }
+                .content-detail{
+                    margin-top: @base*10rem;
+                    .font-dpr(14px);
+                    color: #8B8B8B;
+                }
             }
         }
-
-    }
-    .sign{
-        font-weight: 700;
-        margin-top: @base*69rem;
-        text-align: right;
     }
 
+    .rule-regular{
+        margin-top: @base*160rem;
+        padding: 0 @base*74rem 0 @base*60rem;
+        .regular-item{
+            padding: @base*32rem 0;
+            &.regular-item-first{
+                margin-top: @base*40rem;
+            }
+            &:not(:last-child){
+                .setLine('bottom', #D8D8D8);
+            }
+            span{
+                display: block;
+            }
+            .regular-title{
+                .font-dpr(16px);
+            }
+            .regular-content{
+                margin-top: @base*10rem;
+                .font-dpr(14px);
+                color: #8B8B8B;
+            }
+        }
+    }
+
+    .rule-footer{
+        padding: @base*60rem 0;
+        height: @base*400rem;
+        background: #F0F2F7;
+        text-align: center;
+        .font-dpr(12px);
+        color: #8B8B8B;
+        span{
+            display: block;
+            margin-top: @base*20rem;
+        }
+        a{
+            color: #556994;
+        }
+    }
 
 }
