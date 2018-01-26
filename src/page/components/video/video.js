@@ -118,27 +118,34 @@ module.exports = Vue.extend({
         },
 
         fullScreen () {
-            var video = this.$refs.videoPlayer;
-            if(video.requestFullscreen){
-                video.requestFullscreen()
-                return
-            }
-            if(video.mozRequestFullScreen){
-                video.mozRequestFullScreen()
-                return
-            }
-            if(video.msRequestFullscreen){
-                video.msRequestFullscreen()
-                return
-            }
-            if(video.oRequestFullscreen){
-                video.oRequestFullscreen()
-                return
-            }
-            if(video.webkitRequestFullScreen){
-                video.webkitRequestFullScreen()
-                return
-            }
+
+            // document.documentElement.requestFullScreen();
+            // screen.orientation.lock("landscape-primary");
+
+            // window.screen.lockOrientation = screen.lockOrientation ||screen.mozLockOrientation || screen.msLockOrientation;
+            // window.screen.lockOrientation(["landscape-primary","landscape-secondary"]);
+
+            // var video = this.$refs.videoPlayer;
+            // if(video.requestFullscreen){
+            //     video.requestFullscreen()
+            //     return
+            // }
+            // if(video.mozRequestFullScreen){
+            //     video.mozRequestFullScreen()
+            //     return
+            // }
+            // if(video.msRequestFullscreen){
+            //     video.msRequestFullscreen()
+            //     return
+            // }
+            // if(video.oRequestFullscreen){
+            //     video.oRequestFullscreen()
+            //     return
+            // }
+            // if(video.webkitRequestFullScreen){
+            //     video.webkitRequestFullScreen()
+            //     return
+            // }
         },
 
         initProgressBarWidth () {
