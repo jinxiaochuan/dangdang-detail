@@ -28,6 +28,7 @@ module.exports = Vue.extend({
 
     data: function () {
         return {
+            fullTimer: null,
             progressTimer: null,
             timer: null,
             canplay: false, // 是否可以播放
@@ -41,7 +42,8 @@ module.exports = Vue.extend({
             currentTime: '', // 当前时间
             currentPercent: '0%', // 当前播放的百分比
             spaceX: 0, // touch处位置
-            progressBarWidth: '' // 当前设备的进度条长度 注意: 之所以不在computed中进行设置是由于当横竖屏切换时无法重新设置该属性的值
+            progressBarWidth: '', // 当前设备的进度条长度 注意: 之所以不在computed中进行设置是由于当横竖屏切换时无法重新设置该属性的值
+            fullscreen : false
         }
     },
 
@@ -125,27 +127,70 @@ module.exports = Vue.extend({
             // window.screen.lockOrientation = screen.lockOrientation ||screen.mozLockOrientation || screen.msLockOrientation;
             // window.screen.lockOrientation(["landscape-primary","landscape-secondary"]);
 
-            var video = this.$refs.videoPlayer;
-            if(video.requestFullscreen){
-                video.requestFullscreen()
+            // var video = this.$refs.videoPlayer;
+            // if(video.requestFullscreen){
+            //     video.requestFullscreen()
+            //     return
+            // }
+            // if(video.mozRequestFullScreen){
+            //     video.mozRequestFullScreen()
+            //     return
+            // }
+            // if(video.msRequestFullscreen){
+            //     video.msRequestFullscreen()
+            //     return
+            // }
+            // if(video.oRequestFullscreen){
+            //     video.oRequestFullscreen()
+            //     return
+            // }
+            // if(video.webkitRequestFullScreen){
+            //     video.webkitRequestFullScreen()
+            //     return
+            // }
+
+            this.fullscreen = !this.fullscreen;
+            if(!this.fullscreen){
+                $('.video-player-wrap').css({
+                    'width': '100%',
+                    'height': '100%'
+                }).removeClass('landscape')
+                $('body').removeClass('full');
                 return
             }
-            if(video.mozRequestFullScreen){
-                video.mozRequestFullScreen()
-                return
+            var clientWidth = this.getClientWidth();
+            var clientHeight = this.getClientHeight();
+            $('.video-player-wrap').css({
+                'width': clientWidth,
+                'height': clientHeight
+            }).addClass('landscape')
+
+            $('body').addClass('full');
+
+        },
+
+        getClientHeight () {
+            var clientHeight = 0;
+
+            if(document.body.clientHeight && document.documentElement.clientHeight){
+                clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+            }else {
+                clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
             }
-            if(video.msRequestFullscreen){
-                video.msRequestFullscreen()
-                return
+
+            return clientHeight;
+        },
+
+        getClientWidth () {
+            var clientWidth = 0;
+
+            if(document.body.clientWidth && document.documentElement.clientWidth){
+                clientWidth = Math.min(document.body.clientWidth, document.documentElement.clientWidth);
+            }else {
+                clientWidth = Math.max(document.body.clientWidth, document.documentElement.clientWidth);
             }
-            if(video.oRequestFullscreen){
-                video.oRequestFullscreen()
-                return
-            }
-            if(video.webkitRequestFullScreen){
-                video.webkitRequestFullScreen()
-                return
-            }
+
+            return clientWidth;
         },
 
         initProgressBarWidth () {
@@ -250,6 +295,18 @@ module.exports = Vue.extend({
                 // 横屏状态
                 if (window.orientation === 90 || window.orientation === -90 ){
 
+                }
+
+                if(self.fullscreen){
+                    self.fullTimer && clearTimeout(self.fullTimer);
+                    self.fullTimer = setTimeout(function(){
+                        var clientWidth = self.getClientWidth();
+                        var clientHeight = self.getClientHeight();
+                        $('.video-player-wrap').css({
+                            'width': clientWidth,
+                            'height': clientHeight
+                        })
+                    },1000)
                 }
 
                 // 当检测到横屏/竖屏切换时，需要重新计算当前进度条的长度，但是旋转过程还需要一定的时间，不同的设备旋转的时间也不相同，要重新计算长度必须延迟相当的时间以保证重新计算的长度时准确的

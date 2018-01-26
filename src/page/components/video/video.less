@@ -17,6 +17,13 @@
     }
 }
 
+body{
+    &.full{
+        overflow: hidden;
+        background: #000;
+    }
+}
+
 .video-player-wrap{
     width: 100%;
     height: 100%;
@@ -26,6 +33,13 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
+    z-index: 1;
+    &.landscape{
+        position: fixed;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+    }
 
     .video-player{
         width: 100%;
@@ -39,8 +53,11 @@
             width: 100%;
             height: 100%;
             position: relative;
+            &::-webkit-media-controls-enclosure{
+                /*禁用播放器控制栏的样式*/
+                display: none !important;
+            }
         }
-
     }
 
     .video-title{
@@ -67,6 +84,9 @@
         position: absolute;
         top: 0;
         left: 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
         img{
             width: 100%;
             height: 100%;
@@ -250,7 +270,10 @@
                     background-position: center;
                     background-size: contain;
                     background-repeat: no-repeat;
-                    background-image: url('~assets/dd_video_fscreen.png')
+                    background-image: url('~assets/dd_video_fscreen.png');
+                    &.video_shrink{
+                        background-image: url('~assets/dd_video_shrink.png');
+                    }
                 }
                 .video_play,.video_pause{
                     width: 20px;
