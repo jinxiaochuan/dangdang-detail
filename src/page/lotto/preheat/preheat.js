@@ -73,11 +73,16 @@ new Vue({
                         self.code = json.data.codeInfo.code;
                         self.hasCard = jsmod.util.url.getParam(HREF_ORIGIN,'hasCard');
                         self.initBridge();
+                        self.initShare();
                         // self.activityInfo.coverImage && !self.activityInfo.coverImage.videoUrl && self.initEXIF();
                     }
                 }
             })
 
+        },
+
+        initShare () {
+            share();
         },
 
         initEXIF () {

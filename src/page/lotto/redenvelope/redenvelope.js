@@ -58,10 +58,15 @@ new Vue({
                     if(json.status == 1){
                         console.log(json);
                         self.record = json.data.record;
+                        self.initShare();
                     }
                 }
             })
 
+        },
+
+        initShare () {
+            share();
         }
 
     },
