@@ -28,6 +28,7 @@ module.exports = Vue.extend({
 
     data: function () {
         return {
+            videoWHTimer: null,
             fullTimer: null,
             progressTimer: null,
             timer: null,
@@ -120,7 +121,7 @@ module.exports = Vue.extend({
         },
 
         fullScreen () {
-
+            var self = this;
             // document.documentElement.requestFullScreen();
             // screen.orientation.lock("landscape-primary");
 
@@ -156,6 +157,10 @@ module.exports = Vue.extend({
                     'height': '100%'
                 }).removeClass('landscape')
                 $('body').removeClass('full');
+                this.videoWHTimer = setTimeout(function(){
+                    self.initVideoWH();
+                    clearTimeout(self.videoWHTimer);
+                }, 500)
                 return
             }
             var clientWidth = this.getClientWidth();
@@ -163,8 +168,7 @@ module.exports = Vue.extend({
             $('.video-player-wrap').css({
                 'width': clientWidth,
                 'height': clientHeight
-            }).addClass('landscape')
-
+            }).addClass('landscape');
             $('body').addClass('full');
 
         },
@@ -195,6 +199,13 @@ module.exports = Vue.extend({
 
         initProgressBarWidth () {
             this.progressBarWidth = $(this.$refs.progressTrackEl).width();
+        },
+
+        initVideoWH () {
+            $('.video-player-wrap').css({
+                'width': $('.video-player-wrap').width(),
+                'height': $('.video-player-wrap').height()
+            })
         },
 
         eventListener () {
@@ -323,6 +334,7 @@ module.exports = Vue.extend({
 
     mounted: function(){
         this.$nextTick(() =>{
+            this.initVideoWH();
             this.initProgressBarWidth();
             this.eventListener()
         })
