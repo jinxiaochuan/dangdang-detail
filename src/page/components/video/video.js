@@ -318,6 +318,11 @@ module.exports = Vue.extend({
                             'height': clientHeight
                         })
                     },1000)
+                }else {
+                    $('.video-player-wrap').css({
+                        'width': '100%',
+                        'height': '100%'
+                    })
                 }
 
                 // 当检测到横屏/竖屏切换时，需要重新计算当前进度条的长度，但是旋转过程还需要一定的时间，不同的设备旋转的时间也不相同，要重新计算长度必须延迟相当的时间以保证重新计算的长度时准确的
