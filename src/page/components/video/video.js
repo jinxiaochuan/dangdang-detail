@@ -125,27 +125,27 @@ module.exports = Vue.extend({
             // window.screen.lockOrientation = screen.lockOrientation ||screen.mozLockOrientation || screen.msLockOrientation;
             // window.screen.lockOrientation(["landscape-primary","landscape-secondary"]);
 
-            // var video = this.$refs.videoPlayer;
-            // if(video.requestFullscreen){
-            //     video.requestFullscreen()
-            //     return
-            // }
-            // if(video.mozRequestFullScreen){
-            //     video.mozRequestFullScreen()
-            //     return
-            // }
-            // if(video.msRequestFullscreen){
-            //     video.msRequestFullscreen()
-            //     return
-            // }
-            // if(video.oRequestFullscreen){
-            //     video.oRequestFullscreen()
-            //     return
-            // }
-            // if(video.webkitRequestFullScreen){
-            //     video.webkitRequestFullScreen()
-            //     return
-            // }
+            var video = this.$refs.videoPlayer;
+            if(video.requestFullscreen){
+                video.requestFullscreen()
+                return
+            }
+            if(video.mozRequestFullScreen){
+                video.mozRequestFullScreen()
+                return
+            }
+            if(video.msRequestFullscreen){
+                video.msRequestFullscreen()
+                return
+            }
+            if(video.oRequestFullscreen){
+                video.oRequestFullscreen()
+                return
+            }
+            if(video.webkitRequestFullScreen){
+                video.webkitRequestFullScreen()
+                return
+            }
         },
 
         initProgressBarWidth () {

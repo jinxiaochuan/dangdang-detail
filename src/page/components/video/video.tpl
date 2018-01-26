@@ -1,7 +1,6 @@
 <div class="video-player-wrap">
     <div class="video-player">
         <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster :src="videoUrl" autoplay></video>
-        <!-- <video ref="videoPlayer" v-show="canplay" preload="metadata" poster :src="videoUrl" autoplay></video> -->
     </div>
     <div class="video-title" :class="{'show': !playing || controlBar}">
         {{ videoTitle }}
