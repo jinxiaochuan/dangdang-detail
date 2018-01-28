@@ -72,6 +72,51 @@ var CircleIndex = jsmod.util.klass({
 
     },
 
+    initPull: function(bridge, callback){
+        var self = this;
+        // 重新请求数据
+        var data = {};
+
+        data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+        data.circleId = jsmod.util.url.getParam(HREF_ORIGIN,'circleId');
+        $.ajax({
+            url:URL_INDEX,
+            dataType:'jsonp',
+            data:data,
+            jsonp:'callback',
+            success: function(json){
+                if(json.status == 1){
+                    self.data = json.data;
+                    self.baseInfo = {
+                        "circleId": self.data.baseInfo.circleId,
+                        "circleName": self.data.baseInfo.circleName,
+                        "circleLogo": self.data.baseInfo.circleLogo,
+                        "memberType": self.data.baseInfo.memberType,
+                        "latitude": self.data.baseInfo.latitude,
+                        "longitude": self.data.baseInfo.longitude,
+                        "location": self.data.baseInfo.location,
+                        "publicSchool": self.data.baseInfo.publicSchool,
+                        "schoolAdminVisible": self.data.baseInfo.schoolAdminVisible,
+                        "publicWork": self.data.baseInfo.publicWork,
+                        "workAdminVisible": self.data.baseInfo.workAdminVisible,
+                        "publicCustom": self.data.baseInfo.publicCustom,
+                        "isAudit": self.data.baseInfo.isAudit,
+                    }
+
+                    bridge.callHandler('baseInfo',self.baseInfo,function(){})
+                    callback && callback()
+                }
+            },
+            error: function(error,errorType,errorMsg){
+                var html = new Empty({
+                    word: errorMsg,
+                }).render();
+
+                self.$container.html(html);
+            }
+        })
+    },
+
     initBridge: function(){
         var self = this;
 
@@ -85,10 +130,17 @@ var CircleIndex = jsmod.util.klass({
 
                 });
             }
-
+            // 公众圈由加入状态 -> 进入状态
             bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
-                self.$container.find('.circle-home').text('进入公众圈');
-                self.$container.find('.prompt-word').remove();
+                self.initPull(bridge, function(){
+                    self.$container.find('.circle-home').text('进入公众圈');
+                })
+            })
+            // 公众圈由进入状态 -> 加入状态
+            bridge.registerHandler('doQuitStatus', function(data, responseCallback) {
+                self.initPull(bridge, function(){
+                    self.$container.find('.circle-home').text('加入公众圈');
+                })
             })
 
             self.$container.delegate('.tap-avatar','click',function(){
