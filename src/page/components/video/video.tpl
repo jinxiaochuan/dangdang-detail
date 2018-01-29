@@ -1,12 +1,12 @@
 <div class="video-player-wrap">
     <div class="video-player">
-        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster :src="videoUrl"></video>
+        <video ref="videoPlayer" v-show="canplay" webkit-playsinline="true" playsinline="true" preload="metadata" poster :src="videoUrl" autoplay></video>
     </div>
     <div class="video-title" :class="{'show': !playing || controlBar}">
-        {{ videoTitle }}
+        <!-- {{ videoTitle }} -->
     </div>
     <div v-show="poster" class="video-poster" v-bind:style="{backgroundImage: 'url(' + videoPoster + ')'}">
-        <!-- <img :src="videoPoster" alt=""> -->
+
     </div>
     <div @click="tapVideo" class="video-button">
         <!-- <div v-show="isPause" @click="videoPlay" class="video-play-ico x-iconmode-new">
