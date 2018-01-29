@@ -103,11 +103,11 @@ new Vue({
                 }
             })
 
-            if(this.activityInfo.coverImage && !this.activityInfo.coverImage.videoUrl){
-                imgList.unshift({
-                    'url': this.pictureUrl
-                })
-            }
+            // if(this.activityInfo.coverImage && !this.activityInfo.coverImage.videoUrl){
+            //     imgList.unshift({
+            //         'url': this.pictureUrl
+            //     })
+            // }
 
             var baseInfo = {
                 "imgList": imgList
