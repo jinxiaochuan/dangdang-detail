@@ -18,7 +18,7 @@
     <span class="detail detail-account">
         <span class="account">
             {% if data.baseInfo.isV == 1 %}<i class="vip"></i>{% endif %}
-            {% if data.baseInfo.circleType == 1 %}个人{% elseif data.baseInfo.circleType == 2 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.circleName }}{% else %}企业{% endif %}{% elseif data.baseInfo.circleType == 3 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.circleName }}{% else %}组织{% endif %}{% else %}{% endif %}
+            {% if data.baseInfo.circleType == 1 %}个人{% elseif data.baseInfo.circleType == 2 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.officialName }}{% else %}企业{% endif %}{% elseif data.baseInfo.circleType == 3 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.officialName }}{% else %}组织{% endif %}{% else %}{% endif %}
         </span>
         <i class="arrow"></i>
     </span>
