@@ -15,7 +15,13 @@
 
 <div class="circle-handle circle-handle-account">
     <span class="name">帐号主体</span>
-    <span class="detail">{% if data.baseInfo.circleType == 1 %}个人{% elseif data.baseInfo.circleType == 2 %}企业{% elseif data.baseInfo.circleType == 3 %}组织{% else %}{% endif %}<i class="arrow"></i></span>
+    <span class="detail detail-account">
+        <span class="account">
+            {% if data.baseInfo.isV == 1 %}<i class="vip"></i>{% endif %}
+            {% if data.baseInfo.circleType == 1 %}个人{% elseif data.baseInfo.circleType == 2 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.circleName }}{% else %}企业{% endif %}{% elseif data.baseInfo.circleType == 3 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.circleName }}{% else %}组织{% endif %}{% else %}{% endif %}
+        </span>
+        <i class="arrow"></i>
+    </span>
 </div>
 
 {% if data.baseInfo.location != '{}' && data.baseInfo.longitude != '0.0' && data.baseInfo.latitude != '0.0' %}
