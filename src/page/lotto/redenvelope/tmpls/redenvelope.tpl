@@ -21,8 +21,8 @@
     </div>
     <div v-if="record && record.drawImage" class="envelope-star">
         <div class="avatar-wrap">
-            <div class="star avatar">
-                <img :src="record && record.drawImage" alt="">
+            <div v-for="item in JSON.parse(record.drawImage)" class="star avatar">
+                <img :src="item.picture" alt="">
             </div>
             <div class="user avatar">
                 <img :src="record && record.userImage" alt="">
