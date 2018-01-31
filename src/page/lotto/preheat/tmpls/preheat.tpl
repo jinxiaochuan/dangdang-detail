@@ -9,7 +9,8 @@
     <div class="preheat-detail" ref="preheatDetail" v-html="activityInfo && activityInfo.desc">
     </div>
     <div class="preheat-time">
-        {{ activityInfo && activityInfo.formatCreateTime }}
+        <span class="time">{{ activityInfo && activityInfo.formatCreateTime }}</span>
+        <a class="read-wrap" href="javascript:void(0)"><i class="read"></i><span v-if="activityInfo && activityInfo.formatReadAmount != 0" class="read-num">{{ activityInfo && activityInfo.formatReadAmount }}</span></a>
     </div>
     <div v-if="hasCard" class="invite-wrap">
         <div class="invite-card">

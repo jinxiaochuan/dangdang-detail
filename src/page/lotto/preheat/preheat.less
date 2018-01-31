@@ -98,10 +98,34 @@
         }
     }
     .preheat-time{
+        .flex();
+        .align-items(center);
+        .justify-content(space-between);
         padding: 0 @base*10rem;
         margin-top: @base*90rem;
         .font-dpr(12px);
         color: #737373;
+        .read-wrap{
+            .flex();
+            .align-items(center);
+            i{
+              display: block;
+              width: @base*35rem;
+              height: @base*35rem;
+              background-size: contain;
+              background-position: left center;
+              background-repeat: no-repeat;
+              &.read{
+                  background-image: url("~assets/read_icon.png");
+              }
+          }
+          .read-num{
+              padding-left: @base*9rem;
+              .font-dpr(10px);
+              color: #737373;
+              line-height: 2;
+          }
+        }
     }
     .invite-wrap{
         width: @base*698rem;
