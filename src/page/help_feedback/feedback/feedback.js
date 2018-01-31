@@ -7,6 +7,8 @@ require('lib/third/layer/mobile/layer.js');
 
 require('./feedback.less');
 
+var versionComp = require('lib/self/versionComp.js');
+
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var TPL_SUCCESS = require('./tmpls/success.tpl');
