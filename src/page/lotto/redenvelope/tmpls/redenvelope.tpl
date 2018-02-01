@@ -2,7 +2,7 @@
     <div class="envelope-top">
 
     </div>
-    <div class="envelope-detail">
+    <div v-if="record" class="envelope-detail">
         <div class="avatar">
             <img :src="record && record.userImage" alt="">
         </div>
@@ -38,7 +38,7 @@
             <span class="code">{{ record && record.code }}</span>
         </div>
     </div>
-    <div v-else class="envelope-card">
+    <div v-if="record && !record.drawImage" class="envelope-card">
         <span class="code">{{ record && record.code }}</span>
         <span class="word">我的邀请码</span>
     </div>
