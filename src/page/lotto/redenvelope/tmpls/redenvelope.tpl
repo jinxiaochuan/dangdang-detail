@@ -21,11 +21,13 @@
     </div>
     <div v-if="record && record.drawImage" class="envelope-star">
         <div class="avatar-wrap">
-            <div v-for="item in JSON.parse(record.drawImage)" class="star avatar">
-                <img :src="item.picture" alt="">
-            </div>
-            <div class="user avatar">
-                <img :src="record && record.userImage" alt="">
+            <div class="avatar-inner-wrap">
+                <div v-for="item in JSON.parse(record.drawImage)" class="star avatar">
+                    <img :src="item.picture" alt="">
+                </div>
+                <div class="user avatar">
+                    <img :src="record && record.userImage" alt="">
+                </div>
             </div>
         </div>
         <div class="envelope-word">

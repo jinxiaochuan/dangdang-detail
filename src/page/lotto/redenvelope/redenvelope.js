@@ -40,8 +40,8 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/hb/detail?winId=1&userId=200119&activityId=19'
-            // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/hb/detail'
+            // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/ttl/hb/detail?winId=1016&userId=1000371&shareType=12&shareId=1016&source=1'
+            // URL_LOTTO = 'http://app.im-dangdang.com/ddweb/v1/ttl/hb/detail'
 
             var data = {};
 

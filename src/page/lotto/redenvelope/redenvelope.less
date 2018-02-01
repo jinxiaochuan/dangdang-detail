@@ -140,9 +140,15 @@
         .avatar-wrap{
             .flex();
             .justify-content(center);
+            .avatar-inner-wrap{
+                width: @base*550rem;
+                .flex();
+                .justify-content(center);
+                .flex-wrap(wrap);
+            }
         }
         .avatar{
-            margin: 0 @base*5rem;
+            margin: @base*5rem;
             width: @base*100rem;
             height: @base*100rem;
             .border-radius(50%);
@@ -164,7 +170,7 @@
             }
         }
         .envelope-word{
-            padding: @base*20rem @base*40rem @base*15rem;
+            padding: @base*15rem @base*40rem;
             .font-dpr(17px);
             color: #FFECD2;
             text-align: center;
