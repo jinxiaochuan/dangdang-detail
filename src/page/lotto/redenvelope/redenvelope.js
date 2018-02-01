@@ -56,13 +56,17 @@ new Vue({
                 jsonp: 'callback',
                 success: function(json){
                     if(json.status == 1){
-                        console.log(json);
                         self.record = json.data.record;
+                        self.initTitle();
                         self.initShare();
                     }
                 }
             })
 
+        },
+
+        initTitle () {
+            document.title = this.record.title
         },
 
         initShare () {
