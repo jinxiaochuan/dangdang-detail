@@ -53,6 +53,7 @@ new Vue({
             // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=110&userId=956&shareType=11&shareId=110'
             // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=42&userId=200182&shareType=11&shareId=42';
             // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=19&userId=200119&shareType=11&shareId=19&hasCard=1';
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=149&userId=200234&shareType=11&shareId=149';
             // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/activity/detail';
 
             var data = {};
@@ -94,47 +95,50 @@ new Vue({
         },
 
         initBridge () {
-
             var self  = this;
-            var $imgList = $(this.activityInfo.desc).find('img');
-            var imgList = $.map($.makeArray($imgList), function(item){
-                return {
-                    'url': $(item).attr('src')
-                }
-            })
 
-            // if(this.activityInfo.coverImage && !this.activityInfo.coverImage.videoUrl){
-            //     imgList.unshift({
-            //         'url': this.pictureUrl
-            //     })
-            // }
-
-            var baseInfo = {
-                "imgList": imgList
-            }
-
-            setupWebViewJavascriptBridge(function(bridge){
-
-                if(!window.isIOS){
-                    bridge.init(function(message, responseCallback) {
-
-                    });
-                }
-
-                bridge.callHandler('baseInfo', baseInfo,function(){})
-
-                $('.container').delegate('img', 'click', function(){
-                    var url = $(this).attr('src'), index = -1;
-                    var index = imgList.indexOf({'url': $(this).attr('src')});
-                    imgList.forEach(function(item, idx){
-                        if(item.url == url){
-                            index = idx
-                            return false
-                        }
-                    })
-                    bridge.callHandler('tapEnlarge', index, function(){})
+            this.$nextTick(function () {
+                //dom已更新
+                var $imgList = $('.preheat-detail').find('img');
+                var imgList = $.map($.makeArray($imgList), function(item){
+                    return {
+                        'url': $(item).attr('src')
+                    }
                 })
 
+                // if(this.activityInfo.coverImage && !this.activityInfo.coverImage.videoUrl){
+                //     imgList.unshift({
+                //         'url': this.pictureUrl
+                //     })
+                // }
+
+                var baseInfo = {
+                    "imgList": imgList
+                }
+
+                setupWebViewJavascriptBridge(function(bridge){
+
+                    if(!window.isIOS){
+                        bridge.init(function(message, responseCallback) {
+
+                        });
+                    }
+
+                    bridge.callHandler('baseInfo', baseInfo,function(){})
+
+                    $('.container').delegate('img', 'click', function(){
+                        var url = $(this).attr('src'), index = -1;
+                        var index = imgList.indexOf({'url': $(this).attr('src')});
+                        imgList.forEach(function(item, idx){
+                            if(item.url == url){
+                                index = idx
+                                return false
+                            }
+                        })
+                        bridge.callHandler('tapEnlarge', index, function(){})
+                    })
+
+                })
             })
 
         }
