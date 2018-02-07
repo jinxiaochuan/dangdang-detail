@@ -43,11 +43,13 @@ new Vue({
             // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/ttl/hb/detail?winId=1016&userId=1000371&shareType=12&shareId=1016&source=1'
             // URL_LOTTO = 'http://app.im-dangdang.com/ddweb/v1/ttl/hb/detail'
 
-            var data = {};
+            var data = {}, shareUserId;
 
             data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
             data.activityId = jsmod.util.url.getParam(HREF_ORIGIN,'activityId');
             data.winId = jsmod.util.url.getParam(HREF_ORIGIN,'winId');
+            shareUserId = jsmod.util.url.getParam(HREF_ORIGIN,'shareUserId');
+            shareUserId && (data.shareUserId = shareUserId)
 
             $.ajax({
                 url: URL_LOTTO,

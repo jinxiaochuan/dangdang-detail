@@ -56,10 +56,12 @@ new Vue({
             // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=149&userId=200234&shareType=11&shareId=149';
             // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/activity/detail';
 
-            var data = {};
+            var data = {}, shareUserId;
 
             data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
             data.activityId = jsmod.util.url.getParam(HREF_ORIGIN,'activityId');
+            shareUserId = jsmod.util.url.getParam(HREF_ORIGIN,'shareUserId');
+            shareUserId && (data.shareUserId = shareUserId)
 
             $.ajax({
                 url: URL_LOTTO,

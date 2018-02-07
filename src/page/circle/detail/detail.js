@@ -2,9 +2,6 @@
 // require('lib/third/photoswipe/dist/default-skin/default-skin.css');
 // var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
 // var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
-// var PinchZoom =  require('lib/third/pinchzoom.js');
-// require('lib/third/viewerjs/viewer.css');
-// var Viewer = require('lib/third/viewerjs/viewer.js');
 require('page/common/common.js');
 
 require('./detail.less');
@@ -71,9 +68,12 @@ var CircleDetail = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
-                    console.log(json.data);
                     self.commentCount = json.data.webShowInfo.commentCount;
                     self.render(json.data, isAdminIdentity, supportHb, source);
+                    var MonitorRQT = +new Date; //数据请求到服务器数据时间点
+                    var MonitorFST = MonitorRQT - MonitorST; //首屏时间（页面出现可见元素内容）
+                    console.log('头部资源加载时间: ' + MonitorHT + 'ms');
+                    console.log('首屏时间: ' + MonitorFST + 'ms');
                     return;
                 }
 
@@ -343,14 +343,6 @@ var CircleDetail = jsmod.util.klass({
         })
 
 
-    },
-
-    initViewer: function(){
-        var viewer = new Viewer($('.detail-content').get(0),{
-            toolbar: false,
-            navbar : false,
-            movable: false
-        });
     },
 
     initPhotoSwipe: function(){
