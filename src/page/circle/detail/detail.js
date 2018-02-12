@@ -68,6 +68,7 @@ var CircleDetail = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
+                    self.initTitle();
                     self.commentCount = json.data.webShowInfo.commentCount;
                     self.render(json.data, isAdminIdentity, supportHb, source);
                     var MonitorRQT = +new Date; //数据请求到服务器数据时间点
@@ -95,6 +96,10 @@ var CircleDetail = jsmod.util.klass({
         })
 
 
+    },
+
+    initTitle: function(){
+        document.title = this.data.circleInfo.circleName;
     },
 
     render: function(data, isAdminIdentity, supportHb, source){
