@@ -35,7 +35,8 @@ new Vue({
             shareCode: '',
             shareStory: '',
             shareTitle: '',
-            code: ''
+            code: '',
+            bridge: ''
         }
     },
 
@@ -43,8 +44,8 @@ new Vue({
         init () {
             var self = this;
 
-            HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/share/activity/detail?userId=200119&shareHbId=1'
-            URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/share/activity/detail'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/share/activity/detail?userId=200119&shareHbId=1'
+            // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/share/activity/detail'
 
             var data = {};
 
@@ -69,6 +70,7 @@ new Vue({
                         self.code = json.data.codeInfo.code;
                         self.initTitle();
                         self.initShare();
+                        self.initBridge();
                     }
                 }
             })
@@ -81,7 +83,25 @@ new Vue({
 
         initShare () {
             share();
+        },
+
+        initBridge () {
+            var self = this;
+            setupWebViewJavascriptBridge(function(bridge){
+                self.bridge = bridge;
+            })
+        },
+
+        openEnvelope () {
+            if(!this.bridge) return
+            this.bridge.callHandler('openHB')
+        },
+
+        tapUser () {
+            if(!this.bridge) return
+            this.bridge.callHandler('tapUser')
         }
+
     },
 
     mounted: function () {

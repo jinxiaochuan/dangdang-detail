@@ -3,12 +3,12 @@
 
     </div>
     <div class="share-detail">
-        <div class="avatar">
+        <div @click="tapUser" class="avatar">
             <img :src="userImage" alt="">
         </div>
         <span class="name">{{ showName }}</span>
         <span class="bless">{{ shareGreeting }}</span>
-        <div class="share-envelope">
+        <div @click="openEnvelope" class="share-envelope">
             <span class="num">{{ showNo }}</span>
             <span class="share-receive">
                 <span class="code">{{ shareCode }}</span>
