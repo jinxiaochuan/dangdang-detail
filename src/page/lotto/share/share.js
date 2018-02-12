@@ -94,12 +94,12 @@ new Vue({
 
         openEnvelope () {
             if(!this.bridge) return
-            this.bridge.callHandler('openHB')
+            this.bridge.callHandler('openHB', this.data, function(){})
         },
 
         tapUser () {
             if(!this.bridge) return
-            this.bridge.callHandler('tapUser')
+            this.bridge.callHandler('tapUser', this.data, function(){})
         }
 
     },
