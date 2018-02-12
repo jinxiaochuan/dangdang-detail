@@ -36,5 +36,67 @@
         .name{
             margin-top: @base*20rem;
         }
+        .bless{
+            margin-top: @base*12rem;
+            padding: 0 @base*40rem;
+            text-align: center;
+        }
+        .share-envelope{
+            margin-top: @base*30rem;
+            padding: @base*30rem 0;
+            width: @base*392rem;
+            height: @base*524rem;
+            background: url('~assets/bg_redenvelope_share.png') center center no-repeat;
+            background-size: contain;
+            .flex();
+            .flex-flow(column);
+            .justify-content(space-between);
+            .align-items(center);
+            .num{
+                opacity: 0.6;
+                .font-dpr(26px);
+                color: #FFDBA9;
+            }
+            .share-receive{
+                .flex();
+                .flex-flow(column);
+                .align-items(center);
+                .code{
+                    .font-dpr(30px);
+                    color: #FFDBA9;
+                }
+                .word{
+                    .font-dpr(16px);
+                    color: #FFBB96;
+                }
+            }
+        }
+        .guide{
+            padding: @base*20rem 0;
+            .font-dpr(12px);
+            color: #999999;
+        }
+        .story{
+            padding: @base*20rem @base*40rem;
+            text-align: center;
+        }
+        .code-word{
+            margin-top: @base*40rem;
+            .font-dpr(12px);
+            color: #333333;
+        }
+        .share-invite{
+            width: @base*540rem;
+            height: @base*160rem;
+            background: url('~assets/bg_invitecode_share.png') center center no-repeat;
+            background-size: contain;
+            .flex();
+            .align-items(center);
+            .justify-content(center);
+            .invite-code{
+                font-size: 24px;
+                color: #FFDBA9;
+            }
+        }
     }
 }
