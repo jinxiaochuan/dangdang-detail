@@ -8,7 +8,7 @@
         </div>
         <span class="name">{{ showName }}</span>
         <span class="bless">{{ shareGreeting }}</span>
-        <div @click="openEnvelope" class="share-envelope">
+        <div @click="openEnvelope" class="share-envelope" :class="{'app-btn': source}">
             <span class="num">{{ showNo }}</span>
             <span class="share-receive">
                 <span class="code">{{ shareCode }}</span>

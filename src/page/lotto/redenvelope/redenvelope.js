@@ -81,12 +81,22 @@ new Vue({
             var self = this;
             setupWebViewJavascriptBridge(function(bridge){
                 self.bridge = bridge;
+                self.bridge.callHandler('baseInfo', this.record, function(){})
             })
         },
 
         tapUser () {
             if(!this.bridge) return
             this.bridge.callHandler('tapUser', this.record, function(){})
+        },
+
+        tapDetail () {
+            if(!this.bridge){
+                window.location.href = this.record.openUrl + '&source=1'
+                return
+            }
+
+            this.bridge.callHandler('tapDetail', this.record, function(){})
         }
 
     },

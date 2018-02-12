@@ -36,7 +36,8 @@ new Vue({
             shareStory: '',
             shareTitle: '',
             code: '',
-            bridge: ''
+            bridge: '',
+            source: null
         }
     },
 
@@ -44,8 +45,11 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/share/activity/detail?userId=200119&hbShareId=1'
+
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/share/activity/detail?userId=200119&hbShareId=1&source=1'
             // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/share/activity/detail'
+
+            this.source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 
             var data = {};
 
@@ -89,6 +93,7 @@ new Vue({
             var self = this;
             setupWebViewJavascriptBridge(function(bridge){
                 self.bridge = bridge;
+                self.bridge.callHandler('baseInfo', this.data, function(){})
             })
         },
 
