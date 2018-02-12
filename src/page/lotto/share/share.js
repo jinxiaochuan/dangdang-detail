@@ -93,7 +93,7 @@ new Vue({
             var self = this;
             setupWebViewJavascriptBridge(function(bridge){
                 self.bridge = bridge;
-                self.bridge.callHandler('baseInfo', this.data, function(){})
+                self.bridge.callHandler('baseInfo', self.data, function(){})
             })
         },
 
