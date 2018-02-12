@@ -27,6 +27,7 @@ new Vue({
 
     data: function () {
         return {
+            data: '',
             userImage: '',
             showName: '',
             shareGreeting: '',
@@ -57,6 +58,7 @@ new Vue({
                 jsonp: 'callback',
                 success: function(json){
                     if(json.status == 1){
+                        self.data = json.data;
                         self.userImage = json.data.userInfo.userImage;
                         self.showName = json.data.userInfo.showName;
                         self.shareGreeting = json.data.shareInfo.shareGreeting;
