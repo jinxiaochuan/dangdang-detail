@@ -5,6 +5,8 @@
 .container{
     margin: 0;
     padding: 0;
+    padding-bottom: @base*100rem;
+    background: #F0F2F7;
 }
 
 .lotto-share-wrap{
@@ -37,12 +39,11 @@
             margin-top: @base*20rem;
         }
         .bless{
-            margin-top: @base*12rem;
-            padding: 0 @base*40rem;
+            padding: @base*12rem @base*40rem;
             text-align: center;
         }
         .share-envelope{
-            margin-top: @base*30rem;
+            margin-top: @base*20rem;
             padding: @base*30rem 0;
             width: @base*392rem;
             height: @base*524rem;
@@ -80,22 +81,27 @@
             padding: @base*20rem @base*40rem;
             text-align: center;
         }
-        .code-word{
-            margin-top: @base*40rem;
-            .font-dpr(12px);
-            color: #333333;
-        }
-        .share-invite{
-            width: @base*540rem;
-            height: @base*160rem;
-            background: url('~assets/bg_invitecode_share.png') center center no-repeat;
-            background-size: contain;
+        .share-invite-wrap{
+            padding: @base*40rem 0;
             .flex();
+            .flex-flow(column);
             .align-items(center);
-            .justify-content(center);
-            .invite-code{
-                font-size: 24px;
-                color: #FFDBA9;
+            .code-word{
+                .font-dpr(12px);
+                color: #333333;
+            }
+            .share-invite{
+                width: @base*540rem;
+                height: @base*160rem;
+                background: url('~assets/bg_invitecode_share.png') center center no-repeat;
+                background-size: contain;
+                .flex();
+                .align-items(center);
+                .justify-content(center);
+                .invite-code{
+                    font-size: 24px;
+                    color: #FFDBA9;
+                }
             }
         }
     }

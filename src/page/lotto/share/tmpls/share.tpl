@@ -17,9 +17,11 @@
         </div>
         <span class="guide">【发现】—【红包天天乐】—【…】—【领取红包】</span>
         <span class="story">故事，这个故事是个很长的故事，从前的从前有那么一个人，他为了爱情…故事，这个故事是个很长的故事，从前的从前有那么一个人，他为了爱情…故事，这个故事是个很长的故事，从前的从前有那么一个人，他为了爱情…故事，这个故事是个很长的故事，从前的从前有那么一个人，他为了爱情…</span>
-        <span class="code-word">使用我的邀请码，均可获得一张红包卡</span>
-        <div class="share-invite">
-            <span class="invite-code">SHN889</span>
+        <div class="share-invite-wrap">
+            <span class="code-word">使用我的邀请码，均可获得一张红包卡</span>
+            <div class="share-invite">
+                <span class="invite-code">SHN889</span>
+            </div>
         </div>
     </div>
 </div>
