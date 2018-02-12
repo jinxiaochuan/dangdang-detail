@@ -177,6 +177,43 @@
                 height: 100%;
             }
         }
+        .envelope-bless-wrap{
+            margin-top: -@base*70rem;
+            padding: 0 @base*20rem;
+            .flex();
+            .flex-flow(column);
+            .justify-content(center);
+            .align-items(center);
+            .envelope-bless-top{
+                background-image: url('~assets/bg_redenvelope_bless_top.png');
+                width: @base*710rem;
+                height: @base*128rem;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: top center;
+            }
+            .envelope-bless-bottom{
+                background-image: url('~assets/bg_redenvelope_bless_bottom.png');
+                width: @base*710rem;
+                height: @base*168rem;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom center;
+            }
+            .envelope-bless-middle{
+                margin-top: -@base*20rem;
+                margin-bottom: -@base*35rem;
+                padding: 0 @base*20rem;
+                margin-left: @base*1rem;
+                width: @base*610rem;
+                background: #FFFFFF;
+                border-left: @base*10rem solid #FFD689;
+                border-right: @base*10rem solid #FFD689;
+                .font-dpr(14px);
+                color: #A42D0C;
+                z-index: 10;
+            }
+        }
         .envelope-word-wrap{
             margin-top: -@base*5rem;
             .flex();
@@ -227,7 +264,7 @@
             }
         }
         .envelope-code{
-            margin-top: @base*80rem;
+            margin-top: @base*40rem;
             .flex();
             .flex-flow(column);
             .align-items(center);

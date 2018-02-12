@@ -27,7 +27,14 @@
                 </div>
             </div>
         </div>
-        <div class="envelope-word-wrap">
+        <div class="envelope-bless-wrap">
+            <div class="envelope-bless-top"></div>
+            <div class="envelope-bless-middle">
+                {{ record && record.drawSlogan }}
+            </div>
+            <div class="envelope-bless-bottom"></div>
+        </div>
+        <!-- <div class="envelope-word-wrap">
             <div class="envelope-word">
                 <i class="dot lt"></i>
                 <i class="dot rt"></i>
@@ -35,7 +42,7 @@
                 <i class="dot lb"></i>
                 <i class="dot rb"></i>
             </div>
-        </div>
+        </div> -->
         <div class="envelope-code">
             <span class="word">使用我的邀请码，均可获得一张红包卡</span>
             <span class="code">{{ record && record.code }}</span>
