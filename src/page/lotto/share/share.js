@@ -44,13 +44,13 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/share/activity/detail?userId=200119&shareHbId=1'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/share/activity/detail?userId=200119&hbShareId=1'
             // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/share/activity/detail'
 
             var data = {};
 
             data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
-            data.shareHbId = jsmod.util.url.getParam(HREF_ORIGIN,'shareHbId');
+            data.hbShareId = jsmod.util.url.getParam(HREF_ORIGIN,'hbShareId');
 
             $.ajax({
                 url: URL_LOTTO,
