@@ -3,7 +3,7 @@
 
     </div>
     <div v-if="record" class="envelope-detail">
-        <div class="avatar">
+        <div @click="tapUser" class="avatar">
             <img :src="record && record.userImage" alt="">
         </div>
         <span class="name">{{ record && record.userName }}</span>

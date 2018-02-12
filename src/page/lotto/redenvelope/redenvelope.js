@@ -31,7 +31,8 @@ new Vue({
 
     data: function () {
         return {
-            record: null
+            record: null,
+            bridge: ''
         }
     },
 
@@ -61,6 +62,7 @@ new Vue({
                         self.record = json.data.record;
                         self.initTitle();
                         self.initShare();
+                        self.initBridge();
                     }
                 }
             })
@@ -73,6 +75,18 @@ new Vue({
 
         initShare () {
             share();
+        },
+
+        initBridge() {
+            var self = this;
+            setupWebViewJavascriptBridge(function(bridge){
+                self.bridge = bridge;
+            })
+        },
+
+        tapUser () {
+            if(!this.bridge) return
+            this.bridge.callHandler('tapUser', this.record, function(){})
         }
 
     },
