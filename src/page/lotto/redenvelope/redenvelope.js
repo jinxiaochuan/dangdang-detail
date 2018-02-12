@@ -41,7 +41,7 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/ttl/hb/detail?winId=1016&userId=1000371&shareType=12&shareId=1016&source=1'
+            // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/ttl/hb/detail?winId=7973&userId=1000034&shareType=12&shareId=7973&shareUserId=1000034&source=1'
             // URL_LOTTO = 'http://app.im-dangdang.com/ddweb/v1/ttl/hb/detail'
 
             var data = {}, shareUserId;

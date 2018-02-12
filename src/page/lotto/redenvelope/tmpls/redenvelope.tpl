@@ -47,6 +47,9 @@
             <span class="word">使用我的邀请码，均可获得一张红包卡</span>
             <span class="code">{{ record && record.code }}</span>
         </div>
+        <div class="envelope-gradient">
+
+        </div>
     </div>
     <div v-if="record && !record.drawImage" class="envelope-card">
         <span class="code">{{ record && record.code }}</span>
