@@ -22,19 +22,22 @@
     <div v-if="record && record.drawImage" class="envelope-star">
         <div class="avatar-wrap">
             <div class="avatar-inner-wrap">
-                <div v-for="item in JSON.parse(record.drawImage)" class="star avatar">
+                <div v-for="item in JSON.parse(record.drawImage)" :class="{'big': JSON.parse(record.drawImage).length < 4}" class="star avatar">
                     <img :src="item.picture" alt="">
-                </div>
-                <div class="user avatar">
-                    <img :src="record && record.userImage" alt="">
                 </div>
             </div>
         </div>
-        <div class="envelope-word">
-            {{ record && record.drawSlogan }}
+        <div class="envelope-word-wrap">
+            <div class="envelope-word">
+                <i class="dot lt"></i>
+                <i class="dot rt"></i>
+                {{ record && record.drawSlogan }}
+                <i class="dot lb"></i>
+                <i class="dot rb"></i>
+            </div>
         </div>
         <div class="envelope-code">
-            <span class="word">我的邀请码</span>
+            <span class="word">使用我的邀请码，均可获得一张红包卡</span>
             <span class="code">{{ record && record.code }}</span>
         </div>
     </div>
