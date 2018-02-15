@@ -16,12 +16,12 @@
         </div>
         <div @click="openEnvelope" class="share-envelope" :class="{'app-btn': source}">
             <span class="num">{{ showNo }}</span>
-            <span class="share-receive">
-                <span class="code">{{ shareCode }}</span>
-                <span class="word">红包领取码</span>
-            </span>
         </div>
-        <span class="guide">领取步骤：下载注册/登录铛铛APP，点击【发现】-<br>进入【红包天天乐】-点击右上角【...】-【领取红包】</span>
+        <span class="share-receive">
+            <span class="word">领取码：</span>
+            <span class="code">{{ shareCode }}</span>
+        </span>
+        <span class="guide">领取步骤：下载注册/登录铛铛APP，点击【发现】-<br>进入【红包天天乐】- 点击右上角【...】-【领取红包】<br>输入领取码 - 确定</span>
         <div class="share-code-wrap">
             <span class="story">{{ shareStory }}</span>
             <div class="share-invite-wrap">
