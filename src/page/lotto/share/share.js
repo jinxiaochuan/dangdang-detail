@@ -46,8 +46,8 @@ new Vue({
             var self = this;
 
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/share/activity/detail?userId=200119&hbShareId=1&source=1'
-            // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/share/activity/detail'
+            // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/ttl/share/activity/detail?hbShareId=36&userId=1000002&shareType=13&shareId=36&shareUserId=1000002&source=1'
+            // URL_LOTTO = 'http://app.im-dangdang.com/ddweb/v1/ttl/share/activity/detail'
 
             this.source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 
