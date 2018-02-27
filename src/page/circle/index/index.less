@@ -206,13 +206,8 @@ body{
         line-height: @base*94rem;
         text-align: center;
         color: #FFFFFF;
-        // .btn(@base*670rem,@base*94rem,17px,#007AFF,#FFFFFF);
         .font-dpr(17px);
         background-image: linear-gradient(-90deg, #FB5E0A 0%, #F6730A 100%);
-
-        &.enter-home{
-            background: #007AFF;
-        }
 
         &:active{
             background-image: linear-gradient(-90deg, #E65202 0%, #E56500 100%);
@@ -220,5 +215,16 @@ body{
                 opacity: .6;
             }
         }
+
+        &.enter-home{
+            background: #007AFF;
+            &:active{
+                background: #0070EB;
+                span{
+                    color: #99C5F7;
+                }
+            }
+        }
+
     }
 }
