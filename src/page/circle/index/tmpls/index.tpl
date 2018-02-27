@@ -50,6 +50,6 @@
 </div>
 {% else %}
 <div class="circle-handle-wrap">
-    <a class="circle-home" href="javascript:void(0)"><span>{% if data.baseInfo.memberType == 4 %}加入公众圈{% else %}进入公众圈{% endif %}</span></a>
+    <a class="circle-home {% if data.baseInfo.memberType != 4 %}enter-home{% endif %}" href="javascript:void(0)"><span>{% if data.baseInfo.memberType == 4 %}加入公众圈{% else %}进入公众圈{% endif %}</span></a>
 </div>
 {% endif %}
