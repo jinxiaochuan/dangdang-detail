@@ -11,11 +11,13 @@
         <span v-if="record && record.hbType == 0" class="cash-wrap">
             <span class="cash-amount"><span class="amount-num">{{ record && record.amount|amount_convert }}</span>元</span>
             <span class="cash-prize">{{ record && record.prizeName }}</span>
+            <i v-if="record && record.isInList == 1" class="honor-roll"></i>
         </span>
         <span v-if="record && record.hbType == 1" class="material-wrap">
             <span class="material-name">{{ record && record.materialName }}</span>
             <span v-if="record && record.materialImage" class="material-img"><img :src="record && record.materialImage" alt=""></span>
             <span class="material-prize">{{ record && record.prizeName }}</span>
+            <i v-if="record && record.isInList == 1" class="honor-roll"></i>
         </span>
         <a @click="tapDetail" href="javascript:void(0)" class="sponsor"><span class="sponsor-title">{{ record && record.title }}</span> <i class="triangle"></i></a>
     </div>
