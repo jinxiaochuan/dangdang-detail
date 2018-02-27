@@ -21,7 +21,7 @@
         </span>
         <a @click="tapDetail" href="javascript:void(0)" class="sponsor"><span class="sponsor-title">{{ record && record.title }}</span> <i class="triangle"></i></a>
     </div>
-    <div v-if="record && record.drawImage" class="envelope-star">
+    <div v-if="record && record.drawImage" class="envelope-star" v-bind:style="{backgroundImage: 'url('+ recordBg +')'}">
         <div class="avatar-wrap">
             <div class="avatar-inner-wrap">
                 <div v-for="item in JSON.parse(record.drawImage)" :class="{'big': JSON.parse(record.drawImage).length < 4}" class="star avatar">

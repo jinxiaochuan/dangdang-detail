@@ -24,6 +24,11 @@ Vue.filter('amount_convert',function(val){
     return (val/100).toFixed(2)
 })
 
+Vue.filter('bg_convert',function(val){
+    if(!val) return 'http://s1.im-dangdang.com/online/20180227/bg_share_star_dream.png'
+    return (JSON.parse(val)).picture
+})
+
 new Vue({
     el: '#lotto-red-envelope',
 
@@ -32,6 +37,7 @@ new Vue({
     data: function () {
         return {
             record: null,
+            recordBg: '',
             bridge: ''
         }
     },
@@ -43,7 +49,7 @@ new Vue({
 
             // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/ttl/hb/detail?winId=7973&userId=1000034&shareType=12&shareId=7973&shareUserId=1000034&source=1'
             // URL_LOTTO = 'http://app.im-dangdang.com/ddweb/v1/ttl/hb/detail'
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/hb/detail?winId=41643&userId=200291&shareType=12&shareId=7973&shareUserId=200291&source=1'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/hb/detail?winId=41643&userId=200291&activityId=225&shareType=12&shareId=7973&shareUserId=200291&source=1'
             // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/hb/detail'
 
             var data = {}, shareUserId;
@@ -62,6 +68,7 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.record = json.data.record;
+                        self.recordBg = json.data.record.hbBackgroundImage && JSON.parse(json.data.record.hbBackgroundImage).picture || 'http://s1.im-dangdang.com/online/20180227/bg_share_star_dream.png'
                         self.initTitle();
                         self.initShare();
                         self.initBridge();
