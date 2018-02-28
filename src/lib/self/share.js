@@ -11,20 +11,26 @@ function share () {
     var userId = jsmod.util.url.getParam(HREF_ORIGIN_, 'userId');
     var shareType = jsmod.util.url.getParam(HREF_ORIGIN_, 'shareType');
     var shareId = jsmod.util.url.getParam(HREF_ORIGIN_, 'shareId');
+    var withCode = jsmod.util.url.getParam(HREF_ORIGIN_, 'withCode');
+
+    var data = {
+        url: HREF_ORIGIN_,
+        shareType: shareType,
+        shareId: shareId,
+        userId: userId
+    }
+
+    if(withCode){
+        data.withCode = withCode
+    }
 
     $.ajax({
         url: PATH_ORIGIN + WEIXIN_HREF,
         dataType: 'jsonp',
         jsonp: 'callback',
-        data:{
-            url: HREF_ORIGIN_,
-            shareType: shareType,
-            shareId: shareId,
-            userId: userId
-        },
+        data: data,
         success: function (json) {
             if(json.status == 1){
-
                 shareWxConfig(json.data, HREF_ORIGIN_);
             }
         }
