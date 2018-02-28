@@ -1,0 +1,87 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+.container{
+    padding: 0;
+}
+
+.rule-wrap{
+    margin-top: @base*64rem;
+    .rule-invite{
+        margin: 0 auto;
+        width: @base*490rem;
+        height: @base*50rem;
+        background: url('~assets/friend_rule_invite.png') center center no-repeat;
+        background-size: contain;
+    }
+    .rule-title{
+        text-align: center;
+        .title{
+            .font-dpr(18px);
+            line-height: 1;
+        }
+        .line{
+            display: inline-block;
+            width: @base*84rem;
+            height: 0;
+            border-bottom: @base*5rem solid #000000;
+        }
+    }
+    .rule-intro{
+        padding: 0 @base*60rem;
+        .intro-item{
+            margin-top: @base*90rem;
+            &.intro-item-first{
+                margin-top: @base*40rem;
+            }
+            .intro-icon{
+                float: left;
+                width: @base*120rem;
+                height: @base*120rem;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                &.red{
+                    background-image: url('~assets/friend_rule_red.png');
+                }
+            }
+            .intro-content{
+                margin-left: @base*140rem;
+                span{
+                    display: block;
+                }
+                .content-title{
+                    padding-top: @base*30rem;
+                    .font-dpr(15px);
+                    color: #333333;
+                }
+            }
+        }
+    }
+
+    .rule-regular{
+        margin-top: @base*80rem;
+        padding: 0 @base*74rem 0 @base*60rem;
+        .regular-item{
+            padding: @base*32rem 0;
+            &.regular-item-first{
+                margin-top: @base*40rem;
+            }
+            &:not(:last-child){
+                .setLine('bottom', #D8D8D8);
+            }
+            span{
+                display: block;
+            }
+            .regular-title{
+                .font-dpr(16px);
+            }
+            .regular-content{
+                margin-top: @base*10rem;
+                .font-dpr(14px);
+                color: #8B8B8B;
+            }
+        }
+    }
+
+}
