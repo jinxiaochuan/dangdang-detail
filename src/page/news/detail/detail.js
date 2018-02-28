@@ -31,9 +31,9 @@ var News = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?userId=200119&newsId=422';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/news/v1/news/detail?newsId=361&userId=200246'
-        // URL_NEWS = 'http://dev.im-dangdang.com/ddweb/v1/news/detail';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/news/detail?newsId=1394036&userId=1000034&shareType=1&shareId=1394036&shareUserId=1000034&newsType=0&source=1'
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/news/detail?newsId=1394001&userId=1000034&shareType=1&shareId=1394001&shareUserId=1000034&newsType=0&source=1'
+        // URL_NEWS = 'http://app.im-dangdang.com/ddweb/v1/news/detail';
 
         var data = {};
 
