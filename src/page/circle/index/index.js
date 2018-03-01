@@ -133,13 +133,13 @@ var CircleIndex = jsmod.util.klass({
             // 公众圈由加入状态 -> 进入状态
             bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
                 self.initPull(bridge, function(){
-                    self.$container.find('.circle-home').text('进入公众圈');
+                    self.$container.find('.circle-home').addClass('enter-home').text('进入公众圈');
                 })
             })
             // 公众圈由进入状态 -> 加入状态
             bridge.registerHandler('doQuitStatus', function(data, responseCallback) {
                 self.initPull(bridge, function(){
-                    self.$container.find('.circle-home').text('加入公众圈');
+                    self.$container.find('.circle-home').removeClass('enter-home').text('加入公众圈');
                 })
             })
 
