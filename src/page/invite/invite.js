@@ -27,11 +27,17 @@ var Invite = jsmod.util.klass({
 
         var data = {};
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/user/invite?userId=200119';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/user/invite?userId=200119&withCode=1';
         // URL_INVITE = 'http://dev.im-dangdang.com/ddweb/v1/user/info';
+
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
         data.viewedUserId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
+        var withCode = jsmod.util.url.getParam(HREF_ORIGIN, 'withCode');
+
+        if(withCode){
+            data.withCode = withCode
+        }
 
         if(!data.userId){
             return;
@@ -44,14 +50,15 @@ var Invite = jsmod.util.klass({
             jsonp: 'callback',
             success: function(json){
                 if(json.status == 1){
+                    if(json.data.friendCode && json.data.userBonus){
+                        self.$container.find('.download-banner').addClass('friend');
+                    }
                     var html = swig.render(TPL_INVITE,{
                         locals: {
                             data: json.data
                         }
                     })
-
                     self.$container.find('.download-invite').html(html);
-
                     self.initShare();
 
                 }

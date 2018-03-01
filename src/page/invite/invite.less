@@ -8,6 +8,9 @@
 .download-wrap{
     .download-banner{
         position: relative;
+        &.friend{
+            height: @base*900rem;
+        }
         img{
             width: 100%;
         }
@@ -72,6 +75,22 @@
                     border-bottom: 1px solid #DEE0E7;
                     transform: rotate(45deg);
                     z-index: 2;
+                }
+            }
+        }
+        .invite-friend{
+            margin: @base*50rem auto;
+            width: @base*640rem;
+            height: @base*320rem;
+            background: url('~assets/invite_friend.png') center center no-repeat;
+            background-size: contain;
+            .flex();
+            .flex-flow(column);
+            span{
+                .font-dpr(14px);
+                color: #FFE1B3;
+                &.friend-code{
+                    margin-top: @base*100rem;
                 }
             }
         }
