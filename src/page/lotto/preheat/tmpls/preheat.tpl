@@ -14,8 +14,8 @@
     </div>
     <div v-if="hasCard" class="invite-wrap">
         <div class="invite-card">
-            <div class="invite-code">我的邀请码：{{ code }}</div>
+            <div class="invite-code">我的红包码：{{ code }}</div>
         </div>
-        <span class="invite-word">使用我的邀请码，一起抢大奖</span>
+        <span class="invite-word">使用我的红包码，一起抢大奖</span>
     </div>
 </div>
