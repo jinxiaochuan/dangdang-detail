@@ -19,7 +19,8 @@
   bottom: 0;
   padding: 0 @base*30rem;
   height: @base*112rem;
-  line-height: @base*112rem;
+  .flex();
+  .justify-content(space-between);
   background: #FAFAFA;
   z-index: 100;
   .logo-icon{
@@ -29,13 +30,24 @@
     background: url("~assets/logo_icon.png") no-repeat center center;
     background-size: @base*72rem  @base*72rem;
   }
-  .logo-word-icon{
-    margin: 0 @base*30rem;
-    .font-dpr(14px);
-    color: #3C3C3C;
-    line-height: @base*112rem;
-    vertical-align: middle;
+  .logo-word-wrap{
+      height: 100%;
+      .flex();
+      .flex-flow(column);
+      .justify-content(center);
+      margin-left: @base*102rem;
+      .logo-word-icon{
+          margin-top: @base*5rem;
+        .font-dpr(14px);
+        color: #3C3C3C;
+      }
+      .logo-word{
+          .font-dpr(10px);
+          color: #666666;
+          text-align: right;
+      }
   }
+
   .app-btn{
     margin: @base*26rem 0;
     float: right;
