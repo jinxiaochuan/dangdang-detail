@@ -229,7 +229,9 @@ var News = jsmod.util.klass({
   initEvents: function(){
       var self = this;
 
-      if(this.bridge) return
+      var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
+
+      if(source != 1) return
 
       this.$container.delegate('.tap-source','click',function(){
           window.location.href = self.data.newsDetail.mediaUrl + '&source=1'
