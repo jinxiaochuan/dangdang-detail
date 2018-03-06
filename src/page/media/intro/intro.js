@@ -36,13 +36,14 @@ var MediaIntro = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/media/detail?mediaId=51&userId=200148';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/media/detail?mediaId=51&userId=200148&source=1';
         // URL_MEDIA = 'http://app.im-dangdang.com/ddweb/v1/news/media/detail';
 
         var data = {};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.mediaId = jsmod.util.url.getParam(HREF_ORIGIN,'mediaId');
+        var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 
         $.ajax({
             url:URL_MEDIA,
@@ -52,7 +53,8 @@ var MediaIntro = jsmod.util.klass({
             success: function(json){
                 if(json.status == 1){
                     self.data = json.data;
-                    self.render(self.data);
+                    document.title = json.data.mediaInfo.mediaName;
+                    self.render($.extend(self.data,{'source': source}));
                     return;
                 }
 

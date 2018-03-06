@@ -9,5 +9,5 @@
     {{ data.mediaInfo.mediaDetail|safe }}
 </div>
 <div class="media-handle-wrap">
-    <a class="media-home" href="javascript:void(0)"><span>进入媒体</span></a>
+    <a class="media-home {% if data.source %}app-btn{% endif %}" href="javascript:void(0)"><span>进入媒体</span></a>
 </div>

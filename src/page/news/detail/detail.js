@@ -104,6 +104,8 @@ var News = jsmod.util.klass({
 
         this.initBridge();
 
+        this.initEvents();
+
     },
 
     initShare: function(){
@@ -150,6 +152,8 @@ var News = jsmod.util.klass({
 
       /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
       setupWebViewJavascriptBridge(function(bridge){
+
+          self.bridge = bridge;
 
           if(!window.isIOS){
               bridge.init(function(message, responseCallback) {
@@ -220,6 +224,15 @@ var News = jsmod.util.klass({
               bridge.callHandler('goLive');
           })
 
+      })
+  },
+  initEvents: function(){
+      var self = this;
+
+      if(this.bridge) return
+
+      this.$container.delegate('.tap-source','click',function(){
+          window.location.href = self.data.newsDetail.mediaUrl + '&source=1'
       })
   }
 
