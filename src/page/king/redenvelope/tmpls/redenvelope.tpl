@@ -14,7 +14,7 @@
     <div v-if="record" class="envelope-star" v-bind:style="{backgroundImage: 'url('+ recordBg +')'}">
         <div class="envelope-code">
             <span class="word">使用我的红包码，均可获得一张红包卡</span>
-            <span class="code">{{ record && record.code }}</span>
+            <span class="code">{{ record.code }}</span>
         </div>
     </div>
 </div>

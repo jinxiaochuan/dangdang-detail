@@ -16,7 +16,7 @@ var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
 
-var PATH_NAME = '/ddweb/v1/ttl/hb/detail';
+var PATH_NAME = '/ddweb/v1/ttl/hb/king';
 
 var URL_KING = PATH_ORIGIN + PATH_NAME;
 
@@ -41,13 +41,12 @@ new Vue({
         init () {
             var self = this;
 
-            HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/ttl/hb/detail?winId=10274&userId=1000034&shareType=12&shareId=10274&shareUserId=1000034&source=1'
-            URL_KING = 'http://app.im-dangdang.com/ddweb/v1/ttl/hb/detail'
+            HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/ttl/hb/king?winId=1&userId=200098&shareType=12&shareId=10274&shareUserId=200098&source=1'
+            URL_KING = 'http://dev.im-dangdang.com/ddweb/v1/ttl/hb/king'
 
             var data = {}, shareUserId;
 
             data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
-            data.activityId = jsmod.util.url.getParam(HREF_ORIGIN,'activityId');
             data.winId = jsmod.util.url.getParam(HREF_ORIGIN,'winId');
             shareUserId = jsmod.util.url.getParam(HREF_ORIGIN,'shareUserId');
             shareUserId && (data.shareUserId = shareUserId)
@@ -59,8 +58,8 @@ new Vue({
                 jsonp: 'callback',
                 success: function(json){
                     if(json.status == 1){
-                        self.record = json.data.record;
-                        self.recordBg = json.data.record.hbBackgroundImage && JSON.parse(json.data.record.hbBackgroundImage).picture || 'http://s1.im-dangdang.com/online/20180227/bg_share_star_dream.png'
+                        self.record = json.data;
+                        self.recordBg = json.data.hbBackgroundImage && JSON.parse(json.data.hbBackgroundImage).picture || 'http://s1.im-dangdang.com/online/20180227/bg_share_star_dream.png'
                         self.initShare();
                         self.initBridge();
                     }
