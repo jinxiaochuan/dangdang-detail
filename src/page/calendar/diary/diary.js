@@ -47,7 +47,8 @@ new Vue({
         return {
             diary: null,
             diaryContent: '',
-            isSameYear: false
+            isSameYear: false,
+            errorMsg: ''
         }
     },
 
@@ -74,7 +75,9 @@ new Vue({
                         self.diaryContent = trans(json.data.diary.content);
                         self.isSameYear = TimeCovert(json.data.diary.diaryTime).isSameYear;
                         self.initShare();
+                        return;
                     }
+                    self.errorMsg = json.msg;
                 }
             })
 

@@ -26,3 +26,7 @@
     </div>
 
 </div>
+
+<div v-else class="calendar-diary-error-wrap">
+    <span v-text="errorMsg"></span>
+</div>

@@ -25,4 +25,10 @@
         <p v-if="noteInfo.formatUpdateTime" class="update-time">{{ noteInfo.formatUpdateTime }}</p>
     </div>
 
+
+
+</div>
+
+<div v-else class="calendar-note-error-wrap">
+    <span v-text="errorMsg"></span>
 </div>

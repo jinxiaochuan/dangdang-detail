@@ -45,7 +45,8 @@ new Vue({
         return {
             noteInfo: null,
             noteContent: '',
-            isSameYear: false
+            isSameYear: false,
+            errorMsg: ''
         }
     },
 
@@ -53,8 +54,8 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/note?noteId=441&userId=200142&shareType=16&shareId=441&shareUserId=200142&source=1'
-            // URL_NOTE = 'http://dev.im-dangdang.com/ddweb/v1/cal/note/info'
+            // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/note?noteId=554&userId=1000079&shareType=16&shareId=554&shareUserId=1000079&source=1';
+            // URL_NOTE = 'http://app.im-dangdang.com/ddweb/v1/cal/note/info'
 
             var data = {};
 
@@ -72,7 +73,9 @@ new Vue({
                         self.noteContent = trans(json.data.noteInfo.content);
                         self.isSameYear = TimeCovert(json.data.noteInfo.createTime).isSameYear;
                         self.initShare();
+                        return;
                     }
+                    self.errorMsg = json.msg;
                 }
             })
 
