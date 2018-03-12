@@ -20,9 +20,9 @@
     </div>
 
     <div class="calendar-note-bottom">
-        <span v-if="noteInfo.formatStartTime && noteInfo.formatEndTime" class="time"><i class="time-icon"></i><span>{{ noteInfo.formatStartTime }} - {{ noteInfo.formatEndTime }}</span></span>
-        <span v-if="noteInfo.formatRemindTime" class="remind-time"><i class="remind-time-icon"></i><span>{{ noteInfo.formatRemindTime }}</span></span>
-        <span v-if="noteInfo.formatUpdateTime" class="update-time">{{ noteInfo.formatUpdateTime }}</span>
+        <p v-if="noteInfo.formatStartTime && noteInfo.formatEndTime" class="time"><span>{{ noteInfo.formatStartTime }} - {{ noteInfo.formatEndTime }}</span></p>
+        <p v-if="noteInfo.formatRemindTime" class="remind-time"><span>{{ noteInfo.formatRemindTime }}</span></p>
+        <p v-if="noteInfo.formatUpdateTime" class="update-time">{{ noteInfo.formatUpdateTime }}</p>
     </div>
 
 </div>

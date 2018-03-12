@@ -21,7 +21,7 @@
             <span class="word">领取码：</span>
             <span class="code">{{ shareCode }}</span>
         </span>
-        <span class="guide">领取步骤：下载注册/登录铛铛APP，点击【发现 】- 进入【红包天天乐】- 点击右上角【...】- 进入【红包中心】- 点击右上角【...】- 进入【领取红包】输入领取码 - 确定</span>
+        <span class="guide">领取步骤：下载注册/登录铛铛APP，点击【发现 】- 进入【红包天天乐】- 点击右上角【...】- 进入【红包中心】- 点击【领取红包】- 进入【领取红包】页输入领取码 - 确定</span>
         <div class="share-code-wrap" v-bind:style="{backgroundImage: 'url('+ shareBg +')'}">
             <span class="story">{{ shareStory }}</span>
             <div class="share-invite-wrap">

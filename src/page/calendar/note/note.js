@@ -53,7 +53,7 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://im-dangdang.com/ddweb/note?noteId=409&userId=200&shareType=16&shareId=409&shareUserId=200&source=1&supportHb=1'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/note?noteId=441&userId=200142&shareType=16&shareId=441&shareUserId=200142&source=1'
             // URL_NOTE = 'http://dev.im-dangdang.com/ddweb/v1/cal/note/info'
 
             var data = {};
