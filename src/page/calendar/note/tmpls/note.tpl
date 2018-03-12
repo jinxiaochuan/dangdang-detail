@@ -14,7 +14,7 @@
     </div>
 
     <div class="calendar-note-middle">
-        <div v-html="noteInfo.content" class="note-content">
+        <div v-html="noteContent" class="note-content">
 
         </div>
     </div>

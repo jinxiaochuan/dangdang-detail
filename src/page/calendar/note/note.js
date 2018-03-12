@@ -8,6 +8,8 @@ var TPL_NOTE = require('./tmpls/note.tpl');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var trans = require('lib/self/trans.js');
+
 var share = require('lib/self/share.js');
 
 var TimeCovert = require('page/components/timeCovert/timeCovert.js');
@@ -42,6 +44,7 @@ new Vue({
     data: function () {
         return {
             noteInfo: null,
+            noteContent: '',
             isSameYear: false
         }
     },
@@ -50,7 +53,7 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/cal/note/info?userId=200119&noteId=245'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/note?noteId=441&userId=200142&shareType=16&shareId=441&shareUserId=200142'
             // URL_NOTE = 'http://dev.im-dangdang.com/ddweb/v1/cal/note/info'
 
             var data = {};
@@ -66,6 +69,7 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.noteInfo = json.data.noteInfo;
+                        self.noteContent = trans(json.data.noteInfo.content);
                         self.isSameYear = TimeCovert(json.data.noteInfo.createTime).isSameYear;
                         self.initShare();
                     }

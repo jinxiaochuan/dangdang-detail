@@ -15,7 +15,7 @@
     </div>
 
     <div class="calendar-diary-middle">
-        <div v-html="diary.content" class="diary-content">
+        <div v-html="diaryContent" class="diary-content">
 
         </div>
     </div>

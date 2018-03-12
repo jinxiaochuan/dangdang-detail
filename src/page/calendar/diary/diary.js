@@ -10,6 +10,8 @@ var TPL_DIARY = require('./tmpls/diary.tpl');
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
+var trans = require('lib/self/trans.js');
+
 var share = require('lib/self/share.js');
 
 var TimeCovert = require('page/components/timeCovert/timeCovert.js');
@@ -44,6 +46,7 @@ new Vue({
     data: function () {
         return {
             diary: null,
+            diaryContent: '',
             isSameYear: false
         }
     },
@@ -68,6 +71,7 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.diary = json.data.diary;
+                        self.diaryContent = trans(json.data.diary.content);
                         self.isSameYear = TimeCovert(json.data.diary.diaryTime).isSameYear;
                         self.initShare();
                     }
