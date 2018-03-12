@@ -50,8 +50,8 @@ new Vue({
         init () {
             var self = this;
 
-            HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/cal/note/info?userId=200119&noteId=245'
-            URL_NOTE = 'http://dev.im-dangdang.com/ddweb/v1/cal/note/info'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/cal/note/info?userId=200119&noteId=245'
+            // URL_NOTE = 'http://dev.im-dangdang.com/ddweb/v1/cal/note/info'
 
             var data = {};
 
@@ -65,7 +65,6 @@ new Vue({
                 jsonp: 'callback',
                 success: function(json){
                     if(json.status == 1){
-                        console.log(json);
                         self.noteInfo = json.data.noteInfo;
                         self.isSameYear = TimeCovert(json.data.noteInfo.createTime).isSameYear;
                         self.initShare();

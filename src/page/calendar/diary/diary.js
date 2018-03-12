@@ -52,8 +52,8 @@ new Vue({
         init () {
             var self = this;
 
-            HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/cal/diary/info?userId=200119&diaryId=134'
-            URL_DIARY = 'http://dev.im-dangdang.com/ddweb/v1/cal/diary/info'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/cal/diary/info?userId=200119&diaryId=134'
+            // URL_DIARY = 'http://dev.im-dangdang.com/ddweb/v1/cal/diary/info'
 
             var data = {};
 
