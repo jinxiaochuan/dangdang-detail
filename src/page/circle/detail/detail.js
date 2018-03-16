@@ -30,12 +30,15 @@ var TPL_ACTIVITY = require('./tmpls/activity.tpl');
 
 var TPL_COOPERATE = require('./tmpls/cooperate.tpl');
 
+var TPL_LIVE = require('./tmpls/live.tpl');
+
 var Empty = require('page/components/empty/empty.js');
 
 var TPL_MAP = {
-    '1':TPL_NEWS,
-    '2':TPL_ACTIVITY,
-    "3":TPL_COOPERATE
+    '1': TPL_NEWS,
+    '2': TPL_ACTIVITY,
+    '3': TPL_COOPERATE,
+    '4': TPL_LIVE
 }
 
 var CircleDetail = jsmod.util.klass({
@@ -48,8 +51,9 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3012&userId=200207&articleStatus=1&shareType=6&shareId=2747&supportHb=1&source=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3357&userId=200072&shareType=17&shareId=3307&shareUserId=200072';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
+
         var data = {}, isAdminIdentity, supportHb, source;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
@@ -200,7 +204,8 @@ var CircleDetail = jsmod.util.klass({
             "articleTitle": this.data.articleInfo.articleTitle,
             "auditType": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.auditType : null,
             "imgList": imgList,
-            "hbInfo": this.data.articleInfo.hbInfo
+            "hbInfo": this.data.articleInfo.hbInfo,
+            "liveInfo": this.data.articleInfo.liveInfo
         }
 
         this.logoInfo = {
@@ -217,12 +222,10 @@ var CircleDetail = jsmod.util.klass({
 
             self.bridge = bridge;
 
-            bridge.callHandler('baseInfo',self.baseInfo,function(){})
+            bridge.callHandler('baseInfo', self.baseInfo, function() {})
 
             if(!window.isIOS){
-                bridge.init(function(message, responseCallback) {
-
-                });
+                bridge.init(function(message, responseCallback) {});
             }
 
             bridge.registerHandler('increaseCommment', function(data, responseCallback) {
@@ -253,6 +256,22 @@ var CircleDetail = jsmod.util.klass({
                         item.pause();
                     }
                 })
+            })
+
+            bridge.registerHandler('liveStatusChange', function(data, responseCallback){
+                switch (data.status) {
+                    case 1:
+
+                        break;
+                    case 2:
+                        $('.live-cellphone-wrap').removeClass('init finish').addClass('suspend')
+                        break;
+                    case 3:
+                        $('.live-cellphone-wrap').removeClass('init suspend').addClass('finish')
+                        break;
+                    default:
+
+                }
             })
 
             self.$container.delegate('.tap-avatar','click',function(){
@@ -345,8 +364,19 @@ var CircleDetail = jsmod.util.klass({
                 bridge.callHandler('redEnvelope')
             })
 
-        })
+            self.$container.delegate('.live-btn', 'click', function(){
+                bridge.callHandler('goLive')
+            })
 
+            self.$container.delegate('.continue-live-btn', 'click', function(){
+                bridge.callHandler('liveContinue')
+            })
+
+            self.$container.delegate('.live-wrapper', 'click', function(){
+                bridge.callHandler('goLive')
+            })
+
+        })
 
     },
 

@@ -148,3 +148,95 @@ div.pinch-zoom img{
         }
     }
 }
+
+.live-type-wrap{
+    padding: @base*60rem 0;
+    .live-cellphone-wrap{
+        text-align: center;
+        &.init{
+            .live-status{
+                &.init{
+                    display: block;
+                }
+            }
+        }
+        &.finish{
+            .live-status{
+                &.finish{
+                    display: block;
+                }
+            }
+        }
+        &.suspend{
+            .live-status{
+                &.suspend{
+                    display: block;
+                }
+            }
+        }
+        .live-status{
+            display: none;
+        }
+        .live-btn{
+            .border-radius(@base*100rem);
+            .btn(@base*502rem,@base*88rem,16px,#007AFF,#FFFFFF);
+            .font-dpr(16px);
+            background-image: linear-gradient(-90deg, #FB5E0A 0%, #F6730A 100%);
+
+            &:active{
+                background-image: linear-gradient(-90deg, #E65202 0%, #E56500 100%);
+                span{
+                    opacity: .6;
+                }
+            }
+        }
+        .finish-live-btn{
+            .border-radius(@base*100rem);
+            .btn(@base*502rem,@base*88rem,16px,#007AFF,#FFFFFF);
+            .font-dpr(16px);
+            &:active{
+                span{
+                    opacity: .6;
+                }
+            }
+        }
+        .continue-live-btn{
+            .border-radius(@base*100rem);
+            .btn(@base*502rem,@base*88rem,16px,#007AFF,#FFFFFF);
+            .font-dpr(16px);
+            background-image: linear-gradient(-90deg, #FB5D09 0%, #F6770F 100%);
+            &:active{
+                span{
+                    opacity: .6;
+                }
+            }
+        }
+        p{
+            padding: @base*30rem 0;
+            .font-dpr(12px);
+            color: #858586;
+            .live-agree{
+                color: #007AFF;
+            }
+        }
+        .finish-word{
+            .flex();
+            .align-items(center);
+            .justify-content(center);
+            span{
+                padding: 0 @base*10rem;
+                .font-dpr(15px);
+            }
+            i{
+                width: @base*120rem;
+                height: 0;
+                border-top: @base*2rem solid #E5E5E5;
+            }
+        }
+    }
+    .live-profession-wrap{
+        padding: 0 @base*28rem;
+        .font-dpr(15px);
+        color: #858586;
+    }
+}
