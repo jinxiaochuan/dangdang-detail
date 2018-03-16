@@ -24,12 +24,15 @@ var TPL_ACTIVITY_PRE = require('./tmpls/activity.tpl');
 
 var TPL_COOPERATE_PRE = require('./tmpls/cooperate.tpl');
 
+var TPL_LIVE_PRE = require('./tmpls/live.tpl');
+
 var Empty = require('page/components/empty/empty.js');
 
 var TPL_MAP_PRE = {
-    '1':TPL_NEWS_PRE,
-    '2':TPL_ACTIVITY_PRE,
-    "3":TPL_COOPERATE_PRE
+    '1': TPL_NEWS_PRE,
+    '2': TPL_ACTIVITY_PRE,
+    '3': TPL_COOPERATE_PRE,
+    '4': TPL_LIVE_PRE
 }
 
 var CirclePreview = jsmod.util.klass({
@@ -60,10 +63,8 @@ var CirclePreview = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=7324&userId=1000098&articleStatus=2&shareType=9&shareId=7324';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1346';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/article/detail?userId=200180&articleId=1376777';
-        // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200072&articleId=2162';
+        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         var data = {};
 
