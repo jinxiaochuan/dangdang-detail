@@ -365,14 +365,14 @@ var CircleDetail = jsmod.util.klass({
             })
 
             self.$container.delegate('.live-btn', 'click', function(){
-                bridge.callHandler('goLive')
+                bridge.callHandler('liveEnter')
             })
 
             self.$container.delegate('.continue-live-btn', 'click', function(){
                 bridge.callHandler('liveContinue')
             })
 
-            self.$container.delegate('.live-wrapper', 'click', function(){
+            self.$container.delegate('.circle-live-wrapper', 'click', function(){
                 bridge.callHandler('goLive')
             })
 
