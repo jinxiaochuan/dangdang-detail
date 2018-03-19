@@ -55,6 +55,7 @@
             {% endif %}
         </span>
     </div>
+    {% if data.isAdminIdentity ==  '1' %}
     <div class="live-type-wrap">
         {% if data.articleInfo.liveInfo.liveType == 1 %}
         <div class="live-cellphone-wrap {% if data.articleInfo.liveInfo.liveStatus == 1 || data.articleInfo.liveInfo.liveStatus == 2 %}init{% elseif data.articleInfo.liveInfo.liveStatus == 3 %}finish{% elseif data.articleInfo.liveInfo.liveStatus == 5 %}suspend{% else %}{% endif %}">
@@ -80,4 +81,5 @@
         {% else %}
         {% endif %}
     </div>
+    {% endif %}
 </div>
