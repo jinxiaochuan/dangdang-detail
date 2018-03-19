@@ -259,7 +259,7 @@ var CircleDetail = jsmod.util.klass({
             })
 
             bridge.registerHandler('liveStatusChange', function(data, responseCallback){
-                switch (data.status) {
+                switch (data) {
                     case 1:
 
                         break;
