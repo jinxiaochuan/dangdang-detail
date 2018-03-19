@@ -14,7 +14,7 @@
         <span class="time">{{ data.articleInfo.liveInfo.formatLiveCreateTime }}</span>
     </div>
 
-    <div class="circle-live-wrapper" style="background-image: url('{{ data.articleInfo.coverImage.picture }}')">
+    <div class="circle-live-wrapper" style="background-image: url('{{ data.articleInfo.liveInfo.coverImage.picture }}')">
         <div class="blur-layer">
             {% if data.articleInfo.liveInfo.liveStatus == 3 %}
             <div class="video-play"></div>
@@ -61,7 +61,7 @@
         <div class="live-cellphone-wrap {% if data.articleInfo.liveInfo.liveStatus == 1 || data.articleInfo.liveInfo.liveStatus == 2 %}init{% elseif data.articleInfo.liveInfo.liveStatus == 3 %}finish{% elseif data.articleInfo.liveInfo.liveStatus == 5 %}suspend{% else %}{% endif %}">
             <div class="live-status init">
                 <a class="live-btn" href="javascript:void(0)"><span>进入直播</span></a>
-                <p>直播即代表同意<a class="live-agree" href="/ddweb/live/rule">《铛铛主播协议》</a></p>
+                <p>直播即代表同意<a class="live-agree" href="javascript:void(0)">《铛铛主播协议》</a></p>
             </div>
             <div class="live-status suspend">
                 <a class="continue-live-btn" href="javascript:void(0)"><span>继续直播</span></a>

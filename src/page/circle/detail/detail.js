@@ -376,6 +376,10 @@ var CircleDetail = jsmod.util.klass({
                 bridge.callHandler('goLive')
             })
 
+            self.$container.delegate('.live-agree', ' click', function(){
+                bridge.callHandler('liveAgree')
+            })
+
         })
 
     },
