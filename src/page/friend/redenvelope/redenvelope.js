@@ -16,9 +16,9 @@ var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
 
-var PATH_NAME = '/ddweb/v1/ttl/hb/detail';
+var PATH_NAME = '/ddweb/v1/gift/hb/detail';
 
-var URL_LOTTO = PATH_ORIGIN + PATH_NAME;
+var URL_FRIEND_HB = PATH_ORIGIN + PATH_NAME;
 
 Vue.filter('amount_convert',function(val){
     return (val/100).toFixed(2)
@@ -36,8 +36,8 @@ new Vue({
 
     data: function () {
         return {
-            record: null,
-            recordBg: '',
+            receiveInfo: null,
+            receiveBg: '',
             bridge: ''
         }
     },
@@ -47,37 +47,30 @@ new Vue({
         init () {
             var self = this;
 
-            HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/ttl/hb/detail?winId=7973&userId=1000034&shareType=12&shareId=7973&shareUserId=1000034&source=1'
-            URL_LOTTO = 'http://app.im-dangdang.com/ddweb/v1/ttl/hb/detail'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/friendcode/hb/detail?userId=200119&hbId=2328'
+            // URL_FRIEND_HB = 'http://dev.im-dangdang.com/ddweb/v1/gift/hb/detail'
 
             var data = {}, shareUserId;
 
             data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
-            data.activityId = jsmod.util.url.getParam(HREF_ORIGIN,'activityId');
-            data.winId = jsmod.util.url.getParam(HREF_ORIGIN,'winId');
-            shareUserId = jsmod.util.url.getParam(HREF_ORIGIN,'shareUserId');
-            shareUserId && (data.shareUserId = shareUserId)
+            data.hbId = jsmod.util.url.getParam(HREF_ORIGIN,'hbId');
 
             $.ajax({
-                url: URL_LOTTO,
+                url: URL_FRIEND_HB,
                 dataType: 'jsonp',
                 data: data,
                 jsonp: 'callback',
                 success: function(json){
                     if(json.status == 1){
-                        self.record = json.data.record;
-                        self.recordBg = json.data.record.hbBackgroundImage && JSON.parse(json.data.record.hbBackgroundImage).picture || 'http://s1.im-dangdang.com/online/20180227/bg_share_star_dream.png'
-                        self.initTitle();
+                        console.log('-----');
+                        self.receiveInfo = json.data.receiveInfo;
+                        self.receiveBg = json.data.receiveInfo.info.activityInfo.hbBackground && JSON.parse(json.data.receiveInfo.info.activityInfo.hbBackground).picture || 'http://s1.im-dangdang.com/online/20180227/bg_share_star_dream.png'
                         self.initShare();
                         self.initBridge();
                     }
                 }
             })
 
-        },
-
-        initTitle () {
-            document.title = this.record.title
         },
 
         initShare () {
@@ -88,24 +81,19 @@ new Vue({
             var self = this;
             setupWebViewJavascriptBridge(function(bridge){
                 self.bridge = bridge;
-                self.bridge.callHandler('baseInfo', self.record, function(){})
+                self.bridge.callHandler('baseInfo', self.receiveInfo, function(){})
             })
         },
 
         tapUser () {
             if(!this.bridge) return
-            this.bridge.callHandler('tapUser', this.record, function(){})
+            this.bridge.callHandler('tapUser', this.receiveInfo, function(){})
         },
 
-        tapDetail () {
-            if(!this.bridge){
-                window.location.href = this.record.openUrl + '&source=1'
-                return
-            }
-
-            this.bridge.callHandler('tapDetail', this.record, function(){})
+        tapCodeUser () {
+            if(!this.bridge) return
+            this.bridge.callHandler('tapCodeUser', this.receiveInfo, function(){})
         }
-
     },
 
     mounted: function () {

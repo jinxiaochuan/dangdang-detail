@@ -39,85 +39,50 @@
         .num{
             margin-top: @base*10rem;
         }
-        .honor-roll{
-            width: @base*180rem;
-            height: @base*80rem;
-            background: url('~assets/honor_roll.png') center center no-repeat;
-            background-size: contain;
+        .receive-info-wrap{
+            width: 100%;
+            padding: 0 @base*60rem;
+            .flex();
+            .justify-content(flex-start);
+            .align-items(flex-start);
+            margin-top: @base*20rem;
+            .receive-avatar{
+                width: @base*72rem;
+                height: @base*72rem;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .receive-detail{
+                margin-left: @base*20rem;
+                .flex();
+                .flex-flow(column);
+                flex: 1;
+                .receive-name{
+                    .font-dpr(16px);
+
+                }
+                .receive-desc{
+                    margin-top: @base*5rem;
+                    .font-dpr(14px);
+                    color: #888888;
+                    em{
+                        font-style: normal;
+                        color: #007AFF;
+                    }
+                }
+            }
         }
         .cash-wrap{
             margin-top: @base*30rem;
             .flex();
             .flex-flow(column);
             .align-items(center);
-            min-height: @base*190rem;
             .cash-amount{
                 line-height: 1;
                 .amount-num{
                     .font-dpr(52px);
-                }
-            }
-            .cash-prize{
-                .font-dpr(20px);
-                color: #666666;
-            }
-        }
-        .material-wrap{
-            margin-top: @base*30rem;
-            .flex();
-            .flex-flow(column);
-            .align-items(center);
-            min-height: @base*200rem;
-            .material-name{
-                .font-dpr(30px);
-                color: #333333;
-            }
-            .material-img{
-                margin: @base*10rem 0;
-                width: @base*120rem;
-                height: @base*120rem;
-                .border-radius(50%);
-                overflow: hidden;
-                img{
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-            .material-prize{
-                .font-dpr(20px);
-                color: #666666;
-            }
-        }
-        .sponsor{
-            margin-top: @base*10rem;
-            color: #E65F3A;
-            .flex();
-            .align-items(center);
-            .sponsor-title{
-                max-width: @base*600rem;
-                .one-line();
-            }
-            .triangle{
-                position: relative;
-                top: -3px;
-                &::before{
-                    position: absolute;
-                    left: 0;
-                    content: '';
-                    width: 8px;
-                    height: 8px;
-                    background: #FFFFFF;
-                    .rotate(45deg);
-                    z-index: 5;
-                }
-                &::after{
-                    position: absolute;
-                    left: 2px;
-                    content: '';
-                    width: 8px;
-                    height: 8px;
-                    background: #E65F3A;
-                    .rotate(45deg);
                 }
             }
         }
@@ -148,47 +113,9 @@
         height: @base*1331rem;
         background-position: center;
         background-repeat: no-repeat;
-        // background: url('~assets/bg_share_star_dream.png') center center no-repeat;
         background-size: contain;
-        .avatar-wrap{
-            .flex();
-            .justify-content(center);
-            .avatar-inner-wrap{
-                width: @base*550rem;
-                .flex();
-                .justify-content(center);
-                .flex-wrap(wrap);
-                z-index: 5;
-            }
-        }
-        .avatar{
-            margin: @base*5rem;
-            width: @base*100rem;
-            height: @base*100rem;
-            .border-radius(50%);
-            border: @base*4rem solid #F5E0B7;
-            overflow: hidden;
-            &.big{
-                width: @base*140rem;
-                height: @base*140rem;
-            }
-            &.star{
-                img{
-                    // .rotate(-20deg);
-                }
-            }
-            &.user{
-                img{
-                    // .rotate(20deg);
-                }
-            }
-            img{
-                width: 100%;
-                height: 100%;
-            }
-        }
         .envelope-bless-wrap{
-            margin-top: -@base*70rem;
+            margin-top: @base*150rem;
             padding: 0 @base*20rem;
             .flex();
             .flex-flow(column);
@@ -221,55 +148,6 @@
                 .font-dpr(14px);
                 color: #A42D0C;
                 z-index: 10;
-            }
-        }
-        .envelope-word-wrap{
-            margin-top: -@base*5rem;
-            .flex();
-            .justify-content(center);
-            .envelope-word{
-                width: @base*610rem;
-                padding: @base*20rem;
-                border: @base*10rem solid #F5E0B7;
-                border-radius: @base*8rem;
-                background: #383333;
-                box-shadow: 0 0 10px 0 rgba(255,43,86,0.50);
-                .font-dpr(14px);
-                color: #FFFFFF;
-                text-align: center;
-                position: relative;
-                overflow: hidden;
-                i.dot{
-                    position: absolute;
-                    width: @base*28rem;
-                    height: @base*28rem;
-                    background: #F5E0B7;
-                    .border-radius(50%);
-                    &.lt{
-                        margin-left: -@base*14rem;
-                        margin-top: -@base*14rem;
-                        left: 0;
-                        top: 0;
-                    }
-                    &.rt{
-                        margin-right: -@base*14rem;
-                        margin-top: -@base*14rem;
-                        right: 0;
-                        top: 0;
-                    }
-                    &.lb{
-                        margin-left: -@base*14rem;
-                        margin-bottom: -@base*14rem;
-                        left:0;
-                        bottom: 0;
-                    }
-                    &.rb{
-                        margin-right: -@base*14rem;
-                        margin-bottom: -@base*14rem;
-                        right: 0;
-                        bottom: 0;
-                    }
-                }
             }
         }
         .envelope-code{
