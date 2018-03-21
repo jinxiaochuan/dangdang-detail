@@ -1,0 +1,297 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.container{
+    margin: 0;
+    padding: 0;
+}
+
+.lotto-red-envelope-wrap{
+    .envelope-top{
+        margin: 0 auto;
+        height: @base*120rem;
+        background: url('~assets/bg_redenvelope.png') top center no-repeat;
+        background-size: contain;
+    }
+    .envelope-detail{
+        .flex();
+        .flex-flow(column);
+        .justify-content(center);
+        .align-items(center);
+        .font-dpr(14px);
+        color: #333333;
+        .avatar{
+            margin-top: -@base*58rem;
+            width: @base*124rem;
+            height: @base*124rem;
+            border: @base*2rem solid #FFDFC6;
+            .border-radius(@base*8rem);
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .name{
+            margin-top: @base*20rem;
+        }
+        .num{
+            margin-top: @base*10rem;
+        }
+        .honor-roll{
+            width: @base*180rem;
+            height: @base*80rem;
+            background: url('~assets/honor_roll.png') center center no-repeat;
+            background-size: contain;
+        }
+        .cash-wrap{
+            margin-top: @base*30rem;
+            .flex();
+            .flex-flow(column);
+            .align-items(center);
+            min-height: @base*190rem;
+            .cash-amount{
+                line-height: 1;
+                .amount-num{
+                    .font-dpr(52px);
+                }
+            }
+            .cash-prize{
+                .font-dpr(20px);
+                color: #666666;
+            }
+        }
+        .material-wrap{
+            margin-top: @base*30rem;
+            .flex();
+            .flex-flow(column);
+            .align-items(center);
+            min-height: @base*200rem;
+            .material-name{
+                .font-dpr(30px);
+                color: #333333;
+            }
+            .material-img{
+                margin: @base*10rem 0;
+                width: @base*120rem;
+                height: @base*120rem;
+                .border-radius(50%);
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .material-prize{
+                .font-dpr(20px);
+                color: #666666;
+            }
+        }
+        .sponsor{
+            margin-top: @base*10rem;
+            color: #E65F3A;
+            .flex();
+            .align-items(center);
+            .sponsor-title{
+                max-width: @base*600rem;
+                .one-line();
+            }
+            .triangle{
+                position: relative;
+                top: -3px;
+                &::before{
+                    position: absolute;
+                    left: 0;
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    background: #FFFFFF;
+                    .rotate(45deg);
+                    z-index: 5;
+                }
+                &::after{
+                    position: absolute;
+                    left: 2px;
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    background: #E65F3A;
+                    .rotate(45deg);
+                }
+            }
+        }
+    }
+    .envelope-card{
+        margin: @base*80rem auto;
+        width: @base*672rem;
+        height: @base*382rem;
+        background: url('~assets/code_bg_redenvelope.png') center center no-repeat;
+        background-size: contain;
+        text-align: center;
+        .flex();
+        .flex-flow(column);
+        .code{
+            margin-top: @base*140rem;
+            .font-dpr(30px);
+            color: #FFDBA9;
+        }
+        .word{
+            margin-top: @base*20rem;
+            .font-dpr(15px);
+            color: #FFBB96;
+        }
+    }
+    .envelope-star{
+        margin-top: @base*50rem;
+        padding-top: @base*250rem;
+        height: @base*1331rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        // background: url('~assets/bg_share_star_dream.png') center center no-repeat;
+        background-size: contain;
+        .avatar-wrap{
+            .flex();
+            .justify-content(center);
+            .avatar-inner-wrap{
+                width: @base*550rem;
+                .flex();
+                .justify-content(center);
+                .flex-wrap(wrap);
+                z-index: 5;
+            }
+        }
+        .avatar{
+            margin: @base*5rem;
+            width: @base*100rem;
+            height: @base*100rem;
+            .border-radius(50%);
+            border: @base*4rem solid #F5E0B7;
+            overflow: hidden;
+            &.big{
+                width: @base*140rem;
+                height: @base*140rem;
+            }
+            &.star{
+                img{
+                    // .rotate(-20deg);
+                }
+            }
+            &.user{
+                img{
+                    // .rotate(20deg);
+                }
+            }
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .envelope-bless-wrap{
+            margin-top: -@base*70rem;
+            padding: 0 @base*20rem;
+            .flex();
+            .flex-flow(column);
+            .justify-content(center);
+            .align-items(center);
+            .envelope-bless-top{
+                background-image: url('~assets/bg_redenvelope_bless_top.png');
+                width: @base*710rem;
+                height: @base*128rem;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: top center;
+            }
+            .envelope-bless-bottom{
+                background-image: url('~assets/bg_redenvelope_bless_bottom.png');
+                width: @base*710rem;
+                height: @base*168rem;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom center;
+            }
+            .envelope-bless-middle{
+                margin-top: -@base*20rem;
+                margin-bottom: -@base*35rem;
+                padding: 0 @base*20rem;
+                width: @base*610rem;
+                background: #FFFFFF;
+                border-left: @base*10rem solid #FFD689;
+                border-right: @base*10rem solid #FFD689;
+                .font-dpr(14px);
+                color: #A42D0C;
+                z-index: 10;
+            }
+        }
+        .envelope-word-wrap{
+            margin-top: -@base*5rem;
+            .flex();
+            .justify-content(center);
+            .envelope-word{
+                width: @base*610rem;
+                padding: @base*20rem;
+                border: @base*10rem solid #F5E0B7;
+                border-radius: @base*8rem;
+                background: #383333;
+                box-shadow: 0 0 10px 0 rgba(255,43,86,0.50);
+                .font-dpr(14px);
+                color: #FFFFFF;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                i.dot{
+                    position: absolute;
+                    width: @base*28rem;
+                    height: @base*28rem;
+                    background: #F5E0B7;
+                    .border-radius(50%);
+                    &.lt{
+                        margin-left: -@base*14rem;
+                        margin-top: -@base*14rem;
+                        left: 0;
+                        top: 0;
+                    }
+                    &.rt{
+                        margin-right: -@base*14rem;
+                        margin-top: -@base*14rem;
+                        right: 0;
+                        top: 0;
+                    }
+                    &.lb{
+                        margin-left: -@base*14rem;
+                        margin-bottom: -@base*14rem;
+                        left:0;
+                        bottom: 0;
+                    }
+                    &.rb{
+                        margin-right: -@base*14rem;
+                        margin-bottom: -@base*14rem;
+                        right: 0;
+                        bottom: 0;
+                    }
+                }
+            }
+        }
+        .envelope-code{
+            margin-top: @base*40rem;
+            .flex();
+            .flex-flow(column);
+            .align-items(center);
+            .word{
+                .font-dpr(12px);
+                color: #FFDBA9;
+            }
+            .code{
+                margin: @base*30rem 0;
+                width: @base*500rem;
+                height: @base*120rem;
+                line-height: @base*120rem;
+                .font-dpr(24px);
+                color: #FFEDD4;
+                background: rgba(252,166,128,.8);
+                .border-radius(8px);
+                text-align: center;
+            }
+        }
+    }
+}
