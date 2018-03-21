@@ -62,7 +62,6 @@ new Vue({
                 jsonp: 'callback',
                 success: function(json){
                     if(json.status == 1){
-                        console.log('-----');
                         self.receiveInfo = json.data.receiveInfo;
                         self.receiveBg = json.data.receiveInfo.info.activityInfo.hbBackground && JSON.parse(json.data.receiveInfo.info.activityInfo.hbBackground).picture || 'http://s1.im-dangdang.com/online/20180227/bg_share_star_dream.png'
                         self.initShare();
