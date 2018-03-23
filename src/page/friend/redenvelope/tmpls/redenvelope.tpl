@@ -13,7 +13,7 @@
             </div>
             <div class="receive-detail">
                 <span><span @click="tapUser" class="receive-name">{{ receiveInfo.useCodeUser.showName }}</span></span>
-                <span class="receive-desc">使用了<em @click="tapCodeUser">{{ receiveInfo.codeUser.showName }}</em>的<span v-if="receiveInfo.codeType == 1">朋友码</span><span v-if="receiveInfo.codeType == 2">圈子码</span>，并完善了个人空间，我获得红包</span>
+                <span class="receive-desc">使用了<em @click="tapCodeUser">{{ receiveInfo.codeUser.showName }}</em>的<span v-if="receiveInfo.codeType == 1">朋友码</span><span v-if="receiveInfo.codeType == 2">圈子码</span>，并完善了个人空间</span>
             </div>
         </div>
         <span class="cash-wrap">
@@ -33,7 +33,7 @@
         </div>
         <div class="envelope-code" :class="{'no-slogn': !receiveInfo.info.activityInfo.hbSlogan}">
             <span class="word" v-if="receiveInfo.codeType == 1">使用我的朋友码，双方均可获得奖励</span>
-            <span class="word" v-if="receiveInfo.codeType == 2">使用圈子码，加入相应公众圈</span>
+            <span class="word" v-if="receiveInfo.codeType == 2">使用圈子码，加入相应公众圈并获得奖励</span>
             <span class="code">{{ receiveInfo.info.codeInfo.code }}</span>
         </div>
     </div>
