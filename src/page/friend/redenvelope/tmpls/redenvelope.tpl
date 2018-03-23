@@ -21,14 +21,17 @@
         </span>
     </div>
     <div v-if="receiveInfo" class="envelope-star" v-bind:style="{backgroundImage: 'url('+ receiveBg +')'}">
-        <div class="envelope-bless-wrap">
+        <!-- <div class="envelope-bless-wrap">
             <div class="envelope-bless-top"></div>
             <div class="envelope-bless-middle">
                 {{ receiveInfo.info.activityInfo.hbSlogan }}
             </div>
             <div class="envelope-bless-bottom"></div>
+        </div> -->
+        <div class="friend-envelope-bless-wrap">
+            {{ receiveInfo.info.activityInfo.hbSlogan }}
         </div>
-        <div class="envelope-code">
+        <div class="envelope-code" :class="{'no-slogn': !receiveInfo.info.activityInfo.hbSlogan}">
             <span class="word" v-if="receiveInfo.codeType == 1">使用我的朋友码，双方均可获得奖励</span>
             <span class="word" v-if="receiveInfo.codeType == 2">使用圈子码，加入相应公众圈</span>
             <span class="code">{{ receiveInfo.info.codeInfo.code }}</span>

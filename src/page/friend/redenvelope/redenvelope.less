@@ -110,10 +110,18 @@
     .envelope-star{
         margin-top: @base*50rem;
         padding-top: @base*250rem;
-        height: @base*1331rem;
+        height: @base*1100rem;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
+        .friend-envelope-bless-wrap{
+            margin: @base*220rem auto @base*50rem;
+            padding: @base*20rem @base*40rem;
+            width: @base*600rem;
+            .font-dpr(13px);
+            color: #FFEDD5;
+            line-height: @base*40rem;
+        }
         .envelope-bless-wrap{
             margin-top: @base*150rem;
             padding: 0 @base*20rem;
@@ -155,6 +163,9 @@
             .flex();
             .flex-flow(column);
             .align-items(center);
+            &.no-slogn{
+                margin-top: @base*400rem;
+            }
             .word{
                 .font-dpr(12px);
                 color: #FFDBA9;
@@ -166,8 +177,8 @@
                 line-height: @base*120rem;
                 .font-dpr(24px);
                 color: #FFEDD4;
-                background: rgba(252,166,128,.8);
-                .border-radius(8px);
+                background: rgba(252,166,128,.4);
+                .border-radius(@base*8rem);
                 text-align: center;
             }
         }

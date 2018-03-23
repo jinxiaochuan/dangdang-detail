@@ -25,7 +25,7 @@ Vue.filter('amount_convert',function(val){
 })
 
 Vue.filter('bg_convert',function(val){
-    if(!val) return 'http://s1.im-dangdang.com/online/20180227/bg_share_star_dream.png'
+    if(!val) return 'http://s1.im-dangdang.com/20180322/1521700918307235.jpg'
     return (JSON.parse(val)).picture
 })
 
@@ -47,7 +47,7 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/friendcode/hb/detail?userId=200119&hbId=2328'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/friendcode/hb/detail?userId=200254&hbId=2438'
             // URL_FRIEND_HB = 'http://dev.im-dangdang.com/ddweb/v1/gift/hb/detail'
 
             var data = {}, shareUserId;
