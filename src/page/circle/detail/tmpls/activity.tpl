@@ -40,6 +40,15 @@
     <span class="deadline {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}over{% endif %}">报名截止时间：{{ data.articleInfo.activityInfo.formatDeadLine }}</span>
     <span class="limit">{% if data.articleInfo.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.articleInfo.activityInfo.activityNum }}人{% endif %}</span>
 </div>
+{% if data.articleInfo.activityInfo.needCharge == 1 %}
+<div class="circle-activity-charge-wrap">
+    <div class="charge-wrap">
+        <p class="charge-name">{{ data.articleInfo.activityInfo.chargeName }}</p>
+        <p class="charge-amount"><span class="amount-symbol">¥</span><span class="amount">{{ data.articleInfo.activityInfo.chargeAmount|amount_convert }}</span></p>
+        <p class="charge-desc">{{ data.articleInfo.activityInfo.chargeDesc }}</p>
+    </div>
+</div>
+{% endif %}
 <div class="common-address">
     <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
 </div>

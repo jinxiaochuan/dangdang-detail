@@ -240,3 +240,33 @@ div.pinch-zoom img{
         color: #858586;
     }
 }
+
+.circle-activity-charge-wrap{
+    padding: @base*6rem @base*30rem @base*30rem;
+    word-wrap: break-word;
+    .charge-wrap{
+        padding: @base*30rem;
+        background: #F0F2F7;
+    }
+    .charge-name{
+        .font-dpr(16px);
+        color: #000000;
+    }
+    .charge-amount{
+        color: #000000;
+        text-align: center;
+        .amount-symbol{
+            .font-dpr(24px);
+            vertical-align: @base*18rem;
+        }
+        .amount{
+            margin-left: @base*15rem;
+            .font-dpr(40px);
+        }
+    }
+    .charge-desc{
+        .font-dpr(15px);
+        color: #9197A3;
+        line-height: @base*40rem;
+    }
+}
