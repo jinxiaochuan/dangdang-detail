@@ -209,7 +209,7 @@ var CircleDetail = jsmod.util.klass({
             "chargeAmount": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.chargeAmount : null,
             "chargeDesc": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.chargeDesc : null,
             "needInfo": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.needInfo : null,
-            "signupRule": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.signupRule : null,
+            "signupRules": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.signupRules : null,
             "imgList": imgList,
             "hbInfo": this.data.articleInfo.hbInfo,
             "liveInfo": this.data.articleInfo.liveInfo
