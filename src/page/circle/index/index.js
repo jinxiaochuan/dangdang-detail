@@ -32,7 +32,7 @@ var CircleIndex = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/base?circleId=1623375190&userId=200072&shareType=5&shareId=1623375097';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/base?circleId=1623375069&userId=200072&shareType=5&shareId=1623375097';
         // URL_INDEX = 'http://dev.im-dangdang.com/ddweb/v1/circle/base';
 
         var data = {};
@@ -218,7 +218,8 @@ var CircleIndex = jsmod.util.klass({
             "workAdminVisible": this.data.baseInfo.workAdminVisible,
             "publicCustom": this.data.baseInfo.publicCustom,
             "isAudit": this.data.baseInfo.isAudit,
-            "imgList": imgList
+            "feeParam": self.data.baseInfo.feeParam,
+            "imgList": imgList,
         }
 
     },
