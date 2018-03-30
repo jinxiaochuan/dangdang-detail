@@ -101,6 +101,7 @@ var CircleIndex = jsmod.util.klass({
                         "workAdminVisible": self.data.baseInfo.workAdminVisible,
                         "publicCustom": self.data.baseInfo.publicCustom,
                         "isAudit": self.data.baseInfo.isAudit,
+                        "feeParam": self.data.baseInfo.feeParam
                     }
 
                     bridge.callHandler('baseInfo',self.baseInfo,function(){})
