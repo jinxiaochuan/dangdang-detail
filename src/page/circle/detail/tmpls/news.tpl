@@ -86,6 +86,7 @@
         </div>
         {% endif %}
     </div>
+    {% endif %}
 
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>

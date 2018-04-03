@@ -16,6 +16,18 @@
     <div class="circle-news-detail">
         <div class="detail-content">{{ data.articleInfo.detail|safe }}</div>
     </div>
+
+    {% if data.voteInfo %}
+    <div class="circle-vote-wrap">
+        <div class="vote-wrap">
+            <div class="common-deadline-wrap">
+                <span class="deadline">投票截止时间：{{ data.voteInfo.fmtDeadline }}</span>
+            </div>
+            <a class="vote-btn vote-action" href="javascript:void(0)">投票</a>
+        </div>
+    </div>
+    {% endif %}
+
     <div class="common-comment-wrap">
         <span class="access">
             <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>

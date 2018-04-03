@@ -21,3 +21,47 @@
 
     }
 }
+
+.circle-vote-wrap{
+    padding: @base*60rem 0;
+    text-align: center;
+    .vote-btn{
+        margin-top: @base*30rem;
+        display: inline-block;
+        width: @base*502rem;
+        height: @base*88rem;
+        line-height: @base*88rem;
+        text-align: center;
+        .font-dpr(16px);
+        color: #FFF;
+        .border-radius(@base*100rem);
+        background-image: linear-gradient(90deg, #F47309 0%, #FA5E08 100%);
+    }
+    .vote-sign-list-wrap{
+        padding: @base*25rem 0;
+        .setLine('bottom',#E5E5E5);
+        .sign-wrap{
+            padding: 0 @base*30rem;
+
+            &:active{
+                background: #ECEFF0;
+            }
+            .flex();
+            .justify-content(space-between);
+            line-height: @base*80rem;
+
+            .num{
+                .font-dpr(15px);
+                color: #F77208;
+            }
+            .arrow{
+                display: block;
+                width: @base*16rem;
+                height: @base*80rem;
+                background: url("~assets/arrow_right.png") no-repeat center center;
+                background-size: contain;
+            }
+
+        }
+    }
+}
