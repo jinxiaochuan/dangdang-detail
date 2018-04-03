@@ -64,6 +64,29 @@
     {% endif %}
     {% endif %}
 
+    {% if data.voteInfo %}
+    <div class="circle-vote-wrap">
+        {% if data.isAdminIdentity == 1 %}
+        <div class="vote-wrap">
+            <div class="vote-sign-list-wrap">
+                <a class="tap-sign vote-action" href="javascript:void(0)">
+                    <div class="sign-wrap">
+                        <span class="num">投票详情</span>
+                        <span class="arrow"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% else %}
+        <div class="vote-wrap">
+            <div class="common-deadline-wrap">
+                <span class="deadline">投票截止时间：{{ data.voteInfo.fmtDeadline }}</span>
+            </div>
+            <a class="vote-btn vote-action" href="javascript:void(0)">投票</a>
+        </div>
+        {% endif %}
+    </div>
+
     <div class="common-address">
         <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
     </div>

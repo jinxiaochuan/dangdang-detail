@@ -52,14 +52,14 @@ var CircleDetail = jsmod.util.klass({
         var self = this;
 
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3357&userId=200072&shareType=17&shareId=3307&shareUserId=200072&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3496&userId=200073&shareType=17&shareId=3307&shareUserId=200073';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3631&userId=179708&shareType=17&shareId=3307&shareUserId=179708';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         var data = {}, isAdminIdentity, supportHb, source;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.articleId = jsmod.util.url.getParam(HREF_ORIGIN,'articleId');
-        isAdminIdentity  = jsmod.util.url.getParam(HREF_ORIGIN,'isAdminIdentity');
+        isAdminIdentity  = jsmod.util.url.getParam(HREF_ORIGIN,'isAdminIdentity') || 0;
         supportHb = jsmod.util.url.getParam(HREF_ORIGIN,'supportHb');
         source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
         if(supportHb){
@@ -212,7 +212,8 @@ var CircleDetail = jsmod.util.klass({
             "signupRules": this.data.articleInfo.activityInfo ? this.data.articleInfo.activityInfo.signupRules : null,
             "imgList": imgList,
             "hbInfo": this.data.articleInfo.hbInfo,
-            "liveInfo": this.data.articleInfo.liveInfo
+            "liveInfo": this.data.articleInfo.liveInfo,
+            "voteInfo": this.data.voteInfo
         }
 
         this.logoInfo = {
@@ -385,6 +386,10 @@ var CircleDetail = jsmod.util.klass({
 
             self.$container.delegate('.live-agree', ' click', function(){
                 bridge.callHandler('liveAgree')
+            })
+
+            self.$container.delegate('.vote-action', ' click', function(){
+                bridge.callHandler('vote')
             })
 
         })
