@@ -20,7 +20,7 @@
                         <span v-if="!item.userNum && !item.ratio && selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span class="desc"><span v-html="hightlight(item.itemName)"></span><span v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
-                    <div v-if="isAdmin == 1 && item.userNum && item.ratio" class="vote-statistics">
+                    <div v-if="item.userNum && item.ratio" class="vote-statistics">
                         <div class="process">
                             <div class="process-thumb" :style="{'width': item.ratio*100 + '%'}">
 
@@ -42,7 +42,7 @@
                         </div>
                         <span class="desc"><span v-html="hightlight(item.itemName)"></span><span v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
-                    <div v-if="isAdmin == 1 && item.userNum && item.ratio" class="vote-statistics">
+                    <div v-if="item.userNum && item.ratio" class="vote-statistics">
                         <div class="process">
                             <div class="process-thumb" :style="{'width': item.ratio*100 + '%'}">
 
@@ -64,7 +64,7 @@
                         </div>
                         <span class="desc"><span v-html="hightlight(item.itemName)"></span><span v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
-                    <div v-if="isAdmin == 1 && item.userNum && item.ratio" class="vote-statistics">
+                    <div v-if="item.userNum && item.ratio" class="vote-statistics">
                         <div class="process">
                             <div class="process-thumb" :style="{'width': item.ratio*100 + '%'}">
 
