@@ -1,6 +1,10 @@
 import Vue from 'vue';
 
+import vueTips from 'vue-tips'
+
 import queryString from 'query-string';
+
+Vue.use(vueTips)
 
 require('page/common/common.js');
 
@@ -156,7 +160,9 @@ new Vue({
                         $item.removeClass('active')
                     }else {
                         if($listActive.length == this.maxSelNum){
-                            alert('最多可选'+ this.maxSelNum +'项')
+                            this.$tips.show('最多可选'+ this.maxSelNum +'项', {
+                                delay: 1000
+                            })
                             return
                         }
                         $item.addClass('active')
@@ -185,11 +191,28 @@ new Vue({
         },
 
         vote () {
-            if(this.isFinished == 1 || this.isVoted == 1) return
+            if(this.isFinished == 1){
+                this.$tips.show('投票已结束', {
+                    delay: 1000
+                });
+                return
+            }
+
+            if(this.isVoted == 1){
+                this.$tips.show('你已投票', {
+                    delay: 1000
+                });
+                return
+            }
 
             var $listActive = $('.vote-options-item.active');
 
-            if(!$listActive.length) return
+            if(!$listActive.length){
+                this.$tips.show('至少选择一项', {
+                    delay: 1000
+                });
+                return
+            }
 
             var optionIds = $listActive.map(function(item){
                 return $(this).data('id')
