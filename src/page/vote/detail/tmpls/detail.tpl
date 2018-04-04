@@ -50,7 +50,7 @@
                         </div>
                         <div class="statistics">
                             <span class="num">{{ item.userNum }}票</span>
-                            <span class="percent">{{ item.ratio }}%</span>
+                            <span class="percent">{{ item.ratio }}</span>
                         </div>
                     </div>
                 </div>
