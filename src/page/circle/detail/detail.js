@@ -52,7 +52,7 @@ var CircleDetail = jsmod.util.klass({
         var self = this;
 
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3357&userId=200072&shareType=17&shareId=3307&shareUserId=200072&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3631&userId=179708&shareType=17&shareId=3307&shareUserId=179708';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3631&userId=179708&shareType=17&shareId=3307&shareUserId=179708&isAdminIdentity=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         var data = {}, isAdminIdentity, supportHb, source;

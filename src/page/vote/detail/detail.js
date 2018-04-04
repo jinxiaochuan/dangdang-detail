@@ -71,7 +71,12 @@ new Vue({
             this.userId = parsed.userId;
             this.voteId = parsed.voteId;
             this.isAdmin = parsed.isAdmin || 0;
+            this.initTitle();
             this.getPage()
+        },
+
+        initTitle () {
+            document.title = this.isAdmin == 1 ? '投票详情' : '投票'
         },
 
         getPage () {
@@ -139,7 +144,6 @@ new Vue({
                 this.getPage()
             }
 
-            console.log('onBottom');
         },
 
         active (index) {
