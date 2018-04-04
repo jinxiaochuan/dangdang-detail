@@ -22,13 +22,13 @@
                     </div>
                     <div v-if="item.userNum && item.ratio" class="vote-statistics">
                         <div class="process">
-                            <div class="process-thumb" :style="{'width': item.ratio*100 + '%'}">
+                            <div class="process-thumb" :style="{'width': item.ratio}">
 
                             </div>
                         </div>
                         <div class="statistics">
                             <span class="num">{{ item.userNum }}票</span>
-                            <span class="percent">{{ item.ratio*100 }}%</span>
+                            <span class="percent">{{ item.ratio }}</span>
                         </div>
                     </div>
                 </div>
@@ -44,13 +44,13 @@
                     </div>
                     <div v-if="item.userNum && item.ratio" class="vote-statistics">
                         <div class="process">
-                            <div class="process-thumb" :style="{'width': item.ratio*100 + '%'}">
+                            <div class="process-thumb" :style="{'width': item.ratio}">
 
                             </div>
                         </div>
                         <div class="statistics">
                             <span class="num">{{ item.userNum }}票</span>
-                            <span class="percent">{{ item.ratio*100 }}%</span>
+                            <span class="percent">{{ item.ratio }}%</span>
                         </div>
                     </div>
                 </div>
@@ -66,13 +66,13 @@
                     </div>
                     <div v-if="item.userNum && item.ratio" class="vote-statistics">
                         <div class="process">
-                            <div class="process-thumb" :style="{'width': item.ratio*100 + '%'}">
+                            <div class="process-thumb" :style="{'width': item.ratio}">
 
                             </div>
                         </div>
                         <div class="statistics">
                             <span class="num">{{ item.userNum }}票</span>
-                            <span class="percent">{{ item.ratio*100 }}%</span>
+                            <span class="percent">{{ item.ratio }}</span>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
     <div v-if="!options.length && bottom == 1" class="vote-main-empty">
         <span>无结果</span>
     </div>
-    <div v-if="isAdmin != 1 && isFinished && isVoted" @click="vote" class="vote-handle-wrap" :class="{'disabled': isFinished == 1 || isVoted == 1}">
+    <div v-if="isAdmin != 1 && isFinished && isVoted && isOriginHei" @click="vote" class="vote-handle-wrap" :class="{'disabled': isFinished == 1 || isVoted == 1}">
         <span v-if="isFinished == 0 && isVoted == 0">投票</span>
         <span v-if="isFinished == 1">投票已截止</span>
         <span v-if="isFinished == 0 && isVoted == 1">你已投票</span>

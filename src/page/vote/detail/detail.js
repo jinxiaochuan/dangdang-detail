@@ -52,7 +52,10 @@ new Vue({
             isFinished: '',
             isVoted: '',
             voteOptions: '',
-            bridge: ''
+            bridge: '',
+            screenHeight: document.body.clientHeight,
+            originHeight: document.body.clientHeight,
+            isOriginHei: true
         }
     },
 
@@ -62,6 +65,10 @@ new Vue({
             this.options = [];
             this.bottom = 0;
             this.getPage()
+        },
+
+        screenHeight: function(val, oldVal){
+            this.isOriginHei = this.originHeight == val
         }
     },
 
@@ -264,6 +271,14 @@ new Vue({
                 }
                 bridge.callHandler('baseInfo',baseInfo,function(){})
             })
+        },
+
+        initResizeListener () {
+            var vm = this;
+            window.onresize = function(){
+                window.screenHeight= document.body.clientHeight
+                vm.screenHeight= window.screenHeight
+            }
         }
 
     },
@@ -271,6 +286,7 @@ new Vue({
     mounted: function () {
         this.$nextTick(() => {
             this.init()
+            this.initResizeListener();
             this.initBridge()
         })
     }
