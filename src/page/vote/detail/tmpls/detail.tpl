@@ -18,7 +18,7 @@
                     <div class="options-detail">
                         <span v-if="!item.userNum && !item.ratio && selectType == 1" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span v-if="!item.userNum && !item.ratio && selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
-                        <span class="desc"><span v-html="hightlight(item.itemName)"></span><span v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
+                        <span class="desc"><span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span><span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
                     <div v-if="item.userNum && item.ratio" class="vote-statistics">
                         <div class="process">
@@ -40,7 +40,7 @@
                         <div @click.stop="pictureZoom(index)" class="images-cover" :style="{backgroundImage: 'url(' + item.pictures[0].pictureUrl + ')'}">
                             <span v-if="item.pictures.length != 1" class="images-num">{{ item.pictures.length }}张</span>
                         </div>
-                        <span class="desc"><span v-html="hightlight(item.itemName)"></span><span v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
+                        <span class="desc"><span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span><span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
                     <div v-if="item.userNum && item.ratio" class="vote-statistics">
                         <div class="process">
@@ -62,7 +62,7 @@
                         <div @click.stop="videoZoom(index)" class="video-cover" :style="{backgroundImage: 'url(' + item.video.pictureUrl + ')'}">
                             <i class="video-icon"></i>
                         </div>
-                        <span class="desc"><span v-html="hightlight(item.itemName)"></span><span v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
+                        <span class="desc"><span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span><span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
                     <div v-if="item.userNum && item.ratio" class="vote-statistics">
                         <div class="process">
