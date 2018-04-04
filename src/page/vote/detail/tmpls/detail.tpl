@@ -14,7 +14,7 @@
         <div class="vote-options">
             <div @click="active(index)" ref="voteItem" v-for="(item, index) in options" :data-id="item.id" class="vote-options-item">
                 <!-- 纯文本 -->
-                <div v-if="!item.video && !item.pictures.length" class="options-item options-item-text">
+                <div v-if="(item.video && !item.video.videoUrl && !item.pictures.length) || (!item.video && !item.pictures.length)" class="options-item options-item-text">
                     <div class="options-detail">
                         <span v-if="!item.userNum && !item.ratio && selectType == 1" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span v-if="!item.userNum && !item.ratio && selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
@@ -37,9 +37,8 @@
                     <div class="options-detail">
                         <span v-if="!item.userNum && !item.ratio && selectType == 1" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span v-if="!item.userNum && !item.ratio && selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
-                        <div @click.stop="pictureZoom(index)" class="images-cover">
-                            <span class="images-num">共{{ item.pictures.length }}张</span>
-                            <img :src="item.pictures[0].pictureUrl" alt="">
+                        <div @click.stop="pictureZoom(index)" class="images-cover" :style="{backgroundImage: 'url(' + item.pictures[0].pictureUrl + ')'}">
+                            <span v-if="item.pictures.length != 1" class="images-num">{{ item.pictures.length }}张</span>
                         </div>
                         <span class="desc"><span v-html="hightlight(item.itemName)"></span><span v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
@@ -56,13 +55,12 @@
                     </div>
                 </div>
                 <!-- 视频 -->
-                <div v-if="item.video" class="options-item options-item-video">
+                <div v-if="item.video && item.video.videoUrl" class="options-item options-item-video">
                     <div class="options-detail">
                         <span v-if="!item.userNum && !item.ratio && selectType == 1" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span v-if="!item.userNum && !item.ratio && selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
-                        <div @click.stop="videoZoom(index)" class="video-cover">
+                        <div @click.stop="videoZoom(index)" class="video-cover" :style="{backgroundImage: 'url(' + item.video.pictureUrl + ')'}">
                             <i class="video-icon"></i>
-                            <img :src="item.video.pictureUrl" alt="">
                         </div>
                         <span class="desc"><span v-html="hightlight(item.itemName)"></span><span v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
