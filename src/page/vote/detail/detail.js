@@ -51,7 +51,8 @@ new Vue({
             maxSelNum: '1',
             isFinished: '',
             isVoted: '',
-            voteOptions: ''
+            voteOptions: '',
+            bridge: ''
         }
     },
 
@@ -190,6 +191,16 @@ new Vue({
             return true
         },
 
+        pictureZoom (index) {
+            var pictures = this.options[index].pictures;
+            this.bridge && this.bridge.callHandler('pictureZoom', pictures, function(){})
+        },
+
+        videoZoom (index) {
+            var video = this.options[index].video;
+            this.bridge && this.bridge.callHandler('videoZoom', video, function(){})
+        },
+
         vote () {
             if(this.isFinished == 1){
                 this.$tips.show('投票已结束', {
@@ -238,6 +249,17 @@ new Vue({
                     window.location.reload()
                 }
             })
+        },
+
+        initBridge () {
+            var vm = this;
+            setupWebViewJavascriptBridge(function(bridge){
+                vm.bridge = bridge;
+                if(!window.isIOS){
+                    bridge.init(function(message, responseCallback) {});
+                }
+                bridge.callHandler('baseInfo',baseInfo,function(){})
+            })
         }
 
     },
@@ -245,6 +267,7 @@ new Vue({
     mounted: function () {
         this.$nextTick(() => {
             this.init()
+            this.initBridge()
         })
     }
 

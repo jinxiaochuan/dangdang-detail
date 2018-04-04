@@ -37,7 +37,7 @@
                     <div class="options-detail">
                         <span v-if="!item.userNum && !item.ratio && selectType == 1" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span v-if="!item.userNum && !item.ratio && selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
-                        <div class="images-cover">
+                        <div @click.stop="pictureZoom(index)" class="images-cover">
                             <span class="images-num">共{{ item.pictures.length }}张</span>
                             <img :src="item.pictures[0].pictureUrl" alt="">
                         </div>
@@ -60,7 +60,7 @@
                     <div class="options-detail">
                         <span v-if="!item.userNum && !item.ratio && selectType == 1" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span v-if="!item.userNum && !item.ratio && selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
-                        <div class="video-cover">
+                        <div @click.stop="videoZoom(index)" class="video-cover">
                             <i class="video-icon"></i>
                             <img :src="item.video.pictureUrl" alt="">
                         </div>
