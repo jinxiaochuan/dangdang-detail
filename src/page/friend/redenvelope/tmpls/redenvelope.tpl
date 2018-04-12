@@ -34,6 +34,7 @@
         <div class="envelope-code" :class="{'no-slogn': !receiveInfo.info.activityInfo.hbSlogan}">
             <span class="word" v-if="receiveInfo.codeType == 1">使用我的朋友码，双方均可获得奖励</span>
             <span class="word" v-if="receiveInfo.codeType == 2">使用圈子码，加入相应公众圈并获得奖励</span>
+            <span class="word" v-if="receiveInfo.codeType == 3">使用圈子码，加入相应公众圈并获得奖励</span>
             <span class="code">{{ receiveInfo.info.codeInfo.code }}</span>
         </div>
     </div>
