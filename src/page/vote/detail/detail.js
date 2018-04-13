@@ -2,9 +2,11 @@ import Vue from 'vue';
 
 import vueTips from 'vue-tips'
 
-import queryString from 'query-string';
+// import queryString from 'query-string';
 
 Vue.use(vueTips)
+
+var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 require('page/common/common.js');
 
@@ -74,10 +76,16 @@ new Vue({
 
     methods: {
         init () {
-            var parsed = queryString.parse(location.search);
-            this.userId = parsed.userId;
-            this.voteId = parsed.voteId;
-            this.isAdmin = parsed.isAdmin || 0;
+            var data = {};
+
+            var queryStr = jsmod.util.url.getParam;
+            this.userId = queryStr(HREF_ORIGIN, 'userId');
+            this.voteId = queryStr(HREF_ORIGIN, 'voteId');
+            this.isAdmin = queryStr(HREF_ORIGIN, 'isAdmin') || 0;
+            // var parsed = queryString.parse(location.search);
+            // this.userId = parsed.userId;
+            // this.voteId = parsed.voteId;
+            // this.isAdmin = parsed.isAdmin || 0;
             this.initTitle();
             this.getPage()
         },
