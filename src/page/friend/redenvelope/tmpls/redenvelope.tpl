@@ -13,7 +13,7 @@
             </div>
             <div class="receive-detail">
                 <span><span @click="tapUser" class="receive-name">{{ receiveInfo.useCodeUser.showName }}</span></span>
-                <span class="receive-desc">使用了<em @click="tapCodeUser">{{ receiveInfo.codeUser.showName }}</em>的<span v-if="receiveInfo.codeType == 1">朋友码</span><span v-if="receiveInfo.codeType == 2">圈子码</span><span v-if="receiveInfo.codeType == 3">圈子码</span>，并完善了个人空间</span>
+                <span class="receive-desc">使用了<em @click="tapCodeUser">{{ receiveInfo.codeUser.showName }}</em>的<span v-if="receiveInfo.codeType == 1">朋友码</span><span v-if="receiveInfo.codeType == 2">圈子码</span><span v-if="receiveInfo.codeType == 3">圈子码</span></span>
             </div>
         </div>
         <span class="cash-wrap">
