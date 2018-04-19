@@ -75,12 +75,10 @@ var SquareDetail = jsmod.util.klass({
                     })
                     self.$container.html(html);
 
-                    console.log(json.data);
-
                     if(json.data.info.pictureList.length){
                       self.picSwiper = new PicSwiper({
-                        picArr : json.data.info.pictureList,
-                        triggerClass : '.pic'
+                          picArr : json.data.info.pictureList,
+                          triggerClass : '.pic'
                       });
 
                       self.picSwiper.init();
