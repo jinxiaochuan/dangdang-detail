@@ -38,13 +38,21 @@ html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
 a{
     text-decoration: none;
 }
+
 body {
   font-family: "Helvetica Neue",helvetica,'lucida grande','lucida sans unicode',lucida,'Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
   font-size: 14px;
-  line-height: 1.42;
+  line-height: 1.6;
+}
+
+html{
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.6;
 }
 
 ol, ul {
