@@ -23,7 +23,7 @@
             {% endif %}
             {% if data.articleInfo.liveInfo.liveStatus == 2 %}
             <span class="live-status">
-                直播中
+                直播中...
             </span>
             {% endif %}
         </div>
