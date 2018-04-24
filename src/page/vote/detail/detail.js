@@ -183,7 +183,7 @@ new Vue({
         },
 
         active (index, id) {
-            if(this.isAdmin == 1) return
+            if(this.isAdmin == 1 || this.isFinished == 1 || this.isVoted == 1) return
 
             var $list = $(this.$refs.voteItem);
             var $item = $(this.$refs.voteItem[index]);
