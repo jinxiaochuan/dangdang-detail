@@ -218,8 +218,9 @@ new Vue({
         },
 
         hightlight (html) {
-            var keyword = this.keyword
-            var keywordRg = new RegExp(this.keyword, 'ig')
+            var keyword = this.keyword;
+            if(!keyword) return html
+            var keywordRg = new RegExp(this.keyword, 'ig');
             return html.replace(keywordRg, `<span class='filter-hightlight'>${keyword}</span>`)
         },
 
