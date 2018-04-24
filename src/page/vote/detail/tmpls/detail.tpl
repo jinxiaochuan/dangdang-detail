@@ -5,6 +5,44 @@
             <input @input="search" type="search" name="keyword" placeholder="搜索" v-model="keyword" autocomplete="off">
         </form>
     </div>
+
+    <transition name="fade">
+    <div v-if="multiOptions.length" class="vote-search-list-wrap">
+        <transition-group name="fade" tag="div" class="vote-search-list">
+            <div v-for="(item, index) in multiOptions" v-bind:key="index" class="search-multi-options">
+                <!-- 纯文本 -->
+                <div v-if="(item.video && !item.video.videoUrl && !item.pictures.length) || (!item.video && !item.pictures.length)" class="search-item search-item-text">
+                    <i @click="multiOptionDel(item.id)" class="del"></i>
+                    <div class="search-detail">
+                        <span class="desc" v-html="item.itemName"></span>
+                    </div>
+                </div>
+                <!-- 图片 -->
+                <div v-if="item.pictures.length" class="search-item search-item-images">
+                    <div class="search-detail">
+                        <i @click="multiOptionDel(item.id)" class="del"></i>
+                        <div class="images-cover" :style="{backgroundImage: 'url(' + item.pictures[0].pictureUrl + ')'}">
+                            <span v-if="item.pictures.length != 1" class="images-num">{{ item.pictures.length }}张</span>
+                        </div>
+                        <span class="desc" v-html="item.itemName"></span>
+                    </div>
+                </div>
+                <!-- 视频 -->
+                <div v-if="item.video && item.video.videoUrl" class="search-item search-item-video">
+                    <i @click="multiOptionDel(item.id)" class="del"></i>
+                    <div class="search-detail">
+                        <div class="video-cover" :style="{backgroundImage: 'url(' + item.video.pictureUrl + ')'}">
+                            <i class="video-icon"></i>
+                        </div>
+                        <span class="desc" v-html="item.itemName"></span>
+                    </div>
+                </div>
+            </div>
+        </transition-group>
+    </div>
+    </transition>
+
+
     <div v-if="options.length" class="vote-main">
         <div class="vote-title">
             <span class="title">{{ title }}</span>
@@ -12,7 +50,7 @@
             <span v-if="selectType == 2">(多选)</span>
         </div>
         <div class="vote-options">
-            <div @click="active(index)" ref="voteItem" v-for="(item, index) in options" :data-id="item.id" class="vote-options-item">
+            <div @click="active(index, item.id)" ref="voteItem" v-for="(item, index) in options" :data-id="item.id" class="vote-options-item" :class="{'active': selectType == 2 && isActive(item.id)}">
                 <!-- 纯文本 -->
                 <div v-if="(item.video && !item.video.videoUrl && !item.pictures.length) || (!item.video && !item.pictures.length)" class="options-item options-item-text">
                     <div class="options-detail">

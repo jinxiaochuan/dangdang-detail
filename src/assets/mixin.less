@@ -230,6 +230,13 @@
   align-content:@type;
 }
 
+.flex-shrink(@shrink:1){
+    -webkit-flex-shrink: @shrink;
+    -moz-flex-shrink: @shrink;
+    -ms-flex-shrink: @shrink;
+    flex-shrink: @shrink;
+}
+
 .font-dpr(@font-size){
   font-size: @font-size;
   [data-dpr='2'] & {

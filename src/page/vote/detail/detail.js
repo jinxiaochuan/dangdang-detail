@@ -2,8 +2,6 @@ import Vue from 'vue';
 
 import vueTips from 'vue-tips'
 
-// import queryString from 'query-string';
-
 Vue.use(vueTips)
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
@@ -54,6 +52,7 @@ new Vue({
             isFinished: '',
             isVoted: '',
             voteOptions: '',
+            multiOptions: [],
             bridge: '',
             screenHeight: document.body.clientHeight,
             originHeight: document.body.clientHeight,
@@ -82,10 +81,6 @@ new Vue({
             this.userId = queryStr(HREF_ORIGIN, 'userId');
             this.voteId = queryStr(HREF_ORIGIN, 'voteId');
             this.isAdmin = queryStr(HREF_ORIGIN, 'isAdmin') || 0;
-            // var parsed = queryString.parse(location.search);
-            // this.userId = parsed.userId;
-            // this.voteId = parsed.voteId;
-            // this.isAdmin = parsed.isAdmin || 0;
             this.initTitle();
             this.getPage()
         },
@@ -117,8 +112,6 @@ new Vue({
                 jsonp: 'callback',
                 success: function(json){
                     if(json.status != 1) return
-
-                    console.log(json);
 
                     self.selectType = json.data.voteInfo.selectType;
                     self.maxSelNum = json.data.voteInfo.maxSelNum;
@@ -161,11 +154,38 @@ new Vue({
 
         },
 
-        active (index) {
+        multiOptionAdd (index) {
+            this.multiOptions.unshift(this.options[index])
+        },
+
+        isActive (id) {
+            var filter = this.multiOptions.filter(function(item){
+                return item.id == id
+            })
+
+            return filter.length != 0
+        },
+
+        multiOptionDel (id) {
+            var self = this;
+
+            this.multiOptions = this.multiOptions.filter(function(item){
+                return item.id != id
+            })
+
+            this.options.forEach(function(item, index){
+                if(item.id == id){
+                    $(self.$refs.voteItem[index]).removeClass('active')
+                    return false
+                }
+            })
+
+        },
+
+        active (index, id) {
             if(this.isAdmin == 1) return
 
             var $list = $(this.$refs.voteItem);
-            var $listActive = $('.vote-options-item.active');
             var $item = $(this.$refs.voteItem[index]);
 
             switch (this.selectType) {
@@ -177,15 +197,15 @@ new Vue({
                     break;
                 case '2':
                     if($item.hasClass('active')){
-                        $item.removeClass('active')
+                        this.multiOptionDel(id);
                     }else {
-                        if($listActive.length == this.maxSelNum){
+                        if(this.multiOptions.length == this.maxSelNum){
                             this.$tips.show('最多可选'+ this.maxSelNum +'项', {
                                 delay: 1000
                             })
                             return
                         }
-                        $item.addClass('active')
+                        this.multiOptionAdd(index);
                     }
                 default:
 
@@ -235,18 +255,37 @@ new Vue({
                 return
             }
 
-            var $listActive = $('.vote-options-item.active');
 
-            if(!$listActive.length){
-                this.$tips.show('至少选择一项', {
-                    delay: 1000
-                });
-                return
+            var optionIds;
+
+            if(this.selectType == 1){
+                var $listActive = $('.vote-options-item.active');
+
+                if(!$listActive.length){
+                    this.$tips.show('至少选择一项', {
+                        delay: 1000
+                    });
+                    return
+                }
+
+                optionIds = $listActive.map(function(item){
+                    return $(this).data('id')
+                })
             }
 
-            var optionIds = $listActive.map(function(item){
-                return $(this).data('id')
-            })
+            if(this.selectType == 2){
+                if(!this.multiOptions.length){
+                    this.$tips.show('至少选择一项', {
+                        delay: 1000
+                    });
+                    return
+                }
+
+                optionIds = this.multiOptions.map(function(item){
+                    return parseInt(item.id)
+                })
+
+            }
 
             optionIds = $.makeArray(optionIds);
 

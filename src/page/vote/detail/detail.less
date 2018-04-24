@@ -34,6 +34,94 @@
             }
         }
     }
+    .vote-search-list-wrap{
+        .flex();
+        width: 100%;
+        .setLine('bottom',#E5E5E5);
+    }
+    .vote-search-list{
+        .flex();
+        height: @base*210rem;
+        padding: @base*30rem @base*25rem;
+        overflow-x: scroll;
+        .search-multi-options{
+            .flex-shrink(0);
+            margin-right: @base*40rem;
+            &:last-child{
+                padding-right: @base*25rem;
+            }
+        }
+        .search-item{
+            .flex();
+            .align-items(center);
+            .font-dpr(15px);
+            height: @base*150rem;
+            .del{
+                display: block;
+                width: @base*32rem;
+                height: @base*32rem;
+                margin-right: @base*12rem;
+                background: url('~assets/vote/vote_del.png') center center no-repeat;
+                background-size: contain;
+            }
+            .search-detail{
+                height: @base*150rem;
+                .flex();
+                .align-items(center);
+                .desc{
+                    max-width: @base*138rem;
+                    line-height: @base*36rem;
+                    .clamp(4);
+                }
+            }
+            &.search-item-text{
+
+            }
+            &.search-item-images{
+                .images-cover{
+                    position: relative;
+                    width: @base*150rem;
+                    height: @base*150rem;
+                    margin-right: @base*20rem;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #F0F2F5;
+                    .images-num{
+                        position: absolute;
+                        bottom: 0;
+                        right: @base*8rem;
+                        .font-dpr(12px);
+                        color: #FFFFFF;
+                    }
+                }
+
+            }
+            &.search-item-video{
+                .video-cover{
+                    position: relative;
+                    width: @base*150rem;
+                    height: @base*150rem;
+                    margin-right: @base*20rem;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #F0F2F5;
+                    .video-icon{
+                        position: absolute;
+                        width: @base*50rem;
+                        height: @base*50rem;
+                        margin-left: -@base*20rem;
+                        margin-top: -@base*25rem;
+                        left: 50%;
+                        top: 50%;
+                        background: url('~assets/vote/vote_video.png') center center no-repeat;
+                        background-size: contain;
+                    }
+                }
+            }
+        }
+    }
     .vote-main{
         padding-left: @base*60rem;
         padding: @base*35rem 0 @base*35rem @base*60rem;
