@@ -1,0 +1,102 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.container{
+    margin: 0;
+    padding: 0;
+}
+
+.scene-sign-in-wrap{
+    padding: @base*20rem @base*30rem;
+    .scene-wrap{
+        padding: @base*30rem 0;
+        .name{
+            .font-dpr(18px);
+        }
+        .scene{
+            margin-top: @base*30rem;
+            .font-dpr(14px);
+            color: @mainColor;
+        }
+        .desc{
+            margin-top: @base*30rem;
+            .font-dpr(15px);
+            color: #6D6D6D;
+            line-height: @base*36rem;
+        }
+    }
+
+    .arrow{
+        margin-left: @base*20rem;
+        display: inline-block;
+        width: @base*16rem;
+        height: @base*25rem;
+        background: url("~assets/arrow_right.png") no-repeat right center;
+        background-size: contain;
+    }
+    .member-wrap{
+        .flex();
+        .justify-content(space-between);
+        .align-items(center);
+        padding: @base*50rem 0 @base*40rem;
+        .font-dpr(14px);
+        .setLine('top', #DEE0E7);
+        .member-desc{
+
+        }
+        .member{
+            .flex();
+            .align-items(center);
+            .avatar-list{
+                .flex();
+                .avatar-item{
+                    width: @base*50rem;
+                    height: @base*50rem;
+                    margin-right: @base*5rem;
+                    overflow: hidden;
+                    position: relative;
+                    img{
+                        position: absolute;
+                        right: 0;
+                        width: @base*50rem;
+                        height: @base*50rem;
+                    }
+                    &:not(:first-child){
+                        width: @base*35rem;
+                    }
+
+                }
+            }
+            .member-num{
+                margin-left: @base*6rem;
+                color: #8A8A8A;
+            }
+        }
+    }
+    .draw-wrap{
+        .flex();
+        .justify-content(space-between);
+        .align-items(center);
+        padding: @base*50rem 0 @base*40rem;
+        .font-dpr(14px);
+        .setLine('top', #DEE0E7);
+    }
+    .scene-handle-wrap{
+        padding: @base*55rem @base*30rem @base*50rem;
+        text-align: center;
+        .scene-btn{
+            .border-radius(@base*100rem);
+            .btn(@base*502rem,@base*88rem,16px,#007AFF,#FFFFFF);
+            .font-dpr(16px);
+            background-image: linear-gradient(90deg, #F47309 0%, #FA5E08 100%);
+
+            &:active{
+                background-image: linear-gradient(-90deg, #E65202 0%, #E56500 100%);
+                span{
+                    opacity: .6;
+                }
+            }
+        }
+    }
+}
