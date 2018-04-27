@@ -1,37 +1,28 @@
-<div class="scene-sign-in-wrap">
-    <div class="scene-wrap">
-        <p class="name">温莎KTV (大望路店)</p>
+<div v-if="sceneInfo" class="scene-sign-in-wrap">
+    <div v-if="sceneInfo" class="scene-wrap">
+        <p class="name">{{ sceneInfo.name }}</p>
 
-        <p class="scene">温莎KTV (大望路店)</p>
+        <p class="scene clearfix"><i class="location-icon"></i><span class="scene-location">{{ sceneInfo.location | json_covert('name') }}</span></p>
 
-        <div class="desc">
-            温莎KTV斥巨资在北京建造的花园店具有专业化、智能化、超豪华、全数码的完美视、听、唱效果，超市、餐厅一应俱全，为顾客“量声定制”的录音棚和包房内的立麦，更是一大亮点。
+        <div v-if="sceneInfo.desc" class="desc">
+            {{ sceneInfo.desc }}
         </div>
     </div>
 
-    <div class="member-wrap">
+    <div  class="member-wrap">
         <span class="member-desc">现场成员</span>
         <div class="member">
-            <div class="avatar-list">
-                <div class="avatar-item">
-                    <img src="http://s1.im-dangdang.com/dev/20180426/Nh8Nz2sBYR.jpg?x-oss-process=image/crop,x_136,y_0,w_900,h_900" alt="">
-                </div>
-                <div class="avatar-item">
-                    <img src="http://s1.im-dangdang.com/dev/20180426/Nh8Nz2sBYR.jpg?x-oss-process=image/crop,x_136,y_0,w_900,h_900" alt="">
-                </div>
-                <div class="avatar-item">
-                    <img src="http://s1.im-dangdang.com/dev/20180426/Nh8Nz2sBYR.jpg?x-oss-process=image/crop,x_136,y_0,w_900,h_900" alt="">
-                </div>
-                <div class="avatar-item">
-                    <img src="http://s1.im-dangdang.com/dev/20180426/Nh8Nz2sBYR.jpg?x-oss-process=image/crop,x_136,y_0,w_900,h_900" alt="">
+            <div v-if="signinList.length" class="avatar-list">
+                <div v-for="item in signinList" class="avatar-item">
+                    <img :src="item.userImage" alt="">
                 </div>
             </div>
-            <span class="member-num">285人</span>
+            <span v-if="sceneInfo.signinNum != 0" class="member-num">{{ sceneInfo.signinNum }}人</span>
             <i class="arrow"></i>
         </div>
     </div>
 
-    <div class="draw-wrap">
+    <div v-if="sceneInfo.hasLottery == 1" class="draw-wrap">
         <span class="draw-desc">现场抽奖</span>
         <i class="arrow"></i>
     </div>

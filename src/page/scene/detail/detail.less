@@ -16,8 +16,20 @@
         }
         .scene{
             margin-top: @base*30rem;
-            .font-dpr(14px);
-            color: @mainColor;
+            .flex();
+            .align-items(center);
+            .location-icon{
+                width: @base*30rem;
+                height: @base*30rem;
+                background: url('~assets/scene_location.png') center center no-repeat;
+                background-size: contain;
+            }
+            .scene-location{
+                .flex-1();
+                margin-left: @base*5rem;
+                .font-dpr(14px);
+                color: @mainColor;
+            }
         }
         .desc{
             margin-top: @base*30rem;
