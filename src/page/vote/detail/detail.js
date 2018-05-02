@@ -89,6 +89,10 @@ new Vue({
             document.title = this.isAdmin == 1 ? '投票详情' : '投票'
         },
 
+        clear () {
+            this.keyword = '';
+        },
+
         getPage () {
             var self = this;
 

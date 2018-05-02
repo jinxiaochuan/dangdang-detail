@@ -2,8 +2,9 @@
     <div class="vote-search">
         <i class="search-icon"></i>
         <form class="form-search" onsubmit="return false">
-            <input @input="search" type="search" name="keyword" placeholder="搜索" v-model="keyword" autocomplete="off">
+            <input @input="search" type="text" name="keyword" placeholder="搜索" v-model="keyword" autocomplete="off">
         </form>
+        <i v-show="keyword" @click="clear" class="clear-icon"></i>
     </div>
 
     <transition name="fade">

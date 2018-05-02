@@ -25,12 +25,26 @@
             background: url('~assets/vote/vote_search.png') center center no-repeat;
             background-size: contain;
         }
+        .clear-icon{
+            display: block;
+            margin: 0 @base*10rem 0 @base*20rem;
+            width: @base*30rem;
+            height: @base*30rem;
+            background: url('~assets/vote/vote_clear.png') center center no-repeat;
+            background-size: contain;
+        }
         .form-search{
             flex: 1;
+            height: @base*40rem;
             input{
                 border: none;
                 outline: none;
                 width: 100%;
+                height: @base*40rem;
+                padding: 0 @base*10rem;
+                &::-ms-clear{
+                    display:none;
+                }
             }
         }
     }
