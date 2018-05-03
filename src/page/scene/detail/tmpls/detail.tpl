@@ -1,4 +1,5 @@
-<div v-if="sceneInfo" class="scene-sign-in-wrap">
+<div class="scene-sign-in-wrap">
+
     <div v-if="sceneInfo" class="scene-wrap">
         <p class="name">{{ sceneInfo.name }}</p>
 
@@ -12,7 +13,7 @@
         </div>
     </div>
 
-    <div  class="member-wrap">
+    <div v-if="sceneInfo" class="member-wrap">
         <span class="member-desc">现场成员</span>
         <div class="member">
             <div v-if="signinList.length" class="avatar-list">
@@ -25,13 +26,17 @@
         </div>
     </div>
 
-    <div v-if="sceneInfo.hasLottery == 1" class="draw-wrap">
+    <div v-if="sceneInfo && sceneInfo.hasLottery == 1" class="draw-wrap">
         <span class="draw-desc">现场抽奖</span>
         <i class="arrow"></i>
     </div>
 
-    <div class="scene-handle-wrap">
-        <a class="scene-btn" href="avascript:void(0)">签到</a>
+    <div v-if="sceneInfo" class="scene-handle-wrap">
+        <a class="scene-btn" :class="{'app-btn': source == 1}" href="avascript:void(0)">签到</a>
+    </div>
+
+    <div v-if="msg" class="scene-error-wrap">
+        <err :msg="msg"></err>
     </div>
 
 </div>

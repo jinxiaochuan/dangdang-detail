@@ -18,6 +18,8 @@ var PATH_NAME = '/ddweb/v1/circle/scene/detail';
 
 var URL_SCENE = PATH_ORIGIN + PATH_NAME;
 
+var errorComponent = require('page/components/error/error.js');
+
 Vue.filter('json_covert',function(jsonstring, key){
     return JSON.parse(jsonstring)[key]
 })
@@ -36,10 +38,16 @@ new Vue({
 
     template: TPL_SCENE,
 
+    components: {
+        Err: errorComponent
+    },
+
     data: function(){
         return {
             sceneInfo: '',
-            signinList: []
+            signinList: [],
+            source: 0,
+            msg: ''
         }
     },
 
@@ -47,13 +55,15 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/scene/detail?sceneId=25&userId=200291'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/scene/detail?sceneId=25&userId=200291&source=1'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/scene/detail?sceneId=120&userId=200302&source=1'
             // URL_SCENE = 'http://dev.im-dangdang.com/ddweb/v1/circle/scene/detail'
 
             var data = {};
 
             data.sceneId = jsmod.util.url.getParam(HREF_ORIGIN, 'sceneId');
             data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');
+            this.source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 
             $.ajax({
                 url: URL_SCENE,
@@ -62,13 +72,14 @@ new Vue({
                 jsonp: 'callback',
                 success: function(json){
                     if(json.status == 1){
-                        console.log(json);
                         self.sceneInfo = json.data.sceneInfo;
                         self.signinList = json.data.signinList;
+                        return;
                     }
+
+                    self.msg = json.msg
                 }
             })
-            console.log('init');
         }
     },
 
