@@ -22,6 +22,15 @@ Vue.filter('json_covert',function(jsonstring, key){
     return JSON.parse(jsonstring)[key]
 })
 
+Vue.filter('location_covert',function(jsonstring){
+    var location = JSON.parse(jsonstring);
+    return location.locationAddress ? location.locationAddress : location.locationName
+})
+
+Vue.filter('default',function(val, def){
+    return val ? val : def
+})
+
 new Vue({
     el: '#scene-sign-in',
 
@@ -38,7 +47,7 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/scene/detail?sceneId=2&userId=200119'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/scene/detail?sceneId=25&userId=200291'
             // URL_SCENE = 'http://dev.im-dangdang.com/ddweb/v1/circle/scene/detail'
 
             var data = {};

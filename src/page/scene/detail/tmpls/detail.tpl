@@ -2,7 +2,10 @@
     <div v-if="sceneInfo" class="scene-wrap">
         <p class="name">{{ sceneInfo.name }}</p>
 
-        <p class="scene clearfix"><i class="location-icon"></i><span class="scene-location">{{ sceneInfo.location | json_covert('name') }}</span></p>
+        <p class="scene clearfix">
+            <i class="location-icon"></i>
+            <span class="scene-location">{{ sceneInfo.location | location_covert }}</span>
+        </p>
 
         <div v-if="sceneInfo.desc" class="desc">
             {{ sceneInfo.desc }}
