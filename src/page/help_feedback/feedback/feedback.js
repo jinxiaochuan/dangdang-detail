@@ -9,6 +9,8 @@ require('./feedback.less');
 
 var versionComp = require('lib/self/versionComp.js');
 
+var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
+
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var TPL_SUCCESS = require('./tmpls/success.tpl');
@@ -26,6 +28,7 @@ var Feedback = jsmod.util.klass({
         this.option = option;
         this.$container = $('.container');
         this.$form = this.$container.find('form');
+        this.initBridge();
         this.validate();
         this.initEvents();
     },
@@ -115,8 +118,29 @@ var Feedback = jsmod.util.klass({
         })
 
         this.$container.delegate('.close','click',function(){
-            window.history.back();
+            var feedbackType = PARAMS.feedbackType || 0;
+            if(!feedbackType){
+                window.history.back();
+                return
+            }
+
+            self.bridge.callHandler('feedbackClose')
+
         })
+    },
+
+    initBridge: function(){
+        var self = this;
+
+        setupWebViewJavascriptBridge(function(bridge){
+            self.bridge = bridge;
+
+            if(!window.isIOS){
+                bridge.init(function(message, responseCallback){})
+            }
+
+        })
+
     }
 })
 
