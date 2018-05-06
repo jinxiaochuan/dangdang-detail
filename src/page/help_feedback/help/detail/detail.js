@@ -6,8 +6,6 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var trans = require('lib/self/trans.js');
 
-var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
-
 var TPL_DETAIL = require('./tmpls/detail.tpl');
 
 var HREF_ORIGIN = window.location.href;
@@ -21,13 +19,8 @@ var Detail = jsmod.util.klass({
         this.render();
     },
 
-    initBridge: function(){
-        var self = this;
-
-        setupWebViewJavascriptBridge(function(bridge){
-            bridge.callHandler('showTitle',{"title":self.data.helpInfo.title},function(){})
-        })
-
+    initTitle: function(){
+        document.title = this.data.helpInfo.title;
     },
 
     render: function(){
@@ -47,7 +40,7 @@ var Detail = jsmod.util.klass({
                     })
 
                     self.$container.html(html);
-                    self.initBridge();
+                    self.initTitle();
                     return;
                 }
 
