@@ -80,12 +80,17 @@ new Vue({
                     self.msg = json.msg
                 }
             })
+        },
+
+        initShare () {
+            share();
         }
     },
 
     mounted: function(){
         this.$nextTick(() => {
-            this.init()
+            this.init();
+            this.initShare();
         })
     }
 
