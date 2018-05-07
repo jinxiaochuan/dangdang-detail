@@ -28,6 +28,9 @@ var TPL_LIVE_PRE = require('./tmpls/live.tpl');
 
 var Empty = require('page/components/empty/empty.js');
 
+require('aplayer/dist/APlayer.min.css')
+var APlayer = require('aplayer');
+
 var TPL_MAP_PRE = {
     '1': TPL_NEWS_PRE,
     '2': TPL_ACTIVITY_PRE,
@@ -45,7 +48,6 @@ var CirclePreview = jsmod.util.klass({
     initBridge: function(){
         var self = this;
 
-        /*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/
         setupWebViewJavascriptBridge(function(bridge){
 
             bridge.callHandler('baseInfo',self.baseInfo,function(){})
@@ -63,7 +65,7 @@ var CirclePreview = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200072&articleId=2162';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200207&articleId=3931';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         var data = {};
@@ -127,52 +129,97 @@ var CirclePreview = jsmod.util.klass({
             }
         })
 
-
     },
 
     initAudioHandler: function(){
         var self = this;
         new AudioHandler({
             playcallback: function(){
-                var $video = $('body').find('video');
+                self.bridge.callHandler('beginAudio');
+                self.allVideoPause();
+            },
+            pausecallback: function(){
+                self.bridge.callHandler('pauseAudio');
+            },
+            endedcallback: function(){
+                self.bridge.callHandler('completeAudio')
+            }
+        });
+    },
+
+    initAudio: function(){
+        var self = this;
+        this.audioAP = {};
+        var $audio = $('audio');
+        if(!$audio.length) return
+
+        $audio.each(function(index, item){
+            var url = item.src;
+
+            self.audioAP['ap_' + index] = new APlayer({
+                container: item.parentNode,
+                fixed: false,
+                loop: 'none',
+                audio: {
+                    name: '音频',
+                    artist: '',
+                    cover: 'http://s1.im-dangdang.com/online/20180507/audio_icon.png',
+                    url: url
+                }
+            })
+
+            self.audioAP['ap_' + index].on('play', function() {
+                var $video = $('video');
                 $video.each(function(index, item){
                     if(!item.paused){
                         item.pause();
                     }
                 })
-            },
-            pausecallback: function(){
+                self.bridge.callHandler('beginAudio');
+            })
 
-            },
-            endedcallback: function(){
+            self.audioAP['ap_' + index].on('pause', function() {
+                self.bridge.callHandler('pauseAudio');
+            })
 
+            self.audioAP['ap_' + index].on('ended', function() {
+                self.bridge.callHandler('completeAudio')
+            })
+
+        })
+    },
+
+    allAudioPause: function(){
+        var $audio = $('audio');
+        $audio.each(function(index, item){
+            if(!item.paused){
+                item.pause();
+            }
+        })
+        // Object.keys(self.audioAP).forEach(function(key){
+        //     self.audioAP[key].pause();
+        // })
+    },
+
+    allVideoPause: function(){
+        var $video = $('video');
+        $video.each(function(index, item){
+            if(!item.paused){
+                item.pause();
             }
         })
     },
 
     initEvents: function(){
+        var self = this;
+
         this.$container.delegate('.close-icon','click',function(){
             $(this).parents('.preview-fix').remove();
         })
-        this.$container.find('.detail-content video').on('play',function(){
-            var $audio = $('body').find('audio');
-            $audio.each(function(index, item){
-                if(!item.paused){
-                    item.pause();
-                }
-            })
+
+        this.$container.find('video').on('play',function(){
+            self.allAudioPause();
         })
-    },
-
-    deviceDetect: function () {
-        var self = this;
-
-        var u = window.navigator.userAgent;
-
-        window.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-
-        window.isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
     }
 
 })

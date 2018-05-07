@@ -24,7 +24,6 @@ var createLoader = function(cssExtract){
         },
         {
             test: /\.css$/,
-            exclude: /node_modules/,
             loader: cssLoader
         },
         {

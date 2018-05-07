@@ -1,7 +1,3 @@
-// require('lib/third/photoswipe/dist/photoswipe.css');
-// require('lib/third/photoswipe/dist/default-skin/default-skin.css');
-// var PhotoSwipe = require('lib/third/photoswipe/dist/photoswipe.js');
-// var PhotoSwipeUI_Default = require('lib/third/photoswipe/dist/photoswipe-ui-default.js');
 require('page/common/common.js');
 
 require('./detail.less');
@@ -34,6 +30,9 @@ var TPL_LIVE = require('./tmpls/live.tpl');
 
 var Empty = require('page/components/empty/empty.js');
 
+// require('aplayer/dist/APlayer.min.css')
+// var APlayer = require('aplayer');
+
 var TPL_MAP = {
     '1': TPL_NEWS,
     '2': TPL_ACTIVITY,
@@ -52,7 +51,7 @@ var CircleDetail = jsmod.util.klass({
         var self = this;
 
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3357&userId=200072&shareType=17&shareId=3307&shareUserId=200072&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3631&userId=179708&shareType=17&shareId=3307&shareUserId=179708&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3932&userId=200072&shareType=17&shareId=3307&shareUserId=179708&isAdminIdentity=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         var data = {}, isAdminIdentity, supportHb, source;
@@ -136,6 +135,33 @@ var CircleDetail = jsmod.util.klass({
 
         this.initAudioHandler();
 
+        this.initEvents();
+
+    },
+
+    initEvents: function(){
+
+    },
+
+    allAudioPause: function(){
+        var $audio = $('audio');
+        $audio.each(function(index, item){
+            if(!item.paused){
+                item.pause();
+            }
+        })
+        // Object.keys(self.audioAP).forEach(function(key){
+        //     self.audioAP[key].pause();
+        // })
+    },
+
+    allVideoPause: function(){
+        var $video = $('video');
+        $video.each(function(index, item){
+            if(!item.paused){
+                item.pause();
+            }
+        })
     },
 
     initAudioHandler: function(){
@@ -143,12 +169,7 @@ var CircleDetail = jsmod.util.klass({
         new AudioHandler({
             playcallback: function(){
                 self.bridge.callHandler('beginAudio');
-                var $video = $('body').find('video');
-                $video.each(function(index, item){
-                    if(!item.paused){
-                        item.pause();
-                    }
-                })
+                self.allVideoPause();
             },
             pausecallback: function(){
                 self.bridge.callHandler('pauseAudio');
@@ -157,6 +178,49 @@ var CircleDetail = jsmod.util.klass({
                 self.bridge.callHandler('completeAudio')
             }
         });
+    },
+
+    initAudio: function(){
+        var self = this;
+        this.audioAP = {};
+        var $audio = $('audio');
+        if(!$audio.length) return
+
+        $audio.each(function(index, item){
+            var url = item.src;
+
+            self.audioAP['ap_' + index] = new APlayer({
+                container: item.parentNode,
+                fixed: false,
+                loop: 'none',
+                audio: {
+                    name: '音频',
+                    artist: '',
+                    cover: 'http://s1.im-dangdang.com/online/20180507/audio_icon.png',
+                    url: url
+                }
+            })
+
+            self.audioAP['ap_' + index].on('play', function() {
+                var $video = $('video');
+                $video.each(function(index, item){
+                    if(!item.paused){
+                        item.pause();
+                    }
+                })
+                self.bridge.callHandler('beginAudio');
+            })
+
+            self.audioAP['ap_' + index].on('pause', function() {
+                self.bridge.callHandler('pauseAudio');
+            })
+
+            self.audioAP['ap_' + index].on('ended', function() {
+                self.bridge.callHandler('completeAudio')
+            })
+
+        })
+
     },
 
     initShare: function(){
@@ -249,21 +313,11 @@ var CircleDetail = jsmod.util.klass({
             })
 
             bridge.registerHandler('videoPause', function(data, responseCallback){
-                var $video = $('body').find('video');
-                $video.each(function(index, item){
-                    if(!item.paused){
-                        item.pause();
-                    }
-                })
+                self.allVideoPause()
             })
 
             bridge.registerHandler('audioPause', function(data, responseCallback){
-                var $audio = $('body').find('audio');
-                $audio.each(function(index, item){
-                    if(!item.paused){
-                        item.pause();
-                    }
-                })
+                self.allAudioPause();
             })
 
             bridge.registerHandler('liveStatusChange', function(data, responseCallback){
@@ -332,39 +386,29 @@ var CircleDetail = jsmod.util.klass({
                 bridge.callHandler('tapEnlarge', index, function(){})
             })
 
-            self.$container.find('.detail-content video,.review-content video').on('play',function(e){
+            self.$container.find('video').on('play',function(e){
                 bridge.callHandler('beginVideo');
-                var $audio = $('body').find('audio');
-                $audio.each(function(index, item){
-                    if(!item.paused){
-                        item.pause();
-                    }
-                })
+                self.allAudioPause();
             })
 
-            self.$container.find('.detail-content video,.review-content video').on('pause',function(e){
+            self.$container.find('video').on('pause',function(e){
                 bridge.callHandler('pauseVideo')
             })
 
-            self.$container.find('.detail-content video,.review-content video').on('ended',function(e){
+            self.$container.find('video').on('ended',function(e){
                 bridge.callHandler('completeVideo')
             })
 
-            self.$container.find('.detail-content audio,.review-content audio').on('play',function(e){
+            self.$container.find('audio').on('play',function(e){
                 bridge.callHandler('beginAudio');
-                var $video = $('body').find('video');
-                $video.each(function(index, item){
-                    if(!item.paused){
-                        item.pause();
-                    }
-                })
+                self.allVideoPause();
             })
 
-            self.$container.find('.detail-content audio,.review-content audio').on('pause',function(e){
+            self.$container.find('audio').on('pause',function(e){
                 bridge.callHandler('pauseAudio')
             })
 
-            self.$container.find('.detail-content audio,.review-content audio').on('ended',function(e){
+            self.$container.find('audio').on('ended',function(e){
                 bridge.callHandler('completeAudio')
             })
 
@@ -393,220 +437,6 @@ var CircleDetail = jsmod.util.klass({
             })
 
         })
-
-    },
-
-    initPhotoSwipe: function(){
-
-        var initPhotoSwipeFromDOM = function(gallerySelector) {
-
-        // parse slide data (url, title, size ...) from DOM elements
-        // (children of gallerySelector)
-        var parseThumbnailElements = function(el) {
-            var thumbElements = el.childNodes,
-                numNodes = thumbElements.length,
-                items = [],
-                figureEl,
-                linkEl,
-                size,
-                item;
-
-            for(var i = 0; i < numNodes; i++) {
-
-                figureEl = thumbElements[i]; // <figure> element
-
-                // include only element nodes
-                if(figureEl.nodeType !== 1) {
-                    continue;
-                }
-
-                linkEl = figureEl.children[0]; // <a> element
-
-                size = linkEl.getAttribute('data-size').split('x');
-
-                // create slide object
-                item = {
-                    src: linkEl.getAttribute('href'),
-                    w: parseInt(size[0], 10),
-                    h: parseInt(size[1], 10)
-                };
-
-
-
-                if(figureEl.children.length > 1) {
-                    // <figcaption> content
-                    item.title = figureEl.children[1].innerHTML;
-                }
-
-                if(linkEl.children.length > 0) {
-                    // <img> thumbnail element, retrieving thumbnail url
-                    item.msrc = linkEl.children[0].getAttribute('src');
-                }
-
-                item.el = figureEl; // save link to element for getThumbBoundsFn
-                items.push(item);
-            }
-
-            return items;
-        };
-
-        // find nearest parent element
-        var closest = function closest(el, fn) {
-            return el && ( fn(el) ? el : closest(el.parentNode, fn) );
-        };
-
-        // triggers when user clicks on thumbnail
-        var onThumbnailsClick = function(e) {
-            e = e || window.event;
-            e.preventDefault ? e.preventDefault() : e.returnValue = false;
-
-            var eTarget = e.target || e.srcElement;
-
-            // find root element of slide
-            var clickedListItem = closest(eTarget, function(el) {
-                return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
-            });
-
-            if(!clickedListItem) {
-                return;
-            }
-
-            // find index of clicked item by looping through all child nodes
-            // alternatively, you may define index via data- attribute
-            var clickedGallery = clickedListItem.parentNode,
-                childNodes = clickedListItem.parentNode.childNodes,
-                numChildNodes = childNodes.length,
-                nodeIndex = 0,
-                index;
-
-            for (var i = 0; i < numChildNodes; i++) {
-                if(childNodes[i].nodeType !== 1) {
-                    continue;
-                }
-
-                if(childNodes[i] === clickedListItem) {
-                    index = nodeIndex;
-                    break;
-                }
-                nodeIndex++;
-            }
-
-
-
-            if(index >= 0) {
-                // open PhotoSwipe if valid index found
-                openPhotoSwipe( index, clickedGallery );
-            }
-            return false;
-        };
-
-        // parse picture index and gallery index from URL (#&pid=1&gid=2)
-        var photoswipeParseHash = function() {
-            var hash = window.location.hash.substring(1),
-            params = {};
-
-            if(hash.length < 5) {
-                return params;
-            }
-
-            var vars = hash.split('&');
-            for (var i = 0; i < vars.length; i++) {
-                if(!vars[i]) {
-                    continue;
-                }
-                var pair = vars[i].split('=');
-                if(pair.length < 2) {
-                    continue;
-                }
-                params[pair[0]] = pair[1];
-            }
-
-            if(params.gid) {
-                params.gid = parseInt(params.gid, 10);
-            }
-
-            return params;
-        };
-
-        var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-            var pswpElement = document.querySelectorAll('.pswp')[0],
-                gallery,
-                options,
-                items;
-
-            items = parseThumbnailElements(galleryElement);
-
-            // define options (if needed)
-            options = {
-                // isClickableElement: function(){
-                //     return true
-                // },
-                tapToClose:true,
-                tapToToggleControls:true,
-                // define gallery index (for URL)
-                galleryUID: galleryElement.getAttribute('data-pswp-uid'),
-
-                getThumbBoundsFn: function(index) {
-                    // See Options -> getThumbBoundsFn section of documentation for more info
-                    var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
-                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                        rect = thumbnail.getBoundingClientRect();
-
-                    return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
-                }
-
-            };
-
-            // PhotoSwipe opened from URL
-            if(fromURL) {
-                if(options.galleryPIDs) {
-                    // parse real index when custom PIDs are used
-                    // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
-                    for(var j = 0; j < items.length; j++) {
-                        if(items[j].pid == index) {
-                            options.index = j;
-                            break;
-                        }
-                    }
-                } else {
-                    // in URL indexes start from 1
-                    options.index = parseInt(index, 10) - 1;
-                }
-            } else {
-                options.index = parseInt(index, 10);
-            }
-
-            // exit if index not found
-            if( isNaN(options.index) ) {
-                return;
-            }
-
-            if(disableAnimation) {
-                options.showAnimationDuration = 0;
-            }
-
-            // Pass data to PhotoSwipe and initialize it
-            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-            gallery.init();
-        };
-
-        // loop through all gallery elements and bind events
-        var galleryElements = document.querySelectorAll( gallerySelector );
-
-        for(var i = 0, l = galleryElements.length; i < l; i++) {
-            galleryElements[i].setAttribute('data-pswp-uid', i+1);
-            galleryElements[i].onclick = onThumbnailsClick;
-        }
-
-        // Parse URL and open gallery if it contains #&pid=3&gid=1
-        var hashData = photoswipeParseHash();
-        if(hashData.pid && hashData.gid) {
-            openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
-        }
-        };
-
-        // execute above function
-        initPhotoSwipeFromDOM('.my-gallery');
 
     }
 

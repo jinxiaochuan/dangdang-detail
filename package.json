@@ -34,6 +34,7 @@
     "cross-env": "^3.1.4"
   },
   "dependencies": {
+    "aplayer": "^1.10.1",
     "exif-js": "^2.3.0",
     "fastclick": "^1.0.6",
     "jquery": "^3.1.1",
