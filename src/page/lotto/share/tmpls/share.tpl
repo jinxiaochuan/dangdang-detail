@@ -25,7 +25,7 @@
         <div class="share-code-wrap" v-bind:style="{backgroundImage: 'url('+ shareBg +')'}">
             <span class="story">{{ shareStory }}</span>
             <div class="share-invite-wrap">
-                <span class="code-word">使用我的红包码，均可获得一张红包卡</span>
+                <span class="code-word">使用我的朋友码，均可获得3张红包卡</span>
                 <div class="share-invite">
                     <span class="invite-code">{{ code }}</span>
                 </div>

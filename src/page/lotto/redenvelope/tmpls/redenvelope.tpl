@@ -46,12 +46,12 @@
             </div>
         </div> -->
         <div class="envelope-code">
-            <span class="word">使用我的红包码，均可获得一张红包卡</span>
+            <span class="word">使用我的朋友码，均可获得3张红包卡</span>
             <span class="code">{{ record && record.code }}</span>
         </div>
     </div>
     <div v-if="record && !record.drawImage" class="envelope-card">
         <span class="code">{{ record && record.code }}</span>
-        <span class="word">我的红包码</span>
+        <span class="word">我的朋友码</span>
     </div>
 </div>
