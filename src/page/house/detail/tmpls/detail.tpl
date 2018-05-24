@@ -43,6 +43,52 @@
         <div class="AMap-wrapper" id="AMap-wrapper">
 
         </div>
+        <p class="address">3号楼5单元1408室</p>
+    </div>
+    <div class="house-facility">
+        <span class="title">配套设施</span>
+        <div class="facility-list clearfix">
+            <div class="facility-item active">
+                <i class="facility television"></i>
+                <span class="facility-name">电视</span>
+            </div>
+            <div class="facility-item active">
+                <i class="facility air-conditioner"></i>
+                <span class="facility-name">空调</span>
+            </div>
+            <div class="facility-item active">
+                <i class="facility washer"></i>
+                <span class="facility-name">洗衣机</span>
+            </div>
+            <div class="facility-item active">
+                <i class="facility heater"></i>
+                <span class="facility-name">热水器</span>
+            </div>
+            <div class="facility-item active">
+                <i class="facility fridge"></i>
+                <span class="facility-name">冰箱</span>
+            </div>
+            <div class="facility-item">
+                <i class="facility bed"></i>
+                <span class="facility-name">床</span>
+            </div>
+            <div class="facility-item">
+                <i class="facility wardrobe"></i>
+                <span class="facility-name">衣柜</span>
+            </div>
+            <div class="facility-item">
+                <i class="facility sofa"></i>
+                <span class="facility-name">沙发</span>
+            </div>
+            <div class="facility-item">
+                <i class="facility heating"></i>
+                <span class="facility-name">暖气</span>
+            </div>
+            <div class="facility-item active">
+                <i class="facility wifi"></i>
+                <span class="facility-name">Wi-Fi</span>
+            </div>
+        </div>
     </div>
     <div class="house-survey">
         <span class="title">房屋概况</span>
@@ -53,6 +99,6 @@
         </div>
     </div>
     <div class="house-handle">
-        
+
     </div>
 </div>

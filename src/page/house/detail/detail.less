@@ -153,6 +153,107 @@
             margin-top: @base*24rem;
             height: @base*422rem;
         }
+        .address{
+            margin: @base*24rem @base*40rem;
+            .font-dpr(16px);
+        }
+    }
+    .house-facility{
+        margin-top: @base*80rem;
+        padding: 0 @base*32rem;
+        overflow: hidden;
+        .title{
+            margin: @base*24rem @base*8rem;
+            .font-dpr(20px);
+        }
+        .facility-list{
+            margin-top: @base*24rem;
+            width: @base*740rem;
+        }
+        .facility-item{
+            float: left;
+            margin-right: @base*54rem;
+            width: @base*94rem;
+            text-align: center;
+            .font-dpr(12px);
+            color: #CCCCCC;
+            .facility-name{
+                line-height: @base*72rem;
+            }
+            &.active{
+                color: #0076FF;
+                .facility{
+                    &.television{
+                        background-image: url('~assets/house/icon_tv_sel@3x.png');
+                    }
+                    &.air-conditioner{
+                        background-image: url('~assets/house/icon_kongtiao_sel@3x.png');
+                    }
+                    &.washer{
+                        background-image: url('~assets/house/icon_xiyiji_sel@3x.png');
+                    }
+                    &.heater{
+                        background-image: url('~assets/house/icon_reshuiqi_sel@3x.png');
+                    }
+                    &.fridge{
+                        background-image: url('~assets/house/icon_bingxiang_sel@3x.png');
+                    }
+                    &.bed{
+                        background-image: url('~assets/house/icon_chuang_sel@3x.png');
+                    }
+                    &.wardrobe{
+                        background-image: url('~assets/house/icon_yigui_sel@3x.png');
+                    }
+                    &.sofa{
+                        background-image: url('~assets/house/icon_shafa_sel@3x.png');
+                    }
+                    &.heating{
+                        background-image: url('~assets/house/icon_nuanqi_sel@3x.png');
+                    }
+                    &.wifi{
+                        background-image: url('~assets/house/icon_wifi_nor@3x.png');
+                    }
+                }
+            }
+            .facility{
+                display: block;
+                width: @base*94rem;
+                height: @base*94rem;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                &.television{
+                    background-image: url('~assets/house/icon_tv_nor@3x.png');
+                }
+                &.air-conditioner{
+                    background-image: url('~assets/house/icon_kongtiao_nor@3x.png');
+                }
+                &.washer{
+                    background-image: url('~assets/house/icon_xiyiji_nor@3x.png');
+                }
+                &.heater{
+                    background-image: url('~assets/house/icon_reshuiqi_nor@3x.png');
+                }
+                &.fridge{
+                    background-image: url('~assets/house/icon_bingxiang_nor@3x.png');
+                }
+                &.bed{
+                    background-image: url('~assets/house/icon_chuang_nor@3x.png');
+                }
+                &.wardrobe{
+                    background-image: url('~assets/house/icon_yigui_nor@3x.png');
+                }
+                &.sofa{
+                    background-image: url('~assets/house/icon_shafa_nor@3x.png');
+                }
+                &.heating{
+                    background-image: url('~assets/house/icon_nuanqi_nor@3x.png');
+                }
+                &.wifi{
+                    background-image: url('~assets/house/icon_wifi_nor@3x.png');
+                }
+            }
+        }
     }
     .house-survey{
         margin-top: @base*80rem;
