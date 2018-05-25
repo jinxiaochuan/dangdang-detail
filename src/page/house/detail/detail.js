@@ -154,7 +154,8 @@ new Vue({
                 isLooping: 1,
                 isOverspread: 1,
                 animateTime: 800,
-                animateType: 'rotate'
+                animateType: 'rotate',
+                fixPage: false
             });
 
             S.on('slideChanged', function(){
