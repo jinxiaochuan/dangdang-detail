@@ -109,7 +109,7 @@ new Vue({
         },
 
         tapPV () {
-            this.bridge && this.bridge.callHandler('tapPV')
+            this.bridge && this.bridge.callHandler('tapPV', this.slideIndex, function(){})
         },
 
         tapUser () {
