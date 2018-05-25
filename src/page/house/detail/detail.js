@@ -34,7 +34,7 @@ new Vue({
         return {
             house: null,
             list: [],
-            slideIndex: '0',
+            slideIndex: 0,
             facilities: MAPPING.H_FACILITY,
             userId: 0,
             source: 0
@@ -109,7 +109,7 @@ new Vue({
         },
 
         tapPV () {
-            this.bridge && this.bridge.callHandler('tapPV', this.slideIndex, function(){})
+            this.bridge && this.bridge.callHandler('tapPV', this.slideIndex.toString(), function(){})
         },
 
         tapUser () {
@@ -159,7 +159,7 @@ new Vue({
             });
 
             S.on('slideChanged', function(){
-                self.slideIndex = arguments[0].toString();
+                self.slideIndex = arguments[0];
             });
 
         },
