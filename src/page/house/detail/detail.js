@@ -171,8 +171,8 @@ new Vue({
                 resizeEnable: false,
                 center: [this.house.location.longitude, this.house.location.latitude],//地图中心点
                 zoom: 13, //地图显示的缩放级别
-                zoomEnable:false,
-                dragEnable: false
+                zoomEnable: false,
+                // dragEnable: false
             });
 
             var marker = new AMap.Marker({
@@ -183,6 +183,21 @@ new Vue({
             map.on('click', function(){
                 self.bridge && self.bridge.callHandler('tapMap')
             })
+
+            // 限制地图显示范围
+            // map.plugin(["AMap.CitySearch"], function() {
+            //     var citysearch = new AMap.CitySearch();
+            //     citysearch.getLocalCity();
+            //     AMap.event.addListener(citysearch, "complete", function(result) {
+            //         var citybounds;
+            //         if (result && result.city && result.bounds) {
+            //             citybounds = result.bounds;
+            //             map.setBounds(citybounds);
+            //         }
+            //     });
+            // });
+
+            map.setLimitBounds(map.getBounds());
 
         }
     },
