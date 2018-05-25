@@ -6,13 +6,21 @@ require('./detail.less');
 
 var TPL_DETAIL = require('./tmpls/detail.tpl');
 
+var jsmod = require('lib/self/jsmod/jsmod_extend.js');
+
 var share = require('lib/self/share.js');
+
+var MAPPING = require('lib/self/mapping.js');
 
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
 var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
+
+var PATH_NAME = '/ddweb/v1/circle/house/detail';
+
+var URL_HOUSE = PATH_ORIGIN + PATH_NAME;
 
 var iSlider = require('islider.js');
 require('islider.js/build/islider.animate.min.js')
@@ -24,30 +32,112 @@ new Vue({
 
     data: function(){
         return {
-            list: [
-                {
-                    content: 'http://s1.im-dangdang.com/online/20180523/5GPtEj5XR5.jpeg'
-                },
-                {
-                    content: 'http://s1.im-dangdang.com/online/20180523/wFRJYWaQpi.jpeg'
-                },
-                {
-                    content: 'http://s1.im-dangdang.com/online/2018/05/23/1527054297809433.png'
-                }
-            ],
-            slideIndex: 0
+            house: null,
+            list: [],
+            slideIndex: 0,
+            facilities: MAPPING.H_FACILITY
         }
     },
 
-    methods: {
-        init() {
+    filters:{
+        map: function(value, typeMap){
+            switch (typeMap) {
+                case 'H_BUILD_TIME':
+                    if(value == 1900){
+                        return MAPPING[H_BUILD_TIME]
+                    }
+                    return value + '年'
+                    break;
+                default:
+                return MAPPING[typeMap][value]
+            }
 
+        },
+
+    },
+
+    methods: {
+
+        isExist: function(value){
+            for(var i = 0; i < this.house.communityFacilities.length; i++){
+                if(this.house.communityFacilities[i] == value)
+                return true
+            }
+
+            return false
+        },
+
+        init() {
+            var self = this;
+
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/house/detail?houseId=2&userId=200073&circleId=1623374833&isAdmin=1';
+            // URL_HOUSE = 'http://dev.im-dangdang.com/ddweb/v1/circle/house/detail';
+
+            var data = {};
+
+            data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+            data.houseId = jsmod.util.url.getParam(HREF_ORIGIN,'houseId');
+            data.circleId = jsmod.util.url.getParam(HREF_ORIGIN,'circleId');
+            data.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin');
+
+            $.ajax({
+                url: URL_HOUSE,
+                dataType: 'jsonp',
+                data: data,
+                jsonp: 'callback',
+                success: function(json){
+                    if(json.status == 1){
+                        self.house = json.data.detail;
+                        self.initBridge();
+                        self.initiSlider();
+                        self.initAMap();
+                    }
+                }
+            })
+        },
+
+        tapPV () {
+            this.bridge && this.bridge.callHandler('tapPV')
+        },
+
+        tapUser () {
+            this.bridge && this.bridge.callHandler('tapUser')
+        },
+
+        tapOffLine () {
+            this.bridge && this.bridge.callHandler('tapOffLine')
+        },
+
+        tapPublish () {
+            this.bridge && this.bridge.callHandler('tapPublish')
+        },
+
+        tapEdit () {
+            this.bridge && this.bridge.callHandler('tapEdit')
+        },
+
+        tapDel () {
+            this.bridge && this.bridge.callHandler('tapDel')
+        },
+
+        initBridge() {
+            var self = this;
+            setupWebViewJavascriptBridge(function(bridge){
+                self.bridge = bridge;
+                self.bridge.callHandler('baseInfo', self.house, function(){})
+            })
         },
 
         initiSlider() {
             var self = this;
 
-            var S = new iSlider(document.getElementById('iSlider-wrapper'), this.list, {
+            this.list = this.house.pvList.map(function(item){
+                return {
+                    content: item.pictureUrl
+                }
+            })
+
+            var S = new iSlider(this.$refs.iSlider, this.list, {
                 isAutoplay: 1,
                 isLooping: 1,
                 isOverspread: 1,
@@ -62,19 +152,29 @@ new Vue({
         },
 
         initAMap() {
-            var map = new AMap.Map("AMap-wrapper", {
-                resizeEnable: true,
-                center: [116.397428, 39.90923],//地图中心点
+            var self = this;
+
+            var map = new AMap.Map("AMap", {
+                resizeEnable: false,
+                center: [this.house.location.longitude, this.house.location.latitude],//地图中心点
                 zoom: 13 //地图显示的缩放级别
             });
+
+            var marker = new AMap.Marker({
+                position: map.getCenter(),  //标记的地图坐标
+                map: map
+            });
+
+            map.on('click', function(){
+                self.bridge && self.bridge.callHandler('tapMap')
+            })
+
         }
     },
 
     mounted: function(){
         this.$nextTick(() => {
             this.init();
-            this.initiSlider();
-            this.initAMap();
         })
     }
 })

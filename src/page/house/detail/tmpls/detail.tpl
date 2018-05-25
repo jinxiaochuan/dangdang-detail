@@ -1,104 +1,79 @@
 <div class="house-detail-wrap">
-    <div class="iSlider-wrapper" id="iSlider-wrapper">
+    <div class="iSlider-wrapper" ref="iSlider" @click="tapPV">
         <i class="slide-dot">{{ slideIndex + 1 }}/{{ list.length }}</i>
-        <i class="status cancel">已取消</i>
+        <i v-if="house && house.status == 2" class="status cancel">已取消</i>
+        <i v-if="house && house.isFreeze == 1" class="status prohibite">已封禁</i>
     </div>
-    <div class="house-issue">
+    <div v-if="house" class="house-issue">
         <div class="issue">
-            <div class="avatar">
-                <img src="http://s1.im-dangdang.com/dev/20180426/Nh8Nz2sBYR.jpg?x-oss-process=image/crop,x_136,y_0,w_900,h_900" alt="">
+            <div class="avatar" @click="tapUser">
+                <img :src="house.user.headImage.pictureUrl" alt="">
             </div>
-            <span class="name">王天天</span>
-            <span class="identity">中介</span>
+            <span class="name">{{ house.user.showName }}</span>
+            <span class="identity">{{ house.userType | map('H_USER_TYPE') }}</span>
         </div>
         <div class="info">
-            <p class="title">香榭丽舍春园临近地铁12号线交通便捷，随时看房</p>
+            <p class="title">{{ house.title }}</p>
             <div class="standard-price">
                 <div class="standard">
-                    <span class="standard-item">普通住宅</span>
-                    <span class="standard-item">高档装修</span>
+                    <span v-if="house.houseType != 0" class="standard-item">{{ house.houseType | map('H_HOUSE_TYPE') }}</span>
+                    <span v-if="house.decoration != 0" class="standard-item">{{ house.decoration | map('H_DECORATION') }}</span>
                 </div>
-                <span class="price">1120万</span>
+                <span class="price">{{ house.formatMoney }}</span>
             </div>
             <div class="area-type">
-                <span class="area">200.39㎡</span>
-                <span class="type">2室2厅2卫</span>
-                <span class="floor">10/24层</span>
-                <span class="towards">南北</span>
+                <span class="area">{{ house.houseArea }}㎡</span>
+                <span class="type">{{ house.houseModel }}</span>
+                <span class="floor">{{ house.floor }}</span>
+                <span class="towards">{{ house.towards | map('H_TOWARDS') }}</span>
             </div>
-            <div class="years-unit">
+            <div v-if="house.type == 2" class="years-unit">
                 <span class="years">
                     <label>年代：</label>
-                    <span>2010-2015年</span>
+                    <span>{{ house.buildTime | map('H_BUILD_TIME') }}</span>
                 </span>
                 <span class="unit">
                     <label>单价：</label>
-                    <span>115706元/平米</span>
+                    <span>{{ house.formatUnitPrice }}</span>
                 </span>
             </div>
         </div>
     </div>
     <div class="house-location">
         <span class="title">所在位置</span>
-        <div class="AMap-wrapper" id="AMap-wrapper">
+        <div class="AMap-wrapper">
+            <div class="AMap-inner" id="AMap">
 
+            </div>
         </div>
-        <p class="address">3号楼5单元1408室</p>
     </div>
-    <div class="house-facility">
+    <p class="house-address" v-text="house && house.houseUnit"></p>
+
+    <div v-if="house && house.type == 1" class="house-facility">
         <span class="title">配套设施</span>
         <div class="facility-list clearfix">
-            <div class="facility-item active">
-                <i class="facility television"></i>
-                <span class="facility-name">电视</span>
-            </div>
-            <div class="facility-item active">
-                <i class="facility air-conditioner"></i>
-                <span class="facility-name">空调</span>
-            </div>
-            <div class="facility-item active">
-                <i class="facility washer"></i>
-                <span class="facility-name">洗衣机</span>
-            </div>
-            <div class="facility-item active">
-                <i class="facility heater"></i>
-                <span class="facility-name">热水器</span>
-            </div>
-            <div class="facility-item active">
-                <i class="facility fridge"></i>
-                <span class="facility-name">冰箱</span>
-            </div>
-            <div class="facility-item">
-                <i class="facility bed"></i>
-                <span class="facility-name">床</span>
-            </div>
-            <div class="facility-item">
-                <i class="facility wardrobe"></i>
-                <span class="facility-name">衣柜</span>
-            </div>
-            <div class="facility-item">
-                <i class="facility sofa"></i>
-                <span class="facility-name">沙发</span>
-            </div>
-            <div class="facility-item">
-                <i class="facility heating"></i>
-                <span class="facility-name">暖气</span>
-            </div>
-            <div class="facility-item active">
-                <i class="facility wifi"></i>
-                <span class="facility-name">Wi-Fi</span>
+            <div v-for="(item, index) in facilities" class="facility-item" :class="{'active': isExist(index + 1)}">
+                <i class="facility" :class="'facility_' + (index + 1)"></i>
+                <span class="facility-name">{{ index | map('H_FACILITY') }}</span>
             </div>
         </div>
     </div>
-    <div class="house-survey">
+    <div v-if="house" class="house-survey">
         <span class="title">房屋概况</span>
-        <div class="survey">
-            备注信息写一些要求：
-希望室友爱干净，作息时间固定。
-适合喜爱阳光的你，业主用心维护的房子，舒适温馨。近距离出行可以宣称市政绿色出行自行车，健康环保，小区周边有天街购物广场，负一层有物美大型超市，生活方便。
-        </div>
+        <div class="survey" v-html="house.content"></div>
     </div>
-    <div class="house-handle">
-
+    <div v-if="house" class="house-handle">
+        <div class="publish-offline">
+            <span class="time">{{ house.formatPublishTime }}</span>
+            <span class="handle-publish-offline">
+                <span v-if="house.isFreeze == 1" class="prohibite">已封禁</span>
+                <a v-if="house.status == 1 && house.isFreeze == 0" @click="tapOffLine" class="offline" href="javascript:void(0)">下线</a>
+                <a v-else class="publish" @click="tapPublish" href="javascript:void(0)">重新发布</a>
+            </span>
+        </div>
+        <div class="edit-delete">
+            <a @click="tapEdit" class="edit" href="javascript:void(0)">编辑</a>
+            <a @click="tapDel" class="delete" href="javascript:void(0)">删除</a>
+        </div>
     </div>
 </div>
