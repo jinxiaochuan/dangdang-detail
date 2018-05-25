@@ -34,7 +34,7 @@ new Vue({
         return {
             house: null,
             list: [],
-            slideIndex: 0,
+            slideIndex: '0',
             facilities: MAPPING.H_FACILITY,
             userId: 0,
             source: 0
@@ -154,12 +154,12 @@ new Vue({
                 isLooping: 1,
                 isOverspread: 1,
                 animateTime: 800,
-                animateType: 'rotate',
-                fixPage: false
+                fixPage: false,
+                // animateType: 'rotate'
             });
 
             S.on('slideChanged', function(){
-                self.slideIndex = arguments[0]
+                self.slideIndex = arguments[0].toString();
             });
 
         },
