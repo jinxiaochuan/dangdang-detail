@@ -137,6 +137,15 @@ new Vue({
             setupWebViewJavascriptBridge(function(bridge){
                 self.bridge = bridge;
                 self.bridge.callHandler('baseInfo', self.house, function(){})
+
+                if(!window.isIOS){
+                    self.bridge.init(function(message, responseCallback) {});
+                }
+
+                self.bridge.registerHandler('offLine', function(data, responseCallback) {
+                    self.house.status = 2;
+                })
+
             })
         },
 
