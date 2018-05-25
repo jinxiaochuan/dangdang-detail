@@ -35,7 +35,9 @@ new Vue({
             house: null,
             list: [],
             slideIndex: 0,
-            facilities: MAPPING.H_FACILITY
+            facilities: MAPPING.H_FACILITY,
+            userId: 0,
+            source: 0
         }
     },
 
@@ -70,15 +72,20 @@ new Vue({
         init() {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/house/detail?houseId=2&userId=200073&circleId=1623374833&isAdmin=1';
+
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/house/detail?houseId=2&userId=200073&isAdmin=1';
             // URL_HOUSE = 'http://dev.im-dangdang.com/ddweb/v1/circle/house/detail';
+
+            this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
+            this.source = jsmod.util.url.getParam(HREF_ORIGIN,'source') || 0;
+            this.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId') || 0;
 
             var data = {};
 
             data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
             data.houseId = jsmod.util.url.getParam(HREF_ORIGIN,'houseId');
-            data.circleId = jsmod.util.url.getParam(HREF_ORIGIN,'circleId');
-            data.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin');
+            data.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
+
 
             $.ajax({
                 url: URL_HOUSE,
@@ -88,12 +95,17 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.house = json.data.detail;
+                        self.initShare();
                         self.initBridge();
                         self.initiSlider();
                         self.initAMap();
                     }
                 }
             })
+        },
+
+        initShare () {
+            share();
         },
 
         tapPV () {

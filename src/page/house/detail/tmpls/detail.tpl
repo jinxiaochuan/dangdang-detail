@@ -62,7 +62,7 @@
         <span class="title">房屋概况</span>
         <div class="survey" v-html="house.content"></div>
     </div>
-    <div v-if="house" class="house-handle">
+    <div v-if="house && house.user.userId == userId && source == 0" class="house-handle">
         <div class="publish-offline">
             <span class="time">{{ house.formatPublishTime }}</span>
             <span class="handle-publish-offline">
