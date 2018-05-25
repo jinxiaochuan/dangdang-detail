@@ -170,7 +170,9 @@ new Vue({
             var map = new AMap.Map("AMap", {
                 resizeEnable: false,
                 center: [this.house.location.longitude, this.house.location.latitude],//地图中心点
-                zoom: 13 //地图显示的缩放级别
+                zoom: 13, //地图显示的缩放级别
+                zoomEnable:false,
+                dragEnable: false
             });
 
             var marker = new AMap.Marker({
