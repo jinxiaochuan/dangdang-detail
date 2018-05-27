@@ -12,7 +12,7 @@
                 <img :src="house.user.headImage.pictureUrl" alt="">
             </div>
             <span class="name">{{ house.user.showName }}</span>
-            <span class="identity">{{ house.userType | map('H_USER_TYPE') }}</span>
+            <span v-if="house.userType == 2" class="identity">{{ house.userType | map('H_USER_TYPE') }}</span>
         </div>
         <div class="info">
             <p class="title">{{ house.title }}</p>
