@@ -146,6 +146,10 @@ new Vue({
                     self.house.status = 2;
                 })
 
+                self.bridge.registerHandler('publish', function(data, responseCallback) {
+                    self.house.status = 1;
+                })
+
             })
         },
 
