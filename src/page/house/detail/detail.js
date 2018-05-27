@@ -95,6 +95,7 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.house = json.data.detail;
+                        self.house.communityFacilities = self.house.communityFacilities || [];
                         self.initShare();
                         self.initBridge();
                         self.initiSlider();

@@ -2,8 +2,8 @@
     <div class="iSlider-wrapper" @click="tapPV">
         <div class="iSlider" ref="iSlider">
             <i class="slide-dot">{{ slideIndex + 1 }}/{{ list.length }}</i>
-            <i v-if="house && house.status == 2" class="status cancel">已取消</i>
-            <i v-if="house && house.isFreeze == 1" class="status prohibite">已封禁</i>
+            <!-- <i v-if="house && house.status == 2" class="status cancel">已取消</i> -->
+            <!-- <i v-if="house && house.isFreeze == 1" class="status prohibite">已封禁</i> -->
         </div>
     </div>
     <div v-if="house" class="house-issue">
