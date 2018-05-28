@@ -23,12 +23,19 @@ var PATH_NAME = '/ddweb/v1/circle/house/detail';
 var URL_HOUSE = PATH_ORIGIN + PATH_NAME;
 
 var iSlider = require('islider.js');
-require('islider.js/build/islider.animate.min.js')
+require('islider.js/build/islider.animate.min.js');
+
+
+var errorComponent = require('page/components/error/error.js');
 
 new Vue({
     el: '#house-detail',
 
     template: TPL_DETAIL,
+
+    components: {
+        Err: errorComponent
+    },
 
     data: function(){
         return {
@@ -37,7 +44,8 @@ new Vue({
             slideIndex: 0,
             facilities: MAPPING.H_FACILITY,
             userId: 0,
-            source: 0
+            source: 0,
+            msg: ''
         }
     },
 
@@ -100,7 +108,10 @@ new Vue({
                         self.initBridge();
                         self.initiSlider();
                         self.initAMap();
+                        return
                     }
+
+                    self.msg = json.msg
                 }
             })
         },
