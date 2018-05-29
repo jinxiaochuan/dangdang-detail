@@ -174,7 +174,7 @@ new Vue({
 
             this.list = this.house.pvList.map(function(item){
                 return {
-                    content: item.pictureUrl
+                    content: item.pictureUrl + '?x-oss-process=image/resize,m_fill,h_280,w_375'
                 }
             })
 

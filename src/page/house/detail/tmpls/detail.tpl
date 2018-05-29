@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="house" class="house-survey">
+        <div v-if="house && house.content" class="house-survey">
             <span class="title">房屋概况</span>
             <div class="survey" v-html="house.content"></div>
         </div>
