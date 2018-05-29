@@ -66,19 +66,22 @@
             <span class="title">房屋概况</span>
             <div class="survey" v-html="house.content"></div>
         </div>
-        <div v-if="house" class="house-handle">
+        <div v-if="house" class="house-time">
+            <span v-if="house.createTime == house.updateTime">发布于{{ house.formatPublishTime }}</span>
+            <span v-else>更新于{{ house.formatPublishTime }}</span>
+        </div>
+        <div v-if="house && isAdmin == 0 && house.user.userId == userId && source == 0" class="house-handle">
             <div class="publish-offline">
                 <span class="time">
-                    <span v-if="house.createTime == house.updateTime">发布于{{ house.formatPublishTime }}</span>
-                    <span v-else>更新于{{ house.formatPublishTime }}</span>
+
                 </span>
-                <span v-if="isAdmin == 0 && house.user.userId == userId && source == 0" class="handle-publish-offline">
+                <span class="handle-publish-offline">
                     <span v-if="house.isFreeze == 1" class="prohibite">已封禁</span>
                     <a v-if="house.status == 1 && house.isFreeze == 0" @click="tapOffLine" class="offline" href="javascript:void(0)">下线</a>
                     <a v-else class="publish" @click="tapPublish" href="javascript:void(0)">重新发布</a>
                 </span>
             </div>
-            <div v-if="isAdmin == 0 && house.user.userId == userId && source == 0" class="edit-delete">
+            <div class="edit-delete">
                 <a @click="tapEdit" class="edit" href="javascript:void(0)">编辑</a>
                 <a @click="tapDel" class="delete" href="javascript:void(0)">删除</a>
             </div>
