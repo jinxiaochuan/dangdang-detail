@@ -16,7 +16,7 @@
                 <span v-if="house.userType == 2" class="identity">{{ house.userType | map('H_USER_TYPE') }}</span>
             </div>
             <div class="info">
-                <p class="title">{{ house.title }}</p>
+                <p class="title"><span v-if="house.rentType != 0" class="rent">{{ house.rentType | map('H_RENT_TYPE') }}·</span>{{ house.title }}</p>
                 <div class="standard-price">
                     <div class="standard">
                         <span v-if="house.houseType != 0" class="standard-item">{{ house.houseType | map('H_HOUSE_TYPE') }}</span>
