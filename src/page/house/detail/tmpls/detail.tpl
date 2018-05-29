@@ -1,6 +1,6 @@
 <div>
-    <div v-show="house" class="house-detail-wrap">
-        <div class="iSlider-wrapper" @click="tapPV">
+    <div class="house-detail-wrap">
+        <div v-if="iSlider_is" class="iSlider-wrapper" @click="tapPV">
             <div class="iSlider" ref="iSlider">
                 <i class="slide-dot">{{ slideIndex + 1 }}/{{ list.length }}</i>
                 <!-- <i v-if="house && house.status == 2" class="status cancel">已取消</i> -->
@@ -10,7 +10,7 @@
         <div v-if="house" class="house-issue">
             <div class="issue">
                 <div class="avatar" @click="tapUser">
-                    <img :src="house.user.headImage.pictureUrl" alt="">
+                    <img :src="house.user.userImage" alt="">
                 </div>
                 <span class="name">{{ house.user.showName }}</span>
                 <span v-if="house.userType == 2" class="identity">{{ house.userType | map('H_USER_TYPE') }}</span>
@@ -68,14 +68,17 @@
         </div>
         <div v-if="house" class="house-handle">
             <div class="publish-offline">
-                <span class="time">{{ house.formatPublishTime }}</span>
-                <span v-if="house.user.userId == userId && source == 0" class="handle-publish-offline">
+                <span class="time">
+                    <span v-if="house.createTime == house.updateTime">发布于{{ house.formatPublishTime }}</span>
+                    <span v-else>更新于{{ house.formatPublishTime }}</span>
+                </span>
+                <span v-if="isAdmin == 0 && house.user.userId == userId && source == 0" class="handle-publish-offline">
                     <span v-if="house.isFreeze == 1" class="prohibite">已封禁</span>
                     <a v-if="house.status == 1 && house.isFreeze == 0" @click="tapOffLine" class="offline" href="javascript:void(0)">下线</a>
                     <a v-else class="publish" @click="tapPublish" href="javascript:void(0)">重新发布</a>
                 </span>
             </div>
-            <div v-if="house.user.userId == userId && source == 0" class="edit-delete">
+            <div v-if="isAdmin == 0 && house.user.userId == userId && source == 0" class="edit-delete">
                 <a @click="tapEdit" class="edit" href="javascript:void(0)">编辑</a>
                 <a @click="tapDel" class="delete" href="javascript:void(0)">删除</a>
             </div>

@@ -43,9 +43,12 @@ new Vue({
             list: [],
             slideIndex: 0,
             facilities: MAPPING.H_FACILITY,
+            isAdmin: 0,
             userId: 0,
             source: 0,
-            msg: ''
+            msg: '',
+            iSlider_is: true,
+            MAP_is: true
         }
     },
 
@@ -81,7 +84,7 @@ new Vue({
             var self = this;
 
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/house/detail?houseId=2&userId=200073&isAdmin=1';
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/house/detail?houseId=2&userId=200291&shareType=20&shareId=423&shareUserId=200291';
             // URL_HOUSE = 'http://dev.im-dangdang.com/ddweb/v1/circle/house/detail';
 
             this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
@@ -110,8 +113,9 @@ new Vue({
                         self.initAMap();
                         return
                     }
-
-                    self.msg = json.msg
+                    self.iSlider_is = false;
+                    $('.house-location').remove();
+                    self.msg = json.msg;
                 }
             })
         },
@@ -180,7 +184,7 @@ new Vue({
                 isOverspread: 1,
                 animateTime: 800,
                 fixPage: false,
-                // animateType: 'rotate'
+                animateType: 'default'
             });
 
             S.on('slideChanged', function(){
@@ -225,6 +229,10 @@ new Vue({
             map.setLimitBounds(map.getBounds());
 
         }
+    },
+
+    beforeMount: function(){
+
     },
 
     mounted: function(){
