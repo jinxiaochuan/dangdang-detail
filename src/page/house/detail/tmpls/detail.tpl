@@ -47,7 +47,12 @@
             <span class="title">所在位置</span>
             <div class="AMap-wrapper">
                 <div @click="tapAMap" class="AMap-inner" id="AMap" :style="{backgroundImage: 'url('+ MAP_STATIC +')' }">
-
+                    <div class="map__mark">
+                        <div class="map__mark--circle"></div>
+                        <div class="map__mark--des">
+                            <p class="map__mark--title">{{ MAP_ADDRESS }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

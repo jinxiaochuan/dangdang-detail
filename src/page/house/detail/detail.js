@@ -52,7 +52,8 @@ new Vue({
             msg: '',
             iSlider_is: true,
             MAP_is: true,
-            MAP_STATIC: ''
+            MAP_STATIC: '',
+            MAP_ADDRESS: ''
         }
     },
 
@@ -128,9 +129,9 @@ new Vue({
         initStaticMap () {
             var longitude = this.house.location.longitude;
             var latitude = this.house.location.latitude;
-            var address = this.house.location.address;
 
-            this.MAP_STATIC = AMapHost + '?location='+ longitude +','+ latitude +'&zoom='+ AMapZoom +'&labels='+ address +',3,0,14,0xFFFFFF,0x008000:'+ longitude +','+ latitude +'&key='+ AMapKey;
+            this.MAP_ADDRESS = this.house.location.address;
+            this.MAP_STATIC = AMapHost + '?location='+ longitude +','+ latitude +'&zoom='+ AMapZoom +'&scale=2&key='+ AMapKey;
         },
 
         initShare () {
