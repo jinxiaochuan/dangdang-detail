@@ -27,7 +27,7 @@ require('islider.js/build/islider.animate.min.js');
 
 const AMapHost = 'http://restapi.amap.com/v3/staticmap';
 const AMapKey = '349d8c7961f2995ff1fd1dca32ddf14e';
-const AMapZoom = 16;
+const AMapZoom = 14;
 
 var errorComponent = require('page/components/error/error.js');
 
@@ -89,7 +89,7 @@ new Vue({
             var self = this;
 
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/house/detail?houseId=423&userId=200291&shareType=20&shareId=423&shareUserId=200291';
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/house/detail?houseId=519&userId=200291&shareType=20&shareId=423&shareUserId=200291';
             // URL_HOUSE = 'http://dev.im-dangdang.com/ddweb/v1/circle/house/detail';
 
             this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
@@ -191,8 +191,13 @@ new Vue({
             var self = this;
 
             this.list = this.house.pvList.map(function(item){
+                if(item.videoUrl){
+                    return {
+                        content: '<div class="slider-item" style="background-image: url('+ item.pictureUrl +'?x-oss-process=image/resize,m_fill,h_280,w_375)"><i class="video-icon"></i><img src="'+ item.pictureUrl +'?x-oss-process=image/resize,m_fill,h_280,w_375"></div>'
+                    }
+                }
                 return {
-                    content: item.pictureUrl + '?x-oss-process=image/resize,m_fill,h_280,w_375'
+                    content: '<div class="slider-item" style="background-image: url('+ item.pictureUrl +'?x-oss-process=image/resize,m_fill,h_280,w_375)"><img src="'+ item.pictureUrl +'?x-oss-process=image/resize,m_fill,h_280,w_375"></div>'
                 }
             })
 

@@ -13,7 +13,7 @@
                     <img :src="house.user.userImage" alt="">
                 </div>
                 <span class="name">{{ house.user.showName }}</span>
-                <span v-if="house.userType == 2" class="identity">{{ house.userType | map('H_USER_TYPE') }}</span>
+                <span class="identity">{{ house.userType | map('H_USER_TYPE') }}</span>
             </div>
             <div class="info">
                 <p class="title"><span v-if="house.rentType != 0" class="rent">{{ house.rentType | map('H_RENT_TYPE') }}·</span>{{ house.title }}</p>
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="house-location">
+        <div v-if="house && MAP_STATIC" class="house-location">
             <span class="title">所在位置</span>
             <div class="AMap-wrapper">
                 <div @click="tapAMap" class="AMap-inner" id="AMap" :style="{backgroundImage: 'url('+ MAP_STATIC +')' }">
@@ -81,7 +81,8 @@
 
                 </span>
                 <span class="handle-publish-offline">
-                    <span v-if="house.isFreeze == 1" class="prohibite">已封禁</span>
+                    <span v-if="house.status == 2" class="offline-status">已下线</span>
+                    <span v-if="house.isFreeze == 1" class="prohibite-status">已封禁</span>
                     <a v-if="house.status == 1 && house.isFreeze == 0" @click="tapOffLine" class="offline" href="javascript:void(0)">下线</a>
                     <a v-else class="publish" @click="tapPublish" href="javascript:void(0)">重新发布</a>
                 </span>

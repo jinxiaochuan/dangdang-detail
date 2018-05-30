@@ -18,6 +18,32 @@
     .iSlider{
         height: @base*560rem;
         position: relative;
+        .slider-item{
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #F0F2F5;
+            position: relative;
+            .video-icon{
+                position: absolute;
+                width: @base*100rem;
+                height: @base*100rem;
+                margin-left: -@base*50rem;
+                margin-top: -@base*50rem;
+                left: 50%;
+                top: 50%;
+                background: url('~assets/video_icon.png') center center no-repeat;
+                background-size: contain;
+            }
+            img{
+                display: block;
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
         .slide-dot{
             position: absolute;
             bottom: @base*24rem;
@@ -95,11 +121,12 @@
                 margin: @base*28rem 0 @base*50rem;
                 .standard{
                     .standard-item{
+                        display: inline-block;
                         margin-right: @base*8rem;
-                        padding: @base*6rem @base*8rem;
+                        padding: @base*1rem @base*5rem;
                         background: #E8EBF4;
                         .border-radius(@base*4rem);
-                        .font-dpr(14px);
+                        font-size: @base*26rem;
                         color: #999DB5;
                     }
                 }
@@ -353,16 +380,21 @@
                 color: #828282;
             }
             .handle-publish-offline{
-                .prohibite{
+                .offline-status{
+                    .font-dpr(13px);
+                    color: #999999;
+                    margin-right: @base*20rem;
+                }
+                .prohibite-status{
                     .font-dpr(13px);
                     color: #FFB400;
                     margin-right: @base*20rem;
                 }
                 .offline,
                 .publish{
-                    .font-dpr(14px);
                     .border-radius(@base*4rem);
                     .btn-border(@base*136rem, @base*42rem, 14px, #FFF, #FC4B4A, #FC4B4A);
+                    font-size: @base*28rem;
                 }
             }
         }
