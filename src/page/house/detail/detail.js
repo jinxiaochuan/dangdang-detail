@@ -25,6 +25,9 @@ var URL_HOUSE = PATH_ORIGIN + PATH_NAME;
 var iSlider = require('islider.js');
 require('islider.js/build/islider.animate.min.js');
 
+const AMapHost = 'http://restapi.amap.com/v3/staticmap';
+const AMapKey = '349d8c7961f2995ff1fd1dca32ddf14e';
+const AMapZoom = 16;
 
 var errorComponent = require('page/components/error/error.js');
 
@@ -48,7 +51,8 @@ new Vue({
             source: 0,
             msg: '',
             iSlider_is: true,
-            MAP_is: true
+            MAP_is: true,
+            MAP_STATIC: ''
         }
     },
 
@@ -110,7 +114,8 @@ new Vue({
                         self.initShare();
                         self.initBridge();
                         self.initiSlider();
-                        self.initAMap();
+                        self.initStaticMap();
+                        // self.initAMap();
                         return
                     }
                     self.iSlider_is = false;
@@ -118,6 +123,14 @@ new Vue({
                     self.msg = json.msg;
                 }
             })
+        },
+
+        initStaticMap () {
+            var longitude = this.house.location.longitude;
+            var latitude = this.house.location.latitude;
+            var address = this.house.location.address;
+
+            this.MAP_STATIC = AMapHost + '?location='+ longitude +','+ latitude +'&zoom='+ AMapZoom +'&labels='+ address +',3,0,14,0xFFFFFF,0x008000:'+ longitude +','+ latitude +'&key='+ AMapKey;
         },
 
         initShare () {
@@ -146,6 +159,10 @@ new Vue({
 
         tapDel () {
             this.bridge && this.bridge.callHandler('tapDel')
+        },
+
+        tapAMap () {
+            this.bridge && this.bridge.callHandler('tapMap')
         },
 
         initBridge() {

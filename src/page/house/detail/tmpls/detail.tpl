@@ -46,7 +46,7 @@
         <div class="house-location">
             <span class="title">所在位置</span>
             <div class="AMap-wrapper">
-                <div class="AMap-inner" id="AMap">
+                <div @click="tapAMap" class="AMap-inner" id="AMap" :style="{backgroundImage: 'url('+ MAP_STATIC +')' }">
 
                 </div>
             </div>
