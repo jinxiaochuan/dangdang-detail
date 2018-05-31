@@ -4,6 +4,8 @@ var jsmod = require('lib/self/jsmod/jsmod_extend.js');
 
 var trans = require('lib/self/trans.js');
 
+var share = require('lib/self/share.js');
+
 var setupWebViewJavascriptBridge = require('lib/self/setupWebViewJavascriptBridge.js');
 
 var HREF_ORIGIN = window.location.href;
@@ -84,7 +86,13 @@ var IN24H = jsmod.util.klass({
 
         this.initEnlarge();
 
+        this.initShare();
+
         this.initBridge();
+    },
+
+    initShare: function(){
+        share();
     },
 
     initFlex: function(){
