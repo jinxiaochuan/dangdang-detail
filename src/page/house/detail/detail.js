@@ -62,7 +62,7 @@ new Vue({
             switch (typeMap) {
                 case 'H_BUILD_TIME':
                     if(value == 1900){
-                        return MAPPING[H_BUILD_TIME]
+                        return MAPPING['H_BUILD_TIME']
                     }
                     return value + '年'
                     break;

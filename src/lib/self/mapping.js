@@ -24,5 +24,6 @@ module.exports = {
     H_DECORATION,
     H_PAYMENT_TYPE,
     H_TOWARDS,
-    H_FACILITY
+    H_FACILITY,
+    H_BUILD_TIME
 }
