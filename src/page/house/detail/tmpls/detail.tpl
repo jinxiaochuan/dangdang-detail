@@ -44,7 +44,7 @@
             </div>
         </div>
         <div v-if="house && MAP_STATIC" class="house-location">
-            <span class="title">所在位置</span>
+            <span class="title">房屋位置</span>
             <div class="AMap-wrapper">
                 <div @click="tapAMap" class="AMap-inner" id="AMap" :style="{backgroundImage: 'url('+ MAP_STATIC +')' }">
                     <div class="map__mark">
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div v-if="house && house.content" class="house-survey">
-            <span class="title">房屋概况</span>
+            <span class="title">更多信息</span>
             <div class="survey" v-html="house.content"></div>
         </div>
         <div v-if="house" class="house-time">
