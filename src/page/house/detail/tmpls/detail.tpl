@@ -81,7 +81,7 @@
 
                 </span>
                 <span class="handle-publish-offline">
-                    <span v-if="house.status == 2" class="offline-status">已下线</span>
+                    <span v-if="house.isFreeze == 0 && house.status == 2" class="offline-status">已下线</span>
                     <span v-if="house.isFreeze == 1" class="prohibite-status">已封禁</span>
                     <a v-if="house.status == 1 && house.isFreeze == 0" @click="tapOffLine" class="offline" href="javascript:void(0)">下线</a>
                     <a v-else class="publish" @click="tapPublish" href="javascript:void(0)">重新发布</a>
