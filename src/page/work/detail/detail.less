@@ -1,0 +1,206 @@
+@import "~assets/mixin.less";
+
+@base:1/75;
+
+.container{
+    margin: 0;
+    padding: 0;
+    /*防止点击闪烁*/
+     -webkit-tap-highlight-color: transparent;
+     /*缩放网页，文字大小不变*/
+     -webkit-text-size-adjust: none;
+     font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+     -webkit-font-smoothing: antialiased;
+}
+
+.work-detail-wrap{
+    padding: @base*40rem;
+    .hr{
+        .flex;
+        .align-items(center);
+        .avatar{
+            width: @base*84rem;
+            height: @base*84rem;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .hr-name{
+            .font-dpr(15px);
+            margin-left: @base*16rem;
+            color: #6A7BA1;
+        }
+        .hr-position{
+            .font-dpr(15px);
+            color: #737373;
+        }
+    }
+    .position{
+        padding: @base*60rem 0;
+        .setLine('bottom', #DEE0E7);
+        .position-name{
+            .flex;
+            .justify-content(space-between);
+            .align-items(flex-end);
+            .name{
+                .font-dpr(19px);
+                color: #000000;
+                font-weight: 600;
+            }
+            .salary{
+                .font-dpr(15px);
+                color: #FF7452;
+            }
+        }
+        .position-criteria{
+            padding: @base*20rem 0;
+            .position-item{
+                margin-top: @base*30rem;
+                padding-left: @base*54rem;
+                height: @base*36rem;
+                line-height: @base*36rem;
+                background-position: left center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                .font-dpr(14px);
+                color: #737373;
+                &.industry{
+                    background-image: url('~assets/work/industry.png');
+                }
+                &.experience{
+                    background-image: url('~assets/work/experience.png');
+                }
+                &.education{
+                    background-image: url('~assets/work/education.png');
+                }
+                &.nature{
+                    background-image: url('~assets/work/nature.png');
+                }
+            }
+        }
+        .position-welfare{
+            padding: @base*30rem 0;
+            .welfare-list{
+                .welfare-item{
+                    float: left;
+                    margin: 0 @base*10rem @base*10rem 0;
+                    padding: @base*2rem @base*10rem;
+                    font-size: @base*24rem;
+                    color: #767676;
+                    background: #F0F2F7;
+                    .border-radius(@base*4rem);
+                }
+            }
+        }
+        .position-company{
+            margin-right: -@base*40rem;
+            .company-name{
+                .font-dpr(16px);
+                color: #333333;
+            }
+            .company-album{
+                padding: @base*30rem 0;
+                .album-list{
+                    .flex;
+                    height: @base*182rem;
+                    overflow-y: hidden;
+                    overflow-x: scroll;
+                }
+                .album-item{
+                    .flex-shrink(0);
+                    width: @base*182rem;
+                    height: @base*182rem;
+                    margin-right: @base*22rem;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            .company-address{
+                .font-dpr(14px);
+                color: #007AFF;
+            }
+        }
+    }
+    .position-desc{
+        padding: @base*60rem 0;
+        .setLine('bottom', #DEE0E7);
+        .title{
+            .font-dpr(16px);
+        }
+        .desc{
+            .font-dpr(15px);
+            color: #737373;
+            line-height: @base*48rem;
+            .view-all{
+                color: #007AFF;
+            }
+        }
+    }
+    .position-concat{
+        padding: @base*60rem 0;
+        .setLine('bottom', #DEE0E7);
+        .title{
+            .font-dpr(16px);
+        }
+        .concat-email{
+            line-height: @base*48rem;
+            .font-dpr(12px);
+            color: #313131;
+            .email{
+                .font-dpr(15px);
+                color: #007AFF;
+            }
+        }
+    }
+    .position-handle{
+        padding: 0 @base*44rem;
+        .publish-offline{
+            padding: @base*50rem 0;
+            .setLine('top', #DEE0E7);
+            .flex;
+            .justify-content(space-between);
+            .align-items(center);
+            .time{
+                .font-dpr(13px);
+                color: #828282;
+            }
+            .handle-publish-offline{
+                .offline-status{
+                    .font-dpr(13px);
+                    color: #999999;
+                    margin-right: @base*20rem;
+                }
+                .prohibite-status{
+                    .font-dpr(13px);
+                    color: #FFB400;
+                    margin-right: @base*20rem;
+                }
+                .offline,
+                .publish{
+                    .border-radius(@base*4rem);
+                    .btn-border(@base*136rem, @base*42rem, 14px, #FFF, #FC4B4A, #FC4B4A);
+                    font-size: @base*28rem;
+                }
+            }
+        }
+        .edit-delete{
+            padding: @base*50rem 0;
+            text-align: center;
+            a{
+                .font-dpr(16px);
+                .border-radius(@base*100rem);
+            }
+            .edit{
+                .btn-border(@base*500rem, @base*88rem, 16px, #FFF, #007AFF, #007AFF);
+            }
+            .delete{
+                margin-top: @base*26rem;
+                .btn-border(@base*500rem, @base*88rem, 16px, #FFF, #FC4B4A, #FC4B4A);
+            }
+        }
+    }
+}
