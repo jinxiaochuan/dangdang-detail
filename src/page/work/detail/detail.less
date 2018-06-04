@@ -107,13 +107,32 @@
                     height: @base*182rem;
                     overflow-y: hidden;
                     overflow-x: scroll;
+
                 }
                 .album-item{
                     .flex-shrink(0);
                     width: @base*182rem;
                     height: @base*182rem;
                     margin-right: @base*22rem;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #F0F2F5;
+                    position: relative;
+                    .video-icon{
+                        position: absolute;
+                        width: @base*80rem;
+                        height: @base*80rem;
+                        margin-left: -@base*40rem;
+                        margin-top: -@base*40rem;
+                        left: 50%;
+                        top: 50%;
+                        background: url('~assets/video_icon.png') center center no-repeat;
+                        background-size: contain;
+                    }
                     img{
+                        display: block;
+                        opacity: 0;
                         width: 100%;
                         height: 100%;
                     }
@@ -132,6 +151,7 @@
             .font-dpr(16px);
         }
         .desc{
+            margin-top: @base*25rem;
             .font-dpr(15px);
             color: #737373;
             line-height: @base*48rem;
@@ -153,6 +173,10 @@
             .email{
                 .font-dpr(15px);
                 color: #007AFF;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+                -ms-user-select: none;
             }
         }
     }
@@ -202,5 +226,14 @@
                 .btn-border(@base*500rem, @base*88rem, 16px, #FFF, #FC4B4A, #FC4B4A);
             }
         }
+    }
+}
+
+.vue-toast-demo{
+    position: fixed!important;
+    .tips-container{
+        .flex();
+        .align-items(center);
+        .justify-content(center);
     }
 }

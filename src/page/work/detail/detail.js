@@ -1,4 +1,8 @@
-var Vue = require('vue');
+import Vue from 'vue';
+
+import vueTips from 'vue-tips'
+
+Vue.use(vueTips)
 
 require('page/common/common.js');
 
@@ -16,16 +20,19 @@ var HREF_ORIGIN = window.location.href;
 
 var PATH_ORIGIN = window.location.origin;
 
-var PATH_NAME = '/ddweb/v1/circle/house/detail';
+var PATH_NAME = '/ddweb/v1/circle/job/detail';
 
-var URL_HOUSE = PATH_ORIGIN + PATH_NAME;
+var URL_WORK = PATH_ORIGIN + PATH_NAME;
 
 var errorComponent = require('page/components/error/error.js');
+var longTouch = require('lib/self/vueDir.js');
 
 new Vue({
     el: '#work-detail',
 
     template: TPL_DETAIL,
+
+    directives: {longTouch},
 
     components: {
         Err: errorComponent
@@ -33,15 +40,44 @@ new Vue({
 
     data: function(){
         return {
+            work: null,
+            isAdmin: 0,
+            userId: 0,
+            source: 0,
             isViewAll: false, // 查看全部或收起 是否显示
             viewAllStatus: true, // 查看全部 是否显示
-            maxLen: 80,
-            desc: '1.配合产品、UI，一起构思并设计产品的视觉交互效果；<br>2.充分理解产品，并根据需要，实现用户操作流程、交互效果;<br>3.设计内容包括手机App客户端、PC网站、H5页面及应用后台等设计'
+            maxLen: 100
         }
     },
 
     methods: {
         init () {
+            var self = this;
+
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/work/detail?jobId=568&userId=200073&isAdmin=0';
+            // URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
+
+            this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
+            this.source = jsmod.util.url.getParam(HREF_ORIGIN,'source') || 0;
+            this.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId') || 0;
+
+            var data = {};
+
+            data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+            data.jobId = jsmod.util.url.getParam(HREF_ORIGIN,'jobId');
+            data.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
+
+            $.ajax({
+                url: URL_WORK,
+                dataType: 'jsonp',
+                data: data,
+                jsonp: 'callback',
+                success: function(json){
+                    if(json.status == 1){
+                        self.work = json.data.detail;
+                    }
+                }
+            })
 
         },
 
@@ -71,6 +107,13 @@ new Vue({
         tapDel () {
             this.bridge && this.bridge.callHandler('tapDel')
         },
+
+        handleLongTouch () {
+            console.log(this.$tips.show);
+            this.$tips.show('已复制', {
+                delay: 1000
+            });
+        }
     },
 
     mounted: function(){
