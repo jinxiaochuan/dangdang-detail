@@ -1,10 +1,10 @@
 <div>
     <div v-if="work" class="work-detail-wrap">
         <div class="hr">
-            <div class="avatar">
+            <div class="avatar" @click="tapUser">
                 <img :src="work.user.userImage" alt="">
             </div>
-            <span class="hr-name">{{ work.user.showName }}</span>
+            <span class="hr-name" @click="tapUser">{{ work.user.showName }}</span>
             <span class="hr-position">({{ work.userJob }})</span>
         </div>
         <div class="position">
@@ -35,8 +35,9 @@
                 <span class="company-name">{{ work.company }}</span>
                 <div class="company-album">
                     <div class="album-list">
-                        <div v-for="item in work.pvList" :style="{backgroundImage: 'url('+ item.pictureUrl +')'}" class="album-item" >
+                        <div v-for="(item, index) in work.pvList" :style="{backgroundImage: 'url('+ item.pictureUrl +')'}" @click="tapPV(index)" class="album-item" >
                             <i v-if="item.videoUrl" class="video-icon"></i>
+                            <i v-if="item.videoUrl" class="video-duration">{{ item.duration | formatTime }}</i>
                             <img :src="item.pictureUrl" alt="">
                         </div>
                     </div>
@@ -59,19 +60,19 @@
                 <span>(长按复制)</span>
             </div>
         </div>
-        <div v-if="isAdmin == 0 && work.user.userId == userId && source == 0"  class="position-handle">
+        <div class="position-handle">
             <div class="publish-offline">
                 <span class="time">
-
+                    {{ work.formatPublishTime }}
                 </span>
-                <span class="handle-publish-offline">
+                <span v-if="isAdmin == 0 && work.user.userId == userId && source == 0" class="handle-publish-offline">
                     <span v-if="work.isFreeze == 0 && work.status == 2" class="offline-status">已下线</span>
                     <span v-if="work.isFreeze == 1" class="prohibite-status">已封禁</span>
                     <a v-if="work.status == 1 && work.isFreeze == 0" @click="tapOffLine" class="offline" href="javascript:void(0)">下线</a>
                     <a v-else class="publish" @click="tapPublish" href="javascript:void(0)">重新发布</a>
                 </span>
             </div>
-            <div class="edit-delete">
+            <div v-if="isAdmin == 0 && work.user.userId == userId && source == 0" class="edit-delete">
                 <a @click="tapEdit" class="edit" href="javascript:void(0)">编辑</a>
                 <a @click="tapDel" class="delete" href="javascript:void(0)">删除</a>
             </div>

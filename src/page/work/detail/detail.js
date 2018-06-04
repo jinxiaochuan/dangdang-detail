@@ -8,6 +8,13 @@ Vue.use(vueTips)
 
 Vue.use(VueClipboard)
 
+Vue.filter('formatTime', function (value) {
+    if (!value) return '00:00'
+    var min = parseInt(value/60) > 9 ? parseInt(value/60) : '0' + parseInt(value/60);
+    var sec = parseInt(value%60) > 9 ? parseInt(value%60) : '0' + parseInt(value%60);
+    return min + ':' + sec
+})
+
 require('page/common/common.js');
 
 require('./detail.less');
@@ -96,6 +103,14 @@ new Vue({
             this.viewAllStatus = !this.viewAllStatus
         },
 
+        tapPV (index) {
+            this.bridge && this.bridge.callHandler('tapPV', index.toString(), function(){})
+        },
+
+        tapUser () {
+            this.bridge && this.bridge.callHandler('tapUser')
+        },
+
         tapOffLine () {
             this.bridge && this.bridge.callHandler('tapOffLine')
         },
@@ -114,15 +129,18 @@ new Vue({
 
         handleLongTouch () {
             var v = this;
-            this.$copyText(this.work.email).then(function(){
-                v.$tips.show('已复制', {
-                    delay: 1000
-                });
-            }, function(e){
-                v.$tips.show('复制时失败', {
-                    delay: 1000
-                });
-            })
+            this.bridge && this.bridge.callHandler('tapCopy');
+
+            // ios禁止复制操作，导致无法使用以下代码
+            // this.$copyText(this.work.email).then(function(e){
+            //     v.$tips.show('已复制', {
+            //         delay: 1000
+            //     });
+            // }, function(e){
+            //     v.$tips.show('复制失败', {
+            //         delay: 1000
+            //     });
+            // })
 
         }
     },

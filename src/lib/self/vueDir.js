@@ -47,7 +47,7 @@ function touchstart(e, el) {
     tapObj.pageY = touches.pageY;
     tapObj.clientX = touches.clientX;
     tapObj.clientY = touches.clientY;
-    el.time = +new Date()
+    el.time = +new Date();
 }
 
 function touchend(e, el) {
@@ -64,6 +64,10 @@ function touchend(e, el) {
 
 module.exports = {
     bind(el, binding, vnode) {
+        on(el, 'contextmenu', function(e){
+            e.preventDefault()
+        })
+
         on(el, 'touchstart', function(e){
             touchstart(e, el)
         })

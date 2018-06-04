@@ -130,6 +130,16 @@
                         background: url('~assets/video_icon.png') center center no-repeat;
                         background-size: contain;
                     }
+                    .video-duration{
+                        position: absolute;
+                        right: @base*8rem;
+                        bottom: @base*6rem;
+                        font-style: normal;
+                        .font-dpr(10px);
+                        color: #FFFFFF;
+                        line-height: @base*20rem;
+                        text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+                    }
                     img{
                         display: block;
                         opacity: 0;
@@ -181,7 +191,6 @@
         }
     }
     .position-handle{
-        padding: 0 @base*44rem;
         .publish-offline{
             padding: @base*50rem 0;
             .setLine('top', #DEE0E7);
