@@ -2,7 +2,11 @@ import Vue from 'vue';
 
 import vueTips from 'vue-tips'
 
+import VueClipboard from 'vue-clipboard2'
+
 Vue.use(vueTips)
+
+Vue.use(VueClipboard)
 
 require('page/common/common.js');
 
@@ -109,10 +113,17 @@ new Vue({
         },
 
         handleLongTouch () {
-            console.log(this.$tips.show);
-            this.$tips.show('已复制', {
-                delay: 1000
-            });
+            var v = this;
+            this.$copyText(this.work.email).then(function(){
+                v.$tips.show('已复制', {
+                    delay: 1000
+                });
+            }, function(e){
+                v.$tips.show('复制时失败', {
+                    delay: 1000
+                });
+            })
+
         }
     },
 
