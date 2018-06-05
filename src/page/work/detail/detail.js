@@ -86,10 +86,37 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.work = json.data.detail;
+                        self.initShare();
+                        self.initBridge();
                     }
                 }
             })
 
+        },
+
+        initShare () {
+            share();
+        },
+
+        initBridge() {
+            var self = this;
+            setupWebViewJavascriptBridge(function(bridge){
+                self.bridge = bridge;
+                self.bridge.callHandler('baseInfo', self.work, function(){})
+
+                if(!window.isIOS){
+                    self.bridge.init(function(message, responseCallback) {});
+                }
+
+                self.bridge.registerHandler('offLine', function(data, responseCallback) {
+                    self.work.status = 2;
+                })
+
+                self.bridge.registerHandler('publish', function(data, responseCallback) {
+                    self.work.status = 1;
+                })
+
+            })
         },
 
         handleDesc (text) {
@@ -125,6 +152,10 @@ new Vue({
 
         tapDel () {
             this.bridge && this.bridge.callHandler('tapDel')
+        },
+
+        tapAMap () {
+            this.bridge && this.bridge.callHandler('tapMap')
         },
 
         handleLongTouch () {

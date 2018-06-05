@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="company-address">{{ work.location.address }}</span>
+                <span @click="tapAMap" class="company-address">{{ work.location.address }}</span>
             </div>
         </div>
         <div class="position-desc">
