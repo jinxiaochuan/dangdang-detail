@@ -11,6 +11,10 @@
      -webkit-text-size-adjust: none;
      font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
      -webkit-font-smoothing: antialiased;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     user-select: none;
+     -ms-user-select: none;
 }
 
 .work-detail-wrap{
@@ -173,6 +177,7 @@
     .position-concat{
         padding: @base*60rem 0;
         .setLine('bottom', #DEE0E7);
+
         .title{
             .font-dpr(16px);
         }
@@ -183,10 +188,6 @@
             .email{
                 .font-dpr(15px);
                 color: #007AFF;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
-                -ms-user-select: none;
             }
         }
     }
