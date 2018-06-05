@@ -1,7 +1,7 @@
 <div>
     <!-- 未删除 （管理员 或 发布人 或 成员）-->
     <div v-if="work && work.isDelete == 0">
-        <div v-if="!(isAdmin == 0 && work.user.userId != userId && work.isFreeze == 1) || (isAdmin == 0 && work.user.userId != userId && work.isFreeze == 0 && work.status == 2)" class="work-detail-wrap">
+        <div v-if="!((isAdmin == 0 && work.user.userId != userId && work.isFreeze == 1) || (isAdmin == 0 && work.user.userId != userId && work.isFreeze == 0 && work.status == 2))" class="work-detail-wrap">
             <div class="hr">
                 <div class="avatar" @click="tapUser">
                     <img :src="work.user.userImage" alt="">
