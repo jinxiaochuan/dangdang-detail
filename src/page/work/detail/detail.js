@@ -55,6 +55,7 @@ new Vue({
             isAdmin: 0,
             userId: 0,
             source: 0,
+            msg: '',
             isViewAll: false, // 查看全部或收起 是否显示
             viewAllStatus: true, // 查看全部 是否显示
             maxLen: 100
@@ -65,7 +66,7 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/work/detail?jobId=568&userId=200073&isAdmin=0';
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=568&userId=200073&isAdmin=0';
             // URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
 
             this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
@@ -88,7 +89,9 @@ new Vue({
                         self.work = json.data.detail;
                         self.initShare();
                         self.initBridge();
+                        return
                     }
+                    self.msg = json.msg;
                 }
             })
 
