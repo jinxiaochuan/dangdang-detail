@@ -16,7 +16,7 @@
                 </div>
                 <div class="position-criteria">
                     <div class="position-item industry">
-                        {{ work.jobCategoryName }}
+                        {{ work.tradeName }}/{{ work.jobCategoryName }}
                     </div>
                     <div class="position-item experience">
                         经验{{ work.workYear }}
