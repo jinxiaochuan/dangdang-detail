@@ -52,7 +52,7 @@
             <div class="position-desc">
                 <span class="title">职位描述</span>
                 <div class="desc">
-                    <span v-html="handleDesc(work.jobDesc)"></span>
+                    <pre v-html="handleDesc(work.jobDesc)"></pre>
                     <span v-if="isViewAll && viewAllStatus" @click="togView" class="view-all">查看全部</span>
                     <span v-if="isViewAll && !viewAllStatus" @click="togView" class="view-all">收起</span>
                 </div>
