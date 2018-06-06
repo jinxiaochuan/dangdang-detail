@@ -36,7 +36,7 @@
                 <div class="position-company">
                     <span class="company-name">{{ work.company }}</span>
                     <div v-if="work.pvList && work.pvList.length" class="company-album">
-                        <div class="album-list">
+                        <div class="album-list" :style="{width: 204/75*work.pvList.length + 18/75 + 'rem'}">
                             <div v-for="(item, index) in work.pvList" :style="{backgroundImage: 'url('+ item.pictureUrl +')'}" @click="tapPV(index)" class="album-item" >
                                 <i v-if="item.videoUrl" class="video-icon"></i>
                                 <i v-if="item.videoUrl" class="video-duration">{{ item.duration | formatTime }}</i>
