@@ -7,7 +7,7 @@
                     <img :src="work.user.userImage" alt="">
                 </div>
                 <span class="hr-name" @click="tapUser">{{ work.user.showName }}</span>
-                <span class="hr-position">({{ work.userJob }})</span>
+                <span class="hr-position">{{ work.userJob }}</span>
             </div>
             <div class="position">
                 <div class="position-name">
@@ -44,9 +44,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="company-location">
-                        <span @click="tapAMap" class="company-address">{{ work.location.address }}</span>
-                    </div>
+                </div>
+            </div>
+            <div class="position-address">
+                <span class="title">工作地址</span>
+                <div class="company-location">
+                    <span @click="tapAMap" class="company-address">{{ work.location.address }}</span>
                 </div>
             </div>
             <div class="position-desc">
@@ -58,7 +61,7 @@
                 </div>
             </div>
             <div v-if="work.email" class="position-concat">
-                <span class="title">联系人邮箱</span>
+                <span class="title">简历投递邮箱</span>
                 <div class="concat-email">
                     <span v-longTouch="handleLongTouch" class="email">{{ work.email }}</span>
                     <span>(长按复制)</span>

@@ -42,8 +42,12 @@
             .one-line();
         }
         .hr-position{
-            .font-dpr(15px);
-            color: #737373;
+            margin-left: @base*10rem;
+            padding: 0 @base*10rem;
+            border-left: 1px solid #BBBDC4;
+            line-height: @base*30rem;
+            .font-dpr(12px);
+            color: #BBBDC4;
             .flex-shrink(0);
         }
     }
@@ -169,6 +173,20 @@
             }
         }
     }
+    .position-address{
+        padding: @base*50rem 0;
+        .setLine('bottom', #DEE0E7);
+        .title{
+            .font-dpr(16px);
+        }
+        .company-location{
+            margin-top: @base*20rem;
+        }
+        .company-address{
+            .font-dpr(14px);
+            color: #007AFF;
+        }
+    }
     .position-desc{
         padding: @base*50rem 0;
         .setLine('bottom', #DEE0E7);
@@ -193,7 +211,7 @@
             .font-dpr(16px);
         }
         .concat-email{
-            line-height: @base*48rem;
+            margin-top: @base*20rem;
             .font-dpr(12px);
             color: #CCCCCC;
             .email{
