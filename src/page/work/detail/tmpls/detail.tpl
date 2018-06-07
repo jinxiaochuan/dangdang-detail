@@ -49,7 +49,7 @@
             <div class="position-address">
                 <span class="title">工作地址</span>
                 <div class="company-location">
-                    <span @click="tapAMap" class="company-address">{{ work.location.address }}</span>
+                    <span @click="tapAMap" class="company-address">{{ work.location.name }}</span>
                 </div>
             </div>
             <div class="position-desc">

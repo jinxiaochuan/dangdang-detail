@@ -130,7 +130,7 @@ new Vue({
             var longitude = this.house.location.longitude;
             var latitude = this.house.location.latitude;
 
-            this.MAP_ADDRESS = this.house.location.address;
+            this.MAP_ADDRESS = this.house.location.name;
             this.MAP_STATIC = AMapHost + '?location='+ longitude +','+ latitude +'&zoom='+ AMapZoom +'&scale=2&key='+ AMapKey;
         },
 
