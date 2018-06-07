@@ -123,9 +123,9 @@ var CircleDetail = jsmod.util.klass({
 
         this.$container.html(html);
 
-        this.$container.find('.detail-content').delegate('a','click',function(e){
-            e.preventDefault();
-        })
+        // this.$container.find('.detail-content').delegate('a','click',function(e){
+        //     e.preventDefault();
+        // })
 
         this.initEnlarge();
 
