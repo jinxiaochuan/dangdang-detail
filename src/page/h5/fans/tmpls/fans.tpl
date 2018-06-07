@@ -11,7 +11,7 @@
                 <div class="support-left">
                     <div class="avatar">
                         <img :src="item.logoImage" alt="">
-                        <i class="rank">{{ index + 1 }}</i>
+                        <i class="rank" :class="{'small': index > 8}">{{ index + 1 }}</i>
                     </div>
                     <div class="supporter">
                         <p class="name">{{ item.circleName }}</p>
