@@ -50,8 +50,7 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3357&userId=200072&shareType=17&shareId=3307&shareUserId=200072&isAdminIdentity=1';
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3932&userId=200072&shareType=17&shareId=3307&shareUserId=179708&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=4137&userId=200072&shareType=17&shareId=3307&shareUserId=179708&isAdminIdentity=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         var data = {}, isAdminIdentity, supportHb, source;
@@ -123,9 +122,9 @@ var CircleDetail = jsmod.util.klass({
 
         this.$container.html(html);
 
-        // this.$container.find('.detail-content').delegate('a','click',function(e){
-        //     e.preventDefault();
-        // })
+        this.$container.find('.detail-content').delegate('a','click',function(e){
+            (e.target.nodeName === 'IMG') && e.stopPropagation()
+        })
 
         this.initEnlarge();
 
