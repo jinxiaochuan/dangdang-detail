@@ -33,7 +33,7 @@ new Vue({
     methods: {
         init () {
             var self = this;
-            URL_FANS = 'http://dev.im-dangdang.com/circle/v1/circleSignin/idolDangOnce/statics'
+            // URL_FANS = 'http://dev.im-dangdang.com/circle/v1/circleSignin/idolDangOnce/statics'
             $.ajax({
                 url: URL_FANS,
                 dataType: 'jsonp',
