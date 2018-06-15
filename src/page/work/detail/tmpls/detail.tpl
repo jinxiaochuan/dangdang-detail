@@ -3,7 +3,7 @@
     <div v-if="work && work.isDelete == 0">
         <div v-if="!((isAdmin == 0 && work.user.userId != userId && work.isFreeze == 1) || (isAdmin == 0 && work.user.userId != userId && work.isFreeze == 0 && work.status == 2))" class="work-detail-wrap">
             <div class="hr">
-                <div class="avatar" @click="tapUser">
+                <div class="avatar" :class="{'app-btn' : source == 1}" @click="tapUser">
                     <img :src="work.user.userImage" alt="">
                 </div>
                 <span class="hr-name" @click="tapUser">{{ work.user.showName }}</span>
