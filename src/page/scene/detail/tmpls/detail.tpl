@@ -8,6 +8,10 @@
             <span class="scene-location">{{ sceneInfo.location | location_covert }}</span>
         </p>
 
+        <p class="duration">
+            签到时效: {{ sceneInfo.formatDuration }}
+        </p>
+
         <div v-if="sceneInfo.desc" class="desc">
             {{ sceneInfo.desc }}
         </div>
@@ -17,7 +21,7 @@
         <span class="member-desc">现场成员</span>
         <div class="member">
             <div v-if="signinList.length" class="avatar-list">
-                <div v-for="item in signinList" class="avatar-item">
+                <div v-for="(item, index) in signinList" v-if="index < 5" class="avatar-item">
                     <img :src="item.userImage" alt="">
                 </div>
             </div>
