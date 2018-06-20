@@ -134,13 +134,13 @@ var CircleIndex = jsmod.util.klass({
             // 公众圈由加入状态 -> 进入状态
             bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
                 self.initPull(bridge, function(){
-                    self.$container.find('.circle-home').addClass('enter-home').text('进入公众圈');
+                    self.$container.find('.index-home').addClass('enter-home').text('进入公众圈');
                 })
             })
             // 公众圈由进入状态 -> 加入状态
             bridge.registerHandler('doQuitStatus', function(data, responseCallback) {
                 self.initPull(bridge, function(){
-                    self.$container.find('.circle-home').removeClass('enter-home').text('加入公众圈');
+                    self.$container.find('.index-home').removeClass('enter-home').text('加入公众圈');
                 })
             })
 
@@ -148,23 +148,23 @@ var CircleIndex = jsmod.util.klass({
                 bridge.callHandler('clickCircleLogo')
             })
 
-            self.$container.delegate('.circle-handle-account','click',function(){
+            self.$container.delegate('.handle-item-account','click',function(){
                 bridge.callHandler('clickCircleAccount')
             })
 
-            self.$container.delegate('.circle-handle-location','click',function(){
+            self.$container.delegate('.handle-item-location','click',function(){
                 bridge.callHandler('clickLocation')
             })
 
-            self.$container.delegate('.circle-handle-look','click',function(){
+            self.$container.delegate('.handle-item-public','click',function(){
                 bridge.callHandler('clickPublicContent')
             })
 
-            self.$container.delegate('.circle-home','click',function(){
+            self.$container.delegate('.index-home','click',function(){
                 bridge.callHandler('enterCircle')
             })
 
-            self.$container.delegate('.circle-intro img', 'click', function(){
+            self.$container.delegate('.index-intro img', 'click', function(){
                 var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
                 bridge.callHandler('tapEnlarge', index, function(){})
             })
@@ -183,7 +183,7 @@ var CircleIndex = jsmod.util.klass({
 
         this.$container.html(html);
 
-        this.$container.find('.circle-intro').delegate('a','click',function(e){
+        this.$container.find('.index-intro').delegate('a','click',function(e){
             e.preventDefault();
         })
 
@@ -197,7 +197,7 @@ var CircleIndex = jsmod.util.klass({
 
     initEnlarge: function(){
         var self = this;
-        this.$imgList = this.$container.find('.circle-intro img');
+        this.$imgList = this.$container.find('.index-intro img');
         var imgList = $.map($.makeArray(self.$imgList), function(item){
             return {
                 'url': $(item).attr('src')
