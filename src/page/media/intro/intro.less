@@ -2,107 +2,93 @@
 
 @base:1/75;
 
-body{
-    background: #F0F2F7;
+html, body{
+    background: #FFFFFF;
 }
 
-.container{
-    background: #F0F2F7;
-}
-
-.media-intro-header{
-    .flex();
-    height: @base*120rem;
-    background: #F0F2F7;
-    width: 100%;
-    margin: -@base*50rem 0 0;
-    position: relative;
-
-    .avatar-wrap{
-        .box-sizing();
-        position: absolute;
-        left: 50%;
-        margin-left: -@base*61rem;
-        bottom: -@base*30rem;
-        width: @base*130rem;
-        height: @base*130rem;
-        padding: @base*1rem;
-        .border-radius(50%);
-        background: #F0F2F7;
-        z-index: 1;
-        figure{
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        .tap-avatar{
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: @base*4rem solid #FFFFFF;
-            background: #FFFFFF;
+.media-index-wrap{
+    .index-header{
+        .flex;
+        .flex-flow(column);
+        .align-items(center);
+        .avatar{
+            width: @base*140rem;
+            height: @base*140rem;
             .border-radius(50%);
-            .avatar{
+            overflow: hidden;
+            img{
                 width: 100%;
                 height: 100%;
                 .border-radius(50%);
             }
         }
+        .name{
+            margin-top: @base*30rem;
+            .font-dpr(17px);
+            font-weight: 600;
+        }
     }
-}
-
-.media-intro{
-    background:#FFFFFF;
-    padding: @base*123rem @base*30rem @base*32rem;
-    word-break: normal;
-    word-wrap: break-word;
-    // .font-dpr(15px)!important;
-    // line-height: @base*42rem!important;
-    .setLine('bottom',#DEE0E7);
-    *{
-        // .font-dpr(15px)!important;
-        // line-height: @base*42rem!important;
-        max-width: 100%!important;
+    .index-intro{
+        padding: @base*56rem @base*60rem;
+        word-break: normal;
+        word-wrap: break-word;
+        .font-dpr(14px);
+        *{
+            max-width: 100%!important;
+        }
+        table{
+            width: 100%!important;
+        }
+        img{
+            display: block;
+            width: 100%!important;
+            height: auto!important;
+        }
+        ul{
+            list-style: disc inside;
+            padding-left: 1em;
+        }
+        ol{
+            list-style: decimal inside;
+            padding-left: 1em;
+        }
+        blockquote{
+            display: block;
+            border-left: @base*8rem solid #d0e5f2;
+            padding: @base*5rem @base*10rem;
+            margin: @base*10rem 0;
+            line-height: 1.4;
+            font-size: 100%;
+            background-color: #f1f1f1;
+        }
+        code{
+            display: block;
+            background-color: #f1f1f1;
+            border-radius: @base*3rem;
+            padding: @base*3rem @base*5rem;
+            margin: 0 @base*3rem;
+            .font-dpr(14px);
+        }
     }
-    table{
-        width: 100%!important;
-    }
-    img{
-        display: block;
-        width: 100%!important;
-        height: auto!important;
-    }
-    ul{
-        list-style: disc inside;
-        padding-left: 1em;
-    }
-    ol{
-        list-style: decimal inside;
-        padding-left: 1em;
-    }
-}
-
-.media-handle-wrap{
-    text-align: center;
-    margin-top: @base*40rem;
-    padding: 0 @base*40rem;
-    .media-home{
-        .border-radius(@base*10rem);
-        display: inline-block;
-        width: @base*670rem;
-        height: @base*94rem;
-        line-height: @base*94rem;
+    .index-handle{
         text-align: center;
-        color: #FFFFFF;
-        .font-dpr(17px);
-        background: #007AFF;
-        // background-image: linear-gradient(-90deg, #FB5E0A 0%, #F6730A 100%);
+        padding: 0 @base*40rem;
+        .media-home{
+            .border-radius(@base*10rem);
+            display: inline-block;
+            width: @base*670rem;
+            height: @base*94rem;
+            line-height: @base*94rem;
+            text-align: center;
+            color: #FFFFFF;
+            .font-dpr(17px);
+            background: #007AFF;
 
-        &:active{
-            background: #0070EB;
-            // background-image: linear-gradient(-90deg, #E65202 0%, #E56500 100%);
-            span{
-                color: #99C5F7;
+            &:active{
+                background: #0070EB;
+                span{
+                    color: #99C5F7;
+                }
             }
         }
     }

@@ -66,7 +66,7 @@ var MediaIntro = jsmod.util.klass({
 
                 self.$container.html(html);
 
-                self.$container.find('.media-intro').delegate('a','click',function(e){
+                self.$container.find('.index-intro').delegate('a','click',function(e){
                     e.preventDefault();
                 })
 
@@ -140,7 +140,7 @@ var MediaIntro = jsmod.util.klass({
                 bridge.callHandler('mediaMainPage')
             })
 
-            self.$container.delegate('.media-intro img', 'click', function(){
+            self.$container.delegate('.index-intro img', 'click', function(){
                 var index = $.makeArray(self.$imgList).indexOf($(this).get(0));
                 bridge.callHandler('tapEnlarge', index, function(){})
             })
