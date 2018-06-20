@@ -1,8 +1,8 @@
 <div class="news-detail-wrap">
     <div class="news-detail-header">
-        <p class="title">
+        <h2 class="title">
             {{ data.newsDetail.title }}
-        </p>
+        </h2>
         <div class="source">
             <a class="tap-source" href="javascript:void(0)">
                 <img class="source-logo" src="{{ data.newsDetail.mediaLogoUrl }}" alt="">

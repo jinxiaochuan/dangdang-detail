@@ -35,6 +35,10 @@ html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
     -webkit-text-size-adjust: none;
 }
 
+h1, h2, h3, h4, h5, h6{
+    font-weight: 400;
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }

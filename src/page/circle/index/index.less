@@ -6,6 +6,10 @@ html, body{
     background: #FFFFFF;
 }
 
+.container{
+    padding-top: @base*26rem;
+}
+
 .circle-index-wrap{
 
     .index-header{
@@ -13,8 +17,8 @@ html, body{
         .flex-flow(column);
         .align-items(center);
         .avatar{
-            width: @base*140rem;
-            height: @base*140rem;
+            width: @base*130rem;
+            height: @base*130rem;
             .border-radius(50%);
             overflow: hidden;
             img{
@@ -24,9 +28,8 @@ html, body{
             }
         }
         .name{
-            margin-top: @base*30rem;
+            margin-top: @base*10rem;
             .font-dpr(17px);
-            font-weight: 600;
         }
         .code{
             .font-dpr(14px);
@@ -39,6 +42,7 @@ html, body{
         word-break: normal;
         word-wrap: break-word;
         .font-dpr(14px);
+        color: #333333;
         *{
             max-width: 100%!important;
         }
@@ -90,7 +94,7 @@ html, body{
         }
     }
     .index-handle{
-        margin-top: @base*65rem;
+        margin-top: @base*45rem;
         .handle-item-outer{
             padding: 0 @base*60rem;
             &:active{

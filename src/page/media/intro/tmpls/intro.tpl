@@ -4,7 +4,7 @@
             <div class="avatar tap-avatar">
                 <img src="{{ data.mediaInfo.mediaLogo.pictureUrl }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
             </div>
-            <span class="name">{{ data.mediaInfo.mediaName }}</span>
+            <h2 class="name">{{ data.mediaInfo.mediaName }}</h2>
         </div>
         <a class="media-home {% if data.source == 1 %}app-btn{% endif %}" href="javascript:void(0)">进入媒体</a>
     </div>

@@ -3,7 +3,7 @@
         <div class="avatar tap-avatar">
             <img src="{{ data.baseInfo.circleLogo.pictureUrl }}" alt="">
         </div>
-        <span class="name">{{ data.baseInfo.circleName }}</span>
+        <h2 class="name">{{ data.baseInfo.circleName }}</h2>
         {% if data.baseInfo.accountNum %}
         <span class="code">铛铛号：{{ data.baseInfo.accountNum }}</span>
         {% endif %}
