@@ -38,7 +38,7 @@ var MediaIntro = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/media/detail?mediaId=51&userId=200148&source=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/news/media/detail?mediaId=51&userId=200148&source=0';
         // URL_MEDIA = 'http://app.im-dangdang.com/ddweb/v1/news/media/detail';
 
         var data = {};

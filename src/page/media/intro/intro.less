@@ -7,29 +7,54 @@ html, body{
 }
 
 .media-index-wrap{
+    padding: 0 @base*36rem;
     .index-header{
         .flex;
-        .flex-flow(column);
+        .justify-content(space-between);
         .align-items(center);
-        .avatar{
-            width: @base*140rem;
-            height: @base*140rem;
-            .border-radius(50%);
-            overflow: hidden;
-            img{
-                width: 100%;
-                height: 100%;
+        .index-avatar{
+            .flex;
+            .flex-1;
+            .align-items(center);
+            .one-line();
+            .avatar{
+                .flex-shrink(0);
+                width: @base*130rem;
+                height: @base*130rem;
                 .border-radius(50%);
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    .border-radius(50%);
+                }
+            }
+            .name{
+                .one-line();
+                margin-left: @base*30rem;
+                .font-dpr(17px);
+                font-weight: 600;
             }
         }
-        .name{
-            margin-top: @base*30rem;
-            .font-dpr(17px);
-            font-weight: 600;
+        .media-home{
+            .flex-shrink(0);
+            margin-left: @base*20rem;
+            width: @base*162rem;
+            height: @base*56rem;
+            line-height: @base*56rem;
+            border: 1px solid #007AFF;
+            border-radius: 100px;
+            text-align: center;
+            .font-dpr(13px);
+            color: #007AFF;
+            &:active{
+                border: 1px solid #0070EB;
+                color: #0070EB;
+            }
         }
     }
     .index-intro{
-        padding: @base*56rem @base*60rem;
+        padding: @base*60rem 0;
         word-break: normal;
         word-wrap: break-word;
         .font-dpr(14px);
@@ -68,28 +93,6 @@ html, body{
             padding: @base*3rem @base*5rem;
             margin: 0 @base*3rem;
             .font-dpr(14px);
-        }
-    }
-    .index-handle{
-        text-align: center;
-        padding: 0 @base*40rem;
-        .media-home{
-            .border-radius(@base*10rem);
-            display: inline-block;
-            width: @base*670rem;
-            height: @base*94rem;
-            line-height: @base*94rem;
-            text-align: center;
-            color: #FFFFFF;
-            .font-dpr(17px);
-            background: #007AFF;
-
-            &:active{
-                background: #0070EB;
-                span{
-                    color: #99C5F7;
-                }
-            }
         }
     }
 }
