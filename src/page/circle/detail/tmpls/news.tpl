@@ -1,15 +1,9 @@
-<div class="common-circle-header my-gallery">
-    <div class="avatar-wrap">
-        <a class="tap-avatar" href="javascript:void(0)">
-            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
-        </a>
-    </div>
-</div>
 <div class="common-circle-news-wrap">
     <div class="circle-news-title">{{ data.articleInfo.articleTitle }}</div>
 
     <div class="circle-news-source">
         {% if data.articleInfo.source %}<span class="source">{{ data.articleInfo.source }}</span>{% endif %}
+        <span class="name tap-avatar">{{ data.circleInfo.circleName }}</span>
         <span class="time">{{ data.articleInfo.formatNewsTime }}</span>
     </div>
 
