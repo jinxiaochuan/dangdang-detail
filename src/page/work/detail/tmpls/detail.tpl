@@ -6,7 +6,7 @@
                 <div class="avatar" :class="{'app-btn' : source == 1}" @click="tapUser">
                     <img :src="work.user.userImage" alt="">
                 </div>
-                <span class="hr-name" @click="tapUser">{{ work.user.showName }}</span>
+                <span class="hr-name" :class="{'app-btn' : source == 1}" @click="tapUser">{{ work.user.showName }}</span>
                 <span class="hr-position">{{ work.userJob }}</span>
             </div>
             <div class="position">
