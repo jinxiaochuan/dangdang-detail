@@ -1,16 +1,9 @@
-<div class="common-circle-header">
-    <div class="avatar-wrap">
-        <a class="tap-avatar" href="javascript:void(0)">
-            <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
-        </a>
-    </div>
-</div>
-
 <div class="common-circle-live-wrap">
-    <div class="circle-live-title">{{ data.articleInfo.articleTitle }}</div>
+    <h1 class="circle-live-title">{{ data.articleInfo.articleTitle }}</h1>
 
     <div class="circle-live-source">
         {% if data.articleInfo.liveInfo.author %}<span class="source">{{ data.articleInfo.liveInfo.author }}</span>{% endif %}
+        <span class="name tap-avatar">{{ data.circleInfo.circleName }}</span>
         <span class="time">{{ data.articleInfo.liveInfo.formatLiveCreateTime }}</span>
     </div>
 

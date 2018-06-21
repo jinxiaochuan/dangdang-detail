@@ -1,5 +1,5 @@
 <div class="common-circle-news-wrap">
-    <div class="circle-news-title">{{ data.articleInfo.articleTitle }}</div>
+    <h1 class="circle-news-title">{{ data.articleInfo.articleTitle }}</h1>
 
     <div class="circle-news-source">
         {% if data.articleInfo.source %}<span class="source">{{ data.articleInfo.source }}</span>{% endif %}
