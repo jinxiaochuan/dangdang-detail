@@ -32,8 +32,8 @@ var CircleIndex = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/circle/base?circleId=1623375069&userId=200072&shareType=5&shareId=1623375097';
-        // URL_INDEX = 'http://dev.im-dangdang.com/ddweb/v1/circle/base';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleDetail?circleId=1&userId=1000034&shareType=5&shareId=1&shareUserId=1000034';
+        // URL_INDEX = 'http://app.im-dangdang.com/ddweb/v1/circle/base';
 
         var data = {};
 
