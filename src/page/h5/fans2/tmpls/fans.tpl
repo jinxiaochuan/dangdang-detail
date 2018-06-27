@@ -1,7 +1,7 @@
 <div class="fans-wrap">
     <div class="fans-header">
         <div class="fans-time">
-            剩余<span>{{ remainingTime }}</span>天
+            应援福利剩余<span>{{ remainingTime }}</span>天
         </div>
     </div>
     <div class="fans-support-list">
@@ -11,7 +11,7 @@
                 <div class="support-left">
                     <div class="avatar">
                         <img :src="item.logoImage" alt="">
-                        <i class="rank" :class="{'small': index > 8}">{{ index + 1 }}</i>
+                        <!-- <i class="rank" :class="{'small': index > 8}">{{ index + 1 }}</i> -->
                     </div>
                     <div class="supporter">
                         <p class="name">{{ item.circleName }}</p>
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="fans-mode">
+    <!-- <div class="fans-mode">
         <div class="time">
             <span>{{ startTime }} - {{ endTime }}</span>
         </div>
@@ -38,7 +38,7 @@
         <div class="mode">
 
         </div>
-    </div>
+    </div> -->
     <div class="fans-footer">
         本次活动解释权归铛铛信息科技（北京）有限公司所有
     </div>
