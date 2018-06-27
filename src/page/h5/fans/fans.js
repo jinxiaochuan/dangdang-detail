@@ -40,6 +40,8 @@ new Vue({
 
     methods: {
         init () {
+            this.msg = '活动已结束';
+            return
             var self = this;
             var nowStamp = Date.parse(new Date());
             var limitStamp = Date.parse(new Date(this.limitTime));
