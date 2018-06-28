@@ -43,7 +43,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: block;
 }
 
-a{
+a, a:link, a:active, a:visited, a:hover{
     text-decoration: none;
 }
 
