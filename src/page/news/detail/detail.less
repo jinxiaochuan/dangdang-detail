@@ -12,11 +12,12 @@
     .news-detail-header{
         padding: 0 @base*30rem;
         .title{
-            .font-dpr(22px);
+            font-size: @base*44rem;
+            font-weight: 400;
             line-height: @base*60rem;
             word-break: normal;
             word-wrap: break-word;
-            color: #282828;
+            color: #333333;
         }
         .source{
             .flex();
@@ -25,8 +26,8 @@
             .font-dpr(15px);
             .tap-source{
                 float: left;
-                width: @base*50rem;
-                height: @base*50rem;
+                width: @base*48rem;
+                height: @base*48rem;
                 overflow: hidden;
                 .border-radius(50%);
                 .source-logo{
@@ -37,12 +38,16 @@
             }
 
             .source-name{
-                margin-left: @base*25rem;
+                margin-left: @base*28rem;
                 color: #6A7BA1;
             }
             .source-time{
                 margin-left: @base*21rem;
                 color: #8C8C8C;
+            }
+
+            .p{
+              line-height: @base*1.2rem;
             }
         }
     }
@@ -142,6 +147,15 @@
 
             div[data-player]{
                 width: 100%!important;
+            }
+
+            p{
+              font-size: @base*34rem !important;
+              
+              line-height: @base*54rem !important;
+            
+            
+              color: #333333;
             }
         }
         .download-link-wrap{
