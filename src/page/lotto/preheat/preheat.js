@@ -50,10 +50,7 @@ new Vue({
 
         init () {
             var self = this;
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=110&userId=956&shareType=11&shareId=110'
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=42&userId=200182&shareType=11&shareId=42';
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=19&userId=200119&shareType=11&shareId=19&hasCard=1';
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=149&userId=200234&shareType=11&shareId=149';
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/ttl/detail?activityId=664&userId=200239&shareType=11&shareId=664&shareUserId=200239&source=1&hasCard=1'
             // URL_LOTTO = 'http://dev.im-dangdang.com/ddweb/v1/ttl/activity/detail';
 
             var data = {}, shareUserId;
