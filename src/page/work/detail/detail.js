@@ -149,8 +149,13 @@ new Vue({
         },
 
         // 张玉佳修改部分----------------------------------------------------------------------
-        togView (Status) {
-            this.Status = !this.Status
+        togView (status) {
+            if (status == 'position') {
+                this.viewAllStatusForPositionDesc = !this.viewAllStatusForPositionDesc;
+            }
+            if (status == 'company') {
+                this.viewAllStatusForCompanyDesc = !this.viewAllStatusForCompanyDesc;
+            }
         },
         
         tapPV (index) {
