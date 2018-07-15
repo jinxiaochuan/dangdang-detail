@@ -36,7 +36,7 @@
             }
         }
         .hr-name{
-            .font-dpr(15px);
+            font-size: @base*38rem;
             margin-left: @base*16rem;
             color: #6A7BA1;
             .one-line();
@@ -46,7 +46,8 @@
             padding: 0 @base*10rem;
             border-left: 1px solid #BBBDC4;
             line-height: @base*30rem;
-            .font-dpr(12px);
+            font-size: @base*30rem;
+            // .font-dpr(12px);
             color: #BBBDC4;
             .flex-shrink(0);
         }
@@ -59,13 +60,15 @@
             .justify-content(space-between);
             .align-items(flex-end);
             .name{
-                .font-dpr(19px);
+                font-size: @base*38rem;
+                // .font-dpr(19px);
                 color: #000000;
                 font-weight: 600;
                 margin-right: @base*20rem;
             }
             .salary{
-                .font-dpr(15px);
+                font-size: @base*30rem;
+                // .font-dpr(15px);
                 color: #FF7452;
                 .flex-shrink(0);
             }
@@ -80,7 +83,8 @@
                 background-position: left center;
                 background-repeat: no-repeat;
                 background-size: contain;
-                .font-dpr(14px);
+                font-size: @base*28rem;
+                
                 color: #737373;
                 &.industry{
                     background-image: url('~assets/work/industry.png');
@@ -110,13 +114,27 @@
                 }
             }
         }
+//===========================
+
         .position-company{
             margin-top: @base*12rem;
 
             .company-name{
-                .font-dpr(16px);
+                font-size: @base*34rem;
                 color: #333333;
             }
+            //张玉佳修改部分//
+            .desc{
+                margin-top: @base*20rem;
+                font-size:@base*30rem;
+                // .font-dpr(15px);
+                color: #737373;
+                line-height: @base*48rem;
+                .view-all{
+                    color: #007AFF;
+                }
+            }
+
             .company-album{
                 padding: @base*20rem 0;
                 margin-right: -@base*40rem;
@@ -154,7 +172,8 @@
                         right: @base*8rem;
                         bottom: @base*6rem;
                         font-style: normal;
-                        .font-dpr(10px);
+                        font-size:@base*20rem;
+                        // .font-dpr(10px);
                         color: #FFFFFF;
                         line-height: @base*20rem;
                         text-shadow: 0 2px 4px rgba(0,0,0,0.50);
@@ -168,7 +187,8 @@
                 }
             }
             .company-address{
-                .font-dpr(14px);
+                font-size: @base*28rem;
+                // .font-dpr(14px);
                 color: #007AFF;
             }
         }
@@ -177,25 +197,28 @@
         padding: @base*50rem 0;
         .setLine('bottom', #DEE0E7);
         .title{
-            .font-dpr(16px);
+            font-size: @base*32rem;
         }
         .company-location{
             margin-top: @base*20rem;
         }
         .company-address{
-            .font-dpr(14px);
+            font-size:@base*28rem;
+            // .font-dpr(14px);
             color: #007AFF;
         }
     }
     .position-desc{
         padding: @base*50rem 0;
+        margin-right: -@base*40rem;
         .setLine('bottom', #DEE0E7);
         .title{
-            .font-dpr(16px);
+            font-size:@base*32rem; 
         }
         .desc{
             margin-top: @base*20rem;
-            .font-dpr(15px);
+            font-size: @base*30rem;
+            // .font-dpr(15px);
             color: #737373;
             line-height: @base*48rem;
             .view-all{
@@ -203,19 +226,46 @@
             }
         }
     }
+//张玉佳修改部分
+    .related-publc-circle{
+        margin-right: -@base*40rem;
+        display: flex;
+        justify-content: space-between;
+        padding: @base*50rem 0;
+        .setLine('bottom', #DEE0E7);
+        .title{
+            font-size:@base*34rem; 
+        }
+        .narrow-right{
+            margin-right: @base*40rem;
+            background: url('~assets/arrow_right.png') right no-repeat;
+            background-size:@base*16rem @base*25rem;
+         }           
+        
+        img{
+            vertical-align: bottom;
+            margin-right: @base*40rem;
+            width: @base*50rem;
+            height: @base*50rem;
+            border-radius: @base*200rem;
+    }
+}
+
     .position-concat{
         padding: @base*50rem 0;
         .setLine('bottom', #DEE0E7);
 
         .title{
-            .font-dpr(16px);
+            font-size:@base*32rem; 
         }
         .concat-email{
             margin-top: @base*20rem;
-            .font-dpr(12px);
+            font-size:@base*24rem;
+            // .font-dpr(12px);
             color: #CCCCCC;
             .email{
-                .font-dpr(15px);
+                font-size:@base*30rem;
+                // .font-dpr(15px);
                 color: #007AFF;
             }
         }
@@ -228,17 +278,20 @@
             .justify-content(space-between);
             .align-items(center);
             .time{
-                .font-dpr(13px);
+                font-size:@base*26rem;
+                // .font-dpr(13px);
                 color: #828282;
             }
             .handle-publish-offline{
                 .offline-status{
-                    .font-dpr(13px);
+                    font-size:@base*26rem;
+                    // .font-dpr(13px);
                     color: #999999;
                     margin-right: @base*20rem;
                 }
                 .prohibite-status{
-                    .font-dpr(13px);
+                    font-size:@base*26rem;
+                    // .font-dpr(13px);
                     color: #FFB400;
                     margin-right: @base*20rem;
                 }
@@ -253,8 +306,9 @@
         .edit-delete{
             padding: @base*50rem 0;
             text-align: center;
-            a{
-                .font-dpr(16px);
+            a{  
+                font-size:@base*26rem;
+                // .font-dpr(16px);
                 .border-radius(@base*100rem);
             }
             .edit{
@@ -271,7 +325,8 @@
 .work-prompt-wrap{
     padding-top: @base*490rem;
     text-align: center;
-    .font-dpr(19px);
+    font-size:@base*38rem;
+    // .font-dpr(19px);
     color: #D3D3D3;
 }
 

@@ -56,9 +56,16 @@ new Vue({
             userId: 0,
             source: 0,
             msg: '',
-            isViewAll: false, // 查看全部或收起 是否显示
-            viewAllStatus: true, // 查看全部 是否显示
-            maxLen: 100
+            isViewAllForPositionDesc: false, // 查看全部或收起 是否显示
+            isViewAllForCompanyDesc:false,// 查看 公司详情 全部或收起 是否显示
+
+            viewAllStatusForPositionDesc: true, // 查看全部 是否显示
+            viewAllStatusForCompanyDesc: true, // 公司详情 查看全部 是否显示
+
+            // isViewAll:false,
+            // viewAllStatus:true,
+
+            maxLen: 100,
         }
     },
 
@@ -66,8 +73,8 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=660&userId=200073&isAdmin=0&source=1';
-            // URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
+            HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=660&userId=200076&isAdmin=0&source=1';
+            URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
 
             this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
             this.source = jsmod.util.url.getParam(HREF_ORIGIN,'source') || 0;
@@ -122,17 +129,27 @@ new Vue({
             })
         },
 
-        handleDesc (text) {
+        handleDescForPositionDesc(text) {
+            console.log(text);
             var len = text.length;
-            this.isViewAll = len > this.maxLen;
-            if(this.isViewAll && this.viewAllStatus) return text.slice(0, this.maxLen) + '...'
+            this.isViewAllForPositionDesc = len > this.maxLen;
+            if(this.isViewAllForPositionDesc && this.viewAllStatusForPositionDesc) return text.slice(0, this.maxLen) + '...'
+            return text
+        },
+        handleDescForCompanyDesc(text) {
+            console.log(text);
+            var len = text.length;
+            this.isViewAllForCompanyDesc = len > this.maxLen;
+            if(this.isViewAllForCompanyDesc && this.viewAllStatusForCompanyDesc) return text.slice(0, this.maxLen) + '...'
             return text
         },
 
-        togView () {
-            this.viewAllStatus = !this.viewAllStatus
-        },
 
+        // 张玉佳修改部分----------------------------------------------------------------------
+        togView (Status) {
+            this.Status = !this.Status
+        },
+        
         tapPV (index) {
             this.bridge && this.bridge.callHandler('tapPV', index.toString(), function(){})
         },
@@ -160,6 +177,12 @@ new Vue({
         tapAMap () {
             this.bridge && this.bridge.callHandler('tapMap')
         },
+
+        //张玉佳修改部分-----------------------------------------
+        tapCircle(){
+            this.bridge && this.bridge.callHandler('tapCircle')
+        },
+  
 
         handleLongTouch () {
             var v = this;

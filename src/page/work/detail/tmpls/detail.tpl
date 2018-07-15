@@ -14,6 +14,7 @@
                     <span class="name">{{ work.jobTitle }}</span>
                     <span class="salary">{{ work.salary }}</span>
                 </div>
+
                 <div class="position-criteria">
                     <div class="position-item industry">
                         {{ work.tradeName }} - {{ work.jobCategoryName }}
@@ -28,13 +29,25 @@
                         {{ work.jobNatureDesc }} | 招聘人数: {{ work.recruitNum }}人
                     </div>
                 </div>
+
                 <div class="position-welfare">
                     <div class="welfare-list clearfix">
                         <span v-for="item in work.welfare" class="welfare-item">{{ item }}</span>
                     </div>
                 </div>
+
                 <div class="position-company">
                     <span class="company-name">{{ work.company }}</span>
+
+                    <!-- 张玉佳撰写部分 --------------------------------------------------->
+                    <div class="desc">
+                        <pre v-html="handleDescForCompanyDesc(work.jobDesc)"></pre>
+                        <span v-if="isViewAllForCompanyDesc && viewAllStatusForCompanyDesc" @click="togView(viewAllStatusForCompanyDesc)" class="view-all">查看全部</span>
+                        <span v-if="isViewAllForCompanyDesc && !viewAllStatusForCompanyDesc" @click="togView(viewAllStatusForCompanyDesc)" class="view-all">收起</span>
+                    </div>
+
+                    <!-- ----------------------------------------------------------------->
+
                     <div v-if="work.pvList && work.pvList.length" class="company-album">
                         <div class="album-list" :style="{width: 204/75*work.pvList.length + 18/75 + 'rem'}">
                             <div v-for="(item, index) in work.pvList" :style="{backgroundImage: 'url('+ item.pictureUrl +')'}" @click="tapPV(index)" class="album-item" >
@@ -46,20 +59,32 @@
                     </div>
                 </div>
             </div>
+
             <div class="position-address">
                 <span class="title">工作地址</span>
                 <div class="company-location">
                     <span @click="tapAMap" class="company-address">{{ work.location.name }}</span>
                 </div>
             </div>
+
             <div class="position-desc">
                 <span class="title">职位描述</span>
                 <div class="desc">
                     <pre v-html="handleDesc(work.jobDesc)"></pre>
-                    <span v-if="isViewAll && viewAllStatus" @click="togView" class="view-all">查看全部</span>
-                    <span v-if="isViewAll && !viewAllStatus" @click="togView" class="view-all">收起</span>
+                    <span v-if="isViewAllForPositionDesc && viewAllStatusForPositionDesc" @click="togView(viewAllStatusForPositionDesc)" class="view-all">查看全部</span>
+                    <span v-if="isViewAllForPositionDesc && !viewAllStatusForPositionDesc" @click="togView(viewAllStatusForPositionDesc)" class="view-all">收起</span>
                 </div>
             </div>
+            
+            <!-- 张玉佳撰写部分 -->
+            <div class="related-publc-circle">
+                <span class="title">相关公共圈</span>
+                <a href="javascript:void(0)" class="narrow-right" @click="tapCircle">
+                    <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1235322943,3911552157&fm=27&gp=0.jpg">
+                </a>
+            </div>
+            <!------------------->
+
             <div v-if="work.email" class="position-concat">
                 <span class="title">简历投递邮箱</span>
                 <div class="concat-email">
