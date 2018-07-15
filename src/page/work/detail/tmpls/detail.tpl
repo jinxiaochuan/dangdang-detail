@@ -41,7 +41,8 @@
 
                     <!-- 张玉佳撰写部分 --------------------------------------------------->
                     <div class="desc">
-                        <pre v-html="handleDescForCompanyDesc(work.jobDesc)"></pre>
+                        <pre v-html="handleDesc(work.companyDesc, 'company')"></pre>
+                        <!-- <pre v-html="handleDesc('的快递反馈到福建安防科技阿拉解放军阿拉法减肥的开发贷款福农卡发了附加按类似飞机加十分理解啊沙发发沙发沙发发啊沙发沙发沙发沙发沙发沙发沙发发发发的快递反馈到福建安防科技阿拉解放军阿拉法减肥的开发贷款福农卡发了附加按类似飞机加十分理解啊沙发发沙发沙发发啊沙发沙发沙发沙发沙发沙发沙发发发发顺丰案例fdfdf耷拉了沙发沙发方法是犯法沙发沙发沙发发发发发按时发发发沙发沙发沙发沙发沙发是飞洒发沙发沙发沙发发沙的快递反馈到福建安防科技阿拉解放军阿拉法减肥的开发贷款福农卡发了附加按类似飞机加十分理解啊沙发发沙发沙发发啊沙发沙发沙发沙发沙发沙发沙发发发发顺丰案例fdfdf耷拉了沙发沙发方法是犯法沙发沙发沙发发发发发按时发发发沙发沙发沙发沙发沙发是飞洒发沙发沙发沙发发沙的快递反馈到福建安防科技阿拉解放军阿拉法减肥的开发贷款福农卡发了附加按类似飞机加十分理解啊沙发发沙发沙发发啊沙发沙发沙发沙发沙发沙发沙发发发发顺丰案例fdfdf耷拉了沙发沙发方法是犯法沙发沙发沙发发发发发按时发发发沙发沙发沙发沙发沙发是飞洒发沙发沙发沙发发沙顺丰案例fdfdf耷拉了沙发沙发方法是犯法沙发沙发沙发发发发发按时发发发沙发沙发沙发沙发沙发是飞洒发沙发沙发沙发发沙发沙发沙发沙发沙发沙发沙发沙发沙发', 'company' )"></pre> -->
                         <span v-if="isViewAllForCompanyDesc && viewAllStatusForCompanyDesc" @click="togView(viewAllStatusForCompanyDesc)" class="view-all">查看全部</span>
                         <span v-if="isViewAllForCompanyDesc && !viewAllStatusForCompanyDesc" @click="togView(viewAllStatusForCompanyDesc)" class="view-all">收起</span>
                     </div>
@@ -70,7 +71,7 @@
             <div class="position-desc">
                 <span class="title">职位描述</span>
                 <div class="desc">
-                    <pre v-html="handleDesc(work.jobDesc)"></pre>
+                    <pre v-html="handleDesc(work.jobDesc, 'position')"></pre>
                     <span v-if="isViewAllForPositionDesc && viewAllStatusForPositionDesc" @click="togView(viewAllStatusForPositionDesc)" class="view-all">查看全部</span>
                     <span v-if="isViewAllForPositionDesc && !viewAllStatusForPositionDesc" @click="togView(viewAllStatusForPositionDesc)" class="view-all">收起</span>
                 </div>

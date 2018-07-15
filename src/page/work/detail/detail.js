@@ -129,21 +129,24 @@ new Vue({
             })
         },
 
-        handleDescForPositionDesc(text) {
-            console.log(text);
-            var len = text.length;
-            this.isViewAllForPositionDesc = len > this.maxLen;
-            if(this.isViewAllForPositionDesc && this.viewAllStatusForPositionDesc) return text.slice(0, this.maxLen) + '...'
-            return text
-        },
-        handleDescForCompanyDesc(text) {
-            console.log(text);
-            var len = text.length;
-            this.isViewAllForCompanyDesc = len > this.maxLen;
-            if(this.isViewAllForCompanyDesc && this.viewAllStatusForCompanyDesc) return text.slice(0, this.maxLen) + '...'
-            return text
-        },
+        handleDesc(text, status) {
+            if (status == 'company') {
+                console.log(this.state, this.status);
+                var len = text.length;
+                this.isViewAllForCompanyDesc = len > this.maxLen;
+                if(this.isViewAllForCompanyDesc && this.viewAllStatusForCompanyDesc) return text.slice(0, this.maxLen) + '...'
+                return text
+            };
 
+            if (status == 'position') {
+                console.log(this.state, this.status);
+                var len = text.length;
+                this.isViewAllForPositionDesc = len > this.maxLen;
+                if(this.isViewAllForPositionDesc && this.viewAllStatusForPositionDesc) return text.slice(0, this.maxLen) + '...'
+                return text
+            }
+            
+        },
 
         // 张玉佳修改部分----------------------------------------------------------------------
         togView (Status) {
