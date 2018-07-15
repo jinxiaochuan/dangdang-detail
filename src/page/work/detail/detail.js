@@ -66,8 +66,8 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=660&userId=200073&isAdmin=0&source=1';
-            // URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
+            HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=660&userId=200073&isAdmin=0&source=1';
+            URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
 
             this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
             this.source = jsmod.util.url.getParam(HREF_ORIGIN,'source') || 0;
