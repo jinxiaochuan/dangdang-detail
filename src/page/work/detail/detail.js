@@ -73,13 +73,8 @@ new Vue({
         init () {
             var self = this;
 
-<<<<<<< HEAD
-            HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=660&userId=200073&isAdmin=0&source=1';
-            URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
-=======
             // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=660&userId=200076&isAdmin=0&source=1';
             // URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
->>>>>>> work
 
             this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
             this.source = jsmod.util.url.getParam(HREF_ORIGIN,'source') || 0;
@@ -150,7 +145,7 @@ new Vue({
                 if(this.isViewAllForPositionDesc && this.viewAllStatusForPositionDesc) return text.slice(0, this.maxLen) + '...'
                 return text
             }
-            
+
         },
 
         // 张玉佳修改部分----------------------------------------------------------------------
@@ -162,7 +157,7 @@ new Vue({
                 this.viewAllStatusForCompanyDesc = !this.viewAllStatusForCompanyDesc;
             }
         },
-        
+
         tapPV (index) {
             this.bridge && this.bridge.callHandler('tapPV', index.toString(), function(){})
         },
@@ -195,7 +190,7 @@ new Vue({
         tapCircle(){
             this.bridge && this.bridge.callHandler('tapCircle')
         },
-  
+
 
         handleLongTouch () {
             var v = this;
