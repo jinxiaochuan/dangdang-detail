@@ -79,7 +79,7 @@
             </div>
             
             <!-- 张玉佳撰写部分 ---------------------------------------------------------------------------->
-            <div class="related-publc-circle">
+            <div class="related-publc-circle" v-if="work.bindingCircleId">
                 <span class="title">相关公共圈</span>
                 <a href="javascript:void(0)" class="narrow-right" @click="tapCircle">
                     <img :src="work.bindingCircleImage" alt="">

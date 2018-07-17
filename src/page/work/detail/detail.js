@@ -43,10 +43,10 @@ new Vue({
 
     template: TPL_DETAIL,
 
-    directives: {longTouch},
+    directives: {longTouch},            
 
-    components: {
-        Err: errorComponent
+    components: {                                   
+        Err: errorComponent  
     },
 
     data: function(){
@@ -126,10 +126,10 @@ new Vue({
                 self.bridge.registerHandler('publish', function(data, responseCallback) {
                     self.work.status = 1;
                 })
-
             })
         },
 
+        // 张玉佳修改部分----------------------------------------------------------------------
         handleDesc(text, status) {
             if (status == 'company') {
                 console.log(this.state, this.status);
@@ -149,7 +149,6 @@ new Vue({
 
         },
 
-        // 张玉佳修改部分----------------------------------------------------------------------
         togView (status) {
             if (status == 'position') {
                 this.viewAllStatusForPositionDesc = !this.viewAllStatusForPositionDesc;
@@ -158,7 +157,7 @@ new Vue({
                 this.viewAllStatusForCompanyDesc = !this.viewAllStatusForCompanyDesc;
             }
         },
-
+        // --------------------------------------------------------------------------------------------
         tapPV (index) {
             this.bridge && this.bridge.callHandler('tapPV', index.toString(), function(){})
         },
@@ -191,7 +190,7 @@ new Vue({
         tapCircle(){
             this.bridge && this.bridge.callHandler('tapCircle')
         },
-
+        //-----------------------------------------------------
 
         handleLongTouch () {
             var v = this;
