@@ -122,6 +122,7 @@ var News = jsmod.util.klass({
 
         this.baseInfo = {
             "mediaId": this.data.newsDetail.mediaId,
+            "mediaName": this.data.newsDetail.mediaName,
             "title": this.data.newsDetail.title,
             "mediaLogoUrl": this.data.newsDetail.mediaLogoUrl,
             "newsType": this.data.newsDetail.newsType,
