@@ -7,7 +7,7 @@
         <span class="time">{{ data.articleInfo.liveInfo.formatLiveCreateTime }}</span>
     </div>
 
-    <div class="circle-live-wrapper" style="background-image: url('{{ data.articleInfo.liveInfo.coverImage.picture }}')">
+    <div class="circle-live-wrapper app-btn" style="background-image: url('{{ data.articleInfo.liveInfo.coverImage.picture }}')">
         <div class="blur-layer">
             {% if data.articleInfo.liveInfo.liveStatus == 3 %}
             <div class="video-play"></div>
