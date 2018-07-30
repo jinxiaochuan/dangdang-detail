@@ -55,8 +55,8 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circle/scene/detail?sceneId=81&userId=1000034&shareType=19&shareId=81&shareUserId=1000034&source=1'
-            // URL_SCENE = 'http://app.im-dangdang.com/ddweb/v1/circle/scene/detail'
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/scene/detail?sceneId=206&userId=1015875&shareType=19&shareId=206&shareUserId=1015875&source=1&supportHb=1'
+            // URL_SCENE = 'http://dev.im-dangdang.com/ddweb/v1/circle/scene/detail'
 
             var data = {};
 

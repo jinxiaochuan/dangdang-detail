@@ -17,8 +17,22 @@
         </div>
     </div>
 
-    <div v-if="sceneInfo" class="member-wrap">
-        <span class="member-desc">现场成员</span>
+    <div v-if="sceneInfo && sceneInfo.bindingCircleId !=0" class="report-binding-circle app-btn">
+        <div class="report-binding">
+            <span class="binding-label">相关公众圈</span>
+            <div class="circle-list-wrap">
+                <div class="circle-list">
+                    <div class="circle-item">
+                        <img :src="sceneInfo.bindingCircleImage" />
+                    </div>
+                </div>
+                <i class="arrow"></i>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="sceneInfo" class="member-wrap app-btn">
+        <span class="member-desc">签到成员</span>
         <div class="member">
             <div v-if="signinList.length" class="avatar-list">
                 <div v-for="(item, index) in signinList" v-if="index < 5" class="avatar-item">
