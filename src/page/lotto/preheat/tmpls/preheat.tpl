@@ -10,7 +10,7 @@
         <span class="time">{{ activityInfo && activityInfo.formatCreateTime }}</span>
         <a class="read-wrap" href="javascript:void(0)"><i class="read"></i><span v-if="activityInfo && activityInfo.formatReadAmount != 0" class="read-num">{{ activityInfo && activityInfo.formatReadAmount }}</span></a>
     </div>
-    <div v-if="hasCard" class="invite-wrap">
+    <div v-if="hasCard" class="invite-wrap app-btn">
         <div class="invite-card">
             <div class="invite-code">我的朋友码：{{ code }}</div>
         </div>

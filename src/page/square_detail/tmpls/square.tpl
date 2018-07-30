@@ -1,7 +1,7 @@
 <div class="content-wrapper">
-  <img  src="{{ info.userImageUrl }}" alt="" class="avatar"/>
+  <img src="{{ info.userImageUrl }}" alt="" class="avatar app-btn"/>
   <div class="content">
-    <span class="pub-name">{{ info.userName }}</span>
+    <span class="pub-name app-btn">{{ info.userName }}</span>
     {% if info.content %}
     <div class="content-detail">
       {{ info.content }}
@@ -25,14 +25,12 @@
       {% elseif info.pictureList.length > 1 and info.pictureList.length < 4 %}
         <div class="content-img normal-layout one-row">
           {% for index,item in info.pictureList %}
-            <!-- <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" /> -->
             <div class="pic pic{{ index + 1 }} pic-block" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></div>
           {% endfor %}
         </div>
       {% elseif info.pictureList.length == 4 %}
       <div class="content-img four-pic">
         {% for index,item in info.pictureList %}
-          <!-- <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" /> -->
           <div class="pic pic{{ index + 1}} pic-block" href="{{ item.pictureUrl }}" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></div>
         {% endfor %}
       </div>
@@ -45,22 +43,21 @@
       {% elseif info.pictureList.length > 6 %}
         <div class="content-img full-pic">
           {% for index,item in info.pictureList %}
-            <!-- <img class="pic pic{{index+1}}" src="{{ item.pictureUrl  }}" /> -->
             <div class="pic pic-block" href="{{ item.pictureUrl }}" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></div>
           {% endfor %}
         </div>
       {% endif %}
       {%endif%}
     {% if info.shareInfo %}
-    <div class="share-wrapper">
+    <div class="share-wrapper app-btn">
       <img src="{{ info.shareInfo.shareImage }}" alt="" class="share-pic">
       <p class="share-content">{{ info.shareInfo.shareTitle }}</p>
     </div>
     {% endif %}
-    {% if info.locationjson_parse %}
-    <p class="address">{{ (info.location|json_parse).name }}</p>
+    {% if info.location %}
+    <p class="address app-btn">{{ (info.location|json_parse).name }}</p>
     {% endif %}
-    <p class="func"><span class="time">{{ info.createTime }}</span><i class="leave-msg"></i></p>
+    <p class="func"><span class="time">{{ info.createTime }}</span><i class="leave-msg app-btn"></i></p>
   </div>
 
 </div>
@@ -71,7 +68,7 @@
     <div class="praise-avatar-wrap clearfix">
         {% for item in zanList %}
         {% if loop.index < 46  %}
-        <div class="avatar-item">
+        <div class="avatar-item app-btn">
             <img src="{{ item.userImageUrl }}" alt="">
         </div>
         {% endif %}
@@ -89,7 +86,7 @@
 <div class="comment-list-wrap">
     <p class="comment-title"><span class="comment-number">{{ info.commentCount }}</span><span class="comment-sort">按时间</span></p>
     {% for item in commentList %}
-    <div class="comment-item">
+    <div class="comment-item app-btn">
         <img src="{{ item.fromUserImageUrl }}" alt="">
         <div class="comment-info">
             <div class="comment-title">

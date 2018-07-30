@@ -30,8 +30,9 @@ var Cooperate = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/v1/discovery/cooperation/detail?userId=1000063&coopId=18&viewUserId=1000063';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/cooperation/detail?coopId=834&userId=1000034&shareType=2&shareId=834&shareUserId=1000034&source=1';
         // URL_COOPERATION = 'http://app.im-dangdang.com/ddweb/v1/discovery/cooperation/detail';
+
         var data={};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');

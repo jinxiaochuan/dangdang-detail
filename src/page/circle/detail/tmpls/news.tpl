@@ -3,7 +3,7 @@
 
     <div class="circle-news-source">
         {% if data.articleInfo.source %}<span class="source">{{ data.articleInfo.source }}</span>{% endif %}
-        <span class="name tap-avatar">{{ data.circleInfo.circleName }}</span>
+        <span class="name tap-avatar app-btn">{{ data.circleInfo.circleName }}</span>
         <span class="time">{{ data.articleInfo.formatNewsTime }}</span>
     </div>
 
@@ -83,7 +83,7 @@
     {% endif %}
 
     <div class="common-address">
-        <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
+        <a class="tap-location app-btn" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
     </div>
     <div class="common-comment-wrap">
         <span class="access">
@@ -103,7 +103,7 @@
         <span class="icon-wrap">
             <a class="read-wrap" href="javascript:void(0)"><i class="read"></i><span class="read-num">{% if data.webShowInfo.readCount != 0 %}{{ data.webShowInfo.readCount }}{% endif %}</span></a>
             {% if data.articleInfo.isCanComment == 1 %}
-            <a class="comment-wrap" href="javascript:void(0)"><i class="comment"></i><span class="comment-num">{% if data.webShowInfo.commentCount != 0 %}{{ data.webShowInfo.commentCount }}{% endif %}</span></a>
+            <a class="comment-wrap app-btn" href="javascript:void(0)"><i class="comment"></i><span class="comment-num">{% if data.webShowInfo.commentCount != 0 %}{{ data.webShowInfo.commentCount }}{% endif %}</span></a>
             {% endif %}
         </span>
     </div>

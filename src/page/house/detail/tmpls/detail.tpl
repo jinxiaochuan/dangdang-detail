@@ -9,10 +9,10 @@
         </div>
         <div v-if="house" class="house-issue">
             <div class="issue">
-                <div class="avatar" @click="tapUser">
+                <div class="avatar app-btn" @click="tapUser">
                     <img :src="house.user.userImage" alt="">
                 </div>
-                <span class="name">{{ house.user.showName }}</span>
+                <span class="name app-btn">{{ house.user.showName }}</span>
                 <span class="identity">{{ house.userType | map('H_USER_TYPE') }}</span>
             </div>
             <div class="info">
@@ -46,7 +46,7 @@
         <div v-if="house && MAP_STATIC" class="house-location">
             <span class="title">房屋位置</span>
             <div class="AMap-wrapper">
-                <div @click="tapAMap" class="AMap-inner" id="AMap" :style="{backgroundImage: 'url('+ MAP_STATIC +')' }">
+                <div @click="tapAMap" class="AMap-inner app-btn" id="AMap" :style="{backgroundImage: 'url('+ MAP_STATIC +')' }">
                     <div class="map__mark">
                         <div class="map__mark--circle"></div>
                         <div class="map__mark--des">

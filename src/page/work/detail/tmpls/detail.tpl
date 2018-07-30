@@ -64,7 +64,7 @@
             <div class="position-address">
                 <span class="title">工作地址</span>
                 <div class="company-location">
-                    <span @click="tapAMap" class="company-address">{{ work.location.name }}</span>
+                    <span @click="tapAMap" class="company-address app-btn">{{ work.location.name }}</span>
                 </div>
             </div>
 
@@ -76,9 +76,9 @@
                     <span v-if="isViewAllForPositionDesc && !viewAllStatusForPositionDesc" @click="togView('position')" class="view-all">收起</span>
                 </div>
             </div>
-        
+
             <!-- 张玉佳撰写部分 ---------------------------------------------------------------------------->
-            <div class="related-publc-circle" v-if="work.bindingCircleId != 0" @click="tapCircle">
+            <div class="related-publc-circle app-btn" v-if="work.bindingCircleId != 0" @click="tapCircle">
                 <span class="title">相关公众圈</span>
                 <a href="javascript:void(0)" class="narrow-right">
                     <img :src="work.bindingCircleImage" alt="">

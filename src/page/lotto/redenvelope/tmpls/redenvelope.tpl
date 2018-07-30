@@ -3,7 +3,7 @@
 
     </div>
     <div v-if="record" class="envelope-detail">
-        <div @click="tapUser" class="avatar">
+        <div @click="tapUser" class="avatar app-btn">
             <img :src="record && record.userImage" alt="">
         </div>
         <span class="name">{{ record && record.userName }}</span>
@@ -47,10 +47,10 @@
         </div> -->
         <div class="envelope-code">
             <span class="word">使用我的朋友码，均可获得3张红包卡</span>
-            <span class="code">{{ record && record.code }}</span>
+            <span class="code app-btn">{{ record && record.code }}</span>
         </div>
     </div>
-    <div v-if="record && !record.drawImage" class="envelope-card">
+    <div v-if="record && !record.drawImage" class="envelope-card app-btn">
         <span class="code">{{ record && record.code }}</span>
         <span class="word">我的朋友码</span>
     </div>

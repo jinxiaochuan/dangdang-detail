@@ -1,9 +1,9 @@
 <div class="circle-index-wrap">
     <div class="index-header">
-        <div class="avatar tap-avatar">
+        <div class="avatar tap-avatar app-btn">
             <img src="{{ data.baseInfo.circleLogo.pictureUrl }}" alt="">
         </div>
-        <h2 class="name">{{ data.baseInfo.circleName }}</h2>
+        <h2 class="name app-btn">{{ data.baseInfo.circleName }}</h2>
         {% if data.baseInfo.accountNum %}
         <span class="code">铛铛号：{{ data.baseInfo.accountNum }}</span>
         {% endif %}
@@ -13,7 +13,7 @@
     </div>
     <div class="index-handle">
         <div class="handle-item-outer handle-item-account">
-            <div class="handle-item">
+            <div class="handle-item app-btn">
                 <span class="item-label">帐号主体</span>
                 <span class="item-name {% if data.baseInfo.isV == 1 %}vip{% endif %}">
                     {% if data.baseInfo.isV == 1 %}
@@ -25,7 +25,7 @@
         </div>
         {% if data.baseInfo.location != '{}' && data.baseInfo.longitude != '0.0' && data.baseInfo.latitude != '0.0' %}
         <div class="handle-item-outer handle-item-location">
-            <div class="handle-item">
+            <div class="handle-item app-btn">
                 <span class="item-label">所在位置</span>
                 <span class="item-name">
                     {{ (data.baseInfo.location|json_parse).name }}
@@ -34,7 +34,7 @@
         </div>
         {% endif %}
         <div class="handle-item-outer handle-item-public">
-            <div class="handle-item">
+            <div class="handle-item app-btn">
                 <span class="item-label">查看公开内容</span>
                 <span class="item-name"></span>
             </div>

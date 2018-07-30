@@ -7,11 +7,11 @@
 </div> -->
 <div class="common-circle-head">
     <div class="avatar-wrap">
-        <a class="tap-avatar" href="javascript:void(0)">
+        <a class="tap-avatar app-btn" href="javascript:void(0)">
             <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
         </a>
     </div>
-    <span class="name"><a class="tap-name tap-avatar" href="javascript:void(0)">{{ data.circleInfo.circleName }}</a></span>
+    <span class="name"><a class="tap-name tap-avatar app-btn" href="javascript:void(0)">{{ data.circleInfo.circleName }}</a></span>
 </div>
 <div class="common-info-wrap">
     <div class="info-item">
@@ -50,7 +50,7 @@
     <span class="deadline {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}over{% endif %}">发意向截止时间：{{  data.articleInfo.coopInfo.formatDeadline }}</span>
 </div>
 <div class="common-address">
-    <a class="tap-location" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
+    <a class="tap-location app-btn" href="javascript:void(0)">{{ (data.articleInfo.location|json_parse).name }}</a>
 </div>
 <div class="common-publish-wrap">
     <span class="publish-time">{{ data.articleInfo.formatCreateTime }}</span>
@@ -68,7 +68,7 @@
 </div>
 {% if data.isAdminIdentity == '1' %}
 <div class="common-sign-list-wrap">
-    <a class="tap-sign" href="javascript:void(0)">
+    <a class="tap-sign app-btn" href="javascript:void(0)">
         <div class="sign-wrap">
             <span class="num">有意向的人{% if data.webShowInfo.enterCount != 0 %}（{{ data.webShowInfo.enterCount }}）{% endif %}</span>
             <span class="arrow"></span>
@@ -78,9 +78,9 @@
 {% else %}
 <div class="common-sign-wrap">
     {% if data.articleInfo.coopInfo.applyStatus == -1 %}
-    <a class="sign-btn {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>发意向</span></a>
+    <a class="sign-btn app-btn {% if data.articleInfo.coopInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>发意向</span></a>
     {% else %}
-    <a class="communicate-btn" href="javascript:void(0)"><span>留言</span></a>
+    <a class="communicate-btn app-btn" href="javascript:void(0)"><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}
@@ -93,6 +93,6 @@
 {% endif %}
 {% if data.isAdminIdentity == '1' %}
 <div class="common-edit-wrap">
-    <a class="edit-btn" href="javascript:void(0)">编辑合作</a>
+    <a class="edit-btn app-btn" href="javascript:void(0)">编辑合作</a>
 </div>
 {% endif %}

@@ -77,6 +77,9 @@ var dialog = new jsmod.util.Dialog({
 });
 
 function appOpen() {
+    var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
+    if(source != 1) return
+    
     if(mobileDevice().isWei){
         window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
         return;

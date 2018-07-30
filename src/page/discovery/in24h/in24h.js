@@ -30,8 +30,8 @@ var IN24H = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail?userId=200119&in24hId=164&longitude=116.488580&latitude=39.915222';
-        // URL_DISCOVERY_IN24 = 'http://dev.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/in24h/detail?in24hId=637&userId=1000034&shareType=21&shareId=637&shareUserId=1000034&source=1';
+        // URL_DISCOVERY_IN24 = 'http://app.im-dangdang.com/ddweb/v1/discovery/in24h/detail';
         var data = {};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN, 'userId');

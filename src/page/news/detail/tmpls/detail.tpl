@@ -57,7 +57,7 @@
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
         <span class="icon-wrap">
             <a class="read-wrap" href="javascript:void(0)"><i class="read"></i><span class="read-num">{% if data.newsDetail.readAmount != 0 %}{{ data.newsDetail.readAmount }}{% endif %}</span></a>
-            <a class="comment-wrap" href="javascript:void(0)"><i class="comment"></i><span class="comment-num">{% if data.newsDetail.commentAmount != 0 %}{{ data.newsDetail.commentAmount }}{% endif %}</span></a>
+            <a class="comment-wrap app-btn" href="javascript:void(0)"><i class="comment"></i><span class="comment-num">{% if data.newsDetail.commentAmount != 0 %}{{ data.newsDetail.commentAmount }}{% endif %}</span></a>
         </span>
     </div>
     {% if data.recommendNews.length %}
@@ -73,7 +73,7 @@
             <span class="short"></span>
         </div>
         {% for item in data.recommendNews %}
-        <a class="news-link" data-user="{{ data.userId }}" data-type="{{ item.newsType }}" data-news="{{ item.newsId }}" data-media="{{ item.mediaId }}" href="javascript:void(0)">
+        <a class="news-link app-btn" data-user="{{ data.userId }}" data-type="{{ item.newsType }}" data-news="{{ item.newsId }}" data-media="{{ item.mediaId }}" href="javascript:void(0)">
             <div class="news-item">
                 <div class="news-detail">
                     <p class="news-title">{{ item.title }}</p>

@@ -43,10 +43,10 @@ new Vue({
 
     template: TPL_DETAIL,
 
-    directives: {longTouch},            
+    directives: {longTouch},
 
-    components: {                                   
-        Err: errorComponent  
+    components: {
+        Err: errorComponent
     },
 
     data: function(){

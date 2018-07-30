@@ -5,7 +5,7 @@
 
         <p class="scene clearfix">
             <i class="location-icon"></i>
-            <span class="scene-location">{{ sceneInfo.location | location_covert }}</span>
+            <span class="scene-location app-btn">{{ sceneInfo.location | location_covert }}</span>
         </p>
 
         <p class="duration">

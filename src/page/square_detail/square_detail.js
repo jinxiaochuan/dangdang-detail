@@ -55,8 +55,8 @@ var SquareDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/square/detail?userId=200119&squareId=1303';
-        // URL_SQUARE = 'http://dev.im-dangdang.com/ddweb/v1/square/detail';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1176677&userId=1000034&shareType=10&shareId=1176677&shareUserId=1000034&source=1';
+        // URL_SQUARE = 'http://app.im-dangdang.com/ddweb/v1/square/detail';
 
         var data = {};
 
@@ -75,7 +75,7 @@ var SquareDetail = jsmod.util.klass({
                     })
                     self.$container.html(html);
 
-                    if(json.data.info.pictureList.length){
+                    if(json.data.info.pictureList && json.data.info.pictureList.length){
                       self.picSwiper = new PicSwiper({
                           picArr : json.data.info.pictureList,
                           triggerClass : '.pic'

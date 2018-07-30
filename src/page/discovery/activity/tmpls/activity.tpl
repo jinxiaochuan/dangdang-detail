@@ -1,10 +1,10 @@
 <div class="common-header">
     <div class="avatar-wrap">
-        <a class="tap-avatar" href="javascript:void(0)">
+        <a class="tap-avatar app-btn" href="javascript:void(0)">
             <img class="avatar" src="{{ data.activityInfo.userInfo.userImage }}?x-oss-process=image/resize,m_fill,w_100,h_100,limit_0" alt="">
         </a>
     </div>
-    <span class="name"><a class="tap-name" href="javascript:void(0)">{{ data.activityInfo.userInfo.showName }}</a></span>
+    <span class="name"><a class="tap-name app-btn" href="javascript:void(0)">{{ data.activityInfo.userInfo.showName }}</a></span>
 </div>
 <div class="common-info-wrap">
     <div class="info-item">
@@ -43,23 +43,23 @@
     <span class="limit">{% if data.activityInfo.activityNum == '0' %}不限人数{% else %}限{{ data.activityInfo.activityNum }}人{% endif %}</span>
 </div>
 <div class="common-address">
-    <a class="tap-location" href="javascript:void(0)">{{ (data.activityInfo.location|json_parse).name }}</a>
+    <a class="tap-location app-btn" href="javascript:void(0)">{{ (data.activityInfo.location|json_parse).name }}</a>
 </div>
 <div class="common-publish-wrap">
     <span class="publish-time">{{ data.activityInfo.formatCreateTime }}</span>
     {% if data.activityInfo.isOwner == '1' %}
     {% if data.activityInfo.showAccess == 1 %}
-    <a class="show-access" href="javascript:void(0)"><i class="only-friend"></i></a>
+    <a class="show-access app-btn" href="javascript:void(0)"><i class="only-friend"></i></a>
     {% elseif data.activityInfo.showAccess == 2 || data.activityInfo.showAccess == 3 %}
-    <a class="show-access" href="javascript:void(0)"><i class="part"></i></a>
+    <a class="show-access app-btn" href="javascript:void(0)"><i class="part"></i></a>
     {% else %}
-    <a class="show-access" href="javascript:void(0)"><i class="member"></i></a>
+    <a class="show-access app-btn" href="javascript:void(0)"><i class="member"></i></a>
     {% endif %}
     {% endif %}
 </div>
 {% if data.activityInfo.isOwner == '1' %}
 <div class="common-sign-list-wrap">
-    <a class="tap-sign" href="javascript:void(0)">
+    <a class="tap-sign app-btn" href="javascript:void(0)">
         <div class="sign-wrap">
             <span class="num">已报名的人{% if data.activityInfo.signPeopleCount != 0 %}（{{ data.activityInfo.signPeopleCount }}）{% endif %}</span>
             <span class="arrow"></span>
@@ -71,9 +71,9 @@
 {% if data.activityInfo.isOwner == '0' %}
 <div class="common-sign-wrap">
     {% if data.activityInfo.applyStatus == -1 %}
-    <a class="sign-btn {% if data.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>报名</span></a>
+    <a class="sign-btn app-btn {% if data.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>报名</span></a>
     {% else %}
-    <a class="communicate-btn" href="javascript:void(0)"><span>留言</span></a>
+    <a class="communicate-btn app-btn" href="javascript:void(0)"><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}
@@ -87,6 +87,6 @@
 
 {% if data.activityInfo.isOwner == '1' %}
 <div class="common-edit-wrap">
-    <a class="edit-btn" href="javascript:void(0)">编辑活动</a>
+    <a class="edit-btn app-btn" href="javascript:void(0)">编辑活动</a>
 </div>
 {% endif %}
