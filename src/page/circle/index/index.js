@@ -35,6 +35,10 @@ var CircleIndex = jsmod.util.klass({
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleDetail?circleId=1&userId=1000034&shareType=5&shareId=1&shareUserId=1000034';
         // URL_INDEX = 'http://app.im-dangdang.com/ddweb/v1/circle/base';
 
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleDetail?circleId=1623374988&userId=200073&shareType=5&shareId=1623374987&shareUserId=200246';
+        // URL_INDEX = 'http://dev.im-dangdang.com/ddweb/v1/circle/base';
+
+
         var data = {};
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
@@ -101,7 +105,8 @@ var CircleIndex = jsmod.util.klass({
                         "workAdminVisible": self.data.baseInfo.workAdminVisible,
                         "publicCustom": self.data.baseInfo.publicCustom,
                         "isAudit": self.data.baseInfo.isAudit,
-                        "feeParam": self.data.baseInfo.feeParam
+                        "feeParam": self.data.baseInfo.feeParam,
+                        "tags": self.data.baseInfo.tags
                     }
 
                     bridge.callHandler('baseInfo',self.baseInfo,function(){})
@@ -146,6 +151,10 @@ var CircleIndex = jsmod.util.klass({
 
             self.$container.delegate('.tap-avatar','click',function(){
                 bridge.callHandler('clickCircleLogo')
+            })
+
+            self.$container.delegate('.handle-item-label','click',function(){
+                bridge.callHandler('clickCircleLabel')
             })
 
             self.$container.delegate('.handle-item-account','click',function(){
