@@ -12,7 +12,7 @@
         {{ data.baseInfo.summary|safe }}
     </div>
     <div class="index-handle">
-        {% if data.baseInfo.tags.length %}
+        {% if data.baseInfo.tags && data.baseInfo.tags.length %}
         <div class="handle-item-outer handle-item-label">
             <div class="handle-item app-btn">
                 <span class="item-label">标签</span>
