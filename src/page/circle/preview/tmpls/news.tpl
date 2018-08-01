@@ -3,7 +3,7 @@
 
     <div class="circle-news-source">
         {% if data.articleInfo.source %}<span class="source">{{ data.articleInfo.source }}</span>{% endif %}
-        <span class="name tap-avatar">{{ data.circleInfo.circleName }}</span>
+        <span class="name tap-avatar">{{ data.circleName }}</span>
         <span class="time">{{ data.articleInfo.formatNewsTime }}</span>
     </div>
 
