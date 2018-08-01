@@ -76,8 +76,8 @@ new Vue({
             // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circle/job/detail?jobId=674&userId=1000034&shareType=22&shareId=674&shareUserId=1000034&source=1';
             // URL_WORK = 'http://app.im-dangdang.com/ddweb/v1/circle/job/detail';
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=674&userId=1000034&shareType=22&shareId=674&shareUserId=1000034&source=1';
-            // URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
+            HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=674&userId=1000034&shareType=22&shareId=674&shareUserId=1000034&source=1';
+            URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
 
 
             this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
