@@ -2,7 +2,7 @@
     <div class="avatar-wrap">
         <a class="tap-avatar" href="javascript:void(0)">
             <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
-            <span class="name tap-avatar">{{ data.circleName }}</span>
+            <span class="name tap-avatar">{{ data.circleInfo.circleName }}</span>
         </a>
     </div>
 </div>
