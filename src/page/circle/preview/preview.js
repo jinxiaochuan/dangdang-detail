@@ -65,8 +65,8 @@ var CirclePreview = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200207&articleId=4196';
-        URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/v1/article/detail?userId=200207&articleId=4196';
+        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         var data = {};
 
