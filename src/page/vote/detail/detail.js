@@ -54,8 +54,8 @@ new Vue({
             voteOptions: '',
             multiOptions: [],
             bridge: '',
-            voteFrequency: 1,
-            sortType:0,
+            voteFrequency: "",
+            sortType:"",
             res:[],
             screenHeight: document.body.clientHeight,
             originHeight: document.body.clientHeight,
@@ -117,7 +117,19 @@ new Vue({
                 data: params,
                 jsonp: 'callback',
                 success: function(json){
-                    if(json.status != 1) return
+                    if(json.data.voteInfo.isFinished == 1) {
+                        this.$tips.show('投票已截止', {
+                        delay: 1000
+                    });
+                    return
+                }
+
+                //     if(json.status != 1) {
+                //         this.$tips.show('网络连接失败', {
+                //         delay: 1000
+                //     });
+                //     return
+                // }
 
                     self.selectType = json.data.voteInfo.selectType;
                     self.maxSelNum = json.data.voteInfo.maxSelNum;
@@ -142,7 +154,7 @@ new Vue({
                     self.loading = 0;
 
                     //如果选择降序排列 排序判断投票数的多少 并且把值付给self.options 
-                    if (self.sortType == 1) {
+                    if (self.sortType == "1") {
                         for (var i = 0; i < self.res.length; i++) {
                             for (var j = 0; j < self.res.length-i-1; j++) {
                                 if (typeof(self.res[j].userNum) == 'undefined') {
