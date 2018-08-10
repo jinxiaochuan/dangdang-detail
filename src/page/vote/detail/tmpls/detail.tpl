@@ -59,14 +59,15 @@
                         <span v-if="!item.userNum && !item.ratio && selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span class="desc"><span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span><span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
-                    <div v-if="item.userNum && item.ratio" class="vote-statistics">
+                    <div class="vote-statistics">
                         <div class="process">
-                            <div class="process-thumb" :style="{'width': item.ratio}">
-
-                            </div>
+                            <div class="process-thumb" :style="{'width': 0}" v-if="!item.userNum"></div>
+                            <div class="process-thumb" :style="{'width': item.ratio}" v-if="item.userNum"></div>
                         </div>
                         <div class="statistics">
-                            <span class="num">{{ item.userNum }}票</span>
+                            <span class="num" v-if="!item.userNum">0票</span>
+                            <span class="percent" v-if="!item.userNum">0%</span>
+                            <span class="num" v-if="item.userNum">{{ item.userNum }}票</span>
                             <span class="percent">{{ item.ratio }}</span>
                         </div>
                     </div>
@@ -81,14 +82,15 @@
                         </div>
                         <span class="desc"><span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span><span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
-                    <div v-if="item.userNum && item.ratio" class="vote-statistics">
+                    <div class="vote-statistics">
                         <div class="process">
-                            <div class="process-thumb" :style="{'width': item.ratio}">
-
-                            </div>
+                            <div class="process-thumb" :style="{'width': 0}" v-if="!item.userNum"></div>
+                            <div class="process-thumb" :style="{'width': item.ratio}" v-if="item.userNum"></div>
                         </div>
                         <div class="statistics">
-                            <span class="num">{{ item.userNum }}票</span>
+                            <span class="num" v-if="!item.userNum">0票</span>
+                            <span class="percent" v-if="!item.userNum">0%</span>
+                            <span class="num" v-if="item.userNum">{{ item.userNum }}票</span>
                             <span class="percent">{{ item.ratio }}</span>
                         </div>
                     </div>
@@ -103,14 +105,15 @@
                         </div>
                         <span class="desc"><span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span><span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
-                    <div v-if="item.userNum && item.ratio" class="vote-statistics">
+                    <div class="vote-statistics">
                         <div class="process">
-                            <div class="process-thumb" :style="{'width': item.ratio}">
-
-                            </div>
+                            <div class="process-thumb" :style="{'width': 0}" v-if="!item.userNum"></div>
+                            <div class="process-thumb" :style="{'width': item.ratio}" v-if="item.userNum"></div>
                         </div>
                         <div class="statistics">
-                            <span class="num">{{ item.userNum }}票</span>
+                            <span class="num" v-if="!item.userNum">0票</span>
+                            <span class="percent" v-if="!item.userNum">0%</span>
+                            <span class="num" v-if="item.userNum">{{ item.userNum }}票</span>
                             <span class="percent">{{ item.ratio }}</span>
                         </div>
                     </div>

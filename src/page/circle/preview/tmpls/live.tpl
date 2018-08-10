@@ -3,7 +3,7 @@
 
     <div class="circle-live-source">
         {% if data.articleInfo.liveInfo.author %}<span class="source">{{ data.articleInfo.liveInfo.author }}</span>{% endif %}
-        <span class="name tap-avatar">{{ data.circleName }}</span>
+        <span class="name tap-avatar">{{ data.circleInfo.circleName }}</span>
         <span class="time">{{ data.articleInfo.liveInfo.formatLiveCreateTime }}</span>
     </div>
 
