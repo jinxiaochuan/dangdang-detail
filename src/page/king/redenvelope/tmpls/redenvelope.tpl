@@ -3,7 +3,7 @@
 
     </div>
     <div v-if="record" class="envelope-detail">
-        <div @click="tapUser" class="avatar">
+        <div @click="tapUser" class="avatar app-btn">
             <img :src="record.userImage" alt="">
         </div>
         <span class="name">{{ record.userName }}</span>
@@ -14,7 +14,7 @@
     <div v-if="record" class="envelope-star" v-bind:style="{backgroundImage: 'url('+ recordBg +')'}">
         <div class="envelope-code">
             <span class="word">使用我的朋友，均可获得3张红包卡</span>
-            <span class="code">{{ record.code }}</span>
+            <span class="code app-btn">{{ record.code }}</span>
         </div>
     </div>
 </div>

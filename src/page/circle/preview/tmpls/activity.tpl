@@ -1,10 +1,11 @@
-<div class="common-circle-header my-gallery">
+<div class="common-circle-head">
     <div class="avatar-wrap">
-        <a class="tap-avatar" href="javascript:void(0)">
+        <a class="tap-avatar app-btn" href="javascript:void(0)">
             <img class="avatar" src="{{ data.circleInfo.circleLogo.pictureUrl }}" alt="">
             <span class="name tap-avatar">{{ data.circleInfo.circleName }}</span>
         </a>
     </div>
+    <span class="name"><a class="tap-name tap-avatar app-btn" href="javascript:void(0)">{{ data.circleInfo.circleName }}</a></span>
 </div>
 <div class="common-info-wrap">
     <div class="info-item">

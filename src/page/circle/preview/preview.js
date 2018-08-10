@@ -87,7 +87,7 @@ var CirclePreview = jsmod.util.klass({
                         "articleId":json.data.articleInfo.articleId,
                         "type":json.data.articleInfo.articleType,
                         "circleId":json.data.circleInfo.circleId,
-                        "circleName":json.data.circleName,
+                        "circleName":json.data.circleInfo.circleName,
                         "memberType":json.data.circleInfo.memberType,
                         "isCanComment":json.data.articleInfo.isCanComment,
                         "pictureUrl":json.data.circleInfo.circleLogo.pictureUrl,
