@@ -117,19 +117,6 @@ new Vue({
                 data: params,
                 jsonp: 'callback',
                 success: function(json){
-                    if(json.data.voteInfo.isFinished == 1) {
-                        this.$tips.show('投票已截止', {
-                        delay: 1000
-                    });
-                    return
-                }
-
-                //     if(json.status != 1) {
-                //         this.$tips.show('网络连接失败', {
-                //         delay: 1000
-                //     });
-                //     return
-                // }
 
                     self.selectType = json.data.voteInfo.selectType;
                     self.maxSelNum = json.data.voteInfo.maxSelNum;
@@ -219,7 +206,14 @@ new Vue({
             })
 
         },
-
+        is_Finished () {
+            if(json.data.voteInfo.isFinished == 1) {
+                this.$tips.show('投票已截止', {
+                delay: 1000
+            });
+                return
+           }
+        },
         active (index, id) {
             if(this.isAdmin == 1 || this.isFinished == 1 || this.isVoted == 1) return
 
