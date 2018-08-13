@@ -50,7 +50,7 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=4196&userId=200072&shareType=17&shareId=3307&shareUserId=179708&isAdminIdentity=1';
+        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=4272&userId=1015782&shareType=17&shareId=3307&shareUserId=179708&isAdminIdentity=0&source=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         var data = {}, isAdminIdentity, supportHb, source;
@@ -141,7 +141,14 @@ var CircleDetail = jsmod.util.klass({
     },
 
     initEvents: function(){
-
+        var self = this;
+        var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
+        var userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
+        this.$container.delegate('.vote-action', ' click', function(){
+            if(source == 1){
+                window.location.href = '/ddweb/vote/detail?userId='+ userId +'&voteId='+ self.data.voteInfo.voteId +'&source=1'
+            }
+        })
     },
 
     allAudioPause: function(){
