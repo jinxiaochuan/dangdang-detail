@@ -55,8 +55,8 @@
                 <!-- 纯文本 -->
                 <div v-if="(item.video && !item.video.videoUrl && !item.pictures.length) || (!item.video && !item.pictures.length)" class="options-item options-item-text">
                     <div class="options-detail">
-                        <span v-if="selectType == 1" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
-                        <span v-if="selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
+                        <span v-if="isVoted == 0 && selectType == 1 && isFinished == 0" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
+                        <span v-if="isVoted == 0 && selectType == 2 && isFinished == 0" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span class="desc"><span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span><span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
                     </div>
                     <div class="vote-statistics">
@@ -75,8 +75,8 @@
                 <!-- 图片 -->
                 <div v-if="item.pictures.length" class="options-item options-item-images">
                     <div class="options-detail">
-                        <span v-if="selectType == 1" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
-                        <span v-if="selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
+                        <span v-if="isVoted == 0 && selectType == 1 && isFinished == 0" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
+                        <span v-if="isVoted == 0 && selectType == 2 && isFinished == 0" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <div @click.stop="pictureZoom(index)" class="images-cover" :style="{backgroundImage: 'url(' + item.pictures[0].pictureUrl + ')'}">
                             <span v-if="item.pictures.length != 1" class="images-num">{{ item.pictures.length }}张</span>
                         </div>
@@ -98,8 +98,8 @@
                 <!-- 视频 -->
                 <div v-if="item.video && item.video.videoUrl" class="options-item options-item-video">
                     <div class="options-detail">
-                        <span v-if="selectType == 1" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
-                        <span v-if="selectType == 2" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
+                        <span v-if="isVoted == 0 && selectType == 1 && isFinished == 0" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
+                        <span v-if="isVoted == 0 && selectType == 2 && isFinished == 0" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <div @click.stop="videoZoom(index)" class="video-cover" :style="{backgroundImage: 'url(' + item.video.pictureUrl + ')'}">
                             <i class="video-icon"></i>
                         </div>
@@ -126,7 +126,7 @@
         <span>无结果</span>
     </div>
     <div v-if="isAdmin != 1 && isFinished && isVoted" @click="vote" class="vote-handle-wrap" :class="{'disabled': isFinished == 1 || isVoted == 1}">
-        <span v-if="isFinished == 0 && isVoted == 0" @click='is_Finished'>投票</span>
+        <span v-if="isFinished == 0 && isVoted == 0">投票</span>
         <span v-if="isFinished == 1">投票已截止</span>
         <span v-if="isFinished == 0 && isVoted == 1">你已投票</span>
     </div>

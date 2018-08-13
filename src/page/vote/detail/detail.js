@@ -206,14 +206,7 @@ new Vue({
             })
 
         },
-        is_Finished () {
-            if(json.data.voteInfo.isFinished == 1) {
-                this.$tips.show('投票已截止', {
-                delay: 1000
-            });
-                return
-           }
-        },
+
         active (index, id) {
             if(this.isAdmin == 1 || this.isFinished == 1 || this.isVoted == 1) return
 
@@ -338,6 +331,14 @@ new Vue({
                 success: function(json){
                     if(json.status != 1) return
                     window.location.reload()
+
+                    if(this.isFinished == 1){
+                        this.$tips.show('投票已结束', {
+                            delay: 1000
+                        });
+                        return
+                    }
+
                 }
             })
         },
