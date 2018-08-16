@@ -47,6 +47,7 @@
     "shelljs": "^0.7.6",
     "vue": "^2.2.6",
     "vue-clipboard2": "^0.1.1",
+    "vue-router": "^3.0.1",
     "vue-tips": "^1.3.0",
     "webpack": "^1.9.11"
   }

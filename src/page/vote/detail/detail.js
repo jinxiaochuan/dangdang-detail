@@ -2,6 +2,8 @@ import Vue from 'vue';
 
 import vueTips from 'vue-tips'
 
+import VueRouter from 'vue-router'
+
 Vue.use(vueTips)
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
@@ -57,6 +59,7 @@ new Vue({
             voteFrequency: "",
             sortType:"",
             res:[],
+            source:'',
             screenHeight: document.body.clientHeight,
             originHeight: document.body.clientHeight,
             isOriginHei: true
@@ -83,6 +86,7 @@ new Vue({
             this.userId = queryStr(HREF_ORIGIN, 'userId');
             this.voteId = queryStr(HREF_ORIGIN, 'voteId');
             this.isAdmin = queryStr(HREF_ORIGIN, 'isAdmin') || 0;
+            this.source = queryStr(HREF_ORIGIN, 'source');
             this.initTitle();
             this.getPage()
         },
@@ -210,7 +214,7 @@ new Vue({
         },
 
         active (index, id) {
-            if(this.isAdmin == 1 || this.isFinished == 1 || this.isVoted == 1) return
+            if(this.isAdmin == 1 || this.isFinished == 1 || this.isVoted == 1 || this.source == 1) return
 
             var $list = $(this.$refs.voteItem);
             var $item = $(this.$refs.voteItem[index]);

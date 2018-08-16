@@ -8,7 +8,7 @@
     </div>
 
     <transition name="fade">
-    <div v-if="multiOptions.length" class="vote-search-list-wrap">
+    <div v-if="multiOptions.length && source == 0" class="vote-search-list-wrap">
         <transition-group name="fade" tag="div" class="vote-search-list">
             <div v-for="(item, index) in multiOptions" v-bind:key="index" class="search-multi-options">
                 <!-- 纯文本 -->
@@ -43,7 +43,6 @@
     </div>
     </transition>
 
-
     <div v-if="options.length" class="vote-main">
         <div class="vote-title">
             <span class="title">{{ title }}</span>
@@ -51,7 +50,7 @@
             <span v-if="selectType == 2">(多选)</span>
         </div>
         <div class="vote-options">
-            <div @click="active(index, item.id)" ref="voteItem" v-for="(item, index) in options" :data-id="item.id" class="vote-options-item" :class="{'active': selectType == 2 && isActive(item.id)}">
+            <div @click="active(index, item.id)" ref="voteItem" v-for="(item, index) in options" :data-id="item.id" class="vote-options-item" :class="[{'active': source == 0 && selectType == 2 && isActive(item.id)},{'app-btn': source == 1}]">
                 <!-- 纯文本 -->
                 <div v-if="(item.video && !item.video.videoUrl && !item.pictures.length) || (!item.video && !item.pictures.length)" class="options-item options-item-text">
                     <div class="options-detail">
@@ -119,9 +118,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+
     <div v-if="!options.length && bottom == 1" class="vote-main-empty">
         <span>无结果</span>
     </div>
