@@ -134,34 +134,30 @@ new Vue({
                         return
                     }
 
-                    if (self.sortType == "0") {
-                        var options = json.data.options;
-                        self.lastRowId = options[options.length - 1].rowId;
-                        self.options = self.options.concat(options);
-                        self.loading = 0;
-                    }
+                    var options = json.data.options;
+                    self.lastRowId = options[options.length - 1].rowId;
+                    self.options = self.options.concat(options);
+                    self.loading = 0;
+                    
 
                     //如果选择降序排列 排序判断投票数的多少 并且把值付给self.options 
-                    if (self.sortType == "1") {
-                        self.res = json.data.options;
-                        for (var i = 0; i < self.res.length; i++) {
-                            for (var j = 0; j < self.res.length-i-1; j++) {
-                                if (typeof(self.res[j].userNum) == 'undefined') {
-                                    self.res[j].userNum = 0
-                                }
-                                if (self.res[j].userNum < self.res[j + 1].userNum) {
-                                    var temp = self.res[j]
-                                    self.res[j] = self.res[j + 1]
-                                    self.res[j + 1] = temp
-                                }
-                            }
-                        }
-                        // self.options = self.res;
-                        var options = self.res;
-                        self.lastRowId = options[options.length - 1].rowId;
-                        self.options = self.options.concat(options);
-                        self.loading = 0;
-                    }
+                    // if (self.sortType == "1") {
+                    //     self.res = json.data.options;
+                    //     for (var i = 0; i < self.res.length-1; i++) {
+                    //         for (var j = 0; j < self.res.length-i-1; j++) {
+                    //             if (self.res[j].userNum < self.res[j + 1].userNum) {
+                    //                 var temp = self.res[j]
+                    //                 self.res[j] = self.res[j + 1]
+                    //                 self.res[j + 1] = temp
+                    //             }
+                    //         }
+                    //     }
+                    //     // self.options = self.res;
+                    //     var options = self.res;
+                    //     self.lastRowId = options[options.length - 1].rowId;
+                    //     self.options = self.options.concat(options);
+                    //     self.loading = 0;
+                    // }
 
                     //数据加载的条数少于一页，表示数据加载完成
                     if(options.length < self.pageRows){
