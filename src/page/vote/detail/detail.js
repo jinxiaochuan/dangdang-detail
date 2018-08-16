@@ -59,7 +59,7 @@ new Vue({
             voteFrequency: "",
             sortType:"",
             res:[],
-            source:'',
+            // source:'-1',
             screenHeight: document.body.clientHeight,
             originHeight: document.body.clientHeight,
             isOriginHei: true
@@ -86,7 +86,7 @@ new Vue({
             this.userId = queryStr(HREF_ORIGIN, 'userId');
             this.voteId = queryStr(HREF_ORIGIN, 'voteId');
             this.isAdmin = queryStr(HREF_ORIGIN, 'isAdmin') || 0;
-            this.source = queryStr(HREF_ORIGIN, 'source');
+            // this.source = queryStr(HREF_ORIGIN, 'source');
             this.initTitle();
             this.getPage()
         },
