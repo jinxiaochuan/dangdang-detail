@@ -104,7 +104,7 @@ new Vue({
 
             this.loading = 1;
 
-            URL_VOTE = 'http://dev.im-dangdang.com/ddweb/v1/vote/detail';
+            // URL_VOTE = 'http://dev.im-dangdang.com/ddweb/v1/vote/detail';
 
             var params = {
                 userId: this.userId,
@@ -332,7 +332,7 @@ new Vue({
             
             optionIds = $.makeArray(optionIds);
 
-            URL_VOTE_HANDLE = 'http://dev.im-dangdang.com/ddweb/v1/vote';
+            // URL_VOTE_HANDLE = 'http://dev.im-dangdang.com/ddweb/v1/vote';
 
             var params = {
                 userId: this.userId,
