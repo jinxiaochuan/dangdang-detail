@@ -7,7 +7,9 @@
         <i v-show="keyword" @click="clear" class="clear-icon"></i>
     </div>
 
+    <!-- 多选放置框 -->
     <transition name="fade">
+    <!-- multiOptions存在则显示 不然不显示 -->
     <div v-if="multiOptions.length" class="vote-search-list-wrap">
         <transition-group name="fade" tag="div" class="vote-search-list">
             <div v-for="(item, index) in multiOptions" v-bind:key="index" class="search-multi-options">
@@ -22,6 +24,7 @@
                 <div v-if="item.pictures.length" class="search-item search-item-images">
                     <div class="search-detail">
                         <i @click="multiOptionDel(item.id)" class="del"></i>
+                        <!-- 一组的图片数量大于1张的时候需要显示张数 -->
                         <div class="images-cover" :style="{backgroundImage: 'url(' + item.pictures[0].pictureUrl + ')'}">
                             <span v-if="item.pictures.length != 1" class="images-num">{{ item.pictures.length }}张</span>
                         </div>
@@ -43,6 +46,7 @@
     </div>
     </transition>
 
+    <!-- 选项详情 -->
     <div v-if="options.length" class="vote-main">
         <div class="vote-title">
             <span class="title">{{ title }}</span>
@@ -50,13 +54,16 @@
             <span v-if="selectType == 2">(多选)</span>
         </div>
         <div class="vote-options">
-            <div @click="active(index, item.id)" ref="voteItem" v-for="(item, index) in options" :data-id="item.id" class="vote-options-item" :class="{'active':selectType == 2 && isActive(item.id)}">
+            <div @click="active(index, item.id)" ref="voteItem" v-for="(item, index) in options" :data-id="item.id" class="vote-options-item" :class="[{'active': selectType == 2 && isActive(item.id)},{'app-btn': source == 1}]">
                 <!-- 纯文本 -->
                 <div v-if="(item.video && !item.video.videoUrl && !item.pictures.length) || (!item.video && !item.pictures.length)" class="options-item options-item-text">
                     <div class="options-detail">
                         <span v-if="isVoted == 0 && selectType == 1 && isFinished == 0" class="sel-wrap single-sel"><i class="no-sel"></i><i class="sel"></i></span>
                         <span v-if="isVoted == 0 && selectType == 2 && isFinished == 0" class="sel-wrap multi-sel"><i class="no-sel"></i><i class="sel"></i></span>
-                        <span class="desc"><span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span><span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
+                        <span class="desc">
+                            <span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span>
+                            <span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span>
+                        </span>
                     </div>
                     <div class="vote-statistics">
                         <div class="process">
@@ -79,7 +86,12 @@
                         <div @click.stop="pictureZoom(index)" class="images-cover" :style="{backgroundImage: 'url(' + item.pictures[0].pictureUrl + ')'}">
                             <span v-if="item.pictures.length != 1" class="images-num">{{ item.pictures.length }}张</span>
                         </div>
-                        <span class="desc"><span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)"></span><span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)</span></span>
+                        <span class="desc">
+                            <span :class="{'desc-detail': isAdmin == 1 || !isHasVoted(item.id)}" v-html="hightlight(item.itemName)">
+                            </span>
+                            <span class="desc-voted" v-if="isAdmin != 1 && isHasVoted(item.id)">(已选)
+                            </span>
+                        </span>
                     </div>
                     <div class="vote-statistics">
                         <div class="process">

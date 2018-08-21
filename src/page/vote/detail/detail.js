@@ -59,7 +59,7 @@ new Vue({
             voteFrequency: "",
             sortType:"",
             res:[],
-            // source:'-1',
+            source:'',
             screenHeight: document.body.clientHeight,
             originHeight: document.body.clientHeight,
             isOriginHei: true
@@ -86,7 +86,7 @@ new Vue({
             this.userId = queryStr(HREF_ORIGIN, 'userId');
             this.voteId = queryStr(HREF_ORIGIN, 'voteId');
             this.isAdmin = queryStr(HREF_ORIGIN, 'isAdmin') || 0;
-            // this.source = queryStr(HREF_ORIGIN, 'source');
+            this.source = queryStr(HREF_ORIGIN, 'source');
             this.initTitle();
             this.getPage()
         },
@@ -104,7 +104,7 @@ new Vue({
 
             this.loading = 1;
 
-            // URL_VOTE = 'http://dev.im-dangdang.com/ddweb/v1/vote/detail';
+            URL_VOTE = 'http://dev.im-dangdang.com/ddweb/v1/vote/detail';
 
             var params = {
                 userId: this.userId,
@@ -201,9 +201,11 @@ new Vue({
             var self = this;
 
             this.multiOptions = this.multiOptions.filter(function(item){
+            //选取multiOption中item.id和要被删的id不同的项存入multiOption，也就是删除指定项
                 return item.id != id
             })
 
+            //删除多选项的同时 把下面枚举排列选项的active样式去除
             this.options.forEach(function(item, index){
                 if(item.id == id){
                     $(self.$refs.voteItem[index]).removeClass('active')
@@ -220,7 +222,9 @@ new Vue({
             var $item = $(this.$refs.voteItem[index]);
 
             switch (this.selectType) {
+                // 单选
                 case '1':
+                // 如果点击的项没有被选中的样式，那么清空所有项的样式，然后再toggle样式
                     if(!$item.hasClass('active')){
                         $list.removeClass('active')
                     }
@@ -228,6 +232,7 @@ new Vue({
                     break;
                 case '2':
                     if($item.hasClass('active')){
+                        //为什么删除的时候用的是id 而不是index?
                         this.multiOptionDel(id);
                     }else {
                         if(this.multiOptions.length == this.maxSelNum){
@@ -256,8 +261,13 @@ new Vue({
         },
 
         isHasVoted (id) {
+            //如果是还未投票状态 直接返回false
             if(!this.voteOptions) return false
+            //parseInt() 函数可解析一个字符串，并返回一个整数
+            //$.inArray() 函数用于在数组中查找指定值，并返回它的索引值（如果没有找到，则返回-1）
+            //判断该项是不是被投票的项
             var idx = $.inArray(parseInt(id), this.voteOptions);
+            //如果不是直接返回false
             if(idx == -1) return false
             return true
         },
@@ -313,15 +323,16 @@ new Vue({
                     return
                 }
 
+                //js的map方法，做映射
                 optionIds = this.multiOptions.map(function(item){
                     return parseInt(item.id)
                 })
 
             }
-
+            
             optionIds = $.makeArray(optionIds);
 
-            // URL_VOTE_HANDLE = 'http://dev.im-dangdang.com/ddweb/v1/vote';
+            URL_VOTE_HANDLE = 'http://dev.im-dangdang.com/ddweb/v1/vote';
 
             var params = {
                 userId: this.userId,
