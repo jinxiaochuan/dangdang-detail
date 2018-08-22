@@ -169,6 +169,10 @@ new Vue({
             this.bridge && this.bridge.callHandler('tapUser')
         },
 
+        tapPosition () {
+            this.bridge && this.bridge.callHandler('tapPosition')
+        },
+
         tapOffLine () {
             this.bridge && this.bridge.callHandler('tapOffLine')
         },

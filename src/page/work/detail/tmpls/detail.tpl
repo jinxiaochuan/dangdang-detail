@@ -7,7 +7,7 @@
                     <img :src="work.user.userImage" alt="">
                 </div>
                 <span class="hr-name" :class="{'app-btn' : source == 1}" @click="tapUser">{{ work.user.showName }}</span>
-                <span class="hr-position">{{ work.userJob }}</span>
+                <span class="hr-position" @click="tapPosition">{{ work.userWorkExperience && work.userWorkExperience.jobPosition || work.userJob }}</span>
             </div>
             <div class="position">
                 <div class="position-name">
