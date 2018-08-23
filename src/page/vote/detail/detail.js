@@ -2,8 +2,6 @@ import Vue from 'vue';
 
 import vueTips from 'vue-tips'
 
-import VueRouter from 'vue-router'
-
 Vue.use(vueTips)
 
 var jsmod = require('lib/self/jsmod/jsmod_extend.js');
@@ -142,9 +140,9 @@ new Vue({
                     self.lastRowId = options[options.length - 1].rowId;
                     self.options = self.options.concat(options);
                     self.loading = 0;
-                    
 
-                    //如果选择降序排列 排序判断投票数的多少 并且把值付给self.options 
+
+                    //如果选择降序排列 排序判断投票数的多少 并且把值付给self.options
                     // if (self.sortType == "1") {
                     //     self.res = json.data.options;
                     //     for (var i = 0; i < self.res.length-1; i++) {
@@ -329,7 +327,7 @@ new Vue({
                 })
 
             }
-            
+
             optionIds = $.makeArray(optionIds);
 
             // URL_VOTE_HANDLE = 'http://dev.im-dangdang.com/ddweb/v1/vote';
