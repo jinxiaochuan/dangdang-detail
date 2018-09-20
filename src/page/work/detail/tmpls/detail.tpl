@@ -61,6 +61,16 @@
                 </div>
             </div>
 
+            <!-- 张玉佳撰写部分 ---------------------------------------------------------------------------->
+            <div class="related-publc-circle app-btn" v-if="work.bindingCircleId != 0" @click="tapCircle">
+                <span class="title">相关公众圈</span>
+                <a href="javascript:void(0)" class="narrow-right">
+                    <img :src="work.bindingCircleImage" alt="">
+                    <!-- <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1235322943,3911552157&fm=27&gp=0.jpg"> -->
+                </a>
+            </div>
+            <!--------------------------------------------------------------------------------------------->
+
             <div class="position-address">
                 <span class="title">工作地址</span>
                 <div class="company-location">
@@ -76,16 +86,6 @@
                     <span v-if="isViewAllForPositionDesc && !viewAllStatusForPositionDesc" @click="togView('position')" class="view-all">收起</span>
                 </div>
             </div>
-
-            <!-- 张玉佳撰写部分 ---------------------------------------------------------------------------->
-            <div class="related-publc-circle app-btn" v-if="work.bindingCircleId != 0" @click="tapCircle">
-                <span class="title">相关公众圈</span>
-                <a href="javascript:void(0)" class="narrow-right">
-                    <img :src="work.bindingCircleImage" alt="">
-                    <!-- <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1235322943,3911552157&fm=27&gp=0.jpg"> -->
-                </a>
-            </div>
-            <!--------------------------------------------------------------------------------------------->
 
             <div v-if="work.email" class="position-concat">
                 <span class="title">简历投递邮箱</span>
