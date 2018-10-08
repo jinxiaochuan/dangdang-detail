@@ -55,7 +55,12 @@ var SquareDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1190420&userId=1000034&shareType=10&shareId=1190420&shareUserId=1000034&source=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1190414&userId=1000034&shareType=10&shareId=1190414&shareUserId=1000034&source=1';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1176677&userId=1000034&shareType=10&shareId=1176677&shareUserId=1000034&source=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1190411&userId=1000034&shareType=10&shareId=1190411&shareUserId=1000034&source=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1190394&userId=1000034&shareType=10&shareId=1190394&shareUserId=1000034&source=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1190416&userId=1000034&shareType=10&shareId=1190416&shareUserId=1000034&source=1';
         // URL_SQUARE = 'http://app.im-dangdang.com/ddweb/v1/square/detail';
 
         var data = {};
@@ -78,7 +83,7 @@ var SquareDetail = jsmod.util.klass({
                     if(json.data.info.pictureList && json.data.info.pictureList.length){
                       self.picSwiper = new PicSwiper({
                           picArr : json.data.info.pictureList,
-                          triggerClass : '.pic'
+                          triggerClass : '.grid-pic'
                       });
 
                       self.picSwiper.init();

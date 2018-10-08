@@ -8,46 +8,33 @@
     </div>
     {% endif %}
     {% if info.video %}
-    <div class="content-img single-pic">
-      <div class="pic pic1 is-video" data-url="{{ info.video.videoUrl }}">
-        <img src="{{ info.video.pictureUrl }}" alt="">
-        <div class="play-btn"></div>
-      </div>
+    <div class="grid-area grid-video">
+        <div class="grid-item is-video" data-url="{{ info.video.videoUrl }}" style="background-image:url('{{ info.video.pictureUrl }}')">
+            <i class="play-btn"></i>
+        </div>
     </div>
     {% endif %}
     {% if info.pictureList %}
-      {% if info.pictureList.length == 1 %}
-      <div class="content-img single-pic">
-        <div class="pic pic1 video-pic" href="{{info.pictureList[0].pictureUrl}}">
-          <img src="{{ info.pictureList[0].pictureUrl }}" alt="">
-        </div>
-      </div>
-      {% elseif info.pictureList.length > 1 and info.pictureList.length < 4 %}
-        <div class="content-img normal-layout one-row">
-          {% for index,item in info.pictureList %}
-            <div class="pic pic{{ index + 1 }} pic-block" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></div>
-          {% endfor %}
-        </div>
-      {% elseif info.pictureList.length == 4 %}
-      <div class="content-img four-pic">
-        {% for index,item in info.pictureList %}
-          <div class="pic pic{{ index + 1}} pic-block" href="{{ item.pictureUrl }}" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></div>
-        {% endfor %}
-      </div>
-      {% elseif info.pictureList.length > 3 and info.pictureList.length <= 6%}
-      <div class="content-img normal-layout two-row">
-        {% for index,item in info.pictureList %}
-        <div class="pic pic{{index+1}} pic-block" href="{{ item.pictureUrl }}" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></div>
-        {% endfor %}
-      </div>
-      {% elseif info.pictureList.length > 6 %}
-        <div class="content-img full-pic">
-          {% for index,item in info.pictureList %}
-            <div class="pic pic-block" href="{{ item.pictureUrl }}" target="_blank" style="background-image:url('{{ item.pictureUrl }}')"></div>
-          {% endfor %}
-        </div>
-      {% endif %}
-      {%endif%}
+    <div class="grid-area
+    {% if info.pictureList.length == 1 %}
+    grid-one
+    {% elseif info.pictureList.length == 2 %}
+    grid-two
+    {% elseif info.pictureList.length == 3 %}
+    grid-three
+    {% elseif info.pictureList.length == 4 %}
+    grid-four
+    {% elseif info.pictureList.length == 5 %}
+    grid-five
+    {% else %}
+    grid-more
+    {% endif %}
+    ">
+    {% for index,item in info.pictureList %}
+    <div class="grid-item grid-pic" style="background-image:url('{{ item.pictureUrl }}')"></div>
+    {% endfor %}
+    </div>
+    {% endif %}
     {% if info.shareInfo %}
     <div class="share-wrapper app-btn">
       <img src="{{ info.shareInfo.shareImage }}" alt="" class="share-pic">
