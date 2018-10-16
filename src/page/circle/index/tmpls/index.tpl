@@ -3,7 +3,12 @@
         <div class="avatar tap-avatar app-btn">
             <img src="{{ data.baseInfo.circleLogo.pictureUrl }}" alt="">
         </div>
-        <h2 class="name app-btn">{{ data.baseInfo.circleName }}</h2>
+        <h2 class="name app-btn">
+            {{ data.baseInfo.circleName }}
+            {% if data.baseInfo.isV == 1 %}
+            <i class="vip"></i>
+            {% endif %}
+        </h2>
         {% if data.baseInfo.accountNum %}
         <span class="code">铛铛号：{{ data.baseInfo.accountNum }}</span>
         {% endif %}
@@ -26,9 +31,9 @@
             <div class="handle-item app-btn">
                 <span class="item-label">帐号主体</span>
                 <span class="item-name {% if data.baseInfo.isV == 1 %}vip{% endif %}">
-                    {% if data.baseInfo.isV == 1 %}
+                    <!-- {% if data.baseInfo.isV == 1 %}
                     <i class="vip"></i>
-                    {% endif %}
+                    {% endif %} -->
                     {% if data.baseInfo.circleType == 1 %}个人{% elseif data.baseInfo.circleType == 2 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.officialName }}{% else %}企业{% endif %}{% elseif data.baseInfo.circleType == 3 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.officialName }}{% else %}组织{% endif %}{% else %}{% endif %}
                 </span>
             </div>
