@@ -34,7 +34,7 @@
                     <!-- {% if data.baseInfo.isV == 1 %}
                     <i class="vip"></i>
                     {% endif %} -->
-                    {% if data.baseInfo.circleType == 1 %}个人{% elseif data.baseInfo.circleType == 2 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.officialName }}{% else %}企业{% endif %}{% elseif data.baseInfo.circleType == 3 %}{% if data.baseInfo.isV == 1 %}{{ data.baseInfo.officialName }}{% else %}组织{% endif %}{% else %}{% endif %}
+                    {% if data.baseInfo.circleType == 1 %}个人{% elseif data.baseInfo.circleType == 2 %}{{ data.baseInfo.officialName }}{% elseif data.baseInfo.circleType == 3 %}{{ data.baseInfo.officialName }}{% else %}{% endif %}
                 </span>
             </div>
         </div>
