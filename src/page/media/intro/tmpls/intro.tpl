@@ -8,6 +8,9 @@
         </div>
         <a class="media-home app-btn" href="javascript:void(0)">进入媒体</a>
     </div>
+    <div class="index-slogan">
+        {{ data.mediaInfo.mediaSlogan }}
+    </div>
     <div class="index-intro">
         {{ data.mediaInfo.mediaDetail|safe }}
     </div>
