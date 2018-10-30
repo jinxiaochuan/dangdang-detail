@@ -5,9 +5,9 @@
     <span class="name">{{ data.showName }}</span>
     <div class="word">
         {% if data.userAccount %}
-        <span>我在铛铛社交，搜索铛铛号：{{ data.userAccount }}，添加我成为朋友。</span>
+        <span>我在铛铛社交，搜索铛铛号：{{ data.userAccount }}，添加我成为朋友</span>
         {% else %}
-        <span>我在铛铛社交，搜索手机号：{{ data.userPhone }}，添加我成为朋友。</span>
+        <span>我在铛铛社交，搜索手机号：{{ data.userPhone }}，添加我成为朋友</span>
         {% endif %}
         <i class="pop-arrow"></i>
     </div>
