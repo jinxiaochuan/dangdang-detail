@@ -52,6 +52,7 @@ new Vue({
     data: function(){
         return {
             work: null,
+            msgStatus: 0,
             isAdmin: 0,
             userId: 0,
             source: 0,
@@ -73,10 +74,10 @@ new Vue({
         init () {
             var self = this;
 
-            // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circle/job/detail?jobId=674&userId=1000034&shareType=22&shareId=674&shareUserId=1000034&source=1';
+            // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circle/job/detail?jobId=674&userId=1000034&shareType=22&shareId=674&shareUserId=1000034&source=0';
             // URL_WORK = 'http://app.im-dangdang.com/ddweb/v1/circle/job/detail';
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=674&userId=1000034&shareType=22&shareId=674&shareUserId=1000034&source=1';
+            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/job/detail?jobId=674&userId=1000034&shareType=22&shareId=674&shareUserId=1000034&source=0';
             // URL_WORK = 'http://dev.im-dangdang.com/ddweb/v1/circle/job/detail';
 
 
@@ -98,6 +99,7 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.work = json.data.detail;
+                        self.msgStatus = json.data.msgStatus;
                         self.initShare();
                         self.initBridge();
                         return
@@ -191,6 +193,10 @@ new Vue({
 
         tapAMap () {
             this.bridge && this.bridge.callHandler('tapMap')
+        },
+
+        goChat () {
+            this.bridge && this.bridge.callHandler('goChat', {}, function(){})
         },
 
         //张玉佳修改部分-----------------------------------------
