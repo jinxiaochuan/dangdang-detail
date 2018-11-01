@@ -71,9 +71,9 @@
 {% if data.activityInfo.isOwner == '0' %}
 <div class="common-sign-wrap">
     {% if data.activityInfo.applyStatus == -1 %}
-    <a class="sign-btn app-btn {% if data.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><span>报名</span></a>
+    <a class="sign-btn app-btn {% if data.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><i class="sign-icon"></i><span>报名</span></a>
     {% else %}
-    <a class="communicate-btn app-btn" href="javascript:void(0)"><span>留言</span></a>
+    <a class="communicate-btn app-btn" href="javascript:void(0)"><i class="leavemsg-icon"></i><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}
@@ -87,6 +87,6 @@
 
 {% if data.activityInfo.isOwner == '1' %}
 <div class="common-edit-wrap">
-    <a class="edit-btn app-btn" href="javascript:void(0)">编辑活动</a>
+    <a class="edit-btn app-btn" href="javascript:void(0)"><i class="edit-icon"></i><span>编辑活动</span></a>
 </div>
 {% endif %}

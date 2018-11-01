@@ -669,13 +669,28 @@
     padding: 0 @base*40rem;
     text-align: center;
     .edit-btn{
-        border: 1px solid #FB5E0A;
-        .border-radius-dpr(100px);
-        .btn-border(@base*502rem,@base*88rem,17px,#FFFFFF,#FB5E0A,#FB5E0A);
-        .font-dpr(17px);
+        display: inline-block;
+        width: @base*670rem;
+        height: @base*90rem;
+        line-height: @base*90rem;
+        text-align: center;
+        background-image: linear-gradient(90deg, #F6760F 0%, #FA6414 100%);
+        border-radius: @base*8rem;
+        font-size: @base*34rem;
+        color: #FFF;
+        .flex;
+        .align-items(center);
+        .justify-content(center);
+        .edit-icon{
+            margin-right: @base*8rem;
+            display: inline-block;
+            width: @base*30rem;
+            height: @base*30rem;
+            background: url('~assets/btn_edit.png') center center no-repeat;
+            background-size: contain;
+        }
         &:active{
-            border-color: #E65202;
-            color: #E65202;
+            background-image: linear-gradient(90deg, #E65202 0%, #E56500 100%);
         }
     }
 }
@@ -684,40 +699,60 @@
     padding: @base*55rem @base*30rem @base*50rem;
     text-align: center;
     .sign-btn{
-        .border-radius(@base*100rem);
-        .btn(@base*502rem,@base*88rem,16px,#007AFF,#FFFFFF);
-        .font-dpr(16px);
-        background-image: linear-gradient(-90deg, #FB5E0A 0%, #F6730A 100%);
-
+        display: inline-block;
+        width: @base*670rem;
+        height: @base*90rem;
+        line-height: @base*90rem;
+        text-align: center;
+        background-image: linear-gradient(90deg, #F6760F 0%, #FA6414 100%);
+        border-radius: @base*8rem;
+        font-size: @base*34rem;
+        color: #FFF;
+        .flex;
+        .align-items(center);
+        .justify-content(center);
+        .sign-icon{
+            margin-right: @base*8rem;
+            display: inline-block;
+            width: @base*30rem;
+            height: @base*30rem;
+            background: url('~assets/btn_plus.png') center center no-repeat;
+            background-size: contain;
+        }
         &:active{
-            background-image: linear-gradient(-90deg, #E65202 0%, #E56500 100%);
-            span{
-                opacity: .6;
-            }
+            background-image: linear-gradient(90deg, #E65202 0%, #E56500 100%);
         }
 
         &.disabled{
             opacity: .6;
-
             &:active{
                 background-image: linear-gradient(-90deg, #E65202 0%, #E56500 100%);
-                span{
-                    opacity: .6;
-                }
             }
         }
     }
     .communicate-btn{
-        .border-radius(@base*100rem);
-        .btn(@base*502rem,@base*88rem,16px,#007AFF,#FFFFFF);
-        .font-dpr(16px);
-        background-image: linear-gradient(-90deg, #FB5E0A 0%, #F6730A 100%);
-
+        display: inline-block;
+        width: @base*670rem;
+        height: @base*90rem;
+        line-height: @base*90rem;
+        text-align: center;
+        background-image: linear-gradient(90deg, #F6760F 0%, #FA6414 100%);
+        border-radius: @base*8rem;
+        font-size: @base*34rem;
+        color: #FFF;
+        .flex;
+        .align-items(center);
+        .justify-content(center);
+        .leavemsg-icon{
+            margin-right: @base*8rem;
+            display: inline-block;
+            width: @base*30rem;
+            height: @base*30rem;
+            background: url('~assets/btn_leavemsg.png') center center no-repeat;
+            background-size: contain;
+        }
         &:active{
-            background-image: linear-gradient(-90deg, #E65202 0%, #E56500 100%);
-            span{
-                opacity: .6;
-            }
+            background-image: linear-gradient(90deg, #E65202 0%, #E56500 100%);
         }
     }
 }
