@@ -43,7 +43,6 @@ new Vue({
     data: function(){
         return {
             house: null,
-            msgStatus: 0,
             list: [],
             slideIndex: 0,
             facilities: MAPPING.H_FACILITY,
@@ -112,7 +111,6 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.house = json.data.detail;
-                        self.msgStatus = json.data.msgStatus;
                         self.house.communityFacilities = self.house.communityFacilities || [];
                         self.initShare();
                         self.initBridge();

@@ -52,7 +52,6 @@ new Vue({
     data: function(){
         return {
             work: null,
-            msgStatus: 0,
             isAdmin: 0,
             userId: 0,
             source: 0,
@@ -99,7 +98,6 @@ new Vue({
                 success: function(json){
                     if(json.status == 1){
                         self.work = json.data.detail;
-                        self.msgStatus = json.data.msgStatus;
                         self.initShare();
                         self.initBridge();
                         return

@@ -94,7 +94,7 @@
         </div>
         <div v-if="house && isAdmin == 0 && house.user.userId != userId && source == 0" class="communicate-wrap">
             <a @click="goChat" class="communicate-btn" href="javascript:void(0)">
-                <span v-if="msgStatus == 0">立即沟通</span>
+                <span v-if="house.msgStatus == 0">立即沟通</span>
                 <span v-else>留言</span>
             </a>
         </div>
