@@ -313,7 +313,7 @@ var CircleDetail = jsmod.util.klass({
             })
 
             bridge.registerHandler('doChangeStatus', function(data, responseCallback) {
-                self.$container.find('.sign-btn').removeClass('sign-btn').addClass('communicate-btn').text('留言');
+                self.$container.find('.sign-btn').removeClass('sign-btn').addClass('communicate-btn').html('<i class="leavemsg-icon"></i><span>留言</span>');
             })
 
             bridge.registerHandler('redEnvelopeStatus', function(data, responseCallback) {
