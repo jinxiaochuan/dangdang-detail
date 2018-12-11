@@ -14,7 +14,7 @@
     <span class="name"><a class="tap-name tap-avatar app-btn" href="javascript:void(0)">{{ data.circleInfo.circleName }}</a></span>
 </div>
 
-{% if data.source == 1 && data.circleInfo.memberInfo %}
+{% if data.source == 1 && data.circleInfo.closeMemberListOuter == 0 && data.circleInfo.memberInfo %}
 <div class="common-mini-avatar-wrap">
     <div class="mini-avatar-left">
         <ul class="mini-avatar-list clearfix">

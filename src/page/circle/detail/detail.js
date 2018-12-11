@@ -54,6 +54,7 @@ var CircleDetail = jsmod.util.klass({
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=54283&userId=1000034&articleStatus=1&shareType=6&shareId=54282&shareUserId=1000034&supportHb=1&source=1';
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=26581&userId=1000034&articleStatus=1&shareType=8&shareId=26581&shareUserId=1000034&source=1';
         // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
 
         var data = {}, isAdminIdentity, supportHb, source;
