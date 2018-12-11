@@ -53,6 +53,9 @@ var CircleDetail = jsmod.util.klass({
         // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=4272&userId=1015782&shareType=17&shareId=3307&shareUserId=179708&isAdminIdentity=0&source=1';
         // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
+        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=54283&userId=1000034&articleStatus=1&shareType=6&shareId=54282&shareUserId=1000034&supportHb=1&source=1';
+        // URL_CIRCLE = 'http://app.im-dangdang.com/ddweb/v1/article/detail';
+
         var data = {}, isAdminIdentity, supportHb, source;
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');

@@ -862,6 +862,10 @@
         padding: 0 @base*30rem;
         margin-top: @base*66rem;
         margin-bottom: @base*70rem;
+        &.outer{
+            max-height: @base*900rem;
+            overflow: hidden;
+        }
         .detail-content{
             .font-dpr(17px);
             margin-bottom: 10px;
@@ -1101,4 +1105,128 @@
      -webkit-touch-callout: none;
      -webkit-user-select: none;
      cursor: pointer;
+ }
+
+ @keyframes packupArrowFlow {
+     0%, 100%{
+         bottom: @base*45rem;
+     }
+     70% {
+         bottom: @base*65rem;
+     }
+ }
+
+ .common-packup-wrap{
+     padding: 0 @base*36rem;
+     position: relative;
+     top: -@base*50rem;
+     .packup-gradient{
+         position: absolute;
+         left: 0;
+         top: -@base*245rem;
+         width: 100%;
+         height: @base*245rem;
+         background-image: linear-gradient(-180deg, rgba(255,255,255,0.00) 0%, #FFFFFF 100%);
+         .packup-arrow{
+             display: block;
+             width: @base*36rem;
+             height: @base*36rem;
+             position: absolute;
+             bottom: @base*45rem;
+             left: 50%;
+             margin-left: -@base*16rem;
+             animation: packupArrowFlow 1s ease infinite;
+             background: url('~assets/packup_arrow.png') no-repeat 50%/contain;
+         }
+     }
+     .packup-open{
+         height: @base*74rem;
+         line-height: @base*74rem;
+         text-align: center;
+         background-image: linear-gradient(90deg, #F4720A 0%, #FA5E0A 100%);
+         border-radius: @base*37rem;
+         font-family: PingFang-SC-Regular;
+         font-size: @base*32rem;
+         color: #FFFFFF;
+     }
+ }
+
+ .common-mini-avatar-wrap{
+     padding: @base*20rem @base*30rem 0;
+     .flex;
+     .justify-content(space-between);
+     .align-items(center);
+     .mini-avatar-left{
+         .flex;
+         .align-items(center);
+         .mini-avatar-list{
+             .mini-avatar-item{
+                 float: left;
+                 width: @base*50rem;
+                 height: @base*50rem;
+                 margin-right: @base*5rem;
+                 background-color: #EAEAEA;
+                 &:last-child{
+                     margin-right: @base*10rem;
+                 }
+                 img{
+                     width: 100%;
+                     height: 100%;
+                 }
+             }
+         }
+         .mini-avatar-num{
+             font-size: @base*28rem;
+             color: #7A7A7A;
+         }
+     }
+     .mini-avatar-join{
+         padding: 0 @base*22rem;
+         width: @base*128rem;
+         height: @base*54rem;
+         line-height: @base*54rem;
+         text-align: right;
+         font-size: @base*28rem;
+         color: #FFFFFF;
+         background-position: @base*22rem center;
+         background-repeat: no-repeat;
+         background-size: @base*22rem;
+         background-image: url('~assets/plus.png');
+         background-color: #F4720A;
+         border-radius: @base*8rem;
+     }
+
+ }
+
+ .common-follow-wrap{
+     padding: 0 @base*30rem;
+     .flex;
+     .justify-content(space-between);
+     .align-items(center);
+     .follow-num{
+         padding-left: @base*40rem;
+         height: @base*54rem;
+         line-height: @base*54rem;
+         font-size: @base*30rem;
+         color: #000000;
+         background-position: left center;
+         background-repeat: no-repeat;
+         background-size: @base*30rem;
+         background-image: url('~assets/mini_follow.png');
+     }
+     .follow-action{
+         padding: 0 @base*22rem;
+         width: @base*128rem;
+         height: @base*54rem;
+         line-height: @base*54rem;
+         text-align: right;
+         font-size: @base*28rem;
+         color: #FFFFFF;
+         background-position: @base*22rem center;
+         background-repeat: no-repeat;
+         background-size: @base*22rem;
+         background-image: url('~assets/plus.png');
+         background-color: #F4720A;
+         border-radius: @base*8rem;
+     }
  }

@@ -79,7 +79,7 @@ var dialog = new jsmod.util.Dialog({
 function appOpen() {
     var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
     if(source != 1) return
-    
+
     if(mobileDevice().isWei){
         window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.aladdin.dangdang';
         return;
@@ -106,5 +106,10 @@ if(source == 1){
 $('.mod-dialog-frame').on('click',function(){
     dialog.hide({fade:true});
 });
+
+$('body').delegate('.packup-arrow', 'click', function(){
+    $('.circle-news-detail, .news-detail-main').removeClass('outer');
+    $('.common-packup-wrap').remove();
+})
 
 document.body.addEventListener('touchstart', function () {});

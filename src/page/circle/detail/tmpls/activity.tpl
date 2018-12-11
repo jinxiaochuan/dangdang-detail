@@ -13,6 +13,23 @@
     </div>
     <span class="name"><a class="tap-name tap-avatar app-btn" href="javascript:void(0)">{{ data.circleInfo.circleName }}</a></span>
 </div>
+
+{% if data.source == 1 && data.circleInfo.memberInfo %}
+<div class="common-mini-avatar-wrap">
+    <div class="mini-avatar-left">
+        <ul class="mini-avatar-list clearfix">
+            {% for item in  data.circleInfo.memberInfo.userList %}
+            <li class="mini-avatar-item">
+                <img src="{{ item.headImage.picture }}" alt="">
+            </li>
+            {% endfor %}
+        </ul>
+        <span class="mini-avatar-num">{{ data.circleInfo.memberInfo.memberCount }}人</span>
+    </div>
+    <a class="mini-avatar-join app-btn" href="javascript:void(0)">加入</a>
+</div>
+{% endif %}
+
 <div class="common-info-wrap">
     <div class="info-item">
         <span class="label-name label-name-time">时间：</span>

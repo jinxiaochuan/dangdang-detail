@@ -11,7 +11,13 @@
             <span class="source-time">{{ data.newsDetail.formatNewsTime }}</span>
         </div>
     </div>
-    <div class="news-detail-main">
+    {% if data.source == 1 %}
+    <div class="common-follow-wrap">
+        <span class="follow-num">关注者 {{ data.followNum }}人</span>
+        <a class="follow-action app-btn" href="javascript:void(0)">关注</a>
+    </div>
+    {% endif %}
+    <div class="news-detail-main {% if data.source == 1 %}outer{% endif %}">
       {% if data.liveInfo %}
         <div class="live-wrapper" style="background-image:url('{{ data.liveInfo.coverImage.picture }}')">
           <div class="blur-layer">
@@ -53,6 +59,14 @@
         </div>
         {% endif %}
     </div>
+    {% if data.source == 1 %}
+    <div class="common-packup-wrap">
+        <div class="packup-gradient">
+            <span class="packup-arrow"></span>
+        </div>
+        <div class="packup-open app-btn">打开铛铛阅读</div>
+    </div>
+    {% endif %}
     <div class="comment-outer-wrap">
         <span class="time">{{ data.newsDetail.formatCreateTime }}</span>
         <span class="icon-wrap">

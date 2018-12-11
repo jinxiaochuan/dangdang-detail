@@ -22,6 +22,22 @@
         </div>
     </div>
 
+    {% if data.source == 1 && data.circleInfo.memberInfo %}
+    <div class="common-mini-avatar-wrap">
+        <div class="mini-avatar-left">
+            <ul class="mini-avatar-list clearfix">
+                {% for item in  data.circleInfo.memberInfo.userList %}
+                <li class="mini-avatar-item">
+                    <img src="{{ item.headImage.picture }}" alt="">
+                </li>
+                {% endfor %}
+            </ul>
+            <span class="mini-avatar-num">{{ data.circleInfo.memberInfo.memberCount }}人</span>
+        </div>
+        <a class="mini-avatar-join app-btn" href="javascript:void(0)">加入</a>
+    </div>
+    {% endif %}
+
     <div class="circle-live-detail">
         <div class="detail-content">
             {{ data.articleInfo.detail|safe }}

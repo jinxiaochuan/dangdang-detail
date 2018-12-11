@@ -7,11 +7,35 @@
         <span class="time">{{ data.articleInfo.formatNewsTime }}</span>
     </div>
 
-    <div class="circle-news-detail">
+    {% if data.source == 1 && data.circleInfo.memberInfo %}
+    <div class="common-mini-avatar-wrap">
+        <div class="mini-avatar-left">
+            <ul class="mini-avatar-list clearfix">
+                {% for item in  data.circleInfo.memberInfo.userList %}
+                <li class="mini-avatar-item">
+                    <img src="{{ item.headImage.picture }}" alt="">
+                </li>
+                {% endfor %}
+            </ul>
+            <span class="mini-avatar-num">{{ data.circleInfo.memberInfo.memberCount }}人</span>
+        </div>
+        <a class="mini-avatar-join app-btn" href="javascript:void(0)">加入</a>
+    </div>
+    {% endif %}
+
+    <div class="circle-news-detail {% if data.source == 1 %}outer{% endif %}">
         <div class="detail-content my-gallery">
             {{ data.articleInfo.detail|safe }}
         </div>
     </div>
+    {% if data.source == 1 %}
+    <div class="common-packup-wrap">
+        <div class="packup-gradient">
+            <span class="packup-arrow"></span>
+        </div>
+        <div class="packup-open app-btn">打开铛铛阅读</div>
+    </div>
+    {% endif %}
     <!-- 分享至外部且有红包 -->
     {% if data.source %}
     {% if data.articleInfo.hbInfo %}

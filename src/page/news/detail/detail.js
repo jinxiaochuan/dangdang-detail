@@ -38,6 +38,7 @@ var News = jsmod.util.klass({
 
         data.userId = jsmod.util.url.getParam(HREF_ORIGIN,'userId');
         data.newsId = jsmod.util.url.getParam(HREF_ORIGIN,'newsId');
+        var source = jsmod.util.url.getParam(HREF_ORIGIN,'source');
 
         $.ajax({
             url:URL_NEWS,
@@ -48,7 +49,7 @@ var News = jsmod.util.klass({
                 if(json.status == 1){
                     self.data = json.data;
                     self.commentAmount = self.data.newsDetail.commentAmount;
-                    self.render(json.data);
+                    self.render(json.data, source);
                     return;
                 }
                 var html = new Empty({
@@ -86,10 +87,10 @@ var News = jsmod.util.klass({
         })
     },
 
-    render: function(data){
+    render: function(data, source){
         var html = swig.render(TPL_NESWS,{
             locals:{
-                data:data
+                data: $.extend(data, {source: source})
             }
         })
 
