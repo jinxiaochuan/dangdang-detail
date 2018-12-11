@@ -1108,10 +1108,10 @@
 
  @keyframes packupArrowFlow {
      0%, 100%{
-         bottom: @base*45rem;
+         bottom: @base*120rem;
      }
      70% {
-         bottom: @base*65rem;
+         bottom: @base*140rem;
      }
  }
 
@@ -1122,16 +1122,16 @@
      .packup-gradient{
          position: absolute;
          left: 0;
-         top: -@base*245rem;
+         bottom: 0;
          width: 100%;
-         height: @base*245rem;
+         height: @base*320rem;
          background-image: linear-gradient(-180deg, rgba(255,255,255,0.00) 0%, #FFFFFF 100%);
          .packup-arrow{
              display: block;
              width: @base*36rem;
              height: @base*36rem;
              position: absolute;
-             bottom: @base*45rem;
+             bottom: @base*120rem;
              left: 50%;
              margin-left: -@base*16rem;
              animation: packupArrowFlow 1s ease infinite;
@@ -1139,6 +1139,7 @@
          }
      }
      .packup-open{
+         position: relative;
          height: @base*74rem;
          line-height: @base*74rem;
          text-align: center;

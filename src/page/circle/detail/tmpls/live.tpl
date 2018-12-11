@@ -7,21 +7,6 @@
         <span class="time">{{ data.articleInfo.liveInfo.formatLiveCreateTime }}</span>
     </div>
 
-    <div class="circle-live-wrapper app-btn" style="background-image: url('{{ data.articleInfo.liveInfo.coverImage.picture }}')">
-        <div class="blur-layer">
-            {% if data.articleInfo.liveInfo.liveStatus == 3 %}
-            <div class="video-play"></div>
-            {% else %}
-            <div class="play-btn"></div>
-            {% endif %}
-            {% if data.articleInfo.liveInfo.liveStatus == 2 %}
-            <span class="live-status">
-                直播中...
-            </span>
-            {% endif %}
-        </div>
-    </div>
-
     {% if data.source == 1 && data.circleInfo.closeMemberListOuter == 0 && data.circleInfo.memberInfo %}
     <div class="common-mini-avatar-wrap">
         <div class="mini-avatar-left">
@@ -37,6 +22,21 @@
         <a class="mini-avatar-join app-btn" href="javascript:void(0)">加入</a>
     </div>
     {% endif %}
+
+    <div class="circle-live-wrapper app-btn" style="background-image: url('{{ data.articleInfo.liveInfo.coverImage.picture }}')">
+        <div class="blur-layer">
+            {% if data.articleInfo.liveInfo.liveStatus == 3 %}
+            <div class="video-play"></div>
+            {% else %}
+            <div class="play-btn"></div>
+            {% endif %}
+            {% if data.articleInfo.liveInfo.liveStatus == 2 %}
+            <span class="live-status">
+                直播中...
+            </span>
+            {% endif %}
+        </div>
+    </div>
 
     <div class="circle-live-detail">
         <div class="detail-content">
