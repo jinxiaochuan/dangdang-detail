@@ -13,7 +13,7 @@
     </div>
     {% if data.source == 1 %}
     <div class="common-follow-wrap">
-        <span class="follow-num">关注者 {{ data.followNum }}人</span>
+        <span class="follow-num">关注者 {{ data.followNum | Numberal }}人</span>
         <a class="follow-action app-btn" href="javascript:void(0)">关注</a>
     </div>
     {% endif %}

@@ -17,7 +17,7 @@
                 </li>
                 {% endfor %}
             </ul>
-            <span class="mini-avatar-num">{{ data.circleInfo.memberInfo.memberCount }}人</span>
+            <span class="mini-avatar-num">{{ data.circleInfo.memberInfo.memberCount | Numberal }}人</span>
         </div>
         <a class="mini-avatar-join app-btn" href="javascript:void(0)">加入</a>
     </div>
