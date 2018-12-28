@@ -105,7 +105,7 @@
     {% if data.articleInfo.activityInfo.applyStatus == -1 %}
     <a class="sign-btn app-btn {% if data.articleInfo.activityInfo.isCanSignUp == '0' %}disabled{% endif %}" href="javascript:void(0)"><i class="sign-icon"></i><span>报名</span></a>
     {% else %}
-    <a class="communicate-btn app-btn" href="javascript:void(0)"><i class="leavemsg-icon"><span>留言</span></a>
+    <a class="communicate-btn app-btn" href="javascript:void(0)"><i class="leavemsg-icon"></i><span>留言</span></a>
     {% endif %}
 </div>
 {% endif %}
