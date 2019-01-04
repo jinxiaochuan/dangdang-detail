@@ -50,8 +50,8 @@ var CircleDetail = jsmod.util.klass({
     getAjax: function(){
         var self = this;
 
-        // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=4272&userId=1015782&shareType=17&shareId=3307&shareUserId=179708&isAdminIdentity=0&source=1';
-        // URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
+        //  HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circleArticleDetail?articleId=3836&userId=200239&articleStatus=1&shareType=6&shareId=3836&shareUserId=200239&supportHb=1&source=1';
+        //  URL_CIRCLE = 'http://dev.im-dangdang.com/ddweb/v1/article/detail';
 
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=54283&userId=1000034&articleStatus=1&shareType=6&shareId=54282&shareUserId=1000034&supportHb=1&source=1';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/circleArticleDetail?articleId=26581&userId=1000034&articleStatus=1&shareType=8&shareId=26581&shareUserId=1000034&source=1';
