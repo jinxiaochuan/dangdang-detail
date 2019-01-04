@@ -89,8 +89,8 @@ new Vue({
             var self = this;
 
 
-            // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/house/detail?houseId=519&userId=200291&shareType=20&shareId=423&shareUserId=200291';
-            // URL_HOUSE = 'http://dev.im-dangdang.com/ddweb/v1/circle/house/detail';
+                // HREF_ORIGIN = 'http://dev.im-dangdang.com/ddweb/circle/house/detail?houseId=519&userId=200291&shareType=20&shareId=423&shareUserId=200291';
+                // URL_HOUSE = 'http://dev.im-dangdang.com/ddweb/v1/circle/house/detail';
 
             this.isAdmin = jsmod.util.url.getParam(HREF_ORIGIN,'isAdmin') || 0;
             this.source = jsmod.util.url.getParam(HREF_ORIGIN,'source') || 0;

@@ -60,8 +60,8 @@ var SquareDetail = jsmod.util.klass({
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1176677&userId=1000034&shareType=10&shareId=1176677&shareUserId=1000034&source=1';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1190411&userId=1000034&shareType=10&shareId=1190411&shareUserId=1000034&source=1';
         // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1190394&userId=1000034&shareType=10&shareId=1190394&shareUserId=1000034&source=1';
-        // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1190416&userId=1000034&shareType=10&shareId=1190416&shareUserId=1000034&source=1';
-        // URL_SQUARE = 'http://app.im-dangdang.com/ddweb/v1/square/detail';
+       // HREF_ORIGIN = 'http://app.im-dangdang.com/ddweb/squareDetail?squareId=1190416&userId=1000034&shareType=10&shareId=1190416&shareUserId=1000034&source=1';
+       // URL_SQUARE = 'http://app.im-dangdang.com/ddweb/v1/square/detail';
 
         var data = {};
 
