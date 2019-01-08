@@ -115,9 +115,9 @@
                     <a @click="tapDel" class="delete" href="javascript:void(0)">删除</a>
                 </div>
             </div>
-            <div v-if="isAdmin == 0 && work.user.userId != userId && source == 0" class="communicate-wrap">
+            <div v-if="isAdmin == 0 && work.user.userId != userId" class="communicate-wrap" :class="{'app-btn' : source == 1}">
                 <a @click="goChat" class="communicate-btn" href="javascript:void(0)">
-                    <span v-if="work.msgStatus == 0">立即沟通</span>
+                    <span v-if="work.msgStatus == 0 || source == 1">立即沟通</span>
                     <span v-else>留言</span>
                 </a>
             </div>
